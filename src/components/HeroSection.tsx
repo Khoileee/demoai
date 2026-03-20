@@ -43,11 +43,12 @@ export default function HeroSection() {
         <div className="absolute inset-0 hex-grid opacity-30" />
       </div>
 
-      {/* === MID LAYER: Futuristic AI visualization — scroll-linked === */}
-      <motion.div
-        style={{ scale: bgScale, opacity: bgOpacity, willChange: "transform, opacity" }}
-        className="absolute inset-0 z-[1] pointer-events-none"
-      >
+      {/* === MID LAYER: Futuristic AI visualization — desktop only (too heavy for mobile GPU) === */}
+      {!isMobile && (
+        <motion.div
+          style={{ scale: bgScale, opacity: bgOpacity, willChange: "transform, opacity" }}
+          className="absolute inset-0 z-[1] pointer-events-none"
+        >
         {/* Aurora ribbons — CSS animated */}
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
           <div className="absolute w-[900px] h-[500px] aurora-ribbon opacity-40 animate-aurora-1" />
@@ -135,6 +136,7 @@ export default function HeroSection() {
           }}
         />
       </motion.div>
+      )}
 
       {/* === 3D EVE BOT MASCOT — desktop only === */}
       {!isMobile && (

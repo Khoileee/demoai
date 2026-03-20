@@ -703,3 +703,21 @@ body {
     radial-gradient(at 50% 80%, rgba(34, 211, 238, 0.03) 0%, transparent 50%),
     radial-gradient(at 75% 65%, rgba(16, 185, 129, 0.02) 0%, transparent 50%);
 }
+
+/* === MOBILE: strip will-change to prevent compositor layer explosion === */
+@media (max-width: 767px) {
+  .tilt-card,
+  .depth-glow,
+  .animate-float-particle,
+  .animate-sweep-travel,
+  .animate-aurora-1, .animate-aurora-2, .animate-aurora-3, .animate-aurora-4,
+  .animate-node-pulse, .animate-node-pulse-strong,
+  .animate-pulse-ring, .animate-wave-ring,
+  .animate-morph-blob, .animate-core-glow, .animate-core-inner,
+  .animate-data-rain, .animate-scan-h,
+  .animate-orb-1, .animate-orb-2, .animate-orb-3, .animate-orb-4,
+  .animate-breathe-border, .animate-hex-float,
+  .animate-signal, .animate-plasma {
+    will-change: auto !important;
+  }
+}

@@ -12,11 +12,11 @@ export default function GlobalBackground() {
       <div className="absolute inset-0 hex-grid opacity-[0.03]" />
       <div className="absolute inset-0 gradient-mesh" />
 
-      {/* === AURORA BLOBS — CSS animated === */}
-      <div className="absolute top-[-10%] left-[-5%] w-[50vw] h-[50vh] rounded-full bg-brand-600/[0.05] blur-[80px] animate-aurora-1" />
-      <div className="absolute top-[25%] right-[-8%] w-[45vw] h-[45vh] rounded-full bg-violet-600/[0.04] blur-[80px] animate-aurora-2" />
-      <div className="absolute top-[55%] left-[10%] w-[40vw] h-[40vh] rounded-full bg-cyan-600/[0.035] blur-[80px] animate-aurora-3" />
-      <div className="absolute bottom-[-5%] right-[5%] w-[48vw] h-[45vh] rounded-full bg-emerald-600/[0.03] blur-[80px] animate-aurora-4" />
+      {/* === AURORA BLOBS — CSS animated (desktop only, blur-80px kills mobile GPU) === */}
+      <div className="hidden md:block absolute top-[-10%] left-[-5%] w-[50vw] h-[50vh] rounded-full bg-brand-600/[0.05] blur-[80px] animate-aurora-1" />
+      <div className="hidden md:block absolute top-[25%] right-[-8%] w-[45vw] h-[45vh] rounded-full bg-violet-600/[0.04] blur-[80px] animate-aurora-2" />
+      <div className="hidden md:block absolute top-[55%] left-[10%] w-[40vw] h-[40vh] rounded-full bg-cyan-600/[0.035] blur-[80px] animate-aurora-3" />
+      <div className="hidden md:block absolute bottom-[-5%] right-[5%] w-[48vw] h-[45vh] rounded-full bg-emerald-600/[0.03] blur-[80px] animate-aurora-4" />
 
       {/* === NEURAL CONSTELLATION — static lines + CSS animated nodes === */}
       <svg className="absolute inset-0 w-full h-full" style={{ willChange: "auto" }}>
@@ -57,21 +57,21 @@ export default function GlobalBackground() {
       <div className="absolute rounded-full animate-node-pulse" style={{ left: "42%", top: "78%", width: 2, height: 2, background: "rgba(59,130,246,0.5)", boxShadow: "0 0 4px rgba(59,130,246,0.3)", animationDelay: "2.3s" }} />
       <div className="absolute rounded-full animate-node-pulse" style={{ left: "72%", top: "72%", width: 3, height: 3, background: "rgba(139,92,246,0.5)", boxShadow: "0 0 6px rgba(139,92,246,0.3)", animationDelay: "0.3s" }} />
 
-      {/* === TRAVELING ORBS — CSS with transform instead of top/left === */}
-      <div className="absolute left-0 top-[10%] w-1 h-1 rounded-full animate-orb-1" style={{ background: "rgba(96,165,250,0.7)", boxShadow: "0 0 10px rgba(96,165,250,0.5), 0 0 40px rgba(96,165,250,0.2)" }} />
-      <div className="absolute left-full top-[25%] w-[3px] h-[3px] rounded-full animate-orb-2" style={{ background: "rgba(34,211,238,0.7)", boxShadow: "0 0 8px rgba(34,211,238,0.5), 0 0 32px rgba(34,211,238,0.2)" }} />
-      <div className="absolute left-[20%] top-0 w-[5px] h-[5px] rounded-full animate-orb-3" style={{ background: "rgba(139,92,246,0.7)", boxShadow: "0 0 12px rgba(139,92,246,0.5), 0 0 48px rgba(139,92,246,0.2)" }} />
-      <div className="absolute left-[80%] bottom-0 w-[3px] h-[3px] rounded-full animate-orb-4" style={{ background: "rgba(52,211,153,0.7)", boxShadow: "0 0 8px rgba(52,211,153,0.5), 0 0 32px rgba(52,211,153,0.2)" }} />
+      {/* === TRAVELING ORBS — desktop only === */}
+      <div className="hidden md:block absolute left-0 top-[10%] w-1 h-1 rounded-full animate-orb-1" style={{ background: "rgba(96,165,250,0.7)", boxShadow: "0 0 10px rgba(96,165,250,0.5), 0 0 40px rgba(96,165,250,0.2)" }} />
+      <div className="hidden md:block absolute left-full top-[25%] w-[3px] h-[3px] rounded-full animate-orb-2" style={{ background: "rgba(34,211,238,0.7)", boxShadow: "0 0 8px rgba(34,211,238,0.5), 0 0 32px rgba(34,211,238,0.2)" }} />
+      <div className="hidden md:block absolute left-[20%] top-0 w-[5px] h-[5px] rounded-full animate-orb-3" style={{ background: "rgba(139,92,246,0.7)", boxShadow: "0 0 12px rgba(139,92,246,0.5), 0 0 48px rgba(139,92,246,0.2)" }} />
+      <div className="hidden md:block absolute left-[80%] bottom-0 w-[3px] h-[3px] rounded-full animate-orb-4" style={{ background: "rgba(52,211,153,0.7)", boxShadow: "0 0 8px rgba(52,211,153,0.5), 0 0 32px rgba(52,211,153,0.2)" }} />
 
-      {/* === DATA RAIN — CSS translateY === */}
-      <div className="absolute w-px animate-data-rain" style={{ left: "8%", height: 90, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.1) 30%, rgba(34,211,238,0.08) 70%, transparent)", animationDelay: "0s", animationDuration: "6s" }} />
-      <div className="absolute w-px animate-data-rain" style={{ left: "30%", height: 100, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.1) 30%, rgba(34,211,238,0.07) 70%, transparent)", animationDelay: "1.5s", animationDuration: "6.5s" }} />
-      <div className="absolute w-px animate-data-rain" style={{ left: "55%", height: 95, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.09) 30%, rgba(34,211,238,0.07) 70%, transparent)", animationDelay: "0.8s", animationDuration: "7s" }} />
-      <div className="absolute w-px animate-data-rain" style={{ left: "78%", height: 85, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.09) 30%, rgba(34,211,238,0.07) 70%, transparent)", animationDelay: "2s", animationDuration: "7.2s" }} />
+      {/* === DATA RAIN — desktop only === */}
+      <div className="hidden md:block absolute w-px animate-data-rain" style={{ left: "8%", height: 90, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.1) 30%, rgba(34,211,238,0.08) 70%, transparent)", animationDelay: "0s", animationDuration: "6s" }} />
+      <div className="hidden md:block absolute w-px animate-data-rain" style={{ left: "30%", height: 100, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.1) 30%, rgba(34,211,238,0.07) 70%, transparent)", animationDelay: "1.5s", animationDuration: "6.5s" }} />
+      <div className="hidden md:block absolute w-px animate-data-rain" style={{ left: "55%", height: 95, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.09) 30%, rgba(34,211,238,0.07) 70%, transparent)", animationDelay: "0.8s", animationDuration: "7s" }} />
+      <div className="hidden md:block absolute w-px animate-data-rain" style={{ left: "78%", height: 85, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.09) 30%, rgba(34,211,238,0.07) 70%, transparent)", animationDelay: "2s", animationDuration: "7.2s" }} />
 
-      {/* === SCANNING BEAM — CSS translateY === */}
+      {/* === SCANNING BEAM — desktop only === */}
       <div
-        className="absolute left-0 right-0 h-px animate-scan-h"
+        className="hidden md:block absolute left-0 right-0 h-px animate-scan-h"
         style={{
           background: "linear-gradient(90deg, transparent 0%, rgba(59,130,246,0.08) 20%, rgba(34,211,238,0.12) 50%, rgba(59,130,246,0.08) 80%, transparent 100%)",
           boxShadow: "0 0 30px rgba(59,130,246,0.06)",
