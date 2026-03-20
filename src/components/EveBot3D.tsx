@@ -83,8 +83,6 @@ function EveModel({ inverted = false }: { inverted?: boolean }) {
   );
 }
 
-useGLTF.preload(MODEL_PATH);
-
 function EveCanvas({ inverted = false }: { inverted?: boolean }) {
   return (
     <Canvas
@@ -105,22 +103,7 @@ function EveCanvas({ inverted = false }: { inverted?: boolean }) {
   );
 }
 
-function useIsMobile(breakpoint = 768) {
-  const [mobile, setMobile] = useState(() =>
-    typeof window !== "undefined" ? window.innerWidth < breakpoint : false
-  );
-  useEffect(() => {
-    const mq = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
-    const handler = (e: MediaQueryListEvent) => setMobile(e.matches);
-    setMobile(mq.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, [breakpoint]);
-  return mobile;
-}
-
 export default function EveBot3D() {
-  const isMobile = useIsMobile();
   const [phase, setPhase] = useState<Phase>("hidden");
   const readyCount = useRef(0);
   const cycleStarted = useRef(false);
@@ -160,9 +143,6 @@ export default function EveBot3D() {
       cycleStarted.current = false;
     };
   }, []);
-
-  // Don't render anything on mobile — no Canvas, no GLB download
-  if (isMobile) return null;
 
   return (
     <ReadyContext.Provider value={signalReady}>

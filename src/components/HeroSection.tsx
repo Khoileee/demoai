@@ -1,7 +1,21 @@
-import { useRef, lazy, Suspense } from "react";
+import { useRef, lazy, Suspense, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const EveBot3D = lazy(() => import("./EveBot3D"));
+
+function useIsMobile(breakpoint = 768) {
+  const [mobile, setMobile] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth < breakpoint : false
+  );
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
+    const handler = (e: MediaQueryListEvent) => setMobile(e.matches);
+    setMobile(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, [breakpoint]);
+  return mobile;
+}
 
 /**
  * HeroSection — Framer Motion ONLY for scroll-linked parallax.
@@ -9,6 +23,7 @@ const EveBot3D = lazy(() => import("./EveBot3D"));
  */
 
 export default function HeroSection() {
+  const isMobile = useIsMobile();
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -121,10 +136,12 @@ export default function HeroSection() {
         />
       </motion.div>
 
-      {/* === 3D EVE BOT MASCOT === */}
-      <Suspense fallback={null}>
-        <EveBot3D />
-      </Suspense>
+      {/* === 3D EVE BOT MASCOT — desktop only === */}
+      {!isMobile && (
+        <Suspense fallback={null}>
+          <EveBot3D />
+        </Suspense>
+      )}
 
       {/* === FOREGROUND: Text === */}
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center z-[2]">
