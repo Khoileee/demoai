@@ -75,20 +75,34 @@ function TimelineStep({ step, index }: { step: (typeof steps)[0]; index: number 
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "center center"],
+    offset: ["start end", "end start"],
   });
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+
+  // Direct scroll-linked — no spring delay
+  // Bell-curve: rest → slide right at center → back to rest
   const x = useTransform(
     scrollYProgress,
-    [0, 1],
-    [index % 2 === 0 ? -40 : 40, 0]
+    [0, 0.12, 0.28, 0.42, 0.5, 0.58, 0.72, 0.88, 1],
+    [0, 0, 16, 48, 60, 48, 16, 0, 0]
+  );
+
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.08, 0.2, 0.8, 0.92, 1],
+    [0, 0.4, 1, 1, 0.4, 0]
+  );
+
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.12, 0.35, 0.5, 0.65, 0.88, 1],
+    [0.97, 1, 1.015, 1.025, 1.015, 1, 0.97]
   );
 
   return (
     <motion.div
       ref={ref}
-      style={{ opacity, x }}
-      className="relative flex items-start gap-6 md:gap-10"
+      style={{ opacity, x, scale, willChange: "transform, opacity" }}
+      className="relative flex items-start gap-6 md:gap-10 origin-left"
     >
       {/* Timeline spine — dot + line */}
       <div className="flex flex-col items-center flex-shrink-0">
