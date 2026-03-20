@@ -1,17 +1,13 @@
-import { Suspense, useRef, useEffect, useState, useMemo, createContext, useContext, useCallback } from "react";
+import { Suspense, useRef, useEffect, useState, useMemo, createContext, useContext } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
 
 const MODEL_PATH = import.meta.env.BASE_URL + "eve_ah.glb";
 
-// Shared phase context so both EVEs sync
 type Phase = "hidden" | "visible" | "leaving";
 const PhaseContext = createContext<Phase>("hidden");
-
-// Global ready counter — both models must be ready before cycle starts
-let globalReadyCount = 0;
-let onAllReady: (() => void) | null = null;
+const ReadyContext = createContext<(() => void) | null>(null);
 
 function EveModel({ inverted = false }: { inverted?: boolean }) {
   const group = useRef<THREE.Group>(null!);
@@ -21,6 +17,7 @@ function EveModel({ inverted = false }: { inverted?: boolean }) {
   const [ready, setReady] = useState(false);
   const baseY = useRef(0);
   const phase = useContext(PhaseContext);
+  const signalReady = useContext(ReadyContext);
 
   // Auto-fit: scale + center, start hidden
   useEffect(() => {
@@ -43,13 +40,8 @@ function EveModel({ inverted = false }: { inverted?: boolean }) {
     }
 
     setReady(true);
-    // Signal this model is ready
-    globalReadyCount += 1;
-    if (globalReadyCount >= 2 && onAllReady) {
-      onAllReady();
-      onAllReady = null;
-    }
-  }, [gltfScene, inverted]);
+    signalReady?.();
+  }, [gltfScene, inverted, signalReady]);
 
   // Play embedded animations
   useEffect(() => {
@@ -61,11 +53,11 @@ function EveModel({ inverted = false }: { inverted?: boolean }) {
     }
   }, [actions]);
 
-  // Animate — delta-time based lerp for smooth motion
-  useFrame((_, delta) => {
+  // Animate — delta-time lerp, R3F clock
+  useFrame((state, delta) => {
     if (!group.current || !ready) return;
     const m = group.current;
-    const t = Date.now() * 0.002;
+    const t = state.clock.elapsedTime * 2;
     const lerpF = 1 - Math.pow(0.02, Math.min(delta, 0.1));
 
     const hiddenY = baseY.current + (inverted ? 6 : -4);
@@ -93,12 +85,11 @@ function EveModel({ inverted = false }: { inverted?: boolean }) {
 
 useGLTF.preload(MODEL_PATH);
 
-/** Shared Canvas wrapper */
 function EveCanvas({ inverted = false }: { inverted?: boolean }) {
   return (
     <Canvas
       camera={{ position: [0, 0, 5], fov: 60 }}
-      gl={{ alpha: true, antialias: true }}
+      gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
       onCreated={({ gl, scene }) => {
         gl.setClearColor(0x000000, 0);
         scene.background = null;
@@ -114,80 +105,100 @@ function EveCanvas({ inverted = false }: { inverted?: boolean }) {
   );
 }
 
-export default function EveBot3D() {
-  const [phase, setPhase] = useState<Phase>("hidden");
-
-  // Wait for both models to be ready before starting cycle
+function useIsMobile(breakpoint = 768) {
+  const [mobile, setMobile] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth < breakpoint : false
+  );
   useEffect(() => {
-    globalReadyCount = 0;
+    const mq = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
+    const handler = (e: MediaQueryListEvent) => setMobile(e.matches);
+    setMobile(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, [breakpoint]);
+  return mobile;
+}
 
-    let t1: ReturnType<typeof setTimeout>;
-    let t2: ReturnType<typeof setTimeout>;
-    let t3: ReturnType<typeof setTimeout>;
+export default function EveBot3D() {
+  const isMobile = useIsMobile();
+  const [phase, setPhase] = useState<Phase>("hidden");
+  const readyCount = useRef(0);
+  const cycleStarted = useRef(false);
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
+  const signalReady = useMemo(() => () => {
+    readyCount.current += 1;
+    if (readyCount.current >= 2 && !cycleStarted.current) {
+      cycleStarted.current = true;
+      startCycle();
+    }
+  }, []);
+
+  function startCycle() {
     const cycle = () => {
       setPhase("visible");
-      t1 = setTimeout(() => {
+      const t1 = setTimeout(() => {
         setPhase("leaving");
-        t2 = setTimeout(() => {
+        const t2 = setTimeout(() => {
           setPhase("hidden");
-          t3 = setTimeout(cycle, 3000);
+          const t3 = setTimeout(cycle, 3000);
+          timers.current.push(t3);
         }, 1200);
+        timers.current.push(t2);
       }, 5000);
+      timers.current.push(t1);
     };
+    const t0 = setTimeout(cycle, 800);
+    timers.current.push(t0);
+  }
 
-    // Start cycle only when both models signal ready
-    onAllReady = () => {
-      t3 = setTimeout(cycle, 800);
-    };
-
-    // Fallback: if models somehow loaded before effect ran
-    if (globalReadyCount >= 2) {
-      onAllReady();
-      onAllReady = null;
-    }
-
+  useEffect(() => {
     return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
-      onAllReady = null;
+      timers.current.forEach(clearTimeout);
+      timers.current = [];
+      readyCount.current = 0;
+      cycleStarted.current = false;
     };
   }, []);
 
-  return (
-    <PhaseContext.Provider value={phase}>
-      {/* Bottom-left: EVE peeks up */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          width: 320,
-          height: 350,
-          zIndex: 50,
-          pointerEvents: "none",
-          overflow: "hidden",
-        }}
-      >
-        <EveCanvas />
-      </div>
+  // Don't render anything on mobile — no Canvas, no GLB download
+  if (isMobile) return null;
 
-      {/* Top-right: EVE hangs upside-down like Spider-Man */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          right: 0,
-          width: 320,
-          height: 350,
-          zIndex: 50,
-          pointerEvents: "none",
-          overflow: "hidden",
-        }}
-      >
-        <EveCanvas inverted />
-      </div>
-    </PhaseContext.Provider>
+  return (
+    <ReadyContext.Provider value={signalReady}>
+      <PhaseContext.Provider value={phase}>
+        {/* Bottom-left: EVE peeks up */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            width: 320,
+            height: 350,
+            zIndex: 50,
+            pointerEvents: "none",
+            overflow: "hidden",
+          }}
+        >
+          <EveCanvas />
+        </div>
+
+        {/* Top-right: EVE hangs upside-down like Spider-Man */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            width: 320,
+            height: 350,
+            zIndex: 50,
+            pointerEvents: "none",
+            overflow: "hidden",
+          }}
+        >
+          <EveCanvas inverted />
+        </div>
+      </PhaseContext.Provider>
+    </ReadyContext.Provider>
   );
 }
