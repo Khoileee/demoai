@@ -1,5 +1,7 @@
-import { useRef } from "react";
+import { useRef, lazy, Suspense } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+
+const EveBot3D = lazy(() => import("./EveBot3D"));
 
 /**
  * HeroSection — Framer Motion ONLY for scroll-linked parallax.
@@ -118,6 +120,11 @@ export default function HeroSection() {
           }}
         />
       </motion.div>
+
+      {/* === 3D EVE BOT MASCOT === */}
+      <Suspense fallback={null}>
+        <EveBot3D />
+      </Suspense>
 
       {/* === FOREGROUND: Text === */}
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center z-[2]">

@@ -27,6 +27,29 @@ body {
 }
 
 /* ========================================
+   3D EVE BOT — Three.js Canvas container
+   Force transparent background on ALL layers
+   R3F creates wrapper divs that can show black
+   ======================================== */
+
+.eve-container {
+  position: fixed;
+  top: 0;
+  left: -40px;
+  width: 420px;
+  height: 480px;
+  z-index: 50;
+  pointer-events: none;
+  background: transparent !important;
+}
+
+.eve-container > div,
+.eve-container > div > div,
+.eve-container canvas {
+  background: transparent !important;
+}
+
+/* ========================================
    3D TILT CARD — mouse-tracking perspective
    ======================================== */
 
