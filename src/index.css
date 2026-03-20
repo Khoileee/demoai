@@ -181,3 +181,191 @@ body {
   );
   filter: blur(40px);
 }
+
+/* ========================================
+   GPU-ACCELERATED ANIMATIONS
+   All use transform/opacity only for 60fps.
+   ======================================== */
+
+/* --- Aurora blobs drift --- */
+.animate-aurora-1 {
+  animation: aurora1 35s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-aurora-2 {
+  animation: aurora2 40s ease-in-out infinite 5s;
+  will-change: transform;
+}
+.animate-aurora-3 {
+  animation: aurora3 45s ease-in-out infinite 10s;
+  will-change: transform;
+}
+.animate-aurora-4 {
+  animation: aurora4 38s ease-in-out infinite 15s;
+  will-change: transform;
+}
+
+@keyframes aurora1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(80px, -60px) scale(1.1); }
+  50% { transform: translate(-40px, 40px) scale(0.95); }
+  75% { transform: translate(60px, -30px) scale(1.08); }
+}
+@keyframes aurora2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-70px, 50px) scale(0.95); }
+  50% { transform: translate(50px, -30px) scale(1.12); }
+  75% { transform: translate(-40px, 60px) scale(0.98); }
+}
+@keyframes aurora3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(60px, -40px) scale(1.08); }
+  50% { transform: translate(-50px, 50px) scale(0.92); }
+  75% { transform: translate(30px, -20px) scale(1.05); }
+}
+@keyframes aurora4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-50px, 30px) scale(1.06); }
+  50% { transform: translate(40px, -50px) scale(0.94); }
+  75% { transform: translate(-60px, 40px) scale(1.1); }
+}
+
+/* --- Constellation node pulse --- */
+.animate-node-pulse {
+  animation: nodePulse 4s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.animate-node-pulse-strong {
+  animation: nodePulseStrong 2s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes nodePulse {
+  0%, 100% { transform: scale(0.8); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+@keyframes nodePulseStrong {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+
+/* --- Pulse ring (expanding circle) --- */
+.animate-pulse-ring {
+  animation: pulseRing 3s ease-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(3.5); opacity: 0; }
+}
+
+/* --- Wave ring (center ripple) --- */
+.animate-wave-ring {
+  animation: waveRing 5s ease-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes waveRing {
+  0% { transform: scale(0.3); opacity: 0.25; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* --- Morphing blob --- */
+.animate-morph-blob {
+  animation: morphBlob 12s ease-in-out infinite;
+  will-change: border-radius, transform;
+}
+
+@keyframes morphBlob {
+  0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: scale(1) rotate(0deg); }
+  33% { border-radius: 50% 50% 30% 70% / 60% 40% 60% 40%; transform: scale(1.05) rotate(5deg); }
+  66% { border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%; transform: scale(0.98) rotate(-3deg); }
+}
+
+/* --- Core glow --- */
+.animate-core-glow {
+  animation: coreGlow 3s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.animate-core-inner {
+  animation: coreInner 2s ease-in-out infinite 0.5s;
+  will-change: transform;
+}
+
+@keyframes coreGlow {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.4); opacity: 0.9; }
+}
+@keyframes coreInner {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.85); }
+}
+
+/* --- Data rain (vertical fall using translateY) --- */
+.animate-data-rain {
+  animation: dataRainFall 6s linear infinite;
+  will-change: transform;
+  top: 0;
+}
+
+@keyframes dataRainFall {
+  0% { transform: translateY(-15vh); }
+  100% { transform: translateY(115vh); }
+}
+
+/* --- Scanning beam H (top to bottom using translateY) --- */
+.animate-scan-h {
+  animation: scanH 12s linear infinite;
+  will-change: transform;
+  top: 0;
+}
+
+@keyframes scanH {
+  0%, 100% { transform: translateY(-5vh); }
+  62.5% { transform: translateY(105vh); }
+  62.6%, 99.9% { transform: translateY(-5vh); }
+}
+
+/* --- Traveling orbs (using translate for GPU) --- */
+.animate-orb-1 {
+  animation: orbPath1 20s linear infinite;
+  will-change: transform, opacity;
+}
+.animate-orb-2 {
+  animation: orbPath2 25s linear infinite 4s;
+  will-change: transform, opacity;
+}
+.animate-orb-3 {
+  animation: orbPath3 22s linear infinite 8s;
+  will-change: transform, opacity;
+}
+.animate-orb-4 {
+  animation: orbPath4 28s linear infinite 2s;
+  will-change: transform, opacity;
+}
+
+@keyframes orbPath1 {
+  0% { transform: translate(0, 0); opacity: 0; }
+  5% { opacity: 0.9; }
+  95% { opacity: 0.9; }
+  100% { transform: translate(110vw, 25vh); opacity: 0; }
+}
+@keyframes orbPath2 {
+  0% { transform: translate(0, 0); opacity: 0; }
+  5% { opacity: 0.9; }
+  95% { opacity: 0.9; }
+  100% { transform: translate(-110vw, 30vh); opacity: 0; }
+}
+@keyframes orbPath3 {
+  0% { transform: translate(0, 0); opacity: 0; }
+  5% { opacity: 0.9; }
+  95% { opacity: 0.9; }
+  100% { transform: translate(55vw, 110vh); opacity: 0; }
+}
+@keyframes orbPath4 {
+  0% { transform: translate(0, 0); opacity: 0; }
+  5% { opacity: 0.9; }
+  95% { opacity: 0.9; }
+  100% { transform: translate(-65vw, -110vh); opacity: 0; }
+}

@@ -1,43 +1,10 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-// Neural network nodes — positioned around center
-const neuralNodes = [
-  { x: 50, y: 50, size: 8, color: "60,165,250", pulse: true },  // center core
-  { x: 30, y: 28, size: 5, color: "34,211,238", pulse: false },
-  { x: 70, y: 25, size: 4, color: "139,92,246", pulse: false },
-  { x: 20, y: 55, size: 4, color: "96,165,250", pulse: false },
-  { x: 80, y: 52, size: 5, color: "167,139,250", pulse: false },
-  { x: 35, y: 75, size: 4, color: "34,211,238", pulse: false },
-  { x: 65, y: 78, size: 5, color: "59,130,246", pulse: false },
-  { x: 15, y: 35, size: 3, color: "52,211,153", pulse: false },
-  { x: 85, y: 38, size: 3, color: "251,191,36", pulse: false },
-  { x: 50, y: 20, size: 4, color: "139,92,246", pulse: false },
-  { x: 50, y: 82, size: 4, color: "34,211,238", pulse: false },
-  { x: 10, y: 70, size: 3, color: "96,165,250", pulse: false },
-  { x: 90, y: 68, size: 3, color: "167,139,250", pulse: false },
-];
-
-// Neural connections between nodes
-const neuralConnections = [
-  { from: 0, to: 1 }, { from: 0, to: 2 }, { from: 0, to: 3 }, { from: 0, to: 4 },
-  { from: 0, to: 5 }, { from: 0, to: 6 }, { from: 0, to: 9 }, { from: 0, to: 10 },
-  { from: 1, to: 7 }, { from: 1, to: 9 }, { from: 2, to: 8 }, { from: 2, to: 9 },
-  { from: 3, to: 7 }, { from: 3, to: 11 }, { from: 4, to: 8 }, { from: 4, to: 12 },
-  { from: 5, to: 11 }, { from: 5, to: 10 }, { from: 6, to: 12 }, { from: 6, to: 10 },
-];
-
-// Data streams — vertical falling streams
-const dataStreams = [
-  { x: "15%", delay: 0, dur: 4, height: 120 },
-  { x: "30%", delay: 1.5, dur: 3.5, height: 100 },
-  { x: "45%", delay: 0.8, dur: 4.5, height: 140 },
-  { x: "60%", delay: 2.2, dur: 3.8, height: 110 },
-  { x: "75%", delay: 0.3, dur: 4.2, height: 130 },
-  { x: "88%", delay: 1.8, dur: 3.2, height: 90 },
-  { x: "8%", delay: 3, dur: 4, height: 100 },
-  { x: "52%", delay: 2.8, dur: 3.6, height: 120 },
-];
+/**
+ * HeroSection — Framer Motion ONLY for scroll-linked parallax.
+ * All repetitive animations use CSS @keyframes (GPU compositor thread).
+ */
 
 export default function HeroSection() {
   const containerRef = useRef(null);
@@ -59,207 +26,95 @@ export default function HeroSection() {
         <div className="absolute inset-0 hex-grid opacity-30" />
       </div>
 
-      {/* === MID LAYER: Futuristic AI visualization === */}
+      {/* === MID LAYER: Futuristic AI visualization — scroll-linked === */}
       <motion.div
-        style={{ scale: bgScale, opacity: bgOpacity }}
+        style={{ scale: bgScale, opacity: bgOpacity, willChange: "transform, opacity" }}
         className="absolute inset-0 z-[1] pointer-events-none"
       >
-        {/* Aurora ribbons */}
+        {/* Aurora ribbons — CSS animated */}
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-          <motion.div
-            animate={{
-              rotate: [0, 10, -5, 8, 0],
-              scale: [1, 1.1, 0.95, 1.05, 1],
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute w-[900px] h-[500px] aurora-ribbon opacity-40"
-          />
-          <motion.div
-            animate={{
-              rotate: [0, -8, 6, -4, 0],
-              scale: [1, 0.95, 1.08, 0.98, 1],
-            }}
-            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-            className="absolute w-[700px] h-[400px] aurora-ribbon-alt opacity-30"
-          />
+          <div className="absolute w-[900px] h-[500px] aurora-ribbon opacity-40 animate-aurora-1" />
+          <div className="absolute w-[700px] h-[400px] aurora-ribbon-alt opacity-30 animate-aurora-2" />
         </div>
 
-        {/* === NEURAL NETWORK VISUALIZATION === */}
+        {/* === NEURAL NETWORK — static SVG lines + CSS animated nodes === */}
         <div className="absolute inset-0">
-          {/* SVG connections between nodes */}
           <svg className="absolute inset-0 w-full h-full">
-            {neuralConnections.map((conn, i) => {
-              const from = neuralNodes[conn.from];
-              const to = neuralNodes[conn.to];
-              return (
-                <motion.line
-                  key={`conn-${i}`}
-                  x1={`${from.x}%`}
-                  y1={`${from.y}%`}
-                  x2={`${to.x}%`}
-                  y2={`${to.y}%`}
-                  stroke="rgba(96,165,250,0.08)"
-                  strokeWidth="1"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: [0, 0.5, 0.15] }}
-                  transition={{
-                    pathLength: { duration: 2, delay: i * 0.12, ease: "easeOut" },
-                    opacity: { duration: 4, delay: i * 0.12, repeat: Infinity, repeatType: "reverse" },
-                  }}
-                />
-              );
-            })}
-
-            {/* Traveling data pulses along connections */}
-            {neuralConnections.slice(0, 8).map((conn, i) => {
-              const from = neuralNodes[conn.from];
-              const to = neuralNodes[conn.to];
-              return (
-                <motion.circle
-                  key={`pulse-${i}`}
-                  r="2"
-                  fill="rgba(96,165,250,0.6)"
-                  filter="url(#glow)"
-                  initial={{ cx: `${from.x}%`, cy: `${from.y}%` }}
-                  animate={{
-                    cx: [`${from.x}%`, `${to.x}%`],
-                    cy: [`${from.y}%`, `${to.y}%`],
-                    opacity: [0, 0.8, 0],
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    delay: i * 1.2,
-                    repeat: Infinity,
-                    repeatDelay: 5 + i * 0.5,
-                    ease: "easeInOut",
-                  }}
-                />
-              );
-            })}
-
-            {/* SVG filter for glow effect */}
-            <defs>
-              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="3" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
+            {/* Static connection lines — no JS animation needed */}
+            <line x1="50%" y1="50%" x2="30%" y2="28%" stroke="rgba(96,165,250,0.08)" strokeWidth="1" />
+            <line x1="50%" y1="50%" x2="70%" y2="25%" stroke="rgba(96,165,250,0.08)" strokeWidth="1" />
+            <line x1="50%" y1="50%" x2="20%" y2="55%" stroke="rgba(96,165,250,0.08)" strokeWidth="1" />
+            <line x1="50%" y1="50%" x2="80%" y2="52%" stroke="rgba(96,165,250,0.08)" strokeWidth="1" />
+            <line x1="50%" y1="50%" x2="35%" y2="75%" stroke="rgba(96,165,250,0.06)" strokeWidth="1" />
+            <line x1="50%" y1="50%" x2="65%" y2="78%" stroke="rgba(96,165,250,0.06)" strokeWidth="1" />
+            <line x1="50%" y1="50%" x2="50%" y2="20%" stroke="rgba(96,165,250,0.06)" strokeWidth="1" />
+            <line x1="50%" y1="50%" x2="50%" y2="82%" stroke="rgba(96,165,250,0.06)" strokeWidth="1" />
+            <line x1="30%" y1="28%" x2="15%" y2="35%" stroke="rgba(96,165,250,0.04)" strokeWidth="0.5" />
+            <line x1="30%" y1="28%" x2="50%" y2="20%" stroke="rgba(96,165,250,0.04)" strokeWidth="0.5" />
+            <line x1="70%" y1="25%" x2="85%" y2="38%" stroke="rgba(96,165,250,0.04)" strokeWidth="0.5" />
+            <line x1="70%" y1="25%" x2="50%" y2="20%" stroke="rgba(96,165,250,0.04)" strokeWidth="0.5" />
+            <line x1="20%" y1="55%" x2="15%" y2="35%" stroke="rgba(96,165,250,0.04)" strokeWidth="0.5" />
+            <line x1="20%" y1="55%" x2="10%" y2="70%" stroke="rgba(96,165,250,0.04)" strokeWidth="0.5" />
+            <line x1="80%" y1="52%" x2="85%" y2="38%" stroke="rgba(96,165,250,0.04)" strokeWidth="0.5" />
+            <line x1="80%" y1="52%" x2="90%" y2="68%" stroke="rgba(96,165,250,0.04)" strokeWidth="0.5" />
+            <line x1="35%" y1="75%" x2="10%" y2="70%" stroke="rgba(96,165,250,0.03)" strokeWidth="0.5" />
+            <line x1="35%" y1="75%" x2="50%" y2="82%" stroke="rgba(96,165,250,0.03)" strokeWidth="0.5" />
+            <line x1="65%" y1="78%" x2="90%" y2="68%" stroke="rgba(96,165,250,0.03)" strokeWidth="0.5" />
+            <line x1="65%" y1="78%" x2="50%" y2="82%" stroke="rgba(96,165,250,0.03)" strokeWidth="0.5" />
           </svg>
 
-          {/* Neural nodes */}
-          {neuralNodes.map((node, i) => (
-            <div key={`node-${i}`} className="absolute" style={{ left: `${node.x}%`, top: `${node.y}%`, transform: "translate(-50%,-50%)" }}>
-              {/* Pulse ring for important nodes */}
-              {node.pulse && (
-                <>
-                  <motion.div
-                    animate={{ scale: [1, 3.5], opacity: [0.4, 0] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
-                    className="absolute inset-0 rounded-full"
-                    style={{ width: node.size * 2, height: node.size * 2, marginLeft: -node.size / 2, marginTop: -node.size / 2, border: `1px solid rgba(${node.color},0.3)` }}
-                  />
-                  <motion.div
-                    animate={{ scale: [1, 2.5], opacity: [0.3, 0] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeOut", delay: 1 }}
-                    className="absolute inset-0 rounded-full"
-                    style={{ width: node.size * 2, height: node.size * 2, marginLeft: -node.size / 2, marginTop: -node.size / 2, border: `1px solid rgba(${node.color},0.2)` }}
-                  />
-                </>
-              )}
-              {/* Node dot */}
-              <motion.div
-                animate={{ scale: node.pulse ? [1, 1.3, 1] : [0.8, 1.1, 0.8], opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: node.pulse ? 2 : 3 + i * 0.3, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
-                className="rounded-full"
-                style={{
-                  width: node.size,
-                  height: node.size,
-                  background: `rgba(${node.color}, 0.8)`,
-                  boxShadow: `0 0 ${node.size * 2}px rgba(${node.color}, 0.5), 0 0 ${node.size * 5}px rgba(${node.color}, 0.2)`,
-                }}
-              />
-            </div>
-          ))}
+          {/* Neural nodes — CSS pulse (no Framer Motion) */}
+          {/* Center core node */}
+          <div className="absolute" style={{ left: "50%", top: "50%", transform: "translate(-50%,-50%)" }}>
+            <div className="absolute rounded-full animate-pulse-ring" style={{ width: 16, height: 16, marginLeft: -4, marginTop: -4, border: "1px solid rgba(60,165,250,0.3)" }} />
+            <div className="absolute rounded-full animate-pulse-ring" style={{ width: 16, height: 16, marginLeft: -4, marginTop: -4, border: "1px solid rgba(60,165,250,0.2)", animationDelay: "1s" }} />
+            <div className="w-2 h-2 rounded-full animate-node-pulse-strong" style={{ background: "rgba(60,165,250,0.8)", boxShadow: "0 0 16px rgba(60,165,250,0.5), 0 0 40px rgba(60,165,250,0.2)" }} />
+          </div>
+          {/* Outer nodes — CSS animated */}
+          <div className="absolute rounded-full animate-node-pulse" style={{ left: "30%", top: "28%", width: 5, height: 5, background: "rgba(34,211,238,0.8)", boxShadow: "0 0 10px rgba(34,211,238,0.5)", animationDelay: "0.3s" }} />
+          <div className="absolute rounded-full animate-node-pulse" style={{ left: "70%", top: "25%", width: 4, height: 4, background: "rgba(139,92,246,0.8)", boxShadow: "0 0 8px rgba(139,92,246,0.5)", animationDelay: "0.6s" }} />
+          <div className="absolute rounded-full animate-node-pulse" style={{ left: "20%", top: "55%", width: 4, height: 4, background: "rgba(96,165,250,0.8)", boxShadow: "0 0 8px rgba(96,165,250,0.5)", animationDelay: "0.9s" }} />
+          <div className="absolute rounded-full animate-node-pulse" style={{ left: "80%", top: "52%", width: 5, height: 5, background: "rgba(167,139,250,0.8)", boxShadow: "0 0 10px rgba(167,139,250,0.5)", animationDelay: "1.2s" }} />
+          <div className="absolute rounded-full animate-node-pulse" style={{ left: "35%", top: "75%", width: 4, height: 4, background: "rgba(34,211,238,0.8)", boxShadow: "0 0 8px rgba(34,211,238,0.5)", animationDelay: "1.5s" }} />
+          <div className="absolute rounded-full animate-node-pulse" style={{ left: "65%", top: "78%", width: 5, height: 5, background: "rgba(59,130,246,0.8)", boxShadow: "0 0 10px rgba(59,130,246,0.5)", animationDelay: "1.8s" }} />
+          <div className="absolute rounded-full animate-node-pulse" style={{ left: "15%", top: "35%", width: 3, height: 3, background: "rgba(52,211,153,0.8)", boxShadow: "0 0 6px rgba(52,211,153,0.5)", animationDelay: "2.1s" }} />
+          <div className="absolute rounded-full animate-node-pulse" style={{ left: "85%", top: "38%", width: 3, height: 3, background: "rgba(251,191,36,0.8)", boxShadow: "0 0 6px rgba(251,191,36,0.5)", animationDelay: "2.4s" }} />
+          <div className="absolute rounded-full animate-node-pulse" style={{ left: "50%", top: "20%", width: 4, height: 4, background: "rgba(139,92,246,0.8)", boxShadow: "0 0 8px rgba(139,92,246,0.5)", animationDelay: "0.4s" }} />
+          <div className="absolute rounded-full animate-node-pulse" style={{ left: "50%", top: "82%", width: 4, height: 4, background: "rgba(34,211,238,0.8)", boxShadow: "0 0 8px rgba(34,211,238,0.5)", animationDelay: "1.1s" }} />
+          <div className="absolute rounded-full animate-node-pulse" style={{ left: "10%", top: "70%", width: 3, height: 3, background: "rgba(96,165,250,0.8)", boxShadow: "0 0 6px rgba(96,165,250,0.5)", animationDelay: "0.7s" }} />
+          <div className="absolute rounded-full animate-node-pulse" style={{ left: "90%", top: "68%", width: 3, height: 3, background: "rgba(167,139,250,0.8)", boxShadow: "0 0 6px rgba(167,139,250,0.5)", animationDelay: "2s" }} />
         </div>
 
-        {/* === PULSING WAVE RINGS from center === */}
+        {/* === PULSING WAVE RINGS from center — CSS === */}
         <div className="absolute inset-0 flex items-center justify-center">
-          {[0, 1.5, 3, 4.5].map((delay, i) => (
-            <motion.div
-              key={`wave-${i}`}
-              animate={{ scale: [0.3, 2.5], opacity: [0.25, 0] }}
-              transition={{ duration: 5, delay, repeat: Infinity, ease: "easeOut" }}
-              className="absolute rounded-full border"
-              style={{
-                width: 300,
-                height: 300,
-                borderColor: i % 2 === 0 ? "rgba(59,130,246,0.12)" : "rgba(34,211,238,0.08)",
-              }}
-            />
-          ))}
+          <div className="absolute w-[300px] h-[300px] rounded-full border border-brand-500/[0.12] animate-wave-ring" style={{ animationDelay: "0s" }} />
+          <div className="absolute w-[300px] h-[300px] rounded-full border border-cyan-500/[0.08] animate-wave-ring" style={{ animationDelay: "1.5s" }} />
+          <div className="absolute w-[300px] h-[300px] rounded-full border border-brand-500/[0.12] animate-wave-ring" style={{ animationDelay: "3s" }} />
+          <div className="absolute w-[300px] h-[300px] rounded-full border border-cyan-500/[0.08] animate-wave-ring" style={{ animationDelay: "4.5s" }} />
         </div>
 
-        {/* === HOLOGRAPHIC CORE === */}
+        {/* === HOLOGRAPHIC CORE — CSS morph === */}
         <div className="absolute inset-0 flex items-center justify-center">
-          {/* Morphing inner blob */}
-          <motion.div
-            animate={{
-              borderRadius: [
-                "30% 70% 70% 30% / 30% 30% 70% 70%",
-                "50% 50% 30% 70% / 60% 40% 60% 40%",
-                "70% 30% 50% 50% / 40% 60% 40% 60%",
-                "30% 70% 70% 30% / 30% 30% 70% 70%",
-              ],
-              scale: [1, 1.05, 0.98, 1],
-              rotate: [0, 5, -3, 0],
-            }}
-            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            className="w-[350px] h-[350px] hero-blob"
-          />
-          {/* Core glow */}
-          <motion.div
-            animate={{ scale: [1, 1.4, 1], opacity: [0.5, 0.9, 0.5] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute w-16 h-16 rounded-full bg-gradient-to-br from-brand-400/50 to-cyan-400/40 blur-lg"
-          />
-          <motion.div
-            animate={{ scale: [1, 0.85, 1] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            className="absolute w-6 h-6 rounded-full bg-white/30 blur-sm"
-          />
+          <div className="w-[350px] h-[350px] hero-blob animate-morph-blob" />
+          <div className="absolute w-16 h-16 rounded-full bg-gradient-to-br from-brand-400/50 to-cyan-400/40 blur-lg animate-core-glow" />
+          <div className="absolute w-6 h-6 rounded-full bg-white/30 blur-sm animate-core-inner" />
         </div>
 
-        {/* === DATA RAIN STREAMS === */}
-        {dataStreams.map((stream, i) => (
-          <motion.div
-            key={`stream-${i}`}
-            className="absolute w-px"
-            style={{
-              left: stream.x,
-              height: stream.height,
-              background: `linear-gradient(180deg, transparent, rgba(59,130,246,0.15) 30%, rgba(34,211,238,0.1) 70%, transparent)`,
-            }}
-            animate={{ top: ["-15%", "115%"] }}
-            transition={{
-              duration: stream.dur,
-              delay: stream.delay,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        ))}
+        {/* === DATA RAIN STREAMS — CSS translateY === */}
+        <div className="absolute w-px animate-data-rain" style={{ left: "15%", height: 120, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.15) 30%, rgba(34,211,238,0.1) 70%, transparent)", animationDuration: "4s", animationDelay: "0s" }} />
+        <div className="absolute w-px animate-data-rain" style={{ left: "30%", height: 100, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.15) 30%, rgba(34,211,238,0.1) 70%, transparent)", animationDuration: "3.5s", animationDelay: "1.5s" }} />
+        <div className="absolute w-px animate-data-rain" style={{ left: "52%", height: 130, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.15) 30%, rgba(34,211,238,0.1) 70%, transparent)", animationDuration: "4.5s", animationDelay: "0.8s" }} />
+        <div className="absolute w-px animate-data-rain" style={{ left: "75%", height: 110, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.15) 30%, rgba(34,211,238,0.1) 70%, transparent)", animationDuration: "4s", animationDelay: "2.2s" }} />
+        <div className="absolute w-px animate-data-rain" style={{ left: "88%", height: 90, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.15) 30%, rgba(34,211,238,0.1) 70%, transparent)", animationDuration: "3.5s", animationDelay: "1.8s" }} />
 
-        {/* === SCANNING BEAM === */}
-        <motion.div
-          animate={{ top: ["-5%", "105%"] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "linear", repeatDelay: 4 }}
-          className="absolute left-0 right-0 h-px"
+        {/* === SCANNING BEAM — CSS === */}
+        <div
+          className="absolute left-0 right-0 h-px animate-scan-h"
           style={{
             background: "linear-gradient(90deg, transparent 0%, rgba(59,130,246,0.15) 20%, rgba(34,211,238,0.25) 50%, rgba(59,130,246,0.15) 80%, transparent 100%)",
             boxShadow: "0 0 20px rgba(59,130,246,0.1), 0 0 60px rgba(34,211,238,0.05)",
+            animationDuration: "8s",
+            animationDelay: "0s",
           }}
         />
       </motion.div>
@@ -267,7 +122,7 @@ export default function HeroSection() {
       {/* === FOREGROUND: Text === */}
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center z-[2]">
         <motion.div
-          style={{ y: textY, opacity: textOpacity }}
+          style={{ y: textY, opacity: textOpacity, willChange: "transform, opacity" }}
           className="text-center px-6 max-w-4xl mx-auto"
         >
           <motion.p
