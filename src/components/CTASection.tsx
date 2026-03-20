@@ -122,10 +122,10 @@ export default function CTASection() {
             className="mt-40 sm:mt-52 pt-10 text-center min-h-[60vh] flex flex-col items-center justify-center"
           >
             <Sparkles className="w-8 h-8 text-brand-400/60 mx-auto mb-6" />
-            <p className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-brand-400 via-cyan-300 to-violet-400 bg-clip-text text-transparent leading-relaxed">
+            <p className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-brand-400 via-cyan-300 to-violet-400 bg-clip-text text-transparent pb-2" style={{ lineHeight: '1.4' }}>
               Chân thành cảm ơn quý vị<br />đã chú ý lắng nghe!
             </p>
-            <p className="text-gray-500 text-base mt-5">
+            <p className="text-gray-500 text-base mt-8">
               Mọi ý kiến đóng góp xin gửi về Team BA
             </p>
           </motion.div>
