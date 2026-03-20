@@ -5,32 +5,58 @@ import {
   Clock,
   FileText,
   LayoutTemplate,
+  Repeat,
+  AlertTriangle,
 } from "lucide-react";
 
 const problems = [
   {
     icon: PenLine,
+    step: "Bước 1",
     title: "Ghi chép meeting thủ công",
     description:
-      "BA phải vừa nghe, vừa ghi, vừa đặt câu hỏi. Thông tin bị bỏ sót, ghi chép thiếu chính xác.",
+      "BA phải vừa nghe, vừa ghi, vừa đặt câu hỏi trong cuộc họp. Thông tin dễ bị bỏ sót, ghi chép thiếu chính xác, mất thời gian tổng hợp lại sau mỗi buổi.",
+    metric: "~1-2 giờ / buổi họp",
   },
   {
     icon: Clock,
-    title: "Tổng hợp yêu cầu mất thời gian",
+    step: "Bước 1-2",
+    title: "Tổng hợp & phân tích yêu cầu mất thời gian",
     description:
-      "Sau mỗi buổi họp, cần nhiều giờ để sàng lọc, phân loại và chuẩn hóa requirement.",
-  },
-  {
-    icon: FileText,
-    title: "Viết tài liệu lặp lại",
-    description:
-      "SRS, BRD, TKCT — các tài liệu có cấu trúc tương tự nhưng phải viết lại từ đầu mỗi lần.",
+      "Sau mỗi buổi họp, cần nhiều giờ để sàng lọc, phân loại, chuẩn hóa requirement. Phân tích luồng nghiệp vụ phức tạp dễ thiếu sót.",
+    metric: "~4-8 giờ tổng hợp",
   },
   {
     icon: LayoutTemplate,
+    step: "Bước 2",
     title: "Prototype thiếu trực quan",
     description:
-      "Wireframe bằng Balsamiq khó thể hiện luồng phức tạp, thiếu tương tác thực tế để trao đổi với stakeholder.",
+      "Wireframe truyền thống khó thể hiện tương tác thực tế. Stakeholder khó hình dung, dẫn đến nhiều vòng chỉnh sửa trước khi chốt giải pháp.",
+    metric: "2-3 vòng review",
+  },
+  {
+    icon: FileText,
+    step: "Bước 3",
+    title: "Viết tài liệu lặp lại, mất thời gian",
+    description:
+      "SRS, BRD, TKCT, CSDL — các tài liệu có cấu trúc tương tự nhưng phải viết lại từ đầu mỗi lần. Rất dễ thiếu sót, không nhất quán.",
+    metric: "~1-2 ngày / tài liệu",
+  },
+  {
+    icon: Repeat,
+    step: "Bước 3-4",
+    title: "Tra cứu thông tin dự án chậm",
+    description:
+      "Tìm lại requirement cũ, business rule, API spec nằm rải rác trong nhiều file. Mất thời gian tìm kiếm thay vì phân tích.",
+    metric: "~30 phút / lần tra cứu",
+  },
+  {
+    icon: AlertTriangle,
+    step: "Bước 4",
+    title: "Viết kịch bản test & HDSD thủ công",
+    description:
+      "Mỗi lần update requirement phải cập nhật lại kịch bản UAT và HDSD. Dễ bỏ sót, không đồng bộ với tài liệu đặc tả.",
+    metric: "~4 giờ / lần cập nhật",
   },
 ];
 
@@ -56,15 +82,20 @@ function ProblemCard({
       style={{ y, opacity, scale }}
       className="group relative"
     >
-      <div className="relative p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm hover:border-red-500/15 hover:bg-white/[0.04] transition-all duration-700">
+      <div className="relative p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm hover:border-red-500/15 hover:bg-white/[0.04] transition-all duration-700 h-full">
         {/* Subtle glow on hover */}
         <div className="absolute -inset-px rounded-2xl bg-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10" />
 
-        {/* Number badge */}
-        <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-gradient-to-br from-red-500/20 to-orange-500/20 border border-red-500/10 flex items-center justify-center">
-          <span className="text-xs font-bold text-red-400">
-            {String(index + 1).padStart(2, "0")}
+        {/* Step badge */}
+        <div className="flex items-center justify-between mb-4">
+          <span className="text-xs font-medium text-red-400/70 bg-red-500/10 px-2.5 py-1 rounded-full">
+            {problem.step}
           </span>
+          {problem.metric && (
+            <span className="text-xs font-mono text-orange-400/60">
+              {problem.metric}
+            </span>
+          )}
         </div>
 
         <div className="flex items-start gap-5">
@@ -95,7 +126,13 @@ export default function ProblemSection() {
   const headerOpacity = useTransform(headerProgress, [0, 0.5], [0, 1]);
 
   return (
-    <section id="problem" className="relative py-32 sm:py-44 px-6 overflow-hidden">
+    <section id="problem" className="relative py-20 sm:py-28 px-6 overflow-hidden">
+      {/* Circuit dot grid */}
+      <div className="absolute inset-0 circuit-dots opacity-30 pointer-events-none" />
+
+      {/* Edge glow */}
+      <div className="absolute top-0 left-0 right-0 h-32 edge-glow-top opacity-50 pointer-events-none" />
+
       {/* Animated background depth */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
@@ -108,7 +145,18 @@ export default function ProblemSection() {
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 3 }}
           className="depth-glow w-[400px] h-[300px] top-[50%] left-[8%] bg-orange-600/3"
         />
+        {/* Shimmer */}
+        <div className="absolute w-[250px] h-[250px] rounded-full bg-red-500/[0.02] blur-[50px] animate-grid-shimmer" style={{ top: '35%', right: '20%' }} />
       </div>
+
+      {/* Floating rings */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[18%] right-[15%] w-16 h-16 rounded-full border border-red-500/[0.06] animate-ring-float" />
+        <div className="absolute bottom-[20%] left-[10%] w-12 h-12 rounded-full border border-orange-500/[0.05] animate-ring-float" style={{ animationDelay: '2s' }} />
+      </div>
+
+      {/* Sweep line */}
+      <div className="absolute top-[55%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-400/8 to-transparent animate-sweep-line pointer-events-none" style={{ animationDuration: '9s' }} />
 
       {/* Floating particles */}
       <div className="absolute inset-0 pointer-events-none">
@@ -132,11 +180,6 @@ export default function ProblemSection() {
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", repeatDelay: 5 }}
           className="absolute top-[35%] left-0 w-[200px] h-px bg-gradient-to-r from-transparent via-red-400/10 to-transparent"
         />
-        <motion.div
-          animate={{ x: ["250%", "-100%"] }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", repeatDelay: 6, delay: 3 }}
-          className="absolute top-[65%] left-0 w-[180px] h-px bg-gradient-to-r from-transparent via-orange-400/8 to-transparent"
-        />
       </div>
 
       <div className="max-w-5xl mx-auto">
@@ -150,16 +193,16 @@ export default function ProblemSection() {
             Vấn đề
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-[3.5rem] font-bold tracking-tight mb-6 leading-tight">
-            BA đang gặp phải điều gì?
+            Đâu là điểm nghẽn trong quy trình?
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            Những công việc lặp đi lặp lại hàng ngày đang chiếm phần lớn thời gian
-            — thay vì tập trung vào phân tích nghiệp vụ.
+            Những công việc lặp đi lặp lại, thủ công đang chiếm phần lớn thời gian
+            — thay vì để BA tập trung vào phân tích nghiệp vụ và ra quyết định.
           </p>
         </motion.div>
 
-        {/* Problem cards — staggered scroll reveal */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        {/* Problem cards — 3 columns for 6 cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {problems.map((problem, i) => (
             <ProblemCard key={problem.title} problem={problem} index={i} />
           ))}

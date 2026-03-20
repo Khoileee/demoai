@@ -19,7 +19,7 @@ export default function HeroSection() {
   const textOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
 
   return (
-    <section ref={containerRef} className="relative h-[120vh] overflow-hidden">
+    <section ref={containerRef} className="relative h-screen overflow-hidden">
       {/* === BACKGROUND === */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-950 via-gray-950 to-[#030712]" />
@@ -157,7 +157,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
           >
-            Meeting → Requirement → Documentation & Prototype
+            Quy trình → Điểm nghẽn → Giải pháp AI → Công cụ cụ thể
           </motion.p>
         </motion.div>
       </div>

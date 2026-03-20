@@ -369,3 +369,69 @@ body {
   95% { opacity: 0.9; }
   100% { transform: translate(-65vw, -110vh); opacity: 0; }
 }
+
+/* ========================================
+   SECTION-LEVEL ENHANCEMENTS — dynamic BG
+   ======================================== */
+
+/* --- Horizontal sweep line --- */
+.animate-sweep-line {
+  animation: sweepH 8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes sweepH {
+  0% { transform: translateX(-120%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(120vw); opacity: 0; }
+}
+
+/* --- Diagonal sweep --- */
+.animate-sweep-diag {
+  animation: sweepDiag 12s linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes sweepDiag {
+  0% { transform: translate(-100%, -100%) rotate(35deg); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translate(100vw, 100vh) rotate(35deg); opacity: 0; }
+}
+
+/* --- Circuit dot grid pattern --- */
+.circuit-dots {
+  background-image: radial-gradient(circle, rgba(96, 165, 250, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* --- Animated edge glow (top/bottom of section) --- */
+.edge-glow-top {
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.06) 0%, transparent 100%);
+}
+.edge-glow-bottom {
+  background: linear-gradient(0deg, rgba(59, 130, 246, 0.06) 0%, transparent 100%);
+}
+
+/* --- Floating ring pulse --- */
+.animate-ring-float {
+  animation: ringFloat 6s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes ringFloat {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.15; }
+  50% { transform: translateY(-20px) scale(1.08); opacity: 0.35; }
+}
+
+/* --- Grid shimmer (subtle moving highlight over circuit dots) --- */
+.animate-grid-shimmer {
+  animation: gridShimmer 10s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes gridShimmer {
+  0%, 100% { transform: translate(-30%, -30%) rotate(0deg); opacity: 0.4; }
+  50% { transform: translate(30%, 30%) rotate(2deg); opacity: 0.8; }
+}

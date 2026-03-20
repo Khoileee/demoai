@@ -14,11 +14,11 @@ export default function App() {
       <GlobalBackground />
       <main className="relative z-[1] noise-overlay">
         <HeroSection />
+        <WorkflowSection />
         <ProblemSection />
         <SolutionSection />
-        <WorkflowSection />
-        <OrchestrationSection />
         <ToolsSection />
+        <OrchestrationSection />
         <InsightSection />
         <CTASection />
       </main>

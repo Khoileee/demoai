@@ -4,21 +4,21 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { MessageCircle, Bot, Code2, GitCommit } from "lucide-react";
 
 const flowSteps = [
-  { icon: MessageCircle, label: "Chat", color: "from-amber-500 to-orange-500" },
-  { icon: Bot, label: "AI", color: "from-brand-500 to-violet-500" },
-  { icon: Code2, label: "Code", color: "from-emerald-500 to-teal-500" },
-  { icon: GitCommit, label: "Commit", color: "from-cyan-500 to-blue-500" },
+  { icon: MessageCircle, label: "Yêu cầu", color: "from-cyan-500 to-blue-500" },
+  { icon: Bot, label: "Agent", color: "from-brand-500 to-violet-500" },
+  { icon: Code2, label: "Phân tích", color: "from-emerald-500 to-teal-500" },
+  { icon: GitCommit, label: "Output", color: "from-amber-500 to-orange-500" },
 ];
 
 const terminalLines = [
-  { type: "prompt", text: "Sửa component UserTable thêm cột trạng thái" },
-  { type: "ai", text: "Đang phân tích cấu trúc component..." },
-  { type: "ai", text: "Tìm thấy: src/components/UserTable.tsx" },
-  { type: "code", text: '+ <TableHead>Trạng thái</TableHead>' },
-  { type: "code", text: '+ <TableCell>{user.status}</TableCell>' },
-  { type: "success", text: "✓ Đã cập nhật UserTable.tsx" },
-  { type: "commit", text: "git commit -m 'feat: thêm cột trạng thái'" },
-  { type: "success", text: "✓ Pushed to main" },
+  { type: "prompt", text: "@doc Sinh tài liệu SRS cho module Quản lý hợp đồng" },
+  { type: "ai", text: "Đang đọc source code và requirement..." },
+  { type: "ai", text: "Tìm thấy: 12 components, 8 API endpoints, 5 DB tables" },
+  { type: "ai", text: "Phân tích CRUD operations, validation rules..." },
+  { type: "code", text: "+ Sinh phần 3.1: Mô tả chức năng (CRUD matrix)" },
+  { type: "code", text: "+ Sinh phần 3.2: UI Specification (5 màn hình)" },
+  { type: "code", text: "+ Sinh phần 4: Data Model (ERD + Data Dictionary)" },
+  { type: "success", text: "✓ SRS_QuanLyHopDong.md — 2,450 dòng" },
 ];
 
 function useTypingEffect(lines: typeof terminalLines, shouldStart: boolean) {
@@ -119,8 +119,14 @@ export default function OrchestrationSection() {
   };
 
   return (
-    <section ref={sectionRef} className="relative py-40 sm:py-52 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative py-20 sm:py-28 px-6 overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
+
+      {/* Circuit dot grid */}
+      <div className="absolute inset-0 circuit-dots opacity-30 pointer-events-none" />
+
+      {/* Edge glows */}
+      <div className="absolute top-0 left-0 right-0 h-24 edge-glow-top opacity-30 pointer-events-none" style={{ background: 'linear-gradient(180deg, rgba(245,158,11,0.04) 0%, transparent 100%)' }} />
 
       {/* Animated background glow — amber/orange theme */}
       <motion.div
@@ -137,7 +143,18 @@ export default function OrchestrationSection() {
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 3 }}
           className="depth-glow w-[400px] h-[300px] top-[40%] right-[10%] bg-orange-600/4"
         />
+        {/* Shimmer */}
+        <div className="absolute w-[250px] h-[250px] rounded-full bg-amber-500/[0.025] blur-[50px] animate-grid-shimmer" style={{ top: '30%', left: '45%' }} />
       </motion.div>
+
+      {/* Floating rings */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[22%] left-[15%] w-16 h-16 rounded-full border border-amber-500/[0.06] animate-ring-float" />
+        <div className="absolute bottom-[18%] right-[10%] w-12 h-12 rounded-full border border-orange-500/[0.05] animate-ring-float" style={{ animationDelay: '2s' }} />
+      </div>
+
+      {/* Sweep line */}
+      <div className="absolute top-[35%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-400/8 to-transparent animate-sweep-line pointer-events-none" style={{ animationDuration: '10s', animationDelay: '3s' }} />
 
       {/* Floating particles — amber theme */}
       <div className="absolute inset-0 pointer-events-none">
@@ -174,17 +191,17 @@ export default function OrchestrationSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={headerVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12"
         >
           <p className="text-amber-400 text-sm font-medium tracking-[0.25em] uppercase mb-4">
-            Trợ lý AI
+            Demo thực tế
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-[3.5rem] font-bold tracking-tight mb-6 leading-tight">
-            AI đang làm việc thật
+            Agent đang làm việc thật
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            Không chỉ trả lời câu hỏi — AI có thể tra cứu file, sửa code, và commit
-            ngay từ cửa sổ chat trên Telegram.
+            Agent đọc source code, phân tích nghiệp vụ, và sinh tài liệu SRS hoàn chỉnh
+            — chỉ với một câu lệnh trong VS Code.
           </p>
         </motion.div>
 
@@ -193,7 +210,7 @@ export default function OrchestrationSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={headerVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="flex items-center justify-center gap-3 sm:gap-6 mb-16"
+          className="flex items-center justify-center gap-3 sm:gap-6 mb-10"
         >
           {flowSteps.map((step, i) => (
             <div key={step.label} className="flex items-center gap-3 sm:gap-6">
@@ -230,7 +247,7 @@ export default function OrchestrationSection() {
                 <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
                 <div className="w-3 h-3 rounded-full bg-[#27C93F]" />
                 <span className="ml-3 text-xs text-gray-500 terminal-text">
-                  OpenClaw — Telegram Bot
+                  VS Code — BA Agent + Skills
                 </span>
               </div>
 
