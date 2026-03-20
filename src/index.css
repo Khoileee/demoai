@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-brand: #2563eb;
+  --color-brand-light: #60a5fa;
+  --color-brand-dark: #1e3a8a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: #030712;
+  color: #f8fafc;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   DEPTH LAYERS — background shapes
+   ======================================== */
+
+.depth-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.noise-overlay::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: #fff;
+}
+
+/* ========================================
+   GRID PATTERN (subtle)
+   ======================================== */
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ========================================
+   HEXAGONAL GRID (futuristic)
+   ======================================== */
+
+.hex-grid {
+  --hex-size: 40px;
+  --hex-color: rgba(96, 165, 250, 0.04);
+  background-image:
+    linear-gradient(30deg, var(--hex-color) 12%, transparent 12.5%, transparent 87%, var(--hex-color) 87.5%, var(--hex-color)),
+    linear-gradient(150deg, var(--hex-color) 12%, transparent 12.5%, transparent 87%, var(--hex-color) 87.5%, var(--hex-color)),
+    linear-gradient(30deg, var(--hex-color) 12%, transparent 12.5%, transparent 87%, var(--hex-color) 87.5%, var(--hex-color)),
+    linear-gradient(150deg, var(--hex-color) 12%, transparent 12.5%, transparent 87%, var(--hex-color) 87.5%, var(--hex-color)),
+    linear-gradient(60deg, rgba(96, 165, 250, 0.02) 25%, transparent 25.5%, transparent 75%, rgba(96, 165, 250, 0.02) 75%, rgba(96, 165, 250, 0.02)),
+    linear-gradient(60deg, rgba(96, 165, 250, 0.02) 25%, transparent 25.5%, transparent 75%, rgba(96, 165, 250, 0.02) 75%, rgba(96, 165, 250, 0.02));
+  background-size: var(--hex-size) calc(var(--hex-size) * 1.732);
+  background-position:
+    0 0,
+    0 0,
+    calc(var(--hex-size) / 2) calc(var(--hex-size) * 1.732 / 2),
+    calc(var(--hex-size) / 2) calc(var(--hex-size) * 1.732 / 2),
+    0 0,
+    calc(var(--hex-size) / 2) calc(var(--hex-size) * 1.732 / 2);
+}
+
+/* ========================================
+   TERMINAL STYLES
+   ======================================== */
+
+.terminal-text {
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", "Cascadia Code", monospace;
+}
+
+.typing-cursor::after {
+  content: "▊";
+  animation: blink 1s step-end infinite;
+  color: #60a5fa;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ========================================
+   GLOW LINE CONNECTOR
+   ======================================== */
+
+.glow-line {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(59, 130, 246, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+/* ========================================
+   HERO — Aurora ribbons & morphing blob
+   ======================================== */
+
+.aurora-ribbon {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15) 0%,
+    rgba(34, 211, 238, 0.1) 30%,
+    rgba(139, 92, 246, 0.12) 60%,
+    rgba(59, 130, 246, 0.08) 100%
+  );
+  filter: blur(80px);
+  border-radius: 50% 40% 60% 45%;
+}
+
+.aurora-ribbon-alt {
+  background: linear-gradient(
+    225deg,
+    rgba(139, 92, 246, 0.12) 0%,
+    rgba(59, 130, 246, 0.1) 40%,
+    rgba(16, 185, 129, 0.08) 70%,
+    rgba(34, 211, 238, 0.06) 100%
+  );
+  filter: blur(100px);
+  border-radius: 45% 55% 40% 60%;
+}
+
+.hero-blob {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(59, 130, 246, 0.12) 0%,
+    rgba(139, 92, 246, 0.06) 40%,
+    rgba(34, 211, 238, 0.03) 70%,
+    transparent 100%
+  );
+  filter: blur(40px);
+}
