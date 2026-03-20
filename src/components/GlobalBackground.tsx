@@ -9,13 +9,14 @@ export default function GlobalBackground() {
     <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
       {/* Base */}
       <div className="absolute inset-0 bg-[#030712]" />
-      <div className="absolute inset-0 hex-grid opacity-[0.025]" />
+      <div className="absolute inset-0 hex-grid opacity-[0.03]" />
+      <div className="absolute inset-0 gradient-mesh" />
 
-      {/* === AURORA BLOBS — CSS animated, reduced blur === */}
-      <div className="absolute top-[-10%] left-[-5%] w-[50vw] h-[50vh] rounded-full bg-brand-600/[0.04] blur-[80px] animate-aurora-1" />
-      <div className="absolute top-[25%] right-[-8%] w-[45vw] h-[45vh] rounded-full bg-violet-600/[0.03] blur-[80px] animate-aurora-2" />
-      <div className="absolute top-[55%] left-[10%] w-[40vw] h-[40vh] rounded-full bg-cyan-600/[0.03] blur-[80px] animate-aurora-3" />
-      <div className="absolute bottom-[-5%] right-[5%] w-[48vw] h-[45vh] rounded-full bg-emerald-600/[0.025] blur-[80px] animate-aurora-4" />
+      {/* === AURORA BLOBS — CSS animated === */}
+      <div className="absolute top-[-10%] left-[-5%] w-[50vw] h-[50vh] rounded-full bg-brand-600/[0.05] blur-[80px] animate-aurora-1" />
+      <div className="absolute top-[25%] right-[-8%] w-[45vw] h-[45vh] rounded-full bg-violet-600/[0.04] blur-[80px] animate-aurora-2" />
+      <div className="absolute top-[55%] left-[10%] w-[40vw] h-[40vh] rounded-full bg-cyan-600/[0.035] blur-[80px] animate-aurora-3" />
+      <div className="absolute bottom-[-5%] right-[5%] w-[48vw] h-[45vh] rounded-full bg-emerald-600/[0.03] blur-[80px] animate-aurora-4" />
 
       {/* === NEURAL CONSTELLATION — static lines + CSS animated nodes === */}
       <svg className="absolute inset-0 w-full h-full" style={{ willChange: "auto" }}>
@@ -48,17 +49,13 @@ export default function GlobalBackground() {
 
       {/* Constellation node dots — CSS pulse animation */}
       <div className="absolute rounded-full animate-node-pulse" style={{ left: "8%", top: "12%", width: 3, height: 3, background: "rgba(96,165,250,0.5)", boxShadow: "0 0 6px rgba(96,165,250,0.3)", animationDelay: "0s" }} />
-      <div className="absolute rounded-full animate-node-pulse" style={{ left: "22%", top: "28%", width: 2, height: 2, background: "rgba(34,211,238,0.5)", boxShadow: "0 0 4px rgba(34,211,238,0.3)", animationDelay: "0.5s" }} />
       <div className="absolute rounded-full animate-node-pulse" style={{ left: "48%", top: "35%", width: 3, height: 3, background: "rgba(59,130,246,0.5)", boxShadow: "0 0 6px rgba(59,130,246,0.3)", animationDelay: "1s" }} />
-      <div className="absolute rounded-full animate-node-pulse" style={{ left: "62%", top: "15%", width: 2, height: 2, background: "rgba(167,139,250,0.5)", boxShadow: "0 0 4px rgba(167,139,250,0.3)", animationDelay: "1.5s" }} />
       <div className="absolute rounded-full animate-node-pulse" style={{ left: "75%", top: "30%", width: 2, height: 2, background: "rgba(34,211,238,0.5)", boxShadow: "0 0 4px rgba(34,211,238,0.3)", animationDelay: "2s" }} />
       <div className="absolute rounded-full animate-node-pulse" style={{ left: "88%", top: "18%", width: 3, height: 3, background: "rgba(96,165,250,0.5)", boxShadow: "0 0 6px rgba(96,165,250,0.3)", animationDelay: "2.5s" }} />
       <div className="absolute rounded-full animate-node-pulse" style={{ left: "30%", top: "60%", width: 3, height: 3, background: "rgba(59,130,246,0.5)", boxShadow: "0 0 6px rgba(59,130,246,0.3)", animationDelay: "0.8s" }} />
-      <div className="absolute rounded-full animate-node-pulse" style={{ left: "50%", top: "55%", width: 2, height: 2, background: "rgba(139,92,246,0.5)", boxShadow: "0 0 4px rgba(139,92,246,0.3)", animationDelay: "1.3s" }} />
       <div className="absolute rounded-full animate-node-pulse" style={{ left: "82%", top: "58%", width: 3, height: 3, background: "rgba(34,211,238,0.5)", boxShadow: "0 0 6px rgba(34,211,238,0.3)", animationDelay: "1.8s" }} />
       <div className="absolute rounded-full animate-node-pulse" style={{ left: "42%", top: "78%", width: 2, height: 2, background: "rgba(59,130,246,0.5)", boxShadow: "0 0 4px rgba(59,130,246,0.3)", animationDelay: "2.3s" }} />
       <div className="absolute rounded-full animate-node-pulse" style={{ left: "72%", top: "72%", width: 3, height: 3, background: "rgba(139,92,246,0.5)", boxShadow: "0 0 6px rgba(139,92,246,0.3)", animationDelay: "0.3s" }} />
-      <div className="absolute rounded-full animate-node-pulse" style={{ left: "95%", top: "70%", width: 2, height: 2, background: "rgba(251,191,36,0.5)", boxShadow: "0 0 4px rgba(251,191,36,0.3)", animationDelay: "1.6s" }} />
 
       {/* === TRAVELING ORBS — CSS with transform instead of top/left === */}
       <div className="absolute left-0 top-[10%] w-1 h-1 rounded-full animate-orb-1" style={{ background: "rgba(96,165,250,0.7)", boxShadow: "0 0 10px rgba(96,165,250,0.5), 0 0 40px rgba(96,165,250,0.2)" }} />
@@ -67,10 +64,10 @@ export default function GlobalBackground() {
       <div className="absolute left-[80%] bottom-0 w-[3px] h-[3px] rounded-full animate-orb-4" style={{ background: "rgba(52,211,153,0.7)", boxShadow: "0 0 8px rgba(52,211,153,0.5), 0 0 32px rgba(52,211,153,0.2)" }} />
 
       {/* === DATA RAIN — CSS translateY === */}
-      <div className="absolute w-px animate-data-rain" style={{ left: "12%", height: 80, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.08) 30%, rgba(34,211,238,0.06) 70%, transparent)", animationDelay: "0s", animationDuration: "7s" }} />
-      <div className="absolute w-px animate-data-rain" style={{ left: "35%", height: 100, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.08) 30%, rgba(34,211,238,0.06) 70%, transparent)", animationDelay: "2.5s", animationDuration: "6s" }} />
-      <div className="absolute w-px animate-data-rain" style={{ left: "58%", height: 90, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.08) 30%, rgba(34,211,238,0.06) 70%, transparent)", animationDelay: "1s", animationDuration: "7.5s" }} />
-      <div className="absolute w-px animate-data-rain" style={{ left: "82%", height: 85, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.08) 30%, rgba(34,211,238,0.06) 70%, transparent)", animationDelay: "4s", animationDuration: "6.5s" }} />
+      <div className="absolute w-px animate-data-rain" style={{ left: "8%", height: 90, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.1) 30%, rgba(34,211,238,0.08) 70%, transparent)", animationDelay: "0s", animationDuration: "6s" }} />
+      <div className="absolute w-px animate-data-rain" style={{ left: "30%", height: 100, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.1) 30%, rgba(34,211,238,0.07) 70%, transparent)", animationDelay: "1.5s", animationDuration: "6.5s" }} />
+      <div className="absolute w-px animate-data-rain" style={{ left: "55%", height: 95, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.09) 30%, rgba(34,211,238,0.07) 70%, transparent)", animationDelay: "0.8s", animationDuration: "7s" }} />
+      <div className="absolute w-px animate-data-rain" style={{ left: "78%", height: 85, background: "linear-gradient(180deg, transparent, rgba(59,130,246,0.09) 30%, rgba(34,211,238,0.07) 70%, transparent)", animationDelay: "2s", animationDuration: "7.2s" }} />
 
       {/* === SCANNING BEAM — CSS translateY === */}
       <div
@@ -80,6 +77,11 @@ export default function GlobalBackground() {
           boxShadow: "0 0 30px rgba(59,130,246,0.06)",
         }}
       />
+
+      {/* === SIGNAL RIPPLE BEACONS — expanding circles === */}
+      <div className="absolute left-[25%] top-[40%] w-2 h-2 rounded-full border border-brand-400/20 animate-signal" style={{ animationDelay: '0s' }} />
+      <div className="absolute left-[70%] top-[60%] w-2 h-2 rounded-full border border-cyan-400/15 animate-signal" style={{ animationDelay: '1.5s' }} />
+      <div className="absolute left-[50%] top-[20%] w-2 h-2 rounded-full border border-violet-400/15 animate-signal" style={{ animationDelay: '3s' }} />
     </div>
   );
 }

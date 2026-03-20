@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import TiltCard from "./TiltCard";
 import {
   Mic,
   Bot,
@@ -129,8 +130,9 @@ function ToolCard({ tool }: { tool: (typeof tools)[0] }) {
 
   return (
     <motion.div ref={ref} style={{ y, opacity }} className="group relative">
+      <TiltCard className="h-full" tiltMax={5}>
       <div
-        className={`relative p-7 rounded-2xl border ${tool.borderColor} bg-white/[0.02] backdrop-blur-sm hover:bg-white/[0.04] transition-all duration-700 h-full`}
+        className={`relative p-7 rounded-2xl border ${tool.borderColor} bg-gray-950/80 hover:bg-gray-900/60 transition-all duration-500 h-full`}
       >
         {/* Glow */}
         <div
@@ -205,6 +207,7 @@ function ToolCard({ tool }: { tool: (typeof tools)[0] }) {
           )}
         </AnimatePresence>
       </div>
+      </TiltCard>
     </motion.div>
   );
 }
@@ -219,59 +222,62 @@ export default function ToolsSection() {
       {/* Circuit dot grid */}
       <div className="absolute inset-0 circuit-dots opacity-35 pointer-events-none" />
 
-      {/* Edge glow */}
-      <div className="absolute top-0 left-0 right-0 h-28 edge-glow-top opacity-40 pointer-events-none" />
+      {/* Breathe border */}
+      <div className="absolute inset-4 rounded-3xl border border-brand-400/[0.12] animate-breathe-border pointer-events-none" />
+
+      {/* Edge glows */}
+      <div className="absolute top-0 left-0 right-0 h-28 edge-glow-top opacity-55 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-20 edge-glow-bottom opacity-40 pointer-events-none" />
 
       {/* Animated background depth */}
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }}
-          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
-          className="depth-glow w-[600px] h-[450px] top-[20%] left-1/2 -translate-x-1/2 bg-brand-600/3"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-          className="depth-glow w-[350px] h-[250px] top-[50%] left-[10%] bg-emerald-600/3"
-        />
-        {/* Extra depth glow */}
-        <motion.div
-          animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.5, 0.2] }}
-          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 5 }}
-          className="depth-glow w-[300px] h-[300px] top-[35%] right-[8%] bg-violet-600/3"
-        />
+        <div className="depth-glow w-[600px] h-[450px] top-[20%] left-1/2 -translate-x-1/2 bg-brand-600/3 animate-depth-glow-1" />
+        <div className="depth-glow w-[350px] h-[250px] top-[50%] left-[10%] bg-emerald-600/3 animate-depth-glow-2" style={{ animationDelay: '3s' }} />
+        <div className="depth-glow w-[300px] h-[300px] top-[35%] right-[8%] bg-violet-600/3 animate-depth-glow-3" style={{ animationDelay: '5s' }} />
+        {/* Plasma blob */}
+        <div className="absolute w-[320px] h-[220px] top-[45%] left-[35%] bg-emerald-500/[0.06] blur-[45px] animate-plasma" style={{ animationDelay: '6s' }} />
         {/* Shimmer */}
         <div className="absolute w-[320px] h-[320px] rounded-full bg-emerald-500/[0.02] blur-[60px] animate-grid-shimmer" style={{ top: '30%', left: '25%' }} />
       </div>
 
-      {/* Floating rings */}
+      {/* Floating rings + orbit */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[15%] right-[10%] w-24 h-24 rounded-full border border-emerald-500/[0.06] animate-ring-float" />
-        <div className="absolute top-[55%] left-[6%] w-14 h-14 rounded-full border border-brand-500/[0.05] animate-ring-float" style={{ animationDelay: '3.5s' }} />
-        <div className="absolute bottom-[15%] right-[25%] w-10 h-10 rounded-full border border-violet-500/[0.04] animate-ring-float" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute top-[15%] right-[10%] w-24 h-24 rounded-full border border-emerald-500/[0.14] animate-ring-float" />
+        <div className="absolute top-[55%] left-[6%] w-14 h-14 rounded-full border border-brand-500/[0.12] animate-ring-float" style={{ animationDelay: '3.5s' }} />
+        <div className="absolute bottom-[15%] right-[25%] w-10 h-10 rounded-full border border-violet-500/[0.10] animate-ring-float" style={{ animationDelay: '1.5s' }} />
+        {/* Orbiting dots */}
+        <div className="absolute top-[30%] left-[50%]">
+          <div className="w-2 h-2 rounded-full bg-emerald-400/50 animate-orbit" style={{ boxShadow: '0 0 8px rgba(52,211,153,0.45)' }} />
+        </div>
+        <div className="absolute top-[65%] right-[20%]">
+          <div className="w-1.5 h-1.5 rounded-full bg-brand-400/45 animate-orbit-reverse" style={{ boxShadow: '0 0 6px rgba(96,165,250,0.35)' }} />
+        </div>
       </div>
 
       {/* Double sweep lines */}
       <div className="absolute top-[30%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-400/6 to-transparent animate-sweep-line pointer-events-none" style={{ animationDuration: '10s' }} />
       <div className="absolute top-[70%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-400/6 to-transparent animate-sweep-line pointer-events-none" style={{ animationDuration: '12s', animationDelay: '5s' }} />
 
+      {/* Data streams */}
+      <div className="absolute w-[2px] h-24 animate-data-stream pointer-events-none" style={{ left: '8%', background: 'linear-gradient(180deg, transparent, rgba(52,211,153,0.22), transparent)', animationDelay: '0s', animationDuration: '6s' }} />
+      <div className="absolute w-[2px] h-28 animate-data-stream pointer-events-none" style={{ left: '92%', background: 'linear-gradient(180deg, transparent, rgba(96,165,250,0.18), transparent)', animationDelay: '3.5s', animationDuration: '7s' }} />
+
+      {/* Signal beacons */}
+      <div className="absolute left-[40%] top-[15%] w-2 h-2 rounded-full border border-emerald-400/35 animate-signal pointer-events-none" />
+      <div className="absolute left-[65%] top-[80%] w-2 h-2 rounded-full border border-brand-400/30 animate-signal pointer-events-none" style={{ animationDelay: '2s' }} />
+
+      {/* Floating hex */}
+      <div className="absolute top-[10%] left-[5%] w-10 h-10 border border-emerald-500/[0.14] rotate-45 animate-hex-float pointer-events-none" />
+      <div className="absolute bottom-[12%] right-[8%] w-8 h-8 border border-violet-500/[0.12] rotate-12 animate-hex-float pointer-events-none" style={{ animationDelay: '4s' }} />
+
       {/* Floating particles */}
       <div className="absolute inset-0 pointer-events-none">
-        {[
-          { x: "12%", y: "22%", s: 2, d: 0, dur: 7 },
-          { x: "88%", y: "18%", s: 3, d: 1, dur: 8.5 },
-          { x: "25%", y: "78%", s: 2, d: 2, dur: 9 },
-          { x: "75%", y: "65%", s: 2, d: 0.5, dur: 6 },
-          { x: "50%", y: "42%", s: 2, d: 1.5, dur: 7.5 },
-        ].map((p, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-emerald-400/20"
-            style={{ left: p.x, top: p.y, width: p.s, height: p.s }}
-            animate={{ y: [-10, 10, -10], opacity: [0.1, 0.35, 0.1] }}
-            transition={{ duration: p.dur, repeat: Infinity, ease: "easeInOut", delay: p.d }}
-          />
-        ))}
+        <div className="absolute rounded-full bg-emerald-400/20 animate-float-particle" style={{ left: '12%', top: '22%', width: 2, height: 2, animationDuration: '7s' }} />
+        <div className="absolute rounded-full bg-emerald-400/20 animate-float-particle" style={{ left: '88%', top: '18%', width: 3, height: 3, animationDuration: '8.5s', animationDelay: '1s' }} />
+        <div className="absolute rounded-full bg-emerald-400/20 animate-float-particle" style={{ left: '25%', top: '78%', width: 2, height: 2, animationDuration: '9s', animationDelay: '2s' }} />
+        <div className="absolute rounded-full bg-emerald-400/20 animate-float-particle" style={{ left: '75%', top: '65%', width: 2, height: 2, animationDuration: '6s', animationDelay: '0.5s' }} />
+        <div className="absolute rounded-full bg-emerald-400/20 animate-float-particle" style={{ left: '50%', top: '42%', width: 2, height: 2, animationDuration: '7.5s', animationDelay: '1.5s' }} />
+        <div className="absolute rounded-full bg-emerald-400/20 animate-float-particle" style={{ left: '35%', top: '30%', width: 3, height: 3, animationDuration: '8s', animationDelay: '3s' }} />
       </div>
 
       <div className="max-w-6xl mx-auto">

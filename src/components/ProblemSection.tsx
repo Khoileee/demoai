@@ -8,6 +8,7 @@ import {
   Repeat,
   AlertTriangle,
 } from "lucide-react";
+import TiltCard from "./TiltCard";
 
 const problems = [
   {
@@ -82,7 +83,8 @@ function ProblemCard({
       style={{ y, opacity, scale }}
       className="group relative"
     >
-      <div className="relative p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm hover:border-red-500/15 hover:bg-white/[0.04] transition-all duration-700 h-full">
+      <TiltCard className="h-full">
+      <div className="relative p-8 rounded-2xl border border-white/[0.06] bg-gray-950/80 hover:border-red-500/20 hover:bg-gray-900/60 transition-all duration-500 h-full">
         {/* Subtle glow on hover */}
         <div className="absolute -inset-px rounded-2xl bg-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10" />
 
@@ -112,6 +114,7 @@ function ProblemCard({
           </div>
         </div>
       </div>
+      </TiltCard>
     </motion.div>
   );
 }
@@ -128,58 +131,59 @@ export default function ProblemSection() {
   return (
     <section id="problem" className="relative py-20 sm:py-28 px-6 overflow-hidden">
       {/* Circuit dot grid */}
-      <div className="absolute inset-0 circuit-dots opacity-30 pointer-events-none" />
+      <div className="absolute inset-0 circuit-dots opacity-35 pointer-events-none" />
 
-      {/* Edge glow */}
-      <div className="absolute top-0 left-0 right-0 h-32 edge-glow-top opacity-50 pointer-events-none" />
+      {/* Breathe border frame */}
+      <div className="absolute inset-4 rounded-3xl border border-red-400/[0.12] animate-breathe-border pointer-events-none" />
+
+      {/* Edge glows */}
+      <div className="absolute top-0 left-0 right-0 h-32 edge-glow-top opacity-60 pointer-events-none" style={{ background: 'linear-gradient(180deg, rgba(239,68,68,0.07) 0%, transparent 100%)' }} />
+      <div className="absolute bottom-0 left-0 right-0 h-20 edge-glow-bottom opacity-45 pointer-events-none" style={{ background: 'linear-gradient(0deg, rgba(249,115,22,0.05) 0%, transparent 100%)' }} />
 
       {/* Animated background depth */}
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="depth-glow w-[600px] h-[400px] top-[20%] right-[5%] bg-red-600/4"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.08, 1] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-          className="depth-glow w-[400px] h-[300px] top-[50%] left-[8%] bg-orange-600/3"
-        />
+        <div className="depth-glow w-[600px] h-[400px] top-[20%] right-[5%] bg-red-600/4 animate-depth-glow-1" />
+        <div className="depth-glow w-[400px] h-[300px] top-[50%] left-[8%] bg-orange-600/3 animate-depth-glow-2" style={{ animationDelay: '3s' }} />
+        {/* Plasma morph blob */}
+        <div className="absolute w-[300px] h-[200px] top-[40%] right-[20%] bg-red-500/[0.07] blur-[40px] animate-plasma" style={{ animationDelay: '5s' }} />
         {/* Shimmer */}
         <div className="absolute w-[250px] h-[250px] rounded-full bg-red-500/[0.02] blur-[50px] animate-grid-shimmer" style={{ top: '35%', right: '20%' }} />
       </div>
 
-      {/* Floating rings */}
+      {/* Floating rings + orbit */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[18%] right-[15%] w-16 h-16 rounded-full border border-red-500/[0.06] animate-ring-float" />
-        <div className="absolute bottom-[20%] left-[10%] w-12 h-12 rounded-full border border-orange-500/[0.05] animate-ring-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-[18%] right-[15%] w-16 h-16 rounded-full border border-red-500/[0.14] animate-ring-float" />
+        <div className="absolute bottom-[20%] left-[10%] w-12 h-12 rounded-full border border-orange-500/[0.12] animate-ring-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-[50%] left-[45%] w-20 h-20 rounded-full border border-red-400/[0.10] animate-ring-float" style={{ animationDelay: '4s' }} />
+        {/* Orbiting dot */}
+        <div className="absolute top-[22%] right-[18%]">
+          <div className="w-2 h-2 rounded-full bg-red-400/60 animate-orbit-reverse" style={{ boxShadow: '0 0 8px rgba(239,68,68,0.5)' }} />
+        </div>
       </div>
 
-      {/* Sweep line */}
+      {/* Double sweep lines */}
       <div className="absolute top-[55%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-400/8 to-transparent animate-sweep-line pointer-events-none" style={{ animationDuration: '9s' }} />
+      <div className="absolute top-[30%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-400/6 to-transparent animate-sweep-line pointer-events-none" style={{ animationDuration: '11s', animationDelay: '4s' }} />
+
+      {/* Data stream */}
+      <div className="absolute w-[2px] h-20 animate-data-stream pointer-events-none" style={{ left: '15%', background: 'linear-gradient(180deg, transparent, rgba(239,68,68,0.2), transparent)', animationDelay: '2s', animationDuration: '5.5s' }} />
+      <div className="absolute w-[2px] h-24 animate-data-stream pointer-events-none" style={{ left: '85%', background: 'linear-gradient(180deg, transparent, rgba(249,115,22,0.18), transparent)', animationDelay: '5s', animationDuration: '7s' }} />
+
+      {/* Signal ripple */}
+      <div className="absolute left-[60%] top-[70%] w-2 h-2 rounded-full border border-red-400/35 animate-signal pointer-events-none" style={{ animationDelay: '2s' }} />
+
+      {/* Floating hex shapes */}
+      <div className="absolute top-[12%] left-[5%] w-10 h-10 border border-red-500/[0.14] rotate-45 animate-hex-float pointer-events-none" />
+      <div className="absolute bottom-[15%] right-[6%] w-8 h-8 border border-orange-500/[0.12] rotate-12 animate-hex-float pointer-events-none" style={{ animationDelay: '3s' }} />
 
       {/* Floating particles */}
       <div className="absolute inset-0 pointer-events-none">
-        {[
-          { x: "10%", y: "15%", s: 2, d: 0, dur: 7 },
-          { x: "82%", y: "25%", s: 3, d: 1.5, dur: 8 },
-          { x: "30%", y: "75%", s: 2, d: 0.5, dur: 9 },
-          { x: "65%", y: "60%", s: 2, d: 2, dur: 6.5 },
-          { x: "88%", y: "80%", s: 3, d: 3, dur: 7.5 },
-        ].map((p, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-red-400/20"
-            style={{ left: p.x, top: p.y, width: p.s, height: p.s }}
-            animate={{ y: [-10, 10, -10], opacity: [0.15, 0.4, 0.15] }}
-            transition={{ duration: p.dur, repeat: Infinity, ease: "easeInOut", delay: p.d }}
-          />
-        ))}
-        <motion.div
-          animate={{ x: ["-100%", "250%"] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", repeatDelay: 5 }}
-          className="absolute top-[35%] left-0 w-[200px] h-px bg-gradient-to-r from-transparent via-red-400/10 to-transparent"
-        />
+        <div className="absolute rounded-full bg-red-400/20 animate-float-particle" style={{ left: '10%', top: '15%', width: 2, height: 2, animationDuration: '7s' }} />
+        <div className="absolute rounded-full bg-red-400/20 animate-float-particle" style={{ left: '82%', top: '25%', width: 3, height: 3, animationDuration: '8s', animationDelay: '1.5s' }} />
+        <div className="absolute rounded-full bg-red-400/20 animate-float-particle" style={{ left: '30%', top: '75%', width: 2, height: 2, animationDuration: '9s', animationDelay: '0.5s' }} />
+        <div className="absolute rounded-full bg-red-400/20 animate-float-particle" style={{ left: '65%', top: '60%', width: 2, height: 2, animationDuration: '6.5s', animationDelay: '2s' }} />
+        <div className="absolute rounded-full bg-red-400/20 animate-float-particle" style={{ left: '88%', top: '80%', width: 3, height: 3, animationDuration: '7.5s', animationDelay: '3s' }} />
+        <div className="absolute top-[35%] left-0 w-[200px] h-px bg-gradient-to-r from-transparent via-red-400/10 to-transparent animate-sweep-travel" />
       </div>
 
       <div className="max-w-5xl mx-auto">

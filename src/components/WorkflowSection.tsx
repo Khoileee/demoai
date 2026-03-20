@@ -93,7 +93,7 @@ function TimelineStep({ step, index }: { step: (typeof steps)[0]; index: number 
       {/* Timeline spine — dot + line */}
       <div className="flex flex-col items-center flex-shrink-0">
         {/* Glow ring */}
-        <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center shadow-lg shadow-black/30 relative z-10`}>
+        <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center shadow-lg shadow-black/30 relative z-10 float-3d-icon float-3d-icon-pulse`} style={{ animationDelay: `${index * 0.5}s` }}>
           <step.icon className="w-5 h-5 text-white" />
         </div>
         {/* Connecting line */}
@@ -133,47 +133,57 @@ export default function WorkflowSection() {
       {/* Circuit dot grid */}
       <div className="absolute inset-0 circuit-dots opacity-40 pointer-events-none" />
 
-      {/* Animated background depth */}
+      {/* Breathe border frame */}
+      <div className="absolute inset-4 rounded-3xl border border-brand-400/[0.15] animate-breathe-border pointer-events-none" />
+
+      {/* Edge glows */}
+      <div className="absolute top-0 left-0 right-0 h-28 edge-glow-top opacity-60 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-20 edge-glow-bottom opacity-40 pointer-events-none" />
+
+      {/* Animated background depth — CSS only */}
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.7, 0.4] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="depth-glow w-[700px] h-[500px] top-[15%] left-1/2 -translate-x-1/2 bg-brand-600/4"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.06, 1] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-          className="depth-glow w-[400px] h-[350px] top-[45%] right-[5%] bg-violet-600/3"
-        />
+        <div className="depth-glow animate-depth-glow-1 w-[700px] h-[500px] top-[15%] left-1/2 -translate-x-1/2 bg-brand-600/4" />
+        <div className="depth-glow animate-depth-glow-2 w-[400px] h-[350px] top-[45%] right-[5%] bg-violet-600/3" style={{ animationDelay: '4s' }} />
+        {/* Plasma morph blob */}
+        <div className="absolute w-[350px] h-[250px] top-[30%] left-[15%] bg-brand-500/[0.08] blur-[50px] animate-plasma" />
         {/* Grid shimmer highlight */}
         <div className="absolute w-[300px] h-[300px] rounded-full bg-brand-500/[0.025] blur-[60px] animate-grid-shimmer" style={{ top: '20%', left: '30%' }} />
       </div>
 
-      {/* Floating rings */}
+      {/* Floating rings + orbiting dots */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[25%] left-[12%] w-20 h-20 rounded-full border border-brand-500/[0.07] animate-ring-float" />
-        <div className="absolute top-[60%] right-[8%] w-14 h-14 rounded-full border border-violet-500/[0.06] animate-ring-float" style={{ animationDelay: '3s' }} />
+        <div className="absolute top-[25%] left-[12%] w-20 h-20 rounded-full border border-brand-500/[0.15] animate-ring-float" />
+        <div className="absolute top-[60%] right-[8%] w-14 h-14 rounded-full border border-violet-500/[0.12] animate-ring-float" style={{ animationDelay: '3s' }} />
+        <div className="absolute top-[40%] left-[50%] w-24 h-24 rounded-full border border-cyan-500/[0.10] animate-ring-float" style={{ animationDelay: '1.5s' }} />
+        {/* Orbiting dot */}
+        <div className="absolute top-[35%] left-[55%]">
+          <div className="w-2 h-2 rounded-full bg-brand-400/60 animate-orbit" style={{ boxShadow: '0 0 8px rgba(96,165,250,0.5)' }} />
+        </div>
       </div>
 
-      {/* Sweep line */}
+      {/* Double sweep lines */}
       <div className="absolute top-[40%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-400/8 to-transparent animate-sweep-line pointer-events-none" style={{ animationDelay: '2s', animationDuration: '10s' }} />
+      <div className="absolute top-[70%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400/6 to-transparent animate-sweep-line pointer-events-none" style={{ animationDelay: '6s', animationDuration: '12s' }} />
 
-      {/* Floating particles */}
+      {/* Data stream columns */}
+      <div className="absolute w-[2px] h-24 animate-data-stream pointer-events-none" style={{ left: '20%', background: 'linear-gradient(180deg, transparent, rgba(96,165,250,0.25), transparent)', animationDelay: '0s', animationDuration: '6s' }} />
+      <div className="absolute w-[2px] h-28 animate-data-stream pointer-events-none" style={{ left: '75%', background: 'linear-gradient(180deg, transparent, rgba(139,92,246,0.2), transparent)', animationDelay: '3s', animationDuration: '7s' }} />
+
+      {/* Signal beacon */}
+      <div className="absolute left-[80%] top-[20%] w-2 h-2 rounded-full border border-brand-400/40 animate-signal pointer-events-none" style={{ animationDelay: '1s' }} />
+
+      {/* Floating hex */}
+      <div className="absolute top-[15%] right-[18%] w-10 h-10 border border-brand-500/[0.15] rotate-45 animate-hex-float pointer-events-none" />
+      <div className="absolute bottom-[20%] left-[8%] w-8 h-8 border border-violet-500/[0.12] rotate-12 animate-hex-float pointer-events-none" style={{ animationDelay: '4s' }} />
+
+      {/* Floating particles — CSS only */}
       <div className="absolute inset-0 pointer-events-none">
-        {[
-          { x: "8%", y: "18%", s: 2, d: 0, dur: 7.5 },
-          { x: "85%", y: "22%", s: 3, d: 1, dur: 8 },
-          { x: "20%", y: "68%", s: 2, d: 2, dur: 9 },
-          { x: "72%", y: "72%", s: 2, d: 0.5, dur: 6 },
-        ].map((p, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-violet-400/20"
-            style={{ left: p.x, top: p.y, width: p.s, height: p.s }}
-            animate={{ y: [-12, 12, -12], opacity: [0.1, 0.35, 0.1] }}
-            transition={{ duration: p.dur, repeat: Infinity, ease: "easeInOut", delay: p.d }}
-          />
-        ))}
+        <div className="absolute rounded-full bg-violet-400/25 animate-float-particle" style={{ left: '8%', top: '18%', width: 2, height: 2, animationDuration: '7.5s' }} />
+        <div className="absolute rounded-full bg-violet-400/25 animate-float-particle" style={{ left: '85%', top: '22%', width: 3, height: 3, animationDuration: '8s', animationDelay: '1s' }} />
+        <div className="absolute rounded-full bg-violet-400/25 animate-float-particle" style={{ left: '20%', top: '68%', width: 2, height: 2, animationDuration: '9s', animationDelay: '2s' }} />
+        <div className="absolute rounded-full bg-violet-400/25 animate-float-particle" style={{ left: '72%', top: '72%', width: 2, height: 2, animationDuration: '6s', animationDelay: '0.5s' }} />
+        <div className="absolute rounded-full bg-violet-400/25 animate-float-particle" style={{ left: '45%', top: '42%', width: 2, height: 2, animationDuration: '7s', animationDelay: '1.5s' }} />
+        <div className="absolute rounded-full bg-violet-400/25 animate-float-particle" style={{ left: '55%', top: '85%', width: 3, height: 3, animationDuration: '8.5s', animationDelay: '3s' }} />
       </div>
 
       <div className="max-w-3xl mx-auto">

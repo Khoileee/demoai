@@ -101,51 +101,55 @@ export default function SolutionSection() {
       {/* Circuit dot grid */}
       <div className="absolute inset-0 circuit-dots opacity-35 pointer-events-none" />
 
+      {/* Breathe border */}
+      <div className="absolute inset-4 rounded-3xl border border-emerald-400/[0.12] animate-breathe-border pointer-events-none" />
+
       {/* Edge glows */}
-      <div className="absolute top-0 left-0 right-0 h-24 edge-glow-top opacity-40 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 right-0 h-24 edge-glow-bottom opacity-30 pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-28 edge-glow-top opacity-60 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 edge-glow-bottom opacity-45 pointer-events-none" />
 
       {/* Animated background depth */}
       <motion.div style={{ opacity: bgGlow }} className="absolute inset-0 pointer-events-none">
-        <motion.div
-          animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="depth-glow w-[500px] h-[400px] top-[30%] left-[10%] bg-brand-600/4"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.08, 1] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="depth-glow w-[400px] h-[300px] top-[40%] right-[15%] bg-cyan-600/3"
-        />
+        <div className="depth-glow w-[500px] h-[400px] top-[30%] left-[10%] bg-brand-600/4 animate-depth-glow-1" />
+        <div className="depth-glow w-[400px] h-[300px] top-[40%] right-[15%] bg-cyan-600/3 animate-depth-glow-2" style={{ animationDelay: '2s' }} />
+        {/* Plasma blob */}
+        <div className="absolute w-[280px] h-[200px] top-[55%] left-[25%] bg-emerald-500/[0.07] blur-[45px] animate-plasma" style={{ animationDelay: '3s' }} />
         {/* Shimmer */}
         <div className="absolute w-[280px] h-[280px] rounded-full bg-cyan-500/[0.02] blur-[50px] animate-grid-shimmer" style={{ top: '25%', left: '40%' }} />
       </motion.div>
 
-      {/* Floating rings */}
+      {/* Floating rings + orbit */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[20%] left-[8%] w-16 h-16 rounded-full border border-cyan-500/[0.07] animate-ring-float" />
-        <div className="absolute bottom-[25%] right-[12%] w-20 h-20 rounded-full border border-brand-500/[0.06] animate-ring-float" style={{ animationDelay: '2.5s' }} />
+        <div className="absolute top-[20%] left-[8%] w-16 h-16 rounded-full border border-cyan-500/[0.15] animate-ring-float" />
+        <div className="absolute bottom-[25%] right-[12%] w-20 h-20 rounded-full border border-brand-500/[0.12] animate-ring-float" style={{ animationDelay: '2.5s' }} />
+        <div className="absolute top-[50%] left-[55%] w-14 h-14 rounded-full border border-emerald-500/[0.10] animate-ring-float" style={{ animationDelay: '4s' }} />
+        {/* Orbiting dot */}
+        <div className="absolute top-[45%] left-[15%]">
+          <div className="w-2 h-2 rounded-full bg-emerald-400/55 animate-orbit" style={{ boxShadow: '0 0 8px rgba(52,211,153,0.5)' }} />
+        </div>
       </div>
 
-      {/* Sweep line */}
+      {/* Double sweep lines */}
       <div className="absolute top-[45%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-400/8 to-transparent animate-sweep-line pointer-events-none" style={{ animationDuration: '11s', animationDelay: '1s' }} />
+      <div className="absolute top-[75%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/6 to-transparent animate-sweep-line pointer-events-none" style={{ animationDuration: '13s', animationDelay: '5s' }} />
+
+      {/* Data streams */}
+      <div className="absolute w-[2px] h-24 animate-data-stream pointer-events-none" style={{ left: '30%', background: 'linear-gradient(180deg, transparent, rgba(52,211,153,0.22), transparent)', animationDelay: '1s', animationDuration: '6s' }} />
+      <div className="absolute w-[2px] h-28 animate-data-stream pointer-events-none" style={{ left: '70%', background: 'linear-gradient(180deg, transparent, rgba(34,211,238,0.18), transparent)', animationDelay: '4s', animationDuration: '7.5s' }} />
+
+      {/* Signal beacon */}
+      <div className="absolute left-[85%] top-[30%] w-2 h-2 rounded-full border border-emerald-400/35 animate-signal pointer-events-none" />
+
+      {/* Floating hex */}
+      <div className="absolute top-[10%] right-[5%] w-10 h-10 border border-cyan-500/[0.14] rotate-45 animate-hex-float pointer-events-none" />
+      <div className="absolute bottom-[12%] left-[12%] w-8 h-8 border border-emerald-500/[0.12] rotate-12 animate-hex-float pointer-events-none" style={{ animationDelay: '3s' }} />
 
       {/* Floating particles */}
       <div className="absolute inset-0 pointer-events-none">
-        {[
-          { x: "12%", y: "20%", s: 2, d: 0, dur: 8 },
-          { x: "78%", y: "30%", s: 3, d: 1.2, dur: 7 },
-          { x: "45%", y: "75%", s: 2, d: 2.5, dur: 9 },
-          { x: "90%", y: "55%", s: 2, d: 0.8, dur: 6.5 },
-        ].map((p, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-brand-400/20"
-            style={{ left: p.x, top: p.y, width: p.s, height: p.s }}
-            animate={{ y: [-10, 10, -10], opacity: [0.15, 0.4, 0.15] }}
-            transition={{ duration: p.dur, repeat: Infinity, ease: "easeInOut", delay: p.d }}
-          />
-        ))}
+        <div className="absolute rounded-full bg-brand-400/20 animate-float-particle" style={{ left: '12%', top: '20%', width: 2, height: 2, animationDuration: '8s' }} />
+        <div className="absolute rounded-full bg-brand-400/20 animate-float-particle" style={{ left: '78%', top: '30%', width: 3, height: 3, animationDuration: '7s', animationDelay: '1.2s' }} />
+        <div className="absolute rounded-full bg-brand-400/20 animate-float-particle" style={{ left: '45%', top: '75%', width: 2, height: 2, animationDuration: '9s', animationDelay: '2.5s' }} />
+        <div className="absolute rounded-full bg-brand-400/20 animate-float-particle" style={{ left: '90%', top: '55%', width: 2, height: 2, animationDuration: '6.5s', animationDelay: '0.8s' }} />
       </div>
 
       <div className="max-w-6xl mx-auto">
@@ -180,7 +184,7 @@ export default function SolutionSection() {
               variants={cardVariants}
               className={`group relative ${i === solutions.length - 1 && solutions.length % 2 !== 0 ? "md:col-span-2 md:max-w-[calc(50%-1rem)] md:mx-auto" : ""}`}
             >
-              <div className={`relative p-8 rounded-2xl border ${s.borderColor} bg-white/[0.02] backdrop-blur-sm hover:bg-white/[0.04] transition-all duration-700 h-full`}>
+              <div className={`relative p-8 rounded-2xl border ${s.borderColor} bg-gray-950/80 hover:bg-gray-900/60 transition-all duration-500 h-full glass-depth`}>
                 {/* Glow */}
                 <div className={`absolute -inset-px rounded-2xl ${s.glowColor} opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10`} />
 
