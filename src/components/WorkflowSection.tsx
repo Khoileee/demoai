@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import {
@@ -71,19 +71,22 @@ const steps = [
   },
 ];
 
-function TimelineStep({ step, index }: { step: (typeof steps)[0]; index: number }) {
+function TimelineStep({ step, index, isMobile }: { step: (typeof steps)[0]; index: number; isMobile: boolean }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
 
-  // Direct scroll-linked — no spring delay
-  // Bell-curve: rest → slide right at center → back to rest
+  // Mobile: no x shift (full width display), Desktop: bell-curve slide right
+  const peak = isMobile ? 0 : 60;
+  const mid = isMobile ? 0 : 48;
+  const small = isMobile ? 0 : 16;
+
   const x = useTransform(
     scrollYProgress,
     [0, 0.12, 0.28, 0.42, 0.5, 0.58, 0.72, 0.88, 1],
-    [0, 0, 16, 48, 60, 48, 16, 0, 0]
+    [0, 0, small, mid, peak, mid, small, 0, 0]
   );
 
   const opacity = useTransform(
@@ -92,10 +95,14 @@ function TimelineStep({ step, index }: { step: (typeof steps)[0]; index: number 
     [0, 0.4, 1, 1, 0.4, 0]
   );
 
+  // Mobile: subtler scale, Desktop: normal
+  const sPeak = isMobile ? 1.01 : 1.025;
+  const sMid = isMobile ? 1.005 : 1.015;
+
   const scale = useTransform(
     scrollYProgress,
     [0, 0.12, 0.35, 0.5, 0.65, 0.88, 1],
-    [0.97, 1, 1.015, 1.025, 1.015, 1, 0.97]
+    [0.97, 1, sMid, sPeak, sMid, 1, 0.97]
   );
 
   return (
@@ -139,6 +146,18 @@ function TimelineStep({ step, index }: { step: (typeof steps)[0]; index: number 
 
 export default function WorkflowSection() {
   const { ref: headerRef, isInView } = useScrollReveal();
+
+  // Detect mobile once + on resize (breakpoint 768px = md)
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   return (
     <section className="relative py-20 sm:py-28 px-6 overflow-hidden">
@@ -223,7 +242,7 @@ export default function WorkflowSection() {
         {/* Timeline flow */}
         <div className="relative">
           {steps.map((step, i) => (
-            <TimelineStep key={step.step} step={step} index={i} />
+            <TimelineStep key={step.step} step={step} index={i} isMobile={isMobile} />
           ))}
         </div>
       </div>
