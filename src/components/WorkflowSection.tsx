@@ -78,15 +78,13 @@ function TimelineStep({ step, index, isMobile }: { step: (typeof steps)[0]; inde
     offset: ["start end", "end start"],
   });
 
-  // Mobile: no x shift (full width display), Desktop: bell-curve slide right
-  const peak = isMobile ? 0 : 60;
-  const mid = isMobile ? 0 : 48;
-  const small = isMobile ? 0 : 16;
-
+  // Mobile: no x shift, no scale (only fade), Desktop: bell-curve slide right
   const x = useTransform(
     scrollYProgress,
     [0, 0.12, 0.28, 0.42, 0.5, 0.58, 0.72, 0.88, 1],
-    [0, 0, small, mid, peak, mid, small, 0, 0]
+    isMobile
+      ? [0, 0, 0, 0, 0, 0, 0, 0, 0]
+      : [0, 0, 16, 48, 60, 48, 16, 0, 0]
   );
 
   const opacity = useTransform(
@@ -95,21 +93,20 @@ function TimelineStep({ step, index, isMobile }: { step: (typeof steps)[0]; inde
     [0, 0.4, 1, 1, 0.4, 0]
   );
 
-  // Mobile: subtler scale, Desktop: normal
-  const sPeak = isMobile ? 1.01 : 1.025;
-  const sMid = isMobile ? 1.005 : 1.015;
-
+  // Mobile: no scale at all to avoid overflow, Desktop: subtle bump
   const scale = useTransform(
     scrollYProgress,
     [0, 0.12, 0.35, 0.5, 0.65, 0.88, 1],
-    [0.97, 1, sMid, sPeak, sMid, 1, 0.97]
+    isMobile
+      ? [1, 1, 1, 1, 1, 1, 1]
+      : [0.97, 1, 1.015, 1.025, 1.015, 1, 0.97]
   );
 
   return (
     <motion.div
       ref={ref}
-      style={{ opacity, x, scale, willChange: "transform, opacity" }}
-      className="relative flex items-start gap-6 md:gap-10 origin-left"
+      style={isMobile ? { opacity } : { opacity, x, scale, willChange: "transform, opacity" }}
+      className={`relative flex items-start gap-4 md:gap-10 ${isMobile ? "" : "origin-left"}`}
     >
       {/* Timeline spine — dot + line */}
       <div className="flex flex-col items-center flex-shrink-0">
