@@ -1,0 +1,1644 @@
+<!DOCTYPE html><html><head>
+      <title>HUONG_DAN_SU_DUNG_AI_TRONG_CONG_VIEC_BA</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script>
+    </head>
+    <body for="html-export">
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="hướng-dẫn-sử-dụng-ai-trong-công-việc-ba">HƯỚNG DẪN SỬ DỤNG AI TRONG CÔNG VIỆC BA </h1>
+<hr>
+<blockquote>
+<p><strong>Ngày tạo:</strong> 09/03/2026<br>
+<strong>Người tạo:</strong> Khôi Lê<br>
+<strong>Phiên bản:</strong> 2.0 (cập nhật 19/03/2026 – bổ sung Speech-to-Text, OpenClaw, Telegram Bot)</p>
+</blockquote>
+<hr>
+<h1 id="mục-lục">MỤC LỤC </h1>
+<ul>
+<li><a href="#ph%E1%BA%A7n-1--t%E1%BB%95ng-quan-lu%E1%BB%93ng-c%C3%B4ng-vi%E1%BB%87c">Phần 1 – Tổng quan luồng công việc</a></li>
+<li><a href="#ph%E1%BA%A7n-2--thu-th%E1%BA%ADp-y%C3%AAu-c%E1%BA%A7u-b%E1%BA%B1ng-speech-to-text">Phần 2 – Thu thập yêu cầu bằng Speech-to-Text</a></li>
+<li><a href="#ph%E1%BA%A7n-3--t%E1%BA%A1o-ui-prototype-b%E1%BA%B1ng-lovable">Phần 3 – Tạo UI Prototype bằng Lovable</a></li>
+<li><a href="#ph%E1%BA%A7n-4--c%C3%A0i-%C4%91%E1%BA%B7t-m%C3%B4i-tr%C6%B0%E1%BB%9Dng-l%C3%A0m-vi%E1%BB%87c">Phần 4 – Cài đặt môi trường làm việc</a></li>
+<li><a href="#ph%E1%BA%A7n-5--clone-repo-v%E1%BB%81-m%C3%A1y--m%E1%BB%9F-trong-vs-code">Phần 5 – Clone repo về máy &amp; mở trong VS Code</a></li>
+<li><a href="#ph%E1%BA%A7n-6--ch%E1%BA%A1y-project-tr%C3%AAn-m%C3%A1y-local">Phần 6 – Chạy project trên máy local</a></li>
+<li><a href="#ph%E1%BA%A7n-7--c%E1%BA%A5u-h%C3%ACnh-agent-ba-assistant--skill">Phần 7 – Cấu hình Agent BA Assistant &amp; Skill</a></li>
+<li><a href="#ph%E1%BA%A7n-8--s%E1%BB%AD-d%E1%BB%A5ng-agent-%C4%91%E1%BB%83-s%E1%BB%ADa-ui">Phần 8 – Sử dụng Agent để sửa UI</a></li>
+<li><a href="#ph%E1%BA%A7n-9--%C4%91%E1%BA%A9y-code-l%C3%AAn-github--c%E1%BA%ADp-nh%E1%BA%ADt-lovable">Phần 9 – Đẩy code lên GitHub &amp; cập nhật Lovable</a></li>
+<li><a href="#ph%E1%BA%A7n-10--sinh-t%C3%A0i-li%E1%BB%87u-srs--tkct--csdl-b%E1%BA%B1ng-agent">Phần 10 – Sinh tài liệu SRS / TKCT / CSDL bằng Agent</a></li>
+<li><a href="#ph%E1%BA%A7n-11--c%C3%A0i-%C4%91%E1%BA%B7t--s%E1%BB%AD-d%E1%BB%A5ng-openclaw--telegram-bot">Phần 11 – Cài đặt &amp; sử dụng OpenClaw + Telegram Bot</a></li>
+<li><a href="#ph%E1%BA%A7n-12--m%E1%BA%B9o--l%C6%B0u-%C3%BD-quan-tr%E1%BB%8Dng">Phần 12 – Mẹo &amp; Lưu ý quan trọng</a></li>
+</ul>
+<hr>
+<h1 id="phần-1--tổng-quan-luồng-công-việc">Phần 1 – Tổng quan luồng công việc </h1>
+<h2 id="luồng-tổng-thể">Luồng tổng thể </h2>
+<p>Dưới đây là toàn bộ luồng công việc từ lúc có ý tưởng nghiệp vụ đến khi có UI demo + tài liệu hoàn chỉnh:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌───────────────────────────────────────────────────────────────────────┐
+│                     LUỒNG CÔNG VIỆC TỔNG THỂ                          │
+│                                                                       │
+│  ① Họp / trao đổi nghiệp vụ → Speech-to-Text ghi chép tự động       │
+│       │                                                               │
+│       ▼                                                               │
+│  ② Agent phân tích transcript → meeting notes, requirement, to-do    │
+│       │                                                               │
+│       ▼                                                               │
+│  ③ Viết prompt mô tả nghiệp vụ (dựa trên meeting notes)             │
+│       │                                                               │
+│       ▼                                                               │
+│  ④ Lovable sinh UI prototype (React + Tailwind)                      │
+│       │                                                               │
+│       ▼                                                               │
+│  ⑤ Sync code lên GitHub (tạo repo tự động)                           │
+│       │                                                               │
+│       ▼                                                               │
+│  ⑥ Clone repo về máy → mở trong VS Code                              │
+│       │                                                               │
+│       ▼                                                               │
+│  ⑦ Chạy trên local (npm install → npm run dev → localhost)            │
+│       │                                                               │
+│       ▼                                                               │
+│  ⑧ Dùng Agent BA Assistant để sửa UI (Inspect → lấy ID → prompt)     │
+│       │                                                               │
+│       ▼                                                               │
+│  ⑨ Push code lên GitHub → Cập nhật trên Lovable → Publish            │
+│       │                                                               │
+│       ▼                                                               │
+│  ⑩ Dùng Agent sinh tài liệu SRS / TKCT / CSDL                       │
+│       │                                                               │
+│       ▼                                                               │
+│  ⑪ OpenClaw + Telegram Bot: tra cứu, sửa code, commit từ điện thoại │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
+</code></pre><h2 id="giải-thích-đơn-giản-các-khái-niệm">Giải thích đơn giản các khái niệm </h2>
+<p>Trước khi bắt đầu, hãy hiểu một số khái niệm cơ bản:</p>
+<table>
+<thead>
+<tr>
+<th>Khái niệm</th>
+<th>Giải thích đơn giản</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lovable</strong></td>
+<td>Một website cho phép bạn mô tả giao diện bằng lời → nó tự sinh ra code giao diện hoàn chỉnh</td>
+</tr>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Một "kho lưu trữ code trên mạng" – giống như Google Drive nhưng dành cho code</td>
+</tr>
+<tr>
+<td><strong>Repository (Repo)</strong></td>
+<td>Một "thư mục dự án" trên GitHub, chứa toàn bộ code của 1 project</td>
+</tr>
+<tr>
+<td><strong>VS Code</strong></td>
+<td>Phần mềm viết code miễn phí của Microsoft – giống Word nhưng dành cho code</td>
+</tr>
+<tr>
+<td><strong>GitHub Copilot</strong></td>
+<td>Trợ lý AI tích hợp trong VS Code, có thể "trò chuyện" và giúp sửa code</td>
+</tr>
+<tr>
+<td><strong>Agent</strong></td>
+<td>Một "nhân viên AI" được cấu hình sẵn với vai trò cụ thể (ví dụ: BA Assistant)</td>
+</tr>
+<tr>
+<td><strong>Skill</strong></td>
+<td>Một "bộ hướng dẫn chuyên môn" dạy Agent cách xử lý một loại công việc cụ thể</td>
+</tr>
+<tr>
+<td><strong>Terminal</strong></td>
+<td>Cửa sổ dòng lệnh trong VS Code – nơi bạn gõ lệnh để máy tính thực hiện</td>
+</tr>
+<tr>
+<td><strong>npm</strong></td>
+<td>Công cụ quản lý thư viện code – giống "App Store" nhưng dành cho code</td>
+</tr>
+<tr>
+<td><strong>localhost</strong></td>
+<td>Trang web chạy trên chính máy tính của bạn (chỉ bạn xem được)</td>
+</tr>
+<tr>
+<td><strong>Clone</strong></td>
+<td>"Tải về" một repo từ GitHub về máy tính của bạn</td>
+</tr>
+<tr>
+<td><strong>Commit</strong></td>
+<td>"Lưu lại" một thay đổi kèm mô tả (giống "Save" + ghi chú)</td>
+</tr>
+<tr>
+<td><strong>Push</strong></td>
+<td>"Đẩy" các thay đổi đã commit từ máy tính lên GitHub</td>
+</tr>
+<tr>
+<td><strong>Workspace</strong></td>
+<td>Một "không gian làm việc" trong VS Code chứa nhiều thư mục/dự án cùng lúc</td>
+</tr>
+<tr>
+<td><strong>Speech-to-Text</strong></td>
+<td>Chuyển giọng nói thành văn bản – dùng để ghi chép cuộc họp tự động</td>
+</tr>
+<tr>
+<td><strong>Whisper</strong></td>
+<td>Mô hình AI của OpenAI chuyên chuyển giọng nói thành text, hỗ trợ tiếng Việt</td>
+</tr>
+<tr>
+<td><strong>Transcript</strong></td>
+<td>Bản ghi văn bản từ âm thanh – nội dung cuộc họp đã được chuyển thành text</td>
+</tr>
+<tr>
+<td><strong>OpenClaw</strong></td>
+<td>Nền tảng AI agent mã nguồn mở, self-host trên máy cá nhân, kết nối Telegram/Discord</td>
+</tr>
+<tr>
+<td><strong>Telegram Bot</strong></td>
+<td>Bot trên Telegram kết nối với OpenClaw – chat với AI agent từ điện thoại</td>
+</tr>
+<tr>
+<td><strong>Self-host</strong></td>
+<td>Tự chạy phần mềm trên máy cá nhân thay vì dùng dịch vụ cloud</td>
+</tr>
+<tr>
+<td><strong>Gateway</strong></td>
+<td>Cổng kết nối trung gian của OpenClaw – nhận lệnh từ Telegram và chuyển đến AI model</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="phần-2--thu-thập-yêu-cầu-bằng-speech-to-text">Phần 2 – Thu thập yêu cầu bằng Speech-to-Text </h1>
+<p>Trước khi bắt đầu dựng prototype hay viết tài liệu, cần có <strong>đầu vào nghiệp vụ</strong> rõ ràng. Thay vì ghi chép thủ công trong các buổi họp, sử dụng công cụ <strong>Speech-to-Text</strong> để tự động chuyển giọng nói thành văn bản.</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌───────────────────────────────────────────────────────────────────┐
+│                LUỒNG THU THẬP YÊU CẦU                             │
+│                                                                   │
+│  Họp nghiệp vụ / Phỏng vấn stakeholder / Ghi âm cuộc gọi       │
+│       │                                                           │
+│       ▼                                                           │
+│  Speech-to-Text (realtime_meeting.py / test_transcribe.py)       │
+│       │                                                           │
+│       ▼                                                           │
+│  File transcript (meeting_notes.txt)                              │
+│       │                                                           │
+│       ▼                                                           │
+│  Agent + skill transcribe → meeting notes, to-do, action items   │
+│       │                                                           │
+│       ▼                                                           │
+│  Đầu vào cho: Lovable (prompt UI) / Agent @plan / Agent @doc     │
+│                                                                   │
+└───────────────────────────────────────────────────────────────────┘
+</code></pre><h2 id="tổng-quan-2-công-cụ-speech-to-text">Tổng quan 2 công cụ Speech-to-Text </h2>
+<p>Workspace cung cấp 2 script Python trong thư mục <code>speech_to_text/</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Mục đích</th>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>realtime_meeting.py</code></td>
+<td>Ghi âm <strong>trực tiếp từ microphone</strong> và transcribe realtime</td>
+<td>Âm thanh từ mic máy tính</td>
+<td><code>meeting_notes.txt</code> (append liên tục)</td>
+</tr>
+<tr>
+<td><code>test_transcribe.py</code></td>
+<td>Transcribe từ <strong>file audio có sẵn</strong> (.mp3, .wav,...)</td>
+<td>File audio (ví dụ: <code>recording.mp3</code>)</td>
+<td>In ra terminal</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bước-21--cài-đặt-môi-trường-python-1-lần-duy-nhất">Bước 2.1 – Cài đặt môi trường Python (1 lần duy nhất) </h2>
+<blockquote>
+<p><strong>Yêu cầu:</strong> Đã cài Python 3.10+ trên máy. Tải tại <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p>
+</blockquote>
+<ol>
+<li>Mở Terminal trong VS Code: nhấn <strong><code>Ctrl + `</code></strong></li>
+<li>Di chuyển vào thư mục speech_to_text:</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>cd speech_to_text
+</code></pre><ol start="3">
+<li>Tạo môi trường ảo (virtual environment):</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>python -m venv venv
+</code></pre><ol start="4">
+<li>Kích hoạt môi trường ảo:</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>.\venv\Scripts\activate
+</code></pre><ol start="5">
+<li>Cài đặt thư viện cần thiết:</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>pip install faster-whisper sounddevice numpy
+</code></pre><blockquote>
+<p><strong>Lưu ý:</strong> Lần đầu chạy script sẽ tự động <strong>download model Whisper</strong> (~800MB cho model "turbo"). Cần kết nối internet và thời gian tải khoảng 5–15 phút tùy tốc độ mạng.</p>
+</blockquote>
+<h2 id="bước-22--ghi-âm-trực-tiếp-cuộc-họp-realtime_meetingpy">Bước 2.2 – Ghi âm trực tiếp cuộc họp (realtime_meeting.py) </h2>
+<p>Đây là công cụ chính để ghi chép cuộc họp theo thời gian thực.</p>
+<h3 id="cách-chạy">Cách chạy: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>cd speech_to_text
+.\venv\Scripts\python.exe .\realtime_meeting.py
+</code></pre><h3 id="giao-diện-điều-khiển">Giao diện điều khiển: </h3>
+<p>Sau khi model load xong, terminal sẽ hiện:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>==================================================
+  MEETING TRANSCRIBER
+==================================================
+  Model   : turbo
+  Output  : meeting_notes.txt
+==================================================
+✅ Model loaded
+
+Controls:
+  R → bắt đầu ghi âm
+  S → dừng + transcribe
+  P → xem nội dung đã lưu
+  C → xóa buffer (ghi lại)
+  Q → thoát
+</code></pre><h3 id="các-phím-điều-khiển">Các phím điều khiển: </h3>
+<table>
+<thead>
+<tr>
+<th>Phím</th>
+<th>Chức năng</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R</strong></td>
+<td>Bắt đầu ghi âm</td>
+<td>Micro bắt đầu thu âm, hiển thị 🔴 Recording</td>
+</tr>
+<tr>
+<td><strong>S</strong></td>
+<td>Dừng + Transcribe</td>
+<td>Dừng ghi, chuyển audio thành text, lưu vào <code>meeting_notes.txt</code></td>
+</tr>
+<tr>
+<td><strong>P</strong></td>
+<td>Xem notes</td>
+<td>Hiển thị 20 dòng cuối cùng của file notes</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>Xóa buffer</td>
+<td>Xóa đoạn đang ghi để ghi lại (không xóa file)</td>
+</tr>
+<tr>
+<td><strong>Q</strong></td>
+<td>Thoát</td>
+<td>Dừng chương trình (hỏi lưu nếu đang ghi)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="quy-trình-sử-dụng-trong-cuộc-họp">Quy trình sử dụng trong cuộc họp: </h3>
+<ol>
+<li><strong>Trước họp:</strong> Chạy lệnh khởi động, chờ model load xong</li>
+<li><strong>Bắt đầu họp:</strong> Nhấn <code>R</code> để bắt đầu ghi</li>
+<li><strong>Sau mỗi phần thảo luận:</strong> Nhấn <code>S</code> để dừng + transcribe → nhấn <code>R</code> để ghi tiếp</li>
+<li><strong>Kết thúc họp:</strong> Nhấn <code>S</code> lần cuối → nhấn <code>Q</code> để thoát</li>
+<li><strong>Kết quả:</strong> Toàn bộ nội dung nằm trong file <code>meeting_notes.txt</code> với timestamp</li>
+</ol>
+<blockquote>
+<p><strong>Hiệu năng tham khảo (CPU, model turbo, int8):</strong></p>
+<ul>
+<li>1 phút audio → ~30–40 giây transcribe</li>
+<li>5 phút audio → ~2–3 phút transcribe</li>
+<li>Nên nhấn S sau mỗi 3–5 phút nói để transcript nhanh hơn và chính xác hơn</li>
+</ul>
+</blockquote>
+<h3 id="ví-dụ-output-trong-meeting_notestxt">Ví dụ output trong meeting_notes.txt: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>[2026-03-19 09:30:15]
+Đây là các vấn đề liên quan đến đề xuất bổ sung cho VSDF.
+Thứ nhất là màn quản lý dashboard. Chuyển trạng thái inactive
+của các dashboard công khai và đang được cấu hình trong slide.
+
+[2026-03-19 09:35:42]
+Khi mà admin hoặc là người tạo muốn off dash thì sẽ cần off được.
+Hiện tại mong muốn là hiển thị list user đang cấu hình dash
+trong thông báo lỗi không thể inactive.
+</code></pre><h2 id="bước-23--transcribe-từ-file-audio-có-sẵn-test_transcribepy">Bước 2.3 – Transcribe từ file audio có sẵn (test_transcribe.py) </h2>
+<p>Dùng khi đã có sẵn file ghi âm (.mp3, .wav, .m4a,...).</p>
+<h3 id="cách-chạy-1">Cách chạy: </h3>
+<ol>
+<li>Đặt file audio vào thư mục <code>speech_to_text/</code> (ví dụ: <code>recording.mp3</code>)</li>
+<li>Mở file <code>test_transcribe.py</code> và sửa tên file audio nếu cần:</li>
+</ol>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>segments<span class="token punctuation">,</span> info <span class="token operator">=</span> model<span class="token punctuation">.</span>transcribe<span class="token punctuation">(</span>
+    <span class="token string">"recording.mp3"</span><span class="token punctuation">,</span>   <span class="token comment"># ← đổi tên file audio tại đây</span>
+    beam_size<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>
+    language<span class="token operator">=</span><span class="token string">"vi"</span>
+<span class="token punctuation">)</span>
+</code></pre><ol start="3">
+<li>Chạy lệnh:</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>cd speech_to_text
+.\venv\Scripts\python.exe .\test_transcribe.py
+</code></pre><ol start="4">
+<li>Kết quả sẽ in trực tiếp ra terminal.</li>
+</ol>
+<h2 id="bước-24--dùng-agent-phân-tích-transcript">Bước 2.4 – Dùng Agent phân tích transcript </h2>
+<p>Sau khi có file <code>meeting_notes.txt</code>, sử dụng Agent BA Assistant để xử lý:</p>
+<h3 id="tạo-meeting-notes--action-items">Tạo meeting notes + action items: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Đọc file speech_to_text/meeting_notes.txt.
+Tổng hợp lại thành:
+- Meeting notes (tóm tắt nội dung chính)
+- To-do list / Action items
+- Danh sách requirement được đề cập
+- Vấn đề cần làm rõ thêm
+</code></pre><h3 id="dùng-transcript-làm-đầu-vào-cho-lovable">Dùng transcript làm đầu vào cho Lovable: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Dựa trên meeting notes từ file speech_to_text/meeting_notes.txt,
+viết cho tôi prompt mô tả UI để dùng trên Lovable cho module
+Quản lý Dashboard. Bao gồm layout, menu, bảng dữ liệu cần thiết.
+</code></pre><h3 id="dùng-transcript-làm-đầu-vào-cho-tài-liệu">Dùng transcript làm đầu vào cho tài liệu: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>@plan Dựa trên nội dung cuộc họp trong file speech_to_text/meeting_notes.txt,
+phân tích nghiệp vụ và liệt kê các requirement cho module Dashboard.
+</code></pre><hr>
+<h1 id="phần-3--tạo-ui-prototype-bằng-lovable">Phần 3 – Tạo UI Prototype bằng Lovable </h1>
+<h2 id="bước-31--truy-cập-lovable">Bước 3.1 – Truy cập Lovable </h2>
+<ol>
+<li>Mở trình duyệt (Chrome, Edge,...)</li>
+<li>Truy cập: <strong><a href="https://lovable.dev">https://lovable.dev</a></strong></li>
+<li>Đăng nhập bằng tài khoản GitHub (nếu chưa có tài khoản GitHub, hãy tạo tại <a href="https://github.com/signup">https://github.com/signup</a>)</li>
+</ol>
+<h2 id="bước-32--tạo-project-mới">Bước 3.2 – Tạo project mới </h2>
+<ol>
+<li>Sau khi đăng nhập, click nút <strong>"New Project"</strong> hoặc <strong>"Start Building"</strong></li>
+<li>Đặt tên project (ví dụ: <code>sql-workflow</code>, <code>auth-center</code>,...)</li>
+<li>Lovable sẽ mở ra giao diện chat – đây là nơi bạn mô tả giao diện</li>
+</ol>
+<h2 id="bước-33--viết-prompt-mô-tả-ui">Bước 3.3 – Viết prompt mô tả UI </h2>
+<p>Đây là bước quan trọng nhất – bạn mô tả giao diện bằng tiếng Việt hoặc tiếng Anh.</p>
+<p><strong>Ví dụ prompt:</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Tạo cho tôi một hệ thống quản lý SQL Workflow gồm:
+- Sidebar bên trái với các menu: Dashboard, Quản lý kênh, Quản lý template, Quản lý user
+- Header phía trên có logo, tên hệ thống, và avatar người dùng
+- Trang Dashboard hiển thị 4 card thống kê (Tổng kênh, Tổng template, Tổng user, Tổng workflow)
+- Phía dưới là bảng danh sách workflow gần đây với các cột: Tên, Trạng thái, Ngày tạo, Hành động
+- Style: clean, professional, dùng màu xanh dương làm màu chính
+- Responsive trên cả desktop và mobile
+</code></pre><p><strong>Mẹo viết prompt tốt:</strong></p>
+<ul>
+<li>Mô tả <strong>layout</strong> rõ ràng (sidebar trái, header trên, content chính ở giữa)</li>
+<li>Liệt kê <strong>menu và chức năng</strong> cụ thể</li>
+<li>Mô tả <strong>bảng dữ liệu</strong> với tên các cột</li>
+<li>Nêu <strong>style mong muốn</strong> (màu sắc, kiểu dáng)</li>
+<li>Có thể gửi <strong>ảnh chụp màn hình</strong> hệ thống mẫu để Lovable tham khảo</li>
+</ul>
+<h2 id="bước-34--chờ-lovable-sinh-giao-diện">Bước 3.4 – Chờ Lovable sinh giao diện </h2>
+<ol>
+<li>Sau khi gửi prompt, Lovable sẽ <strong>tự động sinh code</strong> và hiển thị <strong>preview</strong> bên phải</li>
+<li>Thời gian: khoảng 30 giây – 2 phút</li>
+<li>Bạn có thể xem giao diện trực tiếp trong cửa sổ preview</li>
+</ol>
+<h2 id="bước-35--chỉnh-sửa-trên-lovable-nếu-cần">Bước 3.5 – Chỉnh sửa trên Lovable (nếu cần) </h2>
+<p>Nếu giao diện chưa đúng ý, bạn tiếp tục chat:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Sửa lại sidebar: thêm icon cho mỗi menu item, và highlight menu đang active bằng màu xanh đậm
+</code></pre><p>Lovable sẽ cập nhật giao diện theo yêu cầu mới.</p>
+<h2 id="bước-36--sync-code-lên-github">Bước 3.6 – Sync code lên GitHub </h2>
+<p>Đây là bước kết nối Lovable với GitHub để lưu code:</p>
+<ol>
+<li>Trên Lovable, click vào biểu tượng <strong>GitHub</strong> (thường ở góc phải trên hoặc trong menu project settings)</li>
+<li>Click <strong>"Connect to GitHub"</strong> hoặc <strong>"Push to GitHub"</strong></li>
+<li>Lovable sẽ yêu cầu bạn authorize (cấp quyền) truy cập GitHub → Click <strong>"Authorize"</strong></li>
+<li>Chọn tên repo (ví dụ: <code>sql-wf</code>) → Click <strong>"Create repository"</strong></li>
+<li>Lovable sẽ tự động tạo repo trên GitHub và đẩy toàn bộ code lên</li>
+</ol>
+<p><strong>Kết quả:</strong> Bạn đã có 1 repository trên GitHub, ví dụ: <code>https://github.com/TenCuaBan/sql-wf</code></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────┐
+│                   LOVABLE                        │
+│                                                  │
+│  1. Viết prompt ──→ 2. Sinh UI ──→ 3. Preview   │
+│                                        │         │
+│                                        ▼         │
+│                               4. Connect GitHub  │
+│                                        │         │
+│                                        ▼         │
+│                          5. Push to GitHub repo  │
+└────────────────────────────┬────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────┐
+│                   GITHUB                         │
+│                                                  │
+│  Repository: github.com/TenCuaBan/sql-wf       │
+│  Chứa toàn bộ source code UI                    │
+│                                                  │
+└─────────────────────────────────────────────────┘
+</code></pre><hr>
+<h1 id="phần-4--cài-đặt-môi-trường-làm-việc">Phần 4 – Cài đặt môi trường làm việc </h1>
+<p>Để chạy được project trên máy tính, bạn cần cài 3 phần mềm sau:</p>
+<h2 id="bước-41--cài-đặt-git">Bước 4.1 – Cài đặt Git </h2>
+<p><strong>Git là gì?</strong> – Công cụ giúp máy tính "nói chuyện" được với GitHub (tải code về, đẩy code lên).</p>
+<ol>
+<li>Truy cập: <strong><a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></strong></li>
+<li>Click <strong>"Download for Windows"</strong> (hoặc macOS nếu dùng Mac)</li>
+<li>Mở file vừa tải về (ví dụ: <code>Git-2.47.1-64-bit.exe</code>)</li>
+<li>Cài đặt: <strong>cứ nhấn "Next" cho đến khi xong</strong> (giữ tất cả tùy chọn mặc định)</li>
+<li>Click <strong>"Install"</strong> → đợi cài → Click <strong>"Finish"</strong></li>
+</ol>
+<p><strong>Kiểm tra đã cài thành công:</strong></p>
+<ul>
+<li>Mở <strong>Command Prompt</strong> (gõ <code>cmd</code> ở thanh tìm kiếm Windows → Enter)</li>
+<li>Gõ lệnh:</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>git --version
+</code></pre><ul>
+<li>Nếu hiện ra dòng tương tự <code>git version 2.47.1</code> → <strong>thành công</strong></li>
+</ul>
+<h2 id="bước-42--cài-đặt-nodejs">Bước 4.2 – Cài đặt Node.js </h2>
+<p><strong>Node.js là gì?</strong> – Công cụ giúp máy tính chạy được code JavaScript (code mà Lovable đã sinh ra).</p>
+<ol>
+<li>Truy cập: <strong><a href="https://nodejs.org">https://nodejs.org</a></strong></li>
+<li>Click nút tải bản <strong>LTS</strong> (Long Term Support – bản ổn định, nút màu xanh bên trái)
+<ul>
+<li>Ví dụ: <code>22.14.0 LTS</code> (con số có thể khác tùy thời điểm)</li>
+</ul>
+</li>
+<li>Mở file vừa tải (ví dụ: <code>node-v22.14.0-x64.msi</code>)</li>
+<li>Cài đặt: <strong>nhấn "Next" cho đến khi xong</strong> (giữ mặc định)</li>
+<li>Click <strong>"Install"</strong> → đợi cài → Click <strong>"Finish"</strong></li>
+</ol>
+<p><strong>Kiểm tra đã cài thành công:</strong></p>
+<ul>
+<li>Mở <strong>Command Prompt</strong> (gõ <code>cmd</code> ở thanh tìm kiếm Windows → Enter)</li>
+<li>Gõ lệnh:</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>node --version
+</code></pre><ul>
+<li>Nếu hiện ra <code>v22.14.0</code> (hoặc tương tự) → <strong>thành công</strong></li>
+<li>Gõ tiếp:</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>npm --version
+</code></pre><ul>
+<li>Nếu hiện ra số phiên bản (ví dụ: <code>10.9.2</code>) → <strong>thành công</strong></li>
+</ul>
+<blockquote>
+<p><strong>Giải thích:</strong> Khi cài Node.js, bạn sẽ được cài kèm <code>npm</code> (Node Package Manager). <code>npm</code> giống như một "App Store" giúp tải các thư viện code cần thiết cho dự án.</p>
+</blockquote>
+<h2 id="bước-43--cài-đặt-visual-studio-code-vs-code">Bước 4.3 – Cài đặt Visual Studio Code (VS Code) </h2>
+<p><strong>VS Code là gì?</strong> – Chương trình soạn code miễn phí, và là nơi bạn sẽ dùng AI Agent.</p>
+<ol>
+<li>Truy cập: <strong><a href="https://code.visualstudio.com">https://code.visualstudio.com</a></strong></li>
+<li>Click <strong>"Download for Windows"</strong> (hoặc macOS)</li>
+<li>Mở file vừa tải (ví dụ: <code>VSCodeUserSetup-x64-1.96.exe</code>)</li>
+<li>Cài đặt: nhấn "Next", <strong>tích chọn "Add to PATH"</strong>, tiếp tục "Next" → "Install" → "Finish"</li>
+</ol>
+<h2 id="bước-44--cài-đặt-github-copilot-trong-vs-code">Bước 4.4 – Cài đặt GitHub Copilot trong VS Code </h2>
+<p><strong>GitHub Copilot là gì?</strong> – Trợ lý AI chạy bên trong VS Code, giúp sửa code và sinh tài liệu.</p>
+<ol>
+<li>Mở VS Code</li>
+<li>Click vào biểu tượng <strong>Extensions</strong> ở thanh bên trái (hình ô vuông nhỏ, hoặc nhấn <code>Ctrl + Shift + X</code>)</li>
+<li>Gõ tìm: <strong>"GitHub Copilot"</strong></li>
+<li>Click <strong>"Install"</strong> ở extension <strong>"GitHub Copilot"</strong> (của GitHub)</li>
+<li>Cài luôn <strong>"GitHub Copilot Chat"</strong> (cũng của GitHub)</li>
+<li>VS Code sẽ yêu cầu <strong>đăng nhập GitHub</strong> → đăng nhập bằng tài khoản GitHub của bạn</li>
+<li>Nếu bạn đã mua gói trả phí (Copilot Pro/Business), AI sẽ hoạt động ngay</li>
+</ol>
+<blockquote>
+<p><strong>Lưu ý:</strong> Để sử dụng được model <strong>Claude Opus 4.6</strong> (model mạnh nhất), bạn cần gói <strong>GitHub Copilot Pro</strong> hoặc <strong>Business</strong>.</p>
+</blockquote>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌────────────────────────────────────────────────────┐
+│           CÀI ĐẶT MÔI TRƯỜNG (1 LẦN DUY NHẤT)    │
+│                                                    │
+│  ① Git ─────── git-scm.com/downloads               │
+│       └─→ Để tải code từ GitHub về máy             │
+│                                                    │
+│  ② Node.js ─── nodejs.org (bản LTS)                │
+│       └─→ Để chạy được project trên máy            │
+│                                                    │
+│  ③ VS Code ─── code.visualstudio.com               │
+│       └─→ Chương trình soạn code + dùng AI         │
+│                                                    │
+│  ④ GitHub Copilot Extension (trong VS Code)         │
+│       └─→ Trợ lý AI giúp sửa code &amp; sinh tài liệu │
+│                                                    │
+└────────────────────────────────────────────────────┘
+</code></pre><hr>
+<h1 id="phần-5--clone-repo-về-máy--mở-trong-vs-code">Phần 5 – Clone repo về máy &amp; mở trong VS Code </h1>
+<h2 id="bước-51--tạo-thư-mục-workspace">Bước 5.1 – Tạo thư mục workspace </h2>
+<p>Trước hết, bạn cần tạo 1 thư mục chung trên máy để chứa <strong>tất cả các repo</strong>. Việc này rất quan trọng vì:</p>
+<ul>
+<li>Agent AI có thể đọc được <strong>tất cả các project</strong> cùng lúc</li>
+<li>Bộ skill và cấu hình agent <strong>dùng chung</strong> cho mọi project</li>
+<li>Dễ quản lý và tìm kiếm</li>
+</ul>
+<p><strong>Cách tạo:</strong></p>
+<ol>
+<li>Mở <strong>File Explorer</strong> (nhấn <code>Windows + E</code>)</li>
+<li>Vào ổ đĩa bạn muốn (ví dụ: <code>C:\</code> hoặc <code>D:\</code>)</li>
+<li>Click chuột phải → <strong>"New" → "Folder"</strong></li>
+<li>Đặt tên thư mục, ví dụ: <code>khoiln1_workspace</code></li>
+</ol>
+<blockquote>
+<p><strong>Kết quả:</strong> Bạn có thư mục <code>C:\khoiln1_workspace</code> (hoặc đường dẫn tương tự)</p>
+</blockquote>
+<h2 id="bước-52--mở-vs-code-và-clone-repo">Bước 5.2 – Mở VS Code và clone repo </h2>
+<ol>
+<li>Mở <strong>VS Code</strong></li>
+<li>Ở màn hình chào mừng, click <strong>"Clone Git Repository..."</strong>
+<ul>
+<li>Nếu không thấy, nhấn tổ hợp phím <strong><code>Ctrl + Shift + P</code></strong> → gõ <strong>"Git: Clone"</strong> → chọn <strong>"Git: Clone"</strong></li>
+</ul>
+</li>
+<li>Paste link repo GitHub của bạn vào ô nhập, ví dụ:<pre data-role="codeBlock" data-info="" class="language-text"><code>https://github.com/Khoileee/sql-wf
+</code></pre></li>
+<li>Nhấn <strong>Enter</strong></li>
+<li>VS Code sẽ hỏi <strong>"Chọn thư mục đích"</strong> → Chọn thư mục workspace bạn đã tạo ở bước 4.1 (ví dụ: <code>C:\khoiln1_workspace</code>)</li>
+<li>Click <strong>"Select as Repository Destination"</strong></li>
+<li>Đợi VS Code tải code về (khoảng 10–30 giây)</li>
+<li>VS Code hỏi <strong>"Would you like to open the cloned repository?"</strong> → Click <strong>"Open"</strong></li>
+</ol>
+<p><strong>Kết quả:</strong> Code đã được tải về tại <code>C:\khoiln1_workspace\sql-wf</code></p>
+<h2 id="bước-53--thêm-nhiều-repo-vào-cùng-1-workspace">Bước 5.3 – Thêm nhiều repo vào cùng 1 workspace </h2>
+<p>Lặp lại bước clone cho mỗi repo mới. Tất cả đều clone vào cùng thư mục <code>C:\khoiln1_workspace</code>:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>C:\khoiln1_workspace\              ← Thư mục workspace chung
+├── sql-wf\                        ← Repo 1: SQL Workflow
+├── authcenter\                    ← Repo 2: Auth Center
+├── baocaovtm\                     ← Repo 3: Báo cáo VTM
+├── vsdsdemo\                      ← Repo 4: VDSD Demo
+├── BA-knowledge\                  ← Thư mục tài liệu BA
+│   ├── Template tài liệu BA-DEV-TEST\
+│   ├── Tài liệu SRS\
+│   ├── Tài liệu TKCT\
+│   └── Tài liệu CSDL\
+├── .agents\                       ← Thư mục chứa skill (dùng chung)
+│   └── skills\
+└── .github\                       ← Thư mục chứa agent (dùng chung)
+    └── agents\
+</code></pre><p><strong>Mở workspace trong VS Code:</strong></p>
+<ol>
+<li>Trong VS Code, vào <strong>File → Open Folder...</strong></li>
+<li>Chọn thư mục <code>C:\khoiln1_workspace</code></li>
+<li>Click <strong>"Select Folder"</strong></li>
+</ol>
+<p>Bây giờ VS Code sẽ hiển thị <strong>tất cả các repo</strong> trong cùng 1 cửa sổ. Agent AI sẽ "nhìn thấy" toàn bộ code và tài liệu.</p>
+<hr>
+<h1 id="phần-6--chạy-project-trên-máy-local">Phần 6 – Chạy project trên máy local </h1>
+<h2 id="bước-61--mở-terminal-trong-vs-code">Bước 6.1 – Mở Terminal trong VS Code </h2>
+<ol>
+<li>Trong VS Code, nhấn tổ hợp phím <strong><code>Ctrl + `</code></strong> (phím backtick, nằm dưới phím Esc)
+<ul>
+<li>Hoặc vào menu <strong>Terminal → New Terminal</strong></li>
+</ul>
+</li>
+<li>Một cửa sổ Terminal sẽ xuất hiện ở phía dưới VS Code</li>
+</ol>
+<h2 id="bước-62--di-chuyển-vào-thư-mục-project">Bước 6.2 – Di chuyển vào thư mục project </h2>
+<p>Trong Terminal, bạn cần "đi vào" thư mục của project muốn chạy.</p>
+<p>Gõ lệnh:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>cd sqlwf
+</code></pre><blockquote>
+<p><strong>Giải thích:</strong></p>
+<ul>
+<li><code>cd</code> = "change directory" = "đi vào thư mục"</li>
+<li><code>sqlwf</code> = tên thư mục project</li>
+<li>Nếu muốn quay lại thư mục trước: gõ <code>cd ..</code></li>
+</ul>
+</blockquote>
+<p><strong>Một số lệnh <code>cd</code> thường dùng:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Lệnh</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cd sqlwf</code></td>
+<td>Đi vào thư mục <code>sqlwf</code></td>
+</tr>
+<tr>
+<td><code>cd authcenter</code></td>
+<td>Đi vào thư mục <code>authcenter</code></td>
+</tr>
+<tr>
+<td><code>cd ..</code></td>
+<td>Quay lại thư mục cha (thư mục bên ngoài)</td>
+</tr>
+<tr>
+<td><code>cd BA-knowledge</code></td>
+<td>Đi vào thư mục <code>BA-knowledge</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="bước-63--cài-đặt-thư-viện-npm-install">Bước 6.3 – Cài đặt thư viện (npm install) </h2>
+<p>Gõ lệnh:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>npm install
+</code></pre><p>hoặc viết tắt:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>npm i
+</code></pre><blockquote>
+<p><strong>Giải thích đơn giản:</strong></p>
+<ul>
+<li>Project code cần nhiều "thư viện" bên ngoài để chạy được (giống như xây nhà cần xi măng, sắt, gạch)</li>
+<li><code>npm install</code> = "tải tất cả thư viện cần thiết về máy"</li>
+<li>Thư viện sẽ được lưu trong thư mục <code>node_modules</code> (thư mục này tự sinh ra, không cần quan tâm)</li>
+<li><strong>Chỉ cần chạy 1 lần</strong> cho mỗi project (hoặc khi có thay đổi thư viện)</li>
+</ul>
+</blockquote>
+<p><strong>Đợi khoảng 30 giây – 2 phút.</strong> Khi thấy hiện ra dòng tương tự:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>added 385 packages in 15s
+</code></pre><p>→ <strong>Thành công!</strong></p>
+<h2 id="bước-64--chạy-project-npm-run-dev">Bước 6.4 – Chạy project (npm run dev) </h2>
+<p>Gõ lệnh:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>npm run dev
+</code></pre><blockquote>
+<p><strong>Giải thích đơn giản:</strong></p>
+<ul>
+<li><code>npm run dev</code> = "chạy project ở chế độ phát triển"</li>
+<li>Project sẽ khởi động và tạo một "trang web tạm" trên máy của bạn</li>
+</ul>
+</blockquote>
+<p><strong>Khi thấy hiện ra dòng tương tự:</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>  VITE v6.0.5  ready in 892 ms
+
+  ➜  Local:   http://localhost:8080/
+  ➜  Network: use --host to expose
+</code></pre><p>→ <strong>Thành công!</strong> Project đang chạy.</p>
+<h2 id="bước-65--xem-giao-diện">Bước 6.5 – Xem giao diện </h2>
+<ol>
+<li>Mở trình duyệt (Chrome, Edge,...)</li>
+<li>Gõ vào thanh địa chỉ: <strong><a href="http://localhost:8080">http://localhost:8080</a></strong> (hoặc link hiện trong Terminal)</li>
+<li>Nhấn <strong>Enter</strong></li>
+<li>Giao diện project sẽ hiện ra trên trình duyệt</li>
+</ol>
+<blockquote>
+<p><strong>Lưu ý:</strong></p>
+<ul>
+<li><strong>localhost</strong> = "máy tính của mình" – chỉ bạn xem được, không ai khác thấy</li>
+<li>Con số <code>8080</code> là "cổng" (port) – có thể là <code>3000</code>, <code>5173</code> tùy project</li>
+<li><strong>Terminal phải luôn mở</strong> khi muốn xem giao diện. Nếu tắt Terminal → trang web sẽ mất</li>
+<li>Muốn dừng: quay lại Terminal, nhấn <strong><code>Ctrl + C</code></strong></li>
+</ul>
+</blockquote>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌────────────────────────────────────────────────────┐
+│          CHẠY PROJECT TRÊN MÁY LOCAL               │
+│                                                    │
+│  Terminal commands:                                 │
+│                                                    │
+│  ① cd sqlwf              ← Đi vào thư mục project │
+│  ② npm install           ← Tải thư viện (1 lần)   │
+│  ③ npm run dev           ← Chạy project            │
+│  ④ Mở localhost:8080     ← Xem trên trình duyệt   │
+│                                                    │
+│  Dừng: Ctrl + C                                    │
+│  Quay lại thư mục cha: cd ..                       │
+│                                                    │
+└────────────────────────────────────────────────────┘
+</code></pre><hr>
+<h1 id="phần-7--cấu-hình-agent-ba-assistant--skill">Phần 7 – Cấu hình Agent BA Assistant &amp; Skill </h1>
+<h2 id="giải-thích-cơ-chế-agent-và-skill">Giải thích cơ chế Agent và Skill </h2>
+<p>Trước khi cấu hình, hãy hiểu cách hệ thống hoạt động:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────┐
+│                    BẠN (BA)                                      │
+│           Gõ prompt yêu cầu trong Copilot Chat                  │
+└───────────────────────┬─────────────────────────────────────────┘
+                        │
+                        ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                  AGENT: BA ASSISTANT                              │
+│                                                                  │
+│  Agent đọc file cấu hình (.agent.md) để biết:                   │
+│  - Mình có vai trò gì (BA cao cấp)                              │
+│  - Mình được dùng tool nào (đọc file, tìm kiếm, sửa file...)   │
+│  - Có những mode nào (@plan, @uiux, @doc)                       │
+│  - Có những skill nào                                            │
+│                                                                  │
+│  Khi nhận prompt, Agent tự động:                                 │
+│  ① Xác định mode phù hợp                                        │
+│  ② Quét thư mục .agents/skills/ để tìm skill liên quan          │
+│  ③ Đọc file SKILL.md của skill được chọn                        │
+│  ④ Tuân theo quy trình trong skill để xử lý                     │
+│  ⑤ Trả kết quả theo format chuẩn                                │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre><p><strong>Cơ chế quét skill:</strong></p>
+<ul>
+<li>Mỗi skill là 1 thư mục trong <code>.agents/skills/</code>, chứa 1 file <code>SKILL.md</code></li>
+<li>File <code>SKILL.md</code> mô tả: mục tiêu, khi nào dùng, quy trình phân tích, format output</li>
+<li>Khi bạn gõ prompt, Agent sẽ <strong>tự động đọc</strong> các file <a href="http://SKILL.md">SKILL.md</a> để biết nên dùng skill nào</li>
+<li>Ví dụ: bạn hỏi "phân tích CRUD" → Agent tự đọc skill <code>crud-analysis</code> và làm theo quy trình 7 bước trong đó</li>
+</ul>
+<h2 id="bước-71--tạo-thư-mục-agent">Bước 7.1 – Tạo thư mục Agent </h2>
+<p>Trong thư mục workspace (ví dụ: <code>C:\khoiln1_workspace</code>), tạo cấu trúc thư mục sau:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>C:\khoiln1_workspace\
+├── .github\
+│   └── agents\
+│       └── BA assistant.agent.md       ← File cấu hình agent
+│
+└── .agents\
+    └── skills\
+        ├── requirement-analysis\
+        │   └── SKILL.md                ← Skill phân tích nghiệp vụ
+        ├── crud-analysis\
+        │   └── SKILL.md                ← Skill phân tích CRUD
+        ├── ui-spec\
+        │   └── SKILL.md                ← Skill thiết kế UI
+        ├── diagram-generator\
+        │   └── SKILL.md                ← Skill vẽ diagram
+        ├── doc-generator\
+        │   └── SKILL.md                ← Skill sinh tài liệu
+        ├── data-model\
+        │   └── SKILL.md                ← Skill phân tích dữ liệu
+        └── tool-research\
+            └── SKILL.md                ← Skill nghiên cứu tool
+</code></pre><p><strong>Cách tạo thư mục trong VS Code:</strong></p>
+<ol>
+<li>Trong VS Code, ở panel <strong>Explorer</strong> bên trái, click chuột phải vào vùng trống</li>
+<li>Chọn <strong>"New Folder"</strong></li>
+<li>Gõ tên thư mục: <code>.github</code> → Enter</li>
+<li>Click chuột phải vào <code>.github</code> → <strong>"New Folder"</strong> → gõ <code>agents</code> → Enter</li>
+<li>Tương tự tạo <code>.agents</code> → <code>skills</code> → và các thư mục skill bên trong</li>
+</ol>
+<h2 id="bước-72--tạo-file-cấu-hình-agent">Bước 7.2 – Tạo file cấu hình Agent </h2>
+<ol>
+<li>Click chuột phải vào thư mục <code>.github/agents/</code></li>
+<li>Chọn <strong>"New File"</strong></li>
+<li>Đặt tên: <strong><code>BA assistant.agent.md</code></strong></li>
+<li>Paste nội dung cấu hình sau vào file:</li>
+</ol>
+<pre data-role="codeBlock" data-info="markdown" class="language-markdown markdown"><code><span class="token front-matter-block"><span class="token punctuation">---</span>
+<span class="token front-matter yaml language-yaml">name: BA assistant
+description: Bạn là BA Assistant – một Business Analyst cao cấp làm việc trên dự án phần mềm thực tế. Agent này đóng vai trò điều phối workflow phân tích nghiệp vụ, thiết kế UI/UX và tạo tài liệu SRS bằng cách sử dụng các skill chuyên môn trong .agents\skills.
+
+tools: ['agent','read','search','edit','todo']</span>
+<span class="token punctuation">---</span></span>
+source_of_truth:
+  <span class="token list punctuation">-</span> Source code trong repository hiện tại
+  <span class="token list punctuation">-</span> Các file đang mở hoặc thư mục được người dùng chọn
+  <span class="token list punctuation">-</span> Thư mục tài liệu nghiệp vụ: BA-knowledge
+  <span class="token list punctuation">-</span> Template tài liệu SRS: BA-knowledge\Template tài liệu BA-DEV-TEST\SRS_FINAL_TEMPLATE.md
+  <span class="token list punctuation">-</span> Thông tin, link, hình ảnh, mô tả do người dùng cung cấp
+
+available_skills:
+  <span class="token list punctuation">-</span> requirement-analysis
+  <span class="token list punctuation">-</span> crud-analysis
+  <span class="token list punctuation">-</span> ui-spec
+  <span class="token list punctuation">-</span> diagram-generator
+  <span class="token list punctuation">-</span> doc-generator
+  <span class="token list punctuation">-</span> data-model
+  <span class="token list punctuation">-</span> tool-research
+
+global_restrictions:
+  <span class="token list punctuation">-</span> Không tự bịa nghiệp vụ.
+  <span class="token list punctuation">-</span> Không suy đoán DB schema hoặc API nếu không có dữ liệu.
+  <span class="token list punctuation">-</span> Nếu thiếu thông tin phải ghi rõ: ⚠️ NEED INFO
+  <span class="token list punctuation">-</span> Không thay thế quyết định nghiệp vụ của BA hoặc PM.
+  <span class="token list punctuation">-</span> Văn phong phải formal, rõ ràng, mang tính tài liệu kỹ thuật.
+
+modes:
+
+  plan:
+    name: "@plan"
+    description: Mode phân tích nghiệp vụ, làm rõ requirement, nghiên cứu tool.
+    recommended_skills:
+      <span class="token list punctuation">-</span> requirement-analysis
+      <span class="token list punctuation">-</span> tool-research
+      <span class="token list punctuation">-</span> crud-analysis
+      <span class="token list punctuation">-</span> data-model
+      <span class="token list punctuation">-</span> diagram-generator
+
+  uiux:
+    name: "@uiux"
+    description: Mode thiết kế UI/UX dựa trên requirement đã chốt.
+    recommended_skills:
+      <span class="token list punctuation">-</span> ui-spec
+      <span class="token list punctuation">-</span> diagram-generator
+
+  doc:
+    name: "@doc"
+    description: Mode sinh tài liệu SRS, TKCT, CSDL theo template chuẩn.
+    recommended_skills:
+      <span class="token list punctuation">-</span> doc-generator
+      <span class="token list punctuation">-</span> diagram-generator
+</code></pre><ol start="5">
+<li>Nhấn <strong><code>Ctrl + S</code></strong> để lưu</li>
+</ol>
+<h2 id="bước-73--tạo-file-skill-ví-dụ-crud-analysis">Bước 7.3 – Tạo file Skill (ví dụ: crud-analysis) </h2>
+<ol>
+<li>Click chuột phải vào thư mục <code>.agents/skills/crud-analysis/</code></li>
+<li>Chọn <strong>"New File"</strong> → đặt tên <strong><code>SKILL.md</code></strong></li>
+<li>Paste nội dung hướng dẫn skill vào (mỗi skill có nội dung riêng)</li>
+</ol>
+<p><strong>Ví dụ nội dung <a href="http://SKILL.md">SKILL.md</a> cho crud-analysis:</strong></p>
+<pre data-role="codeBlock" data-info="markdown" class="language-markdown markdown"><code><span class="token front-matter-block"><span class="token punctuation">---</span>
+<span class="token front-matter yaml language-yaml">name: crud-analysis
+description: Phân tích CRUD operations (Create, Read, Update, Delete) của một module hoặc entity trong hệ thống. Xác định validation rule, business rule, permission rule.
+user-invokable: false</span>
+<span class="token punctuation">---</span></span>
+
+<span class="token title important"><span class="token punctuation">#</span> Mục tiêu của skill</span>
+Phân tích chi tiết logic dữ liệu: thao tác CRUD, validation, business rule, permission rule.
+
+<span class="token title important"><span class="token punctuation">#</span> Quy trình phân tích</span>
+<span class="token title important"><span class="token punctuation">##</span> Bước 1 – Xác định entity</span>
+<span class="token title important"><span class="token punctuation">##</span> Bước 2 – Phân tích Create (validation, business rule)</span>
+<span class="token title important"><span class="token punctuation">##</span> Bước 3 – Phân tích Read (filter, search, phân quyền)</span>
+<span class="token title important"><span class="token punctuation">##</span> Bước 4 – Phân tích Update (trường cho sửa, validation)</span>
+<span class="token title important"><span class="token punctuation">##</span> Bước 5 – Phân tích Delete (soft/hard delete, ràng buộc)</span>
+<span class="token title important"><span class="token punctuation">##</span> Bước 6 – Business Actions (Approve, Activate, Lock...)</span>
+<span class="token title important"><span class="token punctuation">##</span> Bước 7 – Ảnh hưởng hệ thống</span>
+</code></pre><blockquote>
+<p><strong>Lưu ý:</strong> Tạo tương tự cho tất cả 7 skill. Nội dung chi tiết của từng skill có thể tham khảo trong thư mục <code>.agents/skills/</code> của workspace mẫu.</p>
+</blockquote>
+<h2 id="bước-74--kiểm-tra-agent-đã-hoạt-động">Bước 7.4 – Kiểm tra Agent đã hoạt động </h2>
+<ol>
+<li>Trong VS Code, mở <strong>Copilot Chat</strong> bằng cách:
+<ul>
+<li>Click biểu tượng <strong>Copilot</strong> ở thanh bên trái (hoặc nhấn <code>Ctrl + Shift + I</code>)</li>
+<li>Hoặc nhấn <code>Ctrl + Shift + P</code> → gõ "Copilot Chat" → Enter</li>
+</ul>
+</li>
+<li>Ở phần chọn agent (góc trên hoặc dropdown), chọn <strong>"BA assistant"</strong></li>
+<li>Gõ thử: <code>Xin chào, bạn là agent gì?</code></li>
+<li>Nếu agent trả lời đúng vai trò → <strong>Cấu hình thành công!</strong></li>
+</ol>
+<hr>
+<h1 id="phần-8--sử-dụng-agent-để-sửa-ui">Phần 8 – Sử dụng Agent để sửa UI </h1>
+<h2 id="bước-81--chọn-agent-và-model">Bước 8.1 – Chọn Agent và Model </h2>
+<ol>
+<li>Trong VS Code, mở <strong>Copilot Chat</strong> (nhấn <code>Ctrl + Shift + I</code>)</li>
+<li>Ở dropdown chọn Agent, chọn <strong>"BA assistant"</strong></li>
+<li>Ở dropdown chọn Model, chọn <strong>"Claude Opus 4.6"</strong> (model mạnh nhất)
+<ul>
+<li>Nếu không thấy Claude Opus, chọn model có sẵn cao nhất</li>
+</ul>
+</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────┐
+│            COPILOT CHAT                  │
+│                                         │
+│  Agent: [BA assistant     ▼]            │
+│  Model: [Claude Opus 4.6  ▼]            │
+│                                         │
+│  ┌─────────────────────────────────┐    │
+│  │ Gõ prompt ở đây...             │    │
+│  └─────────────────────────────────┘    │
+│                                         │
+└─────────────────────────────────────────┘
+</code></pre><h2 id="bước-82--xác-định-element-cần-sửa-inspect">Bước 8.2 – Xác định element cần sửa (Inspect) </h2>
+<p>Đây là kỹ thuật quan trọng nhất để sửa UI chính xác:</p>
+<h3 id="cách-lấy-idthông-tin-element">Cách lấy ID/thông tin element: </h3>
+<ol>
+<li>Mở trình duyệt đang xem localhost (ví dụ: <a href="http://localhost:8080">http://localhost:8080</a>)</li>
+<li><strong>Click chuột phải</strong> vào vùng bất kỳ trên trang → chọn <strong>"Inspect"</strong> (hoặc nhấn <code>F12</code>)</li>
+<li>Cửa sổ <strong>Developer Tools</strong> sẽ mở ra ở bên phải hoặc dưới</li>
+<li>Click vào <strong>biểu tượng mũi tên</strong> ở góc trên bên trái của Developer Tools (nút "Select an element")
+<ul>
+<li>Hoặc nhấn <code>Ctrl + Shift + C</code></li>
+</ul>
+</li>
+<li><strong>Di chuột</strong> đến phần tử trên trang mà bạn muốn sửa → <strong>Click vào nó</strong></li>
+<li>Tab <strong>Elements</strong> sẽ tự nhảy tới đúng dòng code HTML của phần tử đó</li>
+<li>Xem <strong>ID</strong> hoặc <strong>class</strong> của phần tử (ví dụ: <code>id="sidebar-menu"</code>, <code>class="dashboard-card"</code>)</li>
+<li><strong>Copy ID hoặc class đó</strong> để dùng trong prompt</li>
+</ol>
+<h3 id="ví-dụ-thực-tế">Ví dụ thực tế: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Bạn muốn sửa tiêu đề "Dashboard" thành "Tổng quan"
+
+1. Chuột phải vào chữ "Dashboard" → Inspect
+2. Click mũi tên ↖ ở góc trái DevTools
+3. Click vào chữ "Dashboard" trên trang
+4. Tab Elements hiện: &lt;h1 id="page-title" class="text-2xl"&gt;Dashboard&lt;/h1&gt;
+5. Copy "page-title" để dùng trong prompt
+</code></pre><h3 id="sử-dụng-trong-prompt">Sử dụng trong prompt: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Sửa element có id="page-title": đổi text từ "Dashboard" thành "Tổng quan"
+</code></pre><pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────┐
+│           CÁCH LẤY ID ELEMENT ĐỂ SỬA UI                 │
+│                                                          │
+│  ① Mở trang localhost trên trình duyệt                  │
+│  ② Click chuột phải → "Inspect" (hoặc F12)              │
+│  ③ Click biểu tượng mũi tên ↖ (góc trái DevTools)       │
+│  ④ Click vào phần tử muốn sửa trên trang                │
+│  ⑤ Tab Elements hiện code → tìm id="..." hoặc class="…" │
+│  ⑥ Copy ID/class → paste vào prompt Copilot              │
+│                                                          │
+│  Ví dụ prompt:                                           │
+│  "Sửa element id='page-title', đổi text thành 'XYZ'"    │
+│                                                          │
+└─────────────────────────────────────────────────────────┘
+</code></pre><h2 id="bước-83--gõ-prompt-yêu-cầu-sửa-ui">Bước 8.3 – Gõ prompt yêu cầu sửa UI </h2>
+<p>Trong Copilot Chat (đã chọn Agent BA assistant + Claude Opus 4.6), gõ prompt:</p>
+<p><strong>Ví dụ 1 – Sửa text:</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Trong project sqlwf, sửa element có id="page-title" ở file src/pages/Dashboard.tsx:
+đổi text từ "Dashboard" thành "Tổng quan hệ thống"
+</code></pre><p><strong>Ví dụ 2 – Sửa style:</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Sửa sidebar trong file src/components/Sidebar.tsx:
+- Đổi màu nền sidebar từ trắng sang xanh đậm (#1a365d)
+- Text menu item đổi sang màu trắng
+- Menu item active highlight bằng nền xanh nhạt (#2a4a7f)
+</code></pre><p><strong>Ví dụ 3 – Thêm chức năng:</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Thêm nút "Xuất Excel" vào bảng danh sách kênh trong file src/pages/ChannelManagement.tsx:
+- Vị trí: bên phải nút "Thêm mới"
+- Icon: download
+- Style: giống nút "Thêm mới" nhưng màu xanh lá
+</code></pre><h2 id="bước-84--xem-kết-quả--chấp-nhận-thay-đổi">Bước 8.4 – Xem kết quả &amp; chấp nhận thay đổi </h2>
+<ol>
+<li>Agent sẽ đề xuất các thay đổi code</li>
+<li>VS Code hiển thị phần code thay đổi (highlight màu xanh = thêm, đỏ = xóa)</li>
+<li>Click <strong>"Accept"</strong> (✓) để chấp nhận hoặc <strong>"Discard"</strong> (✗) để từ chối</li>
+<li>Sau khi Accept, trang localhost sẽ <strong>tự động refresh</strong> hiển thị giao diện mới</li>
+</ol>
+<h2 id="bước-85--xử-lý-lỗi-nếu-có">Bước 8.5 – Xử lý lỗi (nếu có) </h2>
+<p>Nếu sau khi sửa, trang web hiển thị lỗi hoặc trắng:</p>
+<ol>
+<li>Mở trình duyệt trang localhost</li>
+<li><strong>Click chuột phải → Inspect</strong></li>
+<li>Click vào tab <strong>"Console"</strong> (bên cạnh tab Elements)</li>
+<li>Sẽ thấy các dòng lỗi màu đỏ</li>
+<li><strong>Copy toàn bộ lỗi đó</strong></li>
+<li>Quay lại Copilot Chat, paste lỗi vào và gõ:</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Trang localhost bị lỗi sau khi sửa. Đây là lỗi từ Console:
+
+[paste lỗi ở đây]
+
+Hãy sửa lỗi này.
+</code></pre><p>Agent sẽ đọc lỗi và tự sửa.</p>
+<hr>
+<h1 id="phần-9--đẩy-code-lên-github--cập-nhật-lovable">Phần 9 – Đẩy code lên GitHub &amp; cập nhật Lovable </h1>
+<h2 id="bước-91--mở-terminal-và-vào-đúng-thư-mục">Bước 9.1 – Mở Terminal và vào đúng thư mục </h2>
+<ol>
+<li>Trong VS Code, mở Terminal: nhấn <strong><code>Ctrl + `</code></strong></li>
+<li>Di chuyển vào thư mục project:</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>cd sqlwf
+</code></pre><blockquote>
+<p><strong>Lưu ý:</strong> Bạn phải ở đúng thư mục project mới push được. Nếu terminal đang hiện <code>C:\khoiln1_workspace&gt;</code> thì gõ <code>cd sqlwf</code> để vào. Nếu terminal đang hiện <code>C:\khoiln1_workspace\sqlwf&gt;</code> thì đã sẵn sàng.</p>
+</blockquote>
+<h2 id="bước-92--push-code-lên-github">Bước 9.2 – Push code lên GitHub </h2>
+<p>Gõ lần lượt 3 lệnh sau:</p>
+<h3 id="lệnh-1--thêm-tất-cả-thay-đổi">Lệnh 1 – Thêm tất cả thay đổi: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>git add .
+</code></pre><blockquote>
+<p><strong>Giải thích:</strong> "Đánh dấu" tất cả file đã thay đổi, chuẩn bị để lưu. Dấu <code>.</code> có nghĩa là "tất cả file".</p>
+</blockquote>
+<h3 id="lệnh-2--commit-lưu-thay-đổi-kèm-mô-tả">Lệnh 2 – Commit (lưu thay đổi kèm mô tả): </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>git commit -m "Sửa giao diện sidebar và thêm nút Xuất Excel"
+</code></pre><blockquote>
+<p><strong>Giải thích:</strong> "Lưu lại" các thay đổi với mô tả ngắn gọn trong dấu ngoặc kép. Hãy ghi mô tả rõ ràng để sau này biết đã sửa gì.</p>
+</blockquote>
+<h3 id="lệnh-3--push-đẩy-lên-github">Lệnh 3 – Push (đẩy lên GitHub): </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>git push origin main
+</code></pre><blockquote>
+<p><strong>Giải thích:</strong> "Đẩy" toàn bộ thay đổi đã commit lên GitHub. <code>origin</code> = GitHub, <code>main</code> = nhánh chính.</p>
+</blockquote>
+<p><strong>Khi thấy hiện ra:</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Enumerating objects: 5, done.
+...
+To https://github.com/Khoileee/sql-wf.git
+   abc1234..def5678  main -&gt; main
+</code></pre><p>→ <strong>Push thành công!</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────┐
+│       PUSH CODE LÊN GITHUB (3 LỆNH)             │
+│                                                  │
+│  ① git add .                                     │
+│     └─→ Đánh dấu tất cả thay đổi               │
+│                                                  │
+│  ② git commit -m "Mô tả thay đổi"              │
+│     └─→ Lưu lại kèm ghi chú                    │
+│                                                  │
+│  ③ git push origin main                          │
+│     └─→ Đẩy lên GitHub                          │
+│                                                  │
+│  Lưu ý: phải cd vào đúng thư mục project trước  │
+│  Ví dụ: cd sqlwf                                 │
+│                                                  │
+└─────────────────────────────────────────────────┘
+</code></pre><h2 id="bước-93--cập-nhật-trên-lovable">Bước 9.3 – Cập nhật trên Lovable </h2>
+<p>Sau khi push code lên GitHub, quay lại Lovable để cập nhật:</p>
+<ol>
+<li>Mở trình duyệt, truy cập <strong><a href="https://lovable.dev">https://lovable.dev</a></strong></li>
+<li>Mở project của bạn</li>
+<li>Lovable sẽ phát hiện có thay đổi trên GitHub</li>
+<li>Click <strong>"Pull from GitHub"</strong> hoặc <strong>"Sync"</strong> để đồng bộ code mới nhất</li>
+<li>Xem preview → nếu OK, click <strong>"Publish"</strong> hoặc <strong>"Deploy"</strong> để publish bản mới</li>
+<li>Lovable sẽ cung cấp 1 link công khai (ví dụ: <code>https://ten-project.lovable.app</code>)</li>
+<li>Share link này cho PM, Dev, Stakeholder review</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌──────────────┐     git push     ┌──────────────┐     sync      ┌──────────────┐
+│   VS Code    │ ──────────────→  │   GitHub     │ ───────────→  │   Lovable    │
+│ (sửa trên    │                  │ (lưu trữ    │               │ (publish     │
+│  máy local)  │                  │  code)       │               │  bản mới)    │
+└──────────────┘                  └──────────────┘               └──────────────┘
+                                                                       │
+                                                                       ▼
+                                                              Link share cho team
+                                                              review demo
+</code></pre><hr>
+<h1 id="phần-10--sinh-tài-liệu-srs--tkct--csdl-bằng-agent">Phần 10 – Sinh tài liệu SRS / TKCT / CSDL bằng Agent </h1>
+<h2 id="giải-thích-cơ-chế-sinh-tài-liệu">Giải thích cơ chế sinh tài liệu </h2>
+<p>Khi bạn yêu cầu sinh tài liệu, Agent BA Assistant hoạt động theo flow sau:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────┐
+│                  LUỒNG SINH TÀI LIỆU                                │
+│                                                                      │
+│  ① Bạn gõ prompt yêu cầu sinh SRS cho module X                      │
+│       │                                                              │
+│       ▼                                                              │
+│  ② Agent nhận diện mode @doc → kích hoạt skill doc-generator         │
+│       │                                                              │
+│       ▼                                                              │
+│  ③ Agent đọc file template (SRS_FINAL_TEMPLATE.md)                   │
+│     từ thư mục BA-knowledge/Template tài liệu BA-DEV-TEST/          │
+│       │                                                              │
+│       ▼                                                              │
+│  ④ Agent quét source code của project tương ứng                      │
+│     (đọc file .tsx, .ts để hiểu cấu trúc UI và logic)               │
+│       │                                                              │
+│       ▼                                                              │
+│  ⑤ Agent kích hoạt thêm các skill phụ trợ:                          │
+│     - requirement-analysis (phân tích nghiệp vụ)                     │
+│     - crud-analysis (phân tích CRUD)                                 │
+│     - ui-spec (mô tả UI chi tiết)                                   │
+│     - data-model (mô hình dữ liệu)                                  │
+│     - diagram-generator (vẽ diagram)                                 │
+│       │                                                              │
+│       ▼                                                              │
+│  ⑥ Agent điền nội dung vào từng section của template                 │
+│       │                                                              │
+│       ▼                                                              │
+│  ⑦ Agent tự kiểm tra: đủ section chưa? Có mâu thuẫn không?         │
+│       │                                                              │
+│       ▼                                                              │
+│  ⑧ Agent tạo file .md trong thư mục BA-knowledge/Tài liệu SRS/     │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+</code></pre><h2 id="bước-101--sinh-tài-liệu-srs">Bước 10.1 – Sinh tài liệu SRS </h2>
+<ol>
+<li>Mở <strong>Copilot Chat</strong> trong VS Code</li>
+<li>Chọn Agent: <strong>BA assistant</strong></li>
+<li>Chọn Model: <strong>Claude Opus 4.6</strong></li>
+<li>Gõ prompt:</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>@doc Tạo tài liệu SRS cho module Quản lý kênh trong project sqlwf.
+Hãy đọc source code trong thư mục sqlwf/src/ và template SRS trong 
+BA-knowledge/Template tài liệu BA-DEV-TEST/SRS_FINAL_TEMPLATE.md 
+để sinh tài liệu đầy đủ.
+Lưu file tại: BA-knowledge/Tài liệu SRS/SRS_SQLWF_QUAN_LY_KENH.md
+</code></pre><p><strong>Giải thích prompt:</strong></p>
+<ul>
+<li><code>@doc</code> → Chỉ định mode sinh tài liệu</li>
+<li>Nêu rõ <strong>module nào</strong> (Quản lý kênh)</li>
+<li>Nêu rõ <strong>project nào</strong> (sqlwf)</li>
+<li>Chỉ đường dẫn <strong>source code</strong> để agent đọc</li>
+<li>Chỉ đường dẫn <strong>template</strong> để agent theo format</li>
+<li>Chỉ <strong>nơi lưu file</strong> output</li>
+</ul>
+<p><strong>Agent sẽ tự động:</strong></p>
+<ul>
+<li>Đọc template SRS → biết cần có 8 section</li>
+<li>Đọc source code → hiểu UI có gì, logic ra sao</li>
+<li>Kích hoạt skill crud-analysis → phân tích thêm/sửa/xóa</li>
+<li>Kích hoạt skill ui-spec → mô tả chi tiết từng field</li>
+<li>Kích hoạt skill diagram-generator → vẽ activity diagram, sequence diagram</li>
+<li>Kích hoạt skill data-model → mô tả entity, ERD</li>
+<li>Tổng hợp tất cả → sinh file SRS hoàn chỉnh</li>
+</ul>
+<h2 id="bước-102--sinh-tài-liệu-tkct">Bước 10.2 – Sinh tài liệu TKCT </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>@doc Tạo tài liệu Thiết kế chi tiết (TKCT) cho module Quản lý kênh trong project sqlwf.
+Dựa trên template TKCT tại BA-knowledge/Template tài liệu BA-DEV-TEST/TKCT_dev.md
+và source code trong thư mục sqlwf/src/.
+Lưu file tại: BA-knowledge/Tài liệu TKCT/TKCT_SQLWF_QUAN_LY_KENH.md
+</code></pre><h2 id="bước-103--sinh-tài-liệu-csdl">Bước 10.3 – Sinh tài liệu CSDL </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>@doc Tạo tài liệu Thiết kế Cơ sở dữ liệu (CSDL) cho project authcenter.
+Dựa trên template CSDL tại BA-knowledge/Template tài liệu BA-DEV-TEST/CSDL_dev.md
+và source code trong thư mục authcenter/src/ và authcenter/supabase/.
+Lưu file tại: BA-knowledge/Tài liệu CSDL/CSDL_AUTHCENTER.md
+</code></pre><h2 id="bước-104--phân-tích-nghiệp-vụ-không-sinh-tài-liệu">Bước 10.4 – Phân tích nghiệp vụ (không sinh tài liệu) </h2>
+<p>Nếu chỉ muốn phân tích nghiệp vụ mà chưa cần sinh tài liệu hoàn chỉnh:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>@plan Phân tích nghiệp vụ module Quản lý kênh trong project sqlwf.
+Hãy đọc source code và cho tôi biết:
+- Các chức năng hiện có
+- Luồng nghiệp vụ chính
+- Phân tích CRUD chi tiết cho entity Kênh
+- Vẽ activity diagram cho luồng thêm mới kênh
+</code></pre><h2 id="bước-105--nghiên-cứu-toolgiải-pháp">Bước 10.5 – Nghiên cứu tool/giải pháp </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>@plan Nghiên cứu và so sánh các công cụ Data Quality phổ biến:
+- Great Expectations
+- Deequ
+- Apache Griffin
+Cho tôi bảng so sánh chi tiết và đề xuất tool phù hợp cho hệ thống nội bộ.
+</code></pre><h2 id="mẹo-tối-ưu-prompt-khi-dùng-agent">Mẹo tối ưu prompt khi dùng Agent </h2>
+<p><strong>Prompt hiệu quả = Nêu rõ 4 yếu tố:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Yếu tố</th>
+<th>Giải thích</th>
+<th>Ví dụ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mode</strong></td>
+<td>Đang ở chế độ nào</td>
+<td><code>@doc</code>, <code>@plan</code>, <code>@uiux</code></td>
+</tr>
+<tr>
+<td><strong>Đối tượng</strong></td>
+<td>Module/entity/chức năng gì</td>
+<td>"module Quản lý kênh", "entity User"</td>
+</tr>
+<tr>
+<td><strong>Nguồn dữ liệu</strong></td>
+<td>Agent nên đọc ở đâu</td>
+<td>"source code trong sqlwf/src/", "template SRS_FINAL_TEMPLATE.md"</td>
+</tr>
+<tr>
+<td><strong>Output mong muốn</strong></td>
+<td>Kết quả cần gì, lưu ở đâu</td>
+<td>"Sinh SRS, lưu tại Tài liệu SRS/..."</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ví dụ prompt tốt:</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>@doc Tạo SRS cho module Quản lý user trong project authcenter.
+Đọc source code: authcenter/src/
+Đọc template: BA-knowledge/Template tài liệu BA-DEV-TEST/SRS_FINAL_TEMPLATE.md
+Output: BA-knowledge/Tài liệu SRS/SRS_AUTHCENTER_QUANLY_USER.md
+Chú ý phân tích chi tiết validation rule và phân quyền theo role.
+</code></pre><p><strong>Ví dụ prompt chưa tốt:</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Viết SRS cho tôi
+</code></pre><p>→ Agent không biết module nào, project nào, lưu ở đâu.</p>
+<hr>
+<h1 id="phần-11--cài-đặt--sử-dụng-openclaw--telegram-bot">Phần 11 – Cài đặt &amp; sử dụng OpenClaw + Telegram Bot </h1>
+<p>Sau khi đã có prototype, tài liệu, code trong workspace – bạn có thể mở rộng khả năng làm việc bằng <strong>OpenClaw</strong>: một AI agent mã nguồn mở, self-host trên máy cá nhân, kết nối với <strong>Telegram Bot</strong> để chat và ra lệnh cho AI từ điện thoại.</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────┐
+│              KIẾN TRÚC OPENCLAW + TELEGRAM BOT                       │
+│                                                                      │
+│  ┌──────────────┐                    ┌──────────────────────┐       │
+│  │  Telegram     │ ◄── internet ──► │  OpenClaw Gateway     │       │
+│  │  (điện thoại) │                   │  (self-host trên PC)  │       │
+│  └──────────────┘                    └──────────┬───────────┘       │
+│                                                  │                   │
+│                              ┌───────────────────┼────────────┐     │
+│                              │                   │            │     │
+│                              ▼                   ▼            ▼     │
+│                        ┌──────────┐     ┌──────────┐  ┌──────────┐ │
+│                        │ AI Model │     │ Workspace │  │ Memory   │ │
+│                        │ (Claude, │     │ (VS Code  │  │ (lịch sử │ │
+│                        │  GPT,...) │     │  files)   │  │  chat)   │ │
+│                        └──────────┘     └──────────┘  └──────────┘ │
+│                                                                      │
+│  Khả năng:                                                           │
+│  ✓ Chat với AI agent từ điện thoại                                  │
+│  ✓ Tra cứu thông tin trong workspace                                │
+│  ✓ Sửa code, tạo file trực tiếp                                    │
+│  ✓ Tự động git commit &amp; push                                       │
+│  ✓ Ghi nhớ ngữ cảnh liên phiên (memory)                            │
+│  ✓ Chạy lệnh, cron job, heartbeat                                  │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+</code></pre><h2 id="bước-111--cài-đặt-openclaw">Bước 11.1 – Cài đặt OpenClaw </h2>
+<h3 id="yêu-cầu-hệ-thống">Yêu cầu hệ thống: </h3>
+<ul>
+<li>Windows 10/11 (hoặc macOS/Linux)</li>
+<li>PowerShell 5.1+</li>
+<li>Kết nối internet</li>
+</ul>
+<h3 id="lệnh-cài-đặt">Lệnh cài đặt: </h3>
+<p>Mở <strong>PowerShell</strong> (hoặc Terminal trong VS Code) và chạy:</p>
+<pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code>powershell <span class="token operator">-</span>c <span class="token string">"irm https://openclaw.ai/install.ps1 | iex"</span>
+</code></pre><blockquote>
+<p><strong>Giải thích:</strong> Lệnh này tải và chạy script cài đặt OpenClaw tự động. Sau khi cài xong, lệnh <code>openclaw</code> sẽ có sẵn trong terminal.</p>
+</blockquote>
+<h3 id="kiểm-tra-cài-đặt-thành-công">Kiểm tra cài đặt thành công: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw --version
+</code></pre><pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw health
+</code></pre><p>Nếu hiện version number và trạng thái health → cài đặt thành công.</p>
+<h2 id="bước-112--cấu-hình-ban-đầu-setup-wizard">Bước 11.2 – Cấu hình ban đầu (Setup Wizard) </h2>
+<p>Chạy wizard cấu hình tương tác:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw configure
+</code></pre><p>Wizard sẽ hỏi lần lượt các thông tin:</p>
+<ol>
+<li><strong>Workspace path</strong> – thư mục làm việc (ví dụ: <code>C:\khoiln1_workspace</code>)</li>
+<li><strong>AI Model</strong> – chọn model mặc định (xem bước 11.3)</li>
+<li><strong>Channel</strong> – kênh chat muốn kết nối (Telegram, Discord,...)</li>
+<li><strong>Agent defaults</strong> – cấu hình mặc định cho agent</li>
+</ol>
+<blockquote>
+<p>Nếu muốn cấu hình lại sau, có thể chạy <code>openclaw configure</code> bất kỳ lúc nào.</p>
+</blockquote>
+<h2 id="bước-113--kết-nối-ai-model">Bước 11.3 – Kết nối AI Model </h2>
+<p>OpenClaw hoạt động như <strong>cầu nối</strong> giữa kênh chat (Telegram) và các AI model. Cần cấu hình ít nhất 1 model.</p>
+<h3 id="xem-danh-sách-model-có-sẵn">Xem danh sách model có sẵn: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw models scan
+</code></pre><h3 id="thêm-model-ví-dụ-claude-qua-anthropic-api">Thêm model (ví dụ Claude qua Anthropic API): </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw models add --provider anthropic --api-key sk-ant-xxxxx
+</code></pre><h3 id="thêm-model-openai">Thêm model OpenAI: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw models add --provider openai --api-key sk-xxxxx
+</code></pre><h3 id="đặt-model-mặc-định">Đặt model mặc định: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw models set-default --model claude-sonnet-4-20250514
+</code></pre><h3 id="kiểm-tra-model-đã-kết-nối">Kiểm tra model đã kết nối: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw models list
+</code></pre><blockquote>
+<p><strong>Mẹo:</strong> Có thể kết nối nhiều model cùng lúc và chuyển đổi linh hoạt trong chat.</p>
+</blockquote>
+<h2 id="bước-114--khởi-động-gateway">Bước 11.4 – Khởi động Gateway </h2>
+<p>Gateway là "trung tâm điều phối" của OpenClaw – nhận tin nhắn từ Telegram và chuyển đến AI model.</p>
+<h3 id="khởi-động">Khởi động: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw gateway
+</code></pre><p>Mặc định Gateway chạy trên <code>ws://127.0.0.1:18789</code>.</p>
+<h3 id="khởi-động-với-port-khác-nếu-cần">Khởi động với port khác (nếu cần): </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw gateway --port 19000
+</code></pre><h3 id="khởi-động-và-tự-kill-process-cũ-nếu-bị-treo">Khởi động và tự kill process cũ (nếu bị treo): </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw gateway --force
+</code></pre><blockquote>
+<p><strong>Quan trọng:</strong> Gateway phải <strong>luôn chạy</strong> trên máy tính để Telegram Bot hoạt động. Khi tắt máy hoặc tắt terminal, bot sẽ ngừng phản hồi.</p>
+</blockquote>
+<h2 id="bước-115--tạo-telegram-bot--kết-nối">Bước 11.5 – Tạo Telegram Bot &amp; kết nối </h2>
+<h3 id="a-tạo-bot-trên-telegram">A. Tạo Bot trên Telegram: </h3>
+<ol>
+<li>Mở Telegram, tìm <strong>@BotFather</strong></li>
+<li>Gõ <code>/newbot</code></li>
+<li>Đặt tên bot (ví dụ: <code>BA Workspace Bot</code>)</li>
+<li>Đặt username (ví dụ: <code>ba_workspace_bot</code>)</li>
+<li>BotFather sẽ trả về <strong>Bot Token</strong> dạng: <code>7123456789:AAHxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></li>
+<li><strong>Copy token này</strong> – sẽ dùng ở bước tiếp theo</li>
+</ol>
+<h3 id="b-kết-nối-telegram-với-openclaw">B. Kết nối Telegram với OpenClaw: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw channels login --channel telegram --token 7123456789:AAHxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+</code></pre><h3 id="c-kiểm-tra-kết-nối">C. Kiểm tra kết nối: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw channels status
+</code></pre><p>Nếu hiện <code>telegram: connected</code> → kết nối thành công.</p>
+<h3 id="d-tìm-chat-id-của-bạn-để-pair">D. Tìm chat ID của bạn (để pair): </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw directory self --channel telegram
+</code></pre><h3 id="e-xác-minh-bằng-cách-gửi-tin-nhắn-test">E. Xác minh bằng cách gửi tin nhắn test: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>openclaw message send --channel telegram --target @your_username --message "Hello from OpenClaw!"
+</code></pre><h2 id="bước-116--sử-dụng-hàng-ngày">Bước 11.6 – Sử dụng hàng ngày </h2>
+<h3 id="luồng-sử-dụng">Luồng sử dụng: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌───────────────────────────────────────────────────────────────┐
+│                SỬ DỤNG HÀNG NGÀY                               │
+│                                                                │
+│  ① Mở terminal → chạy: openclaw gateway                       │
+│       │                                                        │
+│       ▼                                                        │
+│  ② Mở Telegram → chat với bot                                  │
+│       │                                                        │
+│       ▼                                                        │
+│  ③ Bot nhận tin → Gateway → AI Model xử lý → phản hồi        │
+│       │                                                        │
+│       ▼                                                        │
+│  ④ AI có thể: đọc file, sửa code, tra cứu, commit,...        │
+│                                                                │
+└───────────────────────────────────────────────────────────────┘
+</code></pre><h3 id="ví-dụ-các-lệnh-chat-trên-telegram">Ví dụ các lệnh chat trên Telegram: </h3>
+<table>
+<thead>
+<tr>
+<th>Chat trên Telegram</th>
+<th>AI Agent sẽ làm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Tóm tắt file SRS_SQLWF_QUAN_LY_KENH.md"</td>
+<td>Đọc file trong workspace, trả về tóm tắt</td>
+</tr>
+<tr>
+<td>"Sửa title của trang Dashboard thành 'Bảng điều khiển'"</td>
+<td>Tìm file, sửa code, báo kết quả</td>
+</tr>
+<tr>
+<td>"Git status project sqlwf"</td>
+<td>Kiểm tra trạng thái git, báo các file đã thay đổi</td>
+</tr>
+<tr>
+<td>"Commit và push project sqlwf với message 'fix UI sidebar'"</td>
+<td>Tự động git add, commit, push</td>
+</tr>
+<tr>
+<td>"Liệt kê các TODO trong workspace"</td>
+<td>Quét workspace, trả về danh sách TODO</td>
+</tr>
+<tr>
+<td>"Nhắc tôi lúc 3h chiều review PR"</td>
+<td>Tạo cron job nhắc nhở</td>
+</tr>
+</tbody>
+</table>
+<h3 id="các-lệnh-openclaw-hữu-ích">Các lệnh OpenClaw hữu ích: </h3>
+<table>
+<thead>
+<tr>
+<th>Lệnh</th>
+<th>Mục đích</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>openclaw gateway</code></td>
+<td>Khởi động gateway (bắt buộc để bot hoạt động)</td>
+</tr>
+<tr>
+<td><code>openclaw health</code></td>
+<td>Kiểm tra trạng thái hệ thống</td>
+</tr>
+<tr>
+<td><code>openclaw status</code></td>
+<td>Xem channel health và session gần đây</td>
+</tr>
+<tr>
+<td><code>openclaw channels status</code></td>
+<td>Kiểm tra kết nối Telegram/Discord</td>
+</tr>
+<tr>
+<td><code>openclaw models list</code></td>
+<td>Xem danh sách model đã cấu hình</td>
+</tr>
+<tr>
+<td><code>openclaw models set-default</code></td>
+<td>Đổi model mặc định</td>
+</tr>
+<tr>
+<td><code>openclaw sessions list</code></td>
+<td>Xem lịch sử các phiên chat</td>
+</tr>
+<tr>
+<td><code>openclaw memory search</code></td>
+<td>Tìm kiếm trong bộ nhớ agent</td>
+</tr>
+<tr>
+<td><code>openclaw cron list</code></td>
+<td>Xem danh sách cron job</td>
+</tr>
+<tr>
+<td><code>openclaw doctor</code></td>
+<td>Chẩn đoán lỗi và sửa nhanh</td>
+</tr>
+<tr>
+<td><code>openclaw logs</code></td>
+<td>Xem log gateway realtime</td>
+</tr>
+<tr>
+<td><code>openclaw dashboard</code></td>
+<td>Mở giao diện quản trị trên trình duyệt</td>
+</tr>
+<tr>
+<td><code>openclaw tui</code></td>
+<td>Mở giao diện chat terminal (TUI)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bước-117--xử-lý-sự-cố-thường-gặp">Bước 11.7 – Xử lý sự cố thường gặp </h2>
+<table>
+<thead>
+<tr>
+<th>Sự cố</th>
+<th>Nguyên nhân</th>
+<th>Cách xử lý</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bot không phản hồi trên Telegram</td>
+<td>Gateway chưa chạy</td>
+<td>Mở terminal, chạy <code>openclaw gateway</code></td>
+</tr>
+<tr>
+<td><code>port already in use</code></td>
+<td>Gateway cũ chưa tắt</td>
+<td>Chạy <code>openclaw gateway --force</code></td>
+</tr>
+<tr>
+<td>Bot phản hồi chậm</td>
+<td>Model API lag</td>
+<td>Kiểm tra <code>openclaw health</code>, đổi model nếu cần</td>
+</tr>
+<tr>
+<td>Lỗi xác thực model</td>
+<td>API key sai/hết hạn</td>
+<td>Chạy <code>openclaw models add</code> lại với key mới</td>
+</tr>
+<tr>
+<td>Bot không đọc được file</td>
+<td>Workspace path sai</td>
+<td>Chạy <code>openclaw configure</code> cấu hình lại path</td>
+</tr>
+<tr>
+<td>Muốn reset toàn bộ</td>
+<td>Cấu hình rối</td>
+<td>Chạy <code>openclaw reset</code> rồi <code>openclaw configure</code> lại</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="phần-12--mẹo--lưu-ý-quan-trọng">Phần 12 – Mẹo &amp; Lưu ý quan trọng </h1>
+<h2 id="121--tổng-hợp-lệnh-terminal-thường-dùng">12.1 – Tổng hợp lệnh Terminal thường dùng </h2>
+<table>
+<thead>
+<tr>
+<th>Lệnh</th>
+<th>Ý nghĩa</th>
+<th>Khi nào dùng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cd speech_to_text</code></td>
+<td>Đi vào thư mục speech_to_text</td>
+<td>Trước khi chạy transcribe</td>
+</tr>
+<tr>
+<td><code>.\venv\Scripts\python.exe .\realtime_meeting.py</code></td>
+<td>Chạy ghi âm cuộc họp</td>
+<td>Khi bắt đầu họp</td>
+</tr>
+<tr>
+<td><code>cd sqlwf</code></td>
+<td>Đi vào thư mục sqlwf</td>
+<td>Trước khi chạy project hoặc push code</td>
+</tr>
+<tr>
+<td><code>cd ..</code></td>
+<td>Quay lại thư mục cha</td>
+<td>Khi muốn chuyển sang project khác</td>
+</tr>
+<tr>
+<td><code>cd authcenter</code></td>
+<td>Đi vào thư mục authcenter</td>
+<td>Trước khi làm việc với authcenter</td>
+</tr>
+<tr>
+<td><code>npm install</code></td>
+<td>Tải thư viện</td>
+<td>Lần đầu clone repo, hoặc khi có thay đổi</td>
+</tr>
+<tr>
+<td><code>npm run dev</code></td>
+<td>Chạy project</td>
+<td>Khi muốn xem giao diện trên localhost</td>
+</tr>
+<tr>
+<td><code>Ctrl + C</code></td>
+<td>Dừng project</td>
+<td>Khi muốn tắt localhost</td>
+</tr>
+<tr>
+<td><code>git add .</code></td>
+<td>Đánh dấu thay đổi</td>
+<td>Trước khi commit</td>
+</tr>
+<tr>
+<td><code>git commit -m "mô tả"</code></td>
+<td>Lưu thay đổi</td>
+<td>Sau khi add, trước khi push</td>
+</tr>
+<tr>
+<td><code>git push origin main</code></td>
+<td>Đẩy lên GitHub</td>
+<td>Sau khi commit</td>
+</tr>
+<tr>
+<td><code>git pull origin main</code></td>
+<td>Kéo code mới từ GitHub</td>
+<td>Khi code trên GitHub có cập nhật</td>
+</tr>
+<tr>
+<td><code>openclaw gateway</code></td>
+<td>Khởi động OpenClaw Gateway</td>
+<td>Khi muốn sử dụng Telegram Bot</td>
+</tr>
+<tr>
+<td><code>openclaw health</code></td>
+<td>Kiểm tra trạng thái OpenClaw</td>
+<td>Khi bot không phản hồi</td>
+</tr>
+<tr>
+<td><code>openclaw doctor</code></td>
+<td>Chẩn đoán lỗi OpenClaw</td>
+<td>Khi gặp sự cố</td>
+</tr>
+</tbody>
+</table>
+<h2 id="122--lỗi-thường-gặp--cách-xử-lý">12.2 – Lỗi thường gặp &amp; cách xử lý </h2>
+<table>
+<thead>
+<tr>
+<th>Lỗi</th>
+<th>Nguyên nhân</th>
+<th>Cách xử lý</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>npm: command not found</code></td>
+<td>Chưa cài Node.js</td>
+<td>Cài Node.js (xem Bước 4.2)</td>
+</tr>
+<tr>
+<td><code>git: command not found</code></td>
+<td>Chưa cài Git</td>
+<td>Cài Git (xem Bước 4.1)</td>
+</tr>
+<tr>
+<td>Trang localhost trắng / lỗi</td>
+<td>Code bị sai sau khi sửa</td>
+<td>Inspect → tab Console → copy lỗi → paste vào prompt Agent</td>
+</tr>
+<tr>
+<td><code>npm ERR! missing script: dev</code></td>
+<td>Đang ở sai thư mục</td>
+<td>Gõ <code>cd ..</code> rồi <code>cd ten-repo-dung</code></td>
+</tr>
+<tr>
+<td><code>fatal: not a git repository</code></td>
+<td>Đang ở sai thư mục khi push</td>
+<td>Gõ <code>cd ..</code> rồi <code>cd ten-repo-dung</code></td>
+</tr>
+<tr>
+<td><code>error: failed to push</code></td>
+<td>Chưa pull code mới nhất</td>
+<td>Gõ <code>git pull origin main</code> trước, rồi push lại</td>
+</tr>
+<tr>
+<td>Agent không phản hồi đúng</td>
+<td>Chưa chọn đúng agent/model</td>
+<td>Kiểm tra dropdown Agent và Model trong Copilot Chat</td>
+</tr>
+<tr>
+<td>Telegram bot không trả lời</td>
+<td>Gateway chưa chạy</td>
+<td>Mở terminal, chạy <code>openclaw gateway</code></td>
+</tr>
+<tr>
+<td>OpenClaw cài không được</td>
+<td>PowerShell bị chặn script</td>
+<td>Chạy <code>Set-ExecutionPolicy RemoteSigned</code> trước</td>
+</tr>
+</tbody>
+</table>
+<h2 id="123--checklist-quy-trình-hoàn-chỉnh">12.3 – Checklist quy trình hoàn chỉnh </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>□ Bước 1:  Họp nghiệp vụ → Speech-to-Text ghi chép tự động
+□ Bước 2:  Agent phân tích transcript → meeting notes, to-do, requirement
+□ Bước 3:  Viết prompt trên Lovable → sinh UI
+□ Bước 4:  Sync code lên GitHub (Connect + Push)
+□ Bước 5:  Clone repo về máy (VS Code → Clone Git Repository)
+□ Bước 6:  Mở workspace trong VS Code (File → Open Folder)
+□ Bước 7:  Cấu hình Agent + Skill (1 lần duy nhất)
+□ Bước 8:  Chạy project: cd &lt;repo&gt; → npm install → npm run dev
+□ Bước 9:  Mở localhost trên trình duyệt
+□ Bước 10: Inspect → lấy ID → gõ prompt Agent sửa UI
+□ Bước 11: Push code: git add . → git commit → git push
+□ Bước 12: Cập nhật Lovable → Publish bản mới
+□ Bước 13: Sinh tài liệu SRS/TKCT/CSDL bằng Agent @doc
+□ Bước 14: Review tài liệu → bổ sung nếu thiếu
+□ Bước 15: Cài OpenClaw + Telegram Bot → trường làm việc di động
+□ Bước 16: Dùng Telegram chat với AI → tra cứu, sửa code, commit
+</code></pre><h2 id="104--flow-tổng-thể-bằng-sơ-đồ">10.4 – Flow tổng thể bằng sơ đồ </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌──────────┐    mô tả    ┌──────────┐   sync    ┌──────────┐
+│  Ý TƯỞNG │ ──────────→ │ LOVABLE  │ ────────→ │  GITHUB  │
+│ NGHIỆP VỤ│             │ (sinh UI)│           │ (lưu code)│
+└──────────┘             └──────────┘           └────┬─────┘
+                                                      │ clone
+                                                      ▼
+┌──────────┐   inspect   ┌──────────┐   npm dev  ┌──────────┐
+│ TRÌNH    │ ←─────────  │  VS CODE │ ────────→  │LOCALHOST │
+│ DUYỆT   │   lấy ID    │ + AGENT  │            │ (xem UI) │
+└──────────┘             └────┬─────┘           └──────────┘
+                              │
+                    ┌─────────┼──────────┐
+                    ▼         ▼          ▼
+              Sửa UI    Sinh SRS    Sinh TKCT
+              (prompt)  (@doc)      (@doc)
+                    │
+                    ▼
+              git push → GitHub → Lovable Publish
+                                      │
+                                      ▼
+                              Link share cho team
+</code></pre><hr>
+<p><em>Tài liệu này được tạo bởi Agent BA Assistant. Mọi thành viên trong nhóm đều có thể áp dụng theo hướng dẫn từng bước ở trên, không cần kiến thức lập trình.</em></p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

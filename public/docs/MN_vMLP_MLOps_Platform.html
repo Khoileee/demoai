@@ -1,0 +1,379 @@
+<!DOCTYPE html><html><head>
+      <title>MN_20260319_vMLP_MLOps_Platform</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script>
+    </head>
+    <body for="html-export">
+      <div class="crossnote markdown-preview  ">
+      <div>
+<h1 id="-meeting-notes--vmlp--mlops-platform">📋 MEETING NOTES — vMLP / MLOps Platform </h1>
+<h2 id="thông-tin-chung">Thông tin chung </h2>
+<table>
+<thead>
+<tr>
+<th>Mục</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ngày họp</strong></td>
+<td>19/03/2026</td>
+</tr>
+<tr>
+<td><strong>Timestamp</strong></td>
+<td>11:00:04</td>
+</tr>
+<tr>
+<td><strong>Chủ đề</strong></td>
+<td>Trao đổi yêu cầu, kiến trúc và kế hoạch triển khai vMLP — MLOps Platform</td>
+</tr>
+<tr>
+<td><strong>Mục đích</strong></td>
+<td>Trao đổi yêu cầu, kiến trúc và kế hoạch triển khai vMLP trong tháng 4 và timeline dự kiến hoàn thành Phase 1</td>
+</tr>
+<tr>
+<td><strong>Bên tham gia</strong></td>
+<td>VDS (bên yêu cầu), Lifesup (đối tác triển khai)</td>
+</tr>
+<tr>
+<td><strong>Người tham gia</strong></td>
+<td>Anh (phía VDS - quản lý/PM), Em (phía Lifesup - đối tác), nhân sự hỗ trợ hạ tầng (anh @tond)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Lưu ý:</strong> Transcript bị nhiễu nặng do chất lượng STT (speech-to-text) với tiếng Việt + thuật ngữ kỹ thuật. Nội dung dưới đây được phân tích kết hợp với thông tin bổ sung từ biên bản họp.</p>
+</blockquote>
+<hr>
+<h2 id="1-meeting-summary">1. Meeting Summary </h2>
+<p>Cuộc họp giữa VDS và đối tác Lifesup nhằm trao đổi về yêu cầu, kiến trúc và kế hoạch triển khai <strong>vMLP (MLOps Platform)</strong>. Dự án được chia thành <strong>4 phase</strong>, trong đó trọng tâm thảo luận là <strong>Phase 1</strong> với mục tiêu hoàn thành trong <strong>tháng 4/2026</strong>.</p>
+<p>Các bên thảo luận về:</p>
+<ul>
+<li>Phạm vi chức năng Phase 1: Model versioning, Data versioning, Experiment tracking, Model registry</li>
+<li>Đối tác đề xuất bổ sung <strong>Automated ML Pipeline</strong> vào Phase 1</li>
+<li>Lựa chọn công nghệ và stack kỹ thuật (Kubernetes, Kubeflow, Jupyter, MLflow...)</li>
+<li>Yêu cầu bảo mật: phân quyền, audit log, kiểm soát truy cập</li>
+<li>Timeline và kế hoạch phối hợp nhân sự</li>
+</ul>
+<p>VDS mong muốn hoàn thành Phase 1 trong tháng 4/2026. Lifesup sẽ đánh giá và gửi lại kế hoạch chi tiết đầu tuần tới.</p>
+<hr>
+<h2 id="2-key-points">2. Key Points </h2>
+<h3 id="21-cấu-trúc-dự-án--4-phase">2.1. Cấu trúc dự án — 4 Phase </h3>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Nội dung chính</th>
+<th>Timeline dự kiến</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase 1</strong></td>
+<td>Model versioning, Data versioning, Experiment tracking, Model registry + Automated ML Pipeline (đối tác đề xuất)</td>
+<td>Tháng 4/2026</td>
+</tr>
+<tr>
+<td><strong>Phase 2</strong></td>
+<td>AutoML pipeline nâng cao, CI/CD cho model</td>
+<td>Sau Phase 1</td>
+</tr>
+<tr>
+<td><strong>Phase 3</strong></td>
+<td>Effect tracking, Data &amp; Model monitoring, Deployment region</td>
+<td>⚠️ NEED INFO</td>
+</tr>
+<tr>
+<td><strong>Phase 4</strong></td>
+<td>Bổ sung các tính năng khác</td>
+<td>⚠️ NEED INFO</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-phase-1--chi-tiết-yêu-cầu">2.2. Phase 1 — Chi tiết yêu cầu </h3>
+<p>Các chức năng cốt lõi trong Phase 1:</p>
+<ol>
+<li><strong>Model Versioning</strong> — Quản lý phiên bản mô hình</li>
+<li><strong>Data Versioning</strong> — Quản lý phiên bản dữ liệu</li>
+<li><strong>Experiment Tracking</strong> — Theo dõi và pin các experiment, so sánh kết quả</li>
+<li><strong>Model Registry</strong> — Đăng ký, quản lý mô hình đã train</li>
+<li><strong>Automated ML Pipeline</strong> — Đối tác đề xuất đưa vào Phase 1: khi huấn luyện mô hình có kết quả tốt → tự động deploy luôn</li>
+</ol>
+<blockquote>
+<p>Lifesup đề xuất rằng nếu chia các chức năng (feature) ra thì nên phân chia: feature nào yêu cầu trước thì làm Phase 1, feature nào mở rộng thì để Phase 2 trở đi, giúp nhanh hơn.</p>
+</blockquote>
+<h3 id="23-về-hạ-tầng-và-công-nghệ">2.3. Về hạ tầng và công nghệ </h3>
+<ul>
+<li>
+<p><strong>Tất cả triển khai trên K8s (Kubernetes)</strong> — VDS cần chuẩn bị hạ tầng staging + production</p>
+</li>
+<li>
+<p>Các công nghệ được đề cập/thảo luận:</p>
+<ul>
+<li><strong>Kubeflow</strong> — dùng cho môi trường thử nghiệm, đã từng dùng nhưng hiệu quả không ổn định</li>
+<li><strong>Jupyter Notebook</strong> — tạo notebook, quản lý experiment, lock khi đang chạy</li>
+<li><strong>MLflow</strong> — thay thế/bổ sung, đối tác đang xem xét phù hợp hơn</li>
+<li><strong>Jupiter</strong> (JupyterHub?) — từng dùng 3 năm trước nhưng không lock được log người dùng, tác động dữ liệu</li>
+<li><strong>DVC / DagsHub</strong> — được nhắc đến trong bối cảnh data versioning</li>
+</ul>
+</li>
+<li>
+<p><strong>Về lựa chọn stack</strong>: Lifesup cần chốt công nghệ sử dụng và gửi lại VDS để đánh giá trước khi triển khai.</p>
+</li>
+</ul>
+<h3 id="24-yêu-cầu-bảo-mật-ưu-tiên-hàng-đầu">2.4. Yêu cầu bảo mật (ưu tiên hàng đầu) </h3>
+<ul>
+<li><strong>Phân quyền</strong> chặt chẽ</li>
+<li><strong>Audit log</strong>: Ghi nhận user nào truy cập, IP nào, thời điểm nào</li>
+<li><strong>Data change tracking</strong>: Tác động dữ liệu thay đổi như thế nào</li>
+<li><strong>Lock mechanism</strong>: Khi đang chạy experiment trên notebook → lock lại, ghi nhận ai đang dùng</li>
+<li>Tất cả bản chất notebook tạo ra → quản lý, lock trước khi chạy → sau khi xong → log kết quả ra</li>
+</ul>
+<h3 id="25-yêu-cầu-vận-hành">2.5. Yêu cầu vận hành </h3>
+<ul>
+<li>VDS sẽ chạy pilot trước trên <strong>staging</strong> — chạy các use case cơ bản (dự đoán, xếp hạng khách hàng...)</li>
+<li>Sau khi đánh giá hiệu quả trên staging → chuyển lên <strong>production</strong></li>
+<li>VDS sẽ dồn nhân sự phối hợp, sẵn sàng điều chỉnh linh hoạt nếu cần gấp</li>
+<li>Trong thời gian tới (khoảng 2 tháng), VDS sẽ lên kế hoạch tổng thể cùng đối tác</li>
+</ul>
+<h3 id="26-vấn-đề-về-dataset-và-download">2.6. Vấn đề về dataset và download </h3>
+<ul>
+<li>Có lo ngại về <strong>dataset lọt lộ ra ngoài</strong> khi dùng trên platform</li>
+<li>Chức năng <strong>download dữ liệu</strong> cần được kiểm soát chặt — không cho phép export tùy ý</li>
+<li>Đã xảy ra vấn đề tương tự trước đó (email, các kênh khác) → cần đề xuất giải pháp kiểm soát</li>
+<li>Bên tập đoàn đã có một số bộ quy tắc bảo mật dữ liệu</li>
+</ul>
+<h3 id="27-về-phase-2-trở-đi">2.7. Về Phase 2 trở đi </h3>
+<ul>
+<li>Phase 2: <strong>AutoML pipeline</strong> mở rộng, CI/CD cho model deployment</li>
+<li>Phase 3: <strong>Effect tracking</strong>, monitoring data &amp; model sau deploy</li>
+<li>Phase 4: Bổ sung các tính năng nâng cao khác</li>
+<li>Đối tác lưu ý Phase 2 trở đi sẽ phức tạp hơn đáng kể</li>
+</ul>
+<hr>
+<h2 id="3-decisions-các-quyết-định-đã-chốt">3. Decisions (Các quyết định đã chốt) </h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Quyết định</th>
+<th>Ghi chú</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Phase 1 bao gồm: <strong>Model versioning, Data versioning, Experiment tracking, Model registry</strong></td>
+<td>Core features</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Automated ML Pipeline</strong> được đề xuất đưa vào Phase 1</td>
+<td>Lifesup đề xuất, VDS đồng ý xem xét</td>
+</tr>
+<tr>
+<td>3</td>
+<td>VDS mong muốn hoàn thành Phase 1 trong <strong>tháng 4/2026</strong></td>
+<td>Lifesup đánh giá và phản hồi đầu tuần tới</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Triển khai toàn bộ trên <strong>Kubernetes (K8s)</strong></td>
+<td>Cả staging và production</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Bảo mật là ưu tiên hàng đầu</strong> — phân quyền, audit log, lock notebook</td>
+<td>Yêu cầu bắt buộc cho mọi công nghệ</td>
+</tr>
+<tr>
+<td>6</td>
+<td>VDS chạy <strong>pilot trên staging trước</strong> → sau OK mới lên production</td>
+<td>Chạy từng use case cơ bản trước</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Chức năng <strong>download/export dữ liệu</strong> phải được kiểm soát chặt</td>
+<td>Tránh lọt lộ dataset ra ngoài</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Lifesup chốt <strong>technology stack</strong> → gửi lại VDS đánh giá trước</td>
+<td>Trong tháng 3/2026</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-action-items">4. Action Items </h2>
+<h3 id="phía-lifesup-đối-tác">Phía Lifesup (đối tác) </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Đánh giá và gửi lại <strong>kế hoạch chi tiết Phase 1</strong> (danh sách đầu việc + timeline) — <strong>Đầu tuần tới (~ 24/03)</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>Chốt technology stack</strong> (Kubeflow / MLflow / DVC...) → gửi VDS đánh giá — <strong>Trong tháng 3</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Sắp xếp <strong>đầu việc theo thứ tự ưu tiên</strong> trong Phase 1 để sẵn sàng triển khai — <strong>Trong tháng 3</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Đề xuất giải pháp về <strong>kiểm soát download/export dữ liệu</strong> trên platform</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Đảm bảo tất cả công nghệ đề xuất đều đáp ứng yêu cầu bảo mật (phân quyền, audit log, lock)</li>
+</ul>
+<h3 id="phía-vds">Phía VDS </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Chuẩn bị hạ tầng K8s cho <strong>staging + production</strong> — ⚠️ NEED INFO (deadline cụ thể)</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Cử nhân sự phối hợp cùng đối tác trong quá trình triển khai</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Review và phản hồi technology stack mà Lifesup đề xuất — <strong>Sau khi nhận đề xuất</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Dồn và bố trí <strong>nhân sự phối hợp</strong> — sẵn sàng linh hoạt theo kế hoạch Lifesup</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Chuẩn bị <strong>các use case cơ bản</strong> để chạy pilot trên staging (dự đoán, xếp hạng khách hàng...)</li>
+</ul>
+<hr>
+<h2 id="5-issues--risks">5. Issues / Risks </h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Vấn đề</th>
+<th>Mức độ</th>
+<th>Ghi chú</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Kubeflow</strong> từng dùng nhưng hiệu quả không ổn định, có vấn đề với mô hình lớn</td>
+<td>High</td>
+<td>Cần đánh giá lại hoặc chọn stack khác</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Jupiter/JupyterHub</strong> không lock được — không ghi nhận user nào truy cập, tác động gì</td>
+<td>High</td>
+<td>Yêu cầu bắt buộc phải có audit log</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Rủi ro <strong>lọt lộ dataset</strong> ra ngoài qua chức năng download</td>
+<td>High</td>
+<td>Cần giải pháp kỹ thuật kiểm soát</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Nhân sự VDS đang phân tán</strong> nhiều dự án — khả năng phối hợp bị ảnh hưởng</td>
+<td>Medium</td>
+<td>VDS sẽ cố gắng dồn nhân sự</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Timeline Phase 1 <strong>tháng 4</strong> có thể bị tight — Lifesup chưa confirm được</td>
+<td>Medium</td>
+<td>Đợi Lifesup gửi kế hoạch đầu tuần tới</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Công nghệ chưa chốt xong — <strong>ảnh hưởng đến việc chuẩn bị hạ tầng</strong></td>
+<td>Medium</td>
+<td>Lifesup cần chốt trong tháng 3</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Vấn đề <strong>bảo mật dữ liệu</strong> trên nhiều tầng (network, app, data) cần đánh giá kỹ</td>
+<td>High</td>
+<td>Bao gồm cả email, các kênh khác</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Transcript STT chất lượng kém — nhiều nội dung kỹ thuật chi tiết bị mất</td>
+<td>Info</td>
+<td>Cần xác nhận lại với participants</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="6-to-do-list-tổng-hợp-theo-timeline">6. To-do List (Tổng hợp theo Timeline) </h2>
+<h3 id="tháng-32026-còn-10-ngày">Tháng 3/2026 (còn ~10 ngày) </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Lifesup: Gửi kế hoạch chi tiết Phase 1 + timeline → <strong>đầu tuần tới</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Lifesup: Chốt technology stack → gửi VDS đánh giá</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Lifesup: Sắp xếp đầu việc Phase 1 theo thứ tự ưu tiên</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> VDS (@tond): Bắt đầu chuẩn bị hạ tầng K8s staging</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> VDS: Bố trí nhân sự phối hợp</li>
+</ul>
+<h3 id="tháng-42026-target-phase-1">Tháng 4/2026 (target Phase 1) </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Lifesup: Triển khai Phase 1 trên môi trường staging</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> VDS: Chạy pilot các use case cơ bản (dự đoán, xếp hạng KH)</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> VDS: Đánh giá kết quả staging → quyết định chuyển production</li>
+</ul>
+<h3 id="phase-2-sau-tháng-4">Phase 2+ (sau tháng 4) </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> AutoML pipeline nâng cao + CI/CD model</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Effect tracking, monitoring</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Bổ sung tính năng Phase 3, Phase 4</li>
+</ul>
+<hr>
+<h2 id="7-kế-hoạch-tiếp-theo-summary">7. Kế hoạch tiếp theo (Summary) </h2>
+<table>
+<thead>
+<tr>
+<th>Thời gian</th>
+<th>Đầu việc</th>
+<th>Người phụ trách</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trong tháng 3</td>
+<td>Lifesup phối hợp VDS chốt yêu cầu chi tiết Phase 1</td>
+<td>Lifesup + VDS</td>
+</tr>
+<tr>
+<td>Trong tháng 3</td>
+<td>Lifesup chốt công nghệ sử dụng → gửi VDS đánh giá</td>
+<td>Lifesup</td>
+</tr>
+<tr>
+<td>Đầu tuần tới (24/03)</td>
+<td>Lifesup gửi kế hoạch + timeline Phase 1</td>
+<td>Lifesup</td>
+</tr>
+<tr>
+<td>Tháng 4</td>
+<td>Triển khai Phase 1 trên K8s staging</td>
+<td>Lifesup + VDS (@tond)</td>
+</tr>
+<tr>
+<td>Tháng 4</td>
+<td>VDS đánh giá kết quả pilot</td>
+<td>VDS</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<blockquote>
+<p><strong>⚠️ LƯU Ý:</strong> Do chất lượng transcript bị nhiễu nghiêm trọng (STT gặp khó khăn với thuật ngữ kỹ thuật tiếng Anh/Việt lẫn), một số chi tiết kỹ thuật cụ thể có thể cần được xác nhận lại trực tiếp với các bên tham gia. Nội dung đã được bổ sung và đối chiếu với thông tin biên bản họp do user cung cấp.</p>
+</blockquote>
+</div>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

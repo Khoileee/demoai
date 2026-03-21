@@ -1,0 +1,1270 @@
+<!DOCTYPE html><html><head>
+      <title>Nghiên cứu_Tổng quan_Authcenter</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script>
+    </head>
+    <body for="html-export">
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="tổng-quan-hệ-thống-phân-quyền-tập-trung">TỔNG QUAN HỆ THỐNG PHÂN QUYỀN TẬP TRUNG </h1>
+<h2 id="authcenter---hiện-trạng-và-đề-xuất-giải-pháp">AUTHCENTER - HIỆN TRẠNG VÀ ĐỀ XUẤT GIẢI PHÁP </h2>
+<hr>
+<blockquote>
+<p><strong>Ngày lập</strong>: 02/02/2026<br>
+<strong>Người thực hiện</strong>: BA Team<br>
+<strong>Phiên bản</strong>: 1.0<br>
+<strong>Đối tượng</strong>: Lãnh đạo, Quản lý, BA, PM</p>
+</blockquote>
+<hr>
+<h2 id="bảng-ghi-nhận-thay-đổi">BẢNG GHI NHẬN THAY ĐỔI </h2>
+<table>
+<thead>
+<tr>
+<th>Ngày</th>
+<th>Nội dung thay đổi</th>
+<th>Phiên bản</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>02/02/2026</td>
+<td>Tạo mới tài liệu</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="mục-lục">MỤC LỤC </h2>
+<ol>
+<li><a href="#1-gi%E1%BB%9Bi-thi%E1%BB%87u">Giới thiệu</a></li>
+<li><a href="#2-hi%E1%BB%87n-tr%E1%BA%A1ng">Hiện trạng</a></li>
+<li><a href="#3-c%C3%A1c-v%E1%BA%A5n-%C4%91%E1%BB%81-v%C3%A0-th%C3%A1ch-th%E1%BB%A9c">Các vấn đề và thách thức</a></li>
+<li><a href="#4-%C4%91%E1%BB%81-xu%E1%BA%A5t-gi%E1%BA%A3i-ph%C3%A1p-mong-mu%E1%BB%91n">Đề xuất giải pháp (Mong muốn)</a></li>
+<li><a href="#5-so-s%C3%A1nh-hi%E1%BB%87n-tr%E1%BA%A1ng-v%C3%A0-mong-mu%E1%BB%91n">So sánh Hiện trạng và Mong muốn</a></li>
+<li><a href="#6-lu%E1%BB%93ng-nghi%E1%BB%87p-v%E1%BB%A5-ch%C3%ADnh">Luồng nghiệp vụ chính</a></li>
+<li><a href="#7-l%E1%BB%99-tr%C3%ACnh-tri%E1%BB%83n-khai">Lộ trình triển khai</a></li>
+<li><a href="#8-l%E1%BB%A3i-%C3%ADch-k%E1%BB%B3-v%E1%BB%8Dng">Lợi ích kỳ vọng</a></li>
+<li><a href="#9-t%C3%A0i-li%E1%BB%87u-li%C3%AAn-quan">Tài liệu liên quan</a></li>
+</ol>
+<hr>
+<h1 id="1-giới-thiệu">1. GIỚI THIỆU </h1>
+<h2 id="11-bối-cảnh">1.1 Bối cảnh </h2>
+<p>Tổ chức hiện đang vận hành nhiều hệ thống nghiệp vụ nội bộ, mỗi hệ thống có cơ chế quản lý quyền truy cập riêng biệt. Điều này dẫn đến nhiều khó khăn trong công tác quản trị, bảo mật và trải nghiệm người dùng.</p>
+<h2 id="12-phạm-vi-tài-liệu">1.2 Phạm vi tài liệu </h2>
+<p>Tài liệu này trình bày:</p>
+<ul>
+<li><strong>Hiện trạng</strong>: Thực trạng các hệ thống phân quyền đang vận hành</li>
+<li><strong>Vấn đề</strong>: Các điểm nghẽn và thách thức gặp phải</li>
+<li><strong>Đề xuất</strong>: Giải pháp hệ thống phân quyền tập trung AuthCenter</li>
+<li><strong>Luồng nghiệp vụ</strong>: Cách thức hoạt động của hệ thống mới</li>
+<li><strong>Lộ trình</strong>: Kế hoạch triển khai theo giai đoạn</li>
+</ul>
+<h2 id="13-các-hệ-thống-trong-phạm-vi">1.3 Các hệ thống trong phạm vi </h2>
+<table>
+<thead>
+<tr>
+<th>STT</th>
+<th>Hệ thống</th>
+<th>Mô tả</th>
+<th>Số lượng user</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>SQLWF</strong></td>
+<td>SQL Workflow - Quản lý truy vấn, bảng dữ liệu, job</td>
+<td>Rất nhiều</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>VDSD</strong></td>
+<td>VDS Dashboard - Dashboard, báo cáo, chỉ tiêu</td>
+<td>Trung bình</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Báo cáo VTM</strong></td>
+<td>Báo cáo nghiệp vụ tích hợp Tableau</td>
+<td>Trung bình</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>AuthCenter</strong></td>
+<td>Hệ thống phân quyền tập trung (đang phát triển)</td>
+<td>Mới</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="2-hiện-trạng">2. HIỆN TRẠNG </h1>
+<h2 id="21-kiến-trúc-phân-quyền-hiện-tại">2.1 Kiến trúc phân quyền hiện tại </h2>
+<p>Hiện tại, tổ chức <strong>đã có hệ thống SSO</strong> (Single Sign-On) - tất cả nhân viên đăng nhập bằng chung một tài khoản của công ty. Tuy nhiên, <strong>mỗi hệ thống lại tự xây dựng và quản lý module phân quyền riêng biệt</strong>:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                     KIẾN TRÚC PHÂN QUYỀN HIỆN TẠI                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+                           ┌───────────────────┐
+                           │   SSO CÔNG TY     │ ✓ Đã có sẵn
+                           │   (Username/Pwd   │
+                           │    tập trung)     │
+                           └─────────┬─────────┘
+                                     │
+              ┌──────────────────────┼──────────────────────┐
+              │                      │                      │
+              ▼                      ▼                      ▼
+  ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
+  │      SQLWF       │     │       VDSD       │     │   Báo cáo VTM    │
+  │                  │     │                  │     │                  │
+  │  ┌────────────┐  │     │  ┌────────────┐  │     │  ┌────────────┐  │
+  │  │ Module     │  │     │  │ Module     │  │     │  │ Module     │  │
+  │  │ Phân quyền │  │     │  │ Phân quyền │  │     │  │ Phân quyền │  │
+  │  │   (ACL)    │  │     │  │   (ABAC)   │  │     │  │   (RBAC)   │  │
+  │  └────────────┘  │     │  └────────────┘  │     │  └────────────┘  │
+  │        ❌        │     │        ❌        │     │        ❌        │
+  │  ┌────────────┐  │     │  ┌────────────┐  │     │  ┌────────────┐  │
+  │  │  Admin UI  │  │     │  │  Admin UI  │  │     │  │  Admin UI  │  │
+  │  │   riêng    │  │     │  │   riêng    │  │     │  │   riêng    │  │
+  │  └────────────┘  │     │  └────────────┘  │     │  └────────────┘  │
+  └──────────────────┘     └──────────────────┘     └──────────────────┘
+
+  ❌ VẤN ĐỀ: Admin phải vào 3 hệ thống khác nhau để phân quyền cho user!
+</code></pre><h2 id="22-đặc-điểm-từng-hệ-thống">2.2 Đặc điểm từng hệ thống </h2>
+<h3 id="221-sqlwf---mô-hình-acl-access-control-list">2.2.1 SQLWF - Mô hình ACL (Access Control List) </h3>
+<table>
+<thead>
+<tr>
+<th>Đặc điểm</th>
+<th>Mô tả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cách thức phân quyền</strong></td>
+<td>Cấp quyền trực tiếp cho từng user</td>
+</tr>
+<tr>
+<td><strong>Đơn vị quản lý</strong></td>
+<td>Menu + Permission (khoảng 30 menu, 150+ quyền)</td>
+</tr>
+<tr>
+<td><strong>Ưu điểm</strong></td>
+<td>Linh hoạt, cấp quyền chi tiết đến từng người</td>
+</tr>
+<tr>
+<td><strong>Nhược điểm</strong></td>
+<td>Khó quản lý khi số lượng user lớn</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Luồng cấp quyền SQLWF:</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  ADMIN QUẢN LÝ QUYỀN SQLWF                                                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  Bước 1              Bước 2                    Bước 3
+  ────────           ─────────                  ─────────
+  
+  ┌─────────┐       ┌─────────────────┐        ┌──────────────────────┐
+  │ Danh    │       │ Chọn 1 user     │        │ Tick chọn quyền      │
+  │ sách    │ ───▶  │ (VD: Nguyễn A)  │ ───▶  │ theo từng menu       │
+  │ Users   │       │                 │        │                      │
+  └─────────┘       └─────────────────┘        │ ☑ Quản lý bảng      │
+                                               │   ☑ Tạo bảng        │
+                                               │   ☑ Sửa bảng        │
+                                               │   ☐ Xóa bảng        │
+                                               │ ☑ Quản lý SQL       │
+                                               │   ☑ Tạo SQL         │
+                                               │   ☑ Thực thi SQL    │
+                                               └──────────────────────┘
+</code></pre><h3 id="222-vdsd---mô-hình-abac-attribute-based-access-control">2.2.2 VDSD - Mô hình ABAC (Attribute-Based Access Control) </h3>
+<table>
+<thead>
+<tr>
+<th>Đặc điểm</th>
+<th>Mô tả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cách thức phân quyền</strong></td>
+<td>Tạo Policy (chính sách) dựa trên thuộc tính</td>
+</tr>
+<tr>
+<td><strong>Đơn vị quản lý</strong></td>
+<td>Quyền chức năng + Quyền dữ liệu</td>
+</tr>
+<tr>
+<td><strong>Ưu điểm</strong></td>
+<td>Linh hoạt, tự động áp dụng theo thuộc tính người dùng</td>
+</tr>
+<tr>
+<td><strong>Nhược điểm</strong></td>
+<td>Phức tạp, khó debug khi có nhiều policy</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ví dụ Policy VDSD:</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  VÍ DỤ POLICY VDSD                                                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  Policy: "Nhân viên chỉ xem được chỉ tiêu của đơn vị mình"
+  
+  ┌─────────────────────────────────────────────┐
+  │  ĐỐI TƯỢNG ÁP DỤNG                          │
+  │  ─────────────────                          │
+  │  Loại: Đơn vị                               │
+  │  Giá trị: TTPTDL (Trung tâm PTDL)           │
+  └─────────────────────────────────────────────┘
+                      │
+                      ▼
+  ┌─────────────────────────────────────────────┐
+  │  ĐIỀU KIỆN                                  │
+  │  ─────────                                  │
+  │  Chỉ tiêu.đơn_vị_sở_hữu = User.đơn_vị       │
+  │  HOẶC                                       │
+  │  Chỉ tiêu.đơn_vị_sử_dụng = User.đơn_vị      │
+  └─────────────────────────────────────────────┘
+                      │
+                      ▼
+  ┌─────────────────────────────────────────────┐
+  │  QUYỀN ĐƯỢC CẤP                             │
+  │  ─────────────                              │
+  │  ✓ Xem chỉ tiêu                             │
+  │  ✗ Sửa chỉ tiêu                             │
+  │  ✗ Xóa chỉ tiêu                             │
+  └─────────────────────────────────────────────┘
+</code></pre><h3 id="223-báo-cáo-vtm---không-có-ui-quản-trị-phân-quyền">2.2.3 Báo cáo VTM - Không có UI quản trị phân quyền </h3>
+<table>
+<thead>
+<tr>
+<th>Đặc điểm</th>
+<th>Mô tả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cách thức phân quyền</strong></td>
+<td><strong>Không có UI</strong> - Dev phải vào trực tiếp Database để cấu hình</td>
+</tr>
+<tr>
+<td><strong>Đơn vị quản lý</strong></td>
+<td>Menu sidebar + iframe Tableau</td>
+</tr>
+<tr>
+<td><strong>Ưu điểm</strong></td>
+<td>Đơn giản về mặt cấu trúc</td>
+</tr>
+<tr>
+<td><strong>Nhược điểm</strong></td>
+<td>Phụ thuộc Dev, Admin không tự thao tác được, rủi ro khi thao tác trực tiếp DB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Luồng cấp quyền Báo cáo VTM:</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  LUỒNG PHÂN QUYỀN BÁO CÁO VTM - KHÔNG CÓ UI                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+     ┌──────────────┐              ┌──────────────┐              ┌──────────────┐
+     │    ADMIN     │              │     DEV      │              │   DATABASE   │
+     │  Yêu cầu cấp │ ──────────▶ │  Nhận yêu   │ ──────────▶ │  INSERT/     │
+     │  quyền cho   │              │  cầu, vào DB │              │  UPDATE trực │
+     │  user X      │              │  thực hiện   │              │  tiếp        │
+     └──────────────┘              └──────────────┘              └──────────────┘
+
+  ❌ VẤN ĐỀ:
+  • Admin không tự thao tác được, phải nhờ Dev
+  • Rủi ro thao tác nhầm trực tiếp trên Database
+  • Không có lịch sử thay đổi (audit log)
+  • Phụ thuộc vào lịch của Dev
+</code></pre><h2 id="23-luồng-quản-trị-phân-quyền-hiện-tại">2.3 Luồng quản trị phân quyền hiện tại </h2>
+<p><strong>Lưu ý</strong>: Người dùng đã có thể đăng nhập 1 lần qua SSO công ty. Vấn đề chính nằm ở phía <strong>Admin phải quản trị phân quyền ở nhiều nơi</strong>:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  LUỒNG QUẢN TRỊ PHÂN QUYỀN HIỆN TẠI                                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  Tình huống: Có nhân viên mới (Nguyễn A) cần được cấp quyền truy cập:
+
+  ┌───────────────────────────────────────────────────────────────────────────┐
+  │                                                                           │
+  │  Bước 1 ──▶  Admin vào trang quản trị SQLWF                              │
+  │              ┌─────────────────┐                                          │
+  │              │ Admin SQLWF     │  → Tìm user Nguyễn A                     │
+  │              │ Phân quyền      │  → Tick từng menu, từng permission       │
+  │              └─────────────────┘  → ⏱ 15 phút                             │
+  │                                                                           │
+│  Bước 2 ──▶  Admin vào trang quản trị VDSD (UI khác hoàn toàn)           │
+│              ┌─────────────────┐                                          │
+│              │ Admin VDSD      │  → Tạo Policy cho Nguyễn A               │
+  │              │ Tạo Policy      │  → Cấu hình điều kiện ABAC               │
+  │              └─────────────────┘  → ⏱ 20 phút                             │
+  │                                                                           │
+  │  Bước 3 ──▶  VTM: Không có UI - Phải nhờ Dev                           │
+  │              ┌─────────────────┐                                          │
+  │              │ Admin gửi     │  → Yêu cầu Dev cấp quyền cho Nguyễn A    │
+  │              │ yêu cầu Dev   │  → Dev vào DB thực hiện                   │
+  │              └─────────────────┘  → ⏱ Phụ thuộc lịch Dev (có thể 1-2 ngày)  │
+  │                                                                           │
+  └───────────────────────────────────────────────────────────────────────────┘
+
+  ❌ VẤN ĐỀ: 
+  • Admin phải vào 2 hệ thống khác nhau (SQLWF, VDSD)
+  • VTM không có UI - phải nhờ Dev, tốn thời gian chờ
+  • Tổng: 35+ phút + chờ Dev (có thể 1-2 ngày)
+</code></pre><hr>
+<h1 id="3-các-vấn-đề-và-thách-thức">3. CÁC VẤN ĐỀ VÀ THÁCH THỨC </h1>
+<h2 id="31-tổng-hợp-vấn-đề">3.1 Tổng hợp vấn đề </h2>
+<blockquote>
+<p><strong>Lưu ý</strong>: Hệ thống SSO đã có sẵn - user chỉ cần đăng nhập 1 lần. Các vấn đề dưới đây tập trung vào việc <strong>quản trị phân quyền phân tán</strong>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>STT</th>
+<th>Vấn đề</th>
+<th>Mô tả</th>
+<th>Mức độ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Quản trị phân quyền phân tán</strong></td>
+<td>Admin phải vào 3+ hệ thống khác nhau để cấp quyền cho 1 user</td>
+<td>🔴 Nghiêm trọng</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Giao diện quản trị không thống nhất</strong></td>
+<td>Mỗi hệ thống có UI quản trị khác nhau, cách cấu hình khác nhau</td>
+<td>🔴 Nghiêm trọng</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Mô hình phân quyền khác nhau</strong></td>
+<td>SQLWF dùng ACL, VDSD dùng ABAC, VTM dùng RBAC - khó thống nhất</td>
+<td>🟡 Trung bình</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Khó kiểm toán</strong></td>
+<td>Không thể trả lời nhanh "User X có quyền gì trên toàn hệ thống?"</td>
+<td>🔴 Nghiêm trọng</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Tốn thời gian onboarding</strong></td>
+<td>Mỗi user mới mất 40+ phút để cấu hình quyền đầy đủ</td>
+<td>🔴 Nghiêm trọng</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Chi phí bảo trì cao</strong></td>
+<td>Khi cần thay đổi cơ chế phân quyền phải sửa nhiều nơi</td>
+<td>🟡 Trung bình</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Không có nhật ký tập trung</strong></td>
+<td>Khó tra cứu lịch sử thay đổi quyền trên toàn bộ hệ thống</td>
+<td>🔴 Nghiêm trọng</td>
+</tr>
+</tbody>
+</table>
+<h2 id="32-mô-tả-chi-tiết-vấn-đề-chính">3.2 Mô tả chi tiết vấn đề chính </h2>
+<h3 id="vấn-đề-quản-trị-phân-quyền-phân-tán">Vấn đề: Quản trị phân quyền phân tán </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  VẤN ĐỀ: ADMIN PHẢI QUẢN LÝ QUYỀN Ở NHIỀU NƠI                               │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  HIỆN TẠI:
+  ─────────
+  
+  ┌─────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+  │  Admin  │────▶│ Vào Admin   │────▶│ Vào Admin   │────▶│ Vào Admin   │
+  │         │     │   SQLWF     │     │   VDSD      │     │   VTM       │
+  └─────────┘     └─────────────┘     └─────────────┘     └─────────────┘
+                       │                   │                   │
+                  UI kiểu ACL        UI kiểu ABAC        UI kiểu RBAC
+                  (tick từng         (tạo policy,        (gán role)
+                   permission)       điều kiện)
+                       │                   │                   │
+                       ▼                   ▼                   ▼
+                  ┌─────────┐         ┌─────────┐         ┌─────────┐
+                  │ 15 phút │         │ 20 phút │         │ 5 phút  │
+                  └─────────┘         └─────────┘         └─────────┘
+                                           │
+                                           ▼
+                                  ┌─────────────────┐
+                                  │ TỔNG: 40 phút   │
+                                  │ cho 1 user! ❌  │
+                                  └─────────────────┘
+
+  TÁC ĐỘNG:
+  ─────────
+  ✗ Tốn thời gian - 40+ phút cho mỗi user mới
+  ✗ Dễ sai sót - phải nhớ cấu hình ở nhiều nơi
+  ✗ Khó đồng bộ - quyền có thể không nhất quán giữa các hệ thống
+  ✗ Khó bàn giao - Admin mới phải học nhiều UI khác nhau
+</code></pre><hr>
+<h1 id="4-đề-xuất-giải-pháp-mong-muốn">4. ĐỀ XUẤT GIẢI PHÁP (MONG MUỐN) </h1>
+<h2 id="41-tổng-quan-giải-pháp">4.1 Tổng quan giải pháp </h2>
+<p>Xây dựng <strong>Hệ thống Phân quyền Tập trung (AuthCenter)</strong> - một <strong>giao diện quản trị duy nhất</strong> để cấu hình quyền cho tất cả các hệ thống:</p>
+<table>
+<thead>
+<tr>
+<th>STT</th>
+<th>Mục tiêu</th>
+<th>Mô tả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Giao diện quản trị tập trung</strong></td>
+<td>Một Admin UI duy nhất để cấu hình quyền cho SQLWF, VDSD, Baocao.VTM</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Profile quyền dùng chung</strong></td>
+<td>Tạo các bộ quyền mẫu (Profile), gán nhanh cho user</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Đa mô hình</strong></td>
+<td>Hỗ trợ ACL, RBAC, ABAC trong cùng 1 hệ thống</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Kiểm toán dễ dàng</strong></td>
+<td>Tra cứu nhanh ai có quyền gì trên tất cả hệ thống</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Tích hợp linh hoạt</strong></td>
+<td>Các hệ thống con gọi API để kiểm tra quyền, linh hoạt trong việc mở rộng trong tương lai</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Lưu ý</strong>: SSO đã có sẵn trong công ty. AuthCenter tập trung vào giải quyết vấn đề <strong>quản trị phân quyền phân tán</strong>.</p>
+</blockquote>
+<h2 id="42-kiến-trúc-đề-xuất">4.2 Kiến trúc đề xuất </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                    KIẾN TRÚC ĐỀ XUẤT - AUTHCENTER                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+                              ┌────────────────────┐
+                              │   NGƯỜI DÙNG       │
+                              │   (Nhân viên)      │
+                              └────────────────────┘
+                                       │
+                                       │ Login 1 lần duy nhất ✓
+                                       ▼
+                        ┌─────────────────────────────┐
+                        │   HỆ THỐNG XÁC THỰC (IdP)   │
+                        │   (Keycloak / Auth0)        │
+                        │                             │
+                        │   ┌─────────────────────┐   │
+                        │   │  Token (JWT)        │   │
+                        │   │  - user_id          │   │
+                        │   │  - username         │   │
+                        │   │  - unit             │   │
+                        │   │  - roles            │   │
+                        │   └─────────────────────┘   │
+                        └─────────────────────────────┘
+                                       │
+              ┌────────────────────────┼────────────────────────┐
+              │                        │                        │
+              ▼                        ▼                        ▼
+       ┌─────────────┐          ┌─────────────┐          ┌─────────────┐
+       │   SQLWF     │          │    VDSD     │          │    VTM      │
+       │             │          │             │          │             │
+       │ ┌─────────┐ │          │ ┌─────────┐ │          │ ┌─────────┐ │
+       │ │   SDK   │ │          │ │   SDK   │ │          │ │   SDK   │ │
+       │ └────┬────┘ │          │ └────┬────┘ │          │ └────┬────┘ │
+       └──────│──────┘          └──────│──────┘          └──────│──────┘
+              │                        │                        │
+              └────────────────────────┼────────────────────────┘
+                                       │
+                                       │ Check quyền (&lt; 10ms)
+                                       ▼
+                        ┌─────────────────────────────┐
+                        │        AUTHCENTER           │
+                        │   (Phân quyền Tập trung)    │
+                        │                             │
+                        │ ┌─────────────────────────┐ │
+                        │ │    POLICY ENGINE        │ │
+                        │ │    ─────────────        │ │
+                        │ │    ✓ ACL (user→quyền)   │ │
+                        │ │    ✓ RBAC (role→quyền)  │ │
+                        │ │    ✓ ABAC (điều kiện)   │ │
+                        │ └─────────────────────────┘ │
+                        │                             │
+                        │ ┌─────────────────────────┐ │
+                        │ │    CƠ SỞ DỮ LIỆU        │ │
+                        │ │    ────────────         │ │
+                        │ │    • Users              │ │
+                        │ │    • Profiles           │ │
+                        │ │    • Permissions        │ │
+                        │ │    • Policies           │ │
+                        │ │    • Audit Logs         │ │
+                        │ └─────────────────────────┘ │
+                        └─────────────────────────────┘
+                                       │
+                                       ▼
+                        ┌─────────────────────────────┐
+                        │       ADMIN UI              │
+                        │   (Quản trị tập trung)      │
+                        │                             │
+                        │   • Quản lý Users           │
+                        │   • Quản lý Profiles        │
+                        │   • Quản lý Hệ thống        │
+                        │   • Báo cáo &amp; Kiểm toán     │
+                        └─────────────────────────────┘
+</code></pre><h2 id="43-các-thành-phần-chính">4.3 Các thành phần chính </h2>
+<h3 id="431-khái-niệm-profile-nhóm-quyền">4.3.1 Khái niệm Profile (Nhóm quyền) </h3>
+<p><strong>Profile</strong> là khái niệm cốt lõi của AuthCenter - tập hợp các quyền được định nghĩa sẵn để gán cho nhiều user.</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  PROFILE = TẬP HỢP CÁC QUYỀN                                                │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  Ví dụ: Profile "BDA Standard" cho SQLWF
+  ────────────────────────────────────────
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  PROFILE: BDA Standard                                          │
+  │  Hệ thống: SQLWF                                                │
+  │  Mô tả: Quyền chuẩn cho Business Data Analyst                   │
+  ├─────────────────────────────────────────────────────────────────┤
+  │                                                                 │
+  │  TAB 1: QUYỀN CHỨC NĂNG                                         │
+  │  ─────────────────────                                          │
+  │                                                                 │
+  │  ☑ Menu: Quản lý bảng                                           │
+  │     ☑ Tạo bảng                                                  │
+  │     ☑ Xem bảng                                                  │
+  │     ☑ Sửa bảng                                                  │
+  │     ☐ Xóa bảng                                                  │
+  │                                                                 │
+  │  ☑ Menu: Quản lý SQL                                            │
+  │     ☑ Tạo truy vấn                                              │
+  │     ☑ Thực thi SQL                                              │
+  │     ☑ Clone truy vấn                                            │
+  │                                                                 │
+  ├─────────────────────────────────────────────────────────────────┤
+  │                                                                 │
+  │  TAB 2: QUYỀN DỮ LIỆU (ABAC)                                    │
+  │  ──────────────────────────                                     │
+  │                                                                 │
+  │  Menu: Quản lý bảng                                             │
+  │  Giới hạn: Chỉ xem bảng của đơn vị mình                         │
+  │  Điều kiện: bảng.đơn_vị_sở_hữu = user.đơn_vị                    │
+  │                                                                 │
+  └─────────────────────────────────────────────────────────────────┘
+</code></pre><h3 id="432-luồng-gán-quyền-cho-user">4.3.2 Luồng gán quyền cho User </h3>
+<blockquote>
+<p><strong>Lưu ý quan trọng</strong>: Profile chỉ cần <strong>tạo 1 lần</strong>, sau đó <strong>gán cho nhiều user</strong>.<br>
+Ví dụ: Tạo Profile "BDA Standard" mất 30 phút, nhưng sau đó gán cho 100 user chỉ mất 1 phút/user.</p>
+</blockquote>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  LUỒNG GÁN QUYỀN CHO USER TRONG AUTHCENTER                                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  BƯỚC 0: TẠO PROFILE (Chỉ làm 1 lần, dùng lại cho nhiều user)
+  ─────────────────────────────────────────────────
+  
+  ┌────────────────┐      ┌───────────────────┐      ┌────────────────────┐
+  │ Admin tạo      │      │ Cấu hình quyền   │      │ Profile sẵn sàng  │
+  │ Profile mới    │ ───▶ │ chức năng + dữ  │ ───▶ │ để gán cho nhiều  │
+  │ (BDA Standard) │      │ liệu (ABAC)      │      │ user              │
+  └────────────────┘      └───────────────────┘      └────────────────────┘
+  
+  ⏱ Thời gian: 20-30 phút (nhưng CHỈ LÀM 1 LẦN)
+
+
+  CÁCH 1: GÁN PROFILE (Khuyến nghị - cho đa số user)
+  ─────────────────────────────────────────────
+  
+  ┌────────────┐      ┌─────────────────┐      ┌────────────────────┐
+  │  Chọn      │      │  Chọn Profile   │      │   XONG!            │
+  │  User      │ ───▶ │  có sẵn         │ ───▶ │   User có đầy đủ   │
+  │  (Nguyễn A)│      │  (BDA Standard) │      │   quyền của Profile│
+  └────────────┘      └─────────────────┘      └────────────────────┘
+  
+  ⏱ Thời gian: &lt; 1 phút/user ✓ (vì Profile đã có sẵn)
+
+
+  CÁCH 2: NGOẠI LỆ - CẤP QUYỀN RIÊNG (Cho trường hợp đặc biệt)
+  ───────────────────────────────────────────────────────────
+  
+  ┌────────────┐      ┌─────────────────┐      ┌────────────────────┐
+  │  Chọn      │      │  Thêm quyền     │      │   User có quyền    │
+  │  User      │ ───▶ │  ngoại lệ       │ ───▶ │   Profile +        │
+  │  (Nguyễn A)│      │  (+ Phê duyệt   │      │   Quyền ngoại lệ   │
+  │  đã có     │      │   Job)          │      │                    │
+  │  Profile   │      │                 │      │                    │
+  └────────────┘      └─────────────────┘      └────────────────────┘
+</code></pre><h2 id="44-các-mô-hình-phân-quyền-được-hỗ-trợ">4.4 Các mô hình phân quyền được hỗ trợ </h2>
+<table>
+<thead>
+<tr>
+<th>Mô hình</th>
+<th>Mô tả</th>
+<th>Ví dụ áp dụng</th>
+<th>Ưu tiên đánh giá</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ACL</strong></td>
+<td>Cấp quyền riêng cho từng user</td>
+<td>User đặc biệt cần quyền khác với Profile</td>
+<td>Cao nhất</td>
+</tr>
+<tr>
+<td><strong>RBAC</strong></td>
+<td>Gán user vào Profile, Profile có các quyền</td>
+<td>90% trường hợp thông thường</td>
+<td>Trung bình</td>
+</tr>
+<tr>
+<td><strong>ABAC</strong></td>
+<td>Quyền dữ liệu dựa trên thuộc tính</td>
+<td>Chỉ xem dữ liệu của đơn vị mình</td>
+<td>Thấp nhất</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Thứ tự ưu tiên khi đánh giá quyền:</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  THỨ TỰ ƯU TIÊN ĐÁNH GIÁ QUYỀN                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+                        ┌─────────────────┐
+                        │  User yêu cầu   │
+                        │  truy cập       │
+                        └────────┬────────┘
+                                 │
+                                 ▼
+              ┌──────────────────────────────────┐
+              │  Bước 1: Kiểm tra ACL            │ ◀── Ưu tiên cao nhất
+              │  (Quyền cấp riêng cho user)      │
+              └─────────────────┬────────────────┘
+                                │
+                    ┌───────────┴───────────┐
+                    │                       │
+               [Có ACL]                [Không có]
+                    │                       │
+                    ▼                       ▼
+           ┌─────────────┐    ┌──────────────────────────────────┐
+           │ Áp dụng     │    │  Bước 2: Kiểm tra Profile        │
+           │ quyền ACL   │    │  (Quyền từ Profile đã gán)       │
+           └─────────────┘    └─────────────────┬────────────────┘
+                                                │
+                                    ┌───────────┴───────────┐
+                                    │                       │
+                           [Có quyền từ Profile]       [Không có]
+                                    │                       │
+                                    ▼                       ▼
+                ┌──────────────────────────────────┐   ┌─────────────┐
+                │  Bước 3: Áp dụng ABAC            │   │ TỪ CHỐI     │
+                │  (Lọc dữ liệu theo điều kiện)    │   │ TRUY CẬP    │
+                └─────────────────┬────────────────┘   └─────────────┘
+                                  │
+                                  ▼
+                           ┌─────────────┐
+                           │ CHO PHÉP    │
+                           │ (có giới hạn│
+                           │  dữ liệu)   │
+                           └─────────────┘
+</code></pre><hr>
+<h1 id="5-so-sánh-hiện-trạng-và-mong-muốn">5. SO SÁNH HIỆN TRẠNG VÀ MONG MUỐN </h1>
+<h2 id="51-bảng-so-sánh-tổng-quan">5.1 Bảng so sánh tổng quan </h2>
+<table>
+<thead>
+<tr>
+<th>Tiêu chí</th>
+<th>Hiện trạng</th>
+<th>Mong muốn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Đăng nhập</strong></td>
+<td>✓ SSO đã có</td>
+<td>✓ Giữ nguyên SSO hiện có</td>
+</tr>
+<tr>
+<td><strong>Giao diện quản trị quyền</strong></td>
+<td>3+ admin UI khác nhau</td>
+<td>1 Admin Dashboard duy nhất</td>
+</tr>
+<tr>
+<td><strong>Cấu hình quyền cho 1 user</strong></td>
+<td>Vào 3 hệ thống, 40+ phút</td>
+<td>Vào 1 nơi, &lt; 5 phút</td>
+</tr>
+<tr>
+<td><strong>Mô hình phân quyền</strong></td>
+<td>Mỗi hệ thống 1 kiểu (ACL/RBAC/ABAC)</td>
+<td>Thống nhất với Profile</td>
+</tr>
+<tr>
+<td><strong>Lưu trữ Policy</strong></td>
+<td>Phân tán ở 3 databases</td>
+<td>Tập trung tại AuthCenter</td>
+</tr>
+<tr>
+<td><strong>Thời gian onboarding</strong></td>
+<td>40+ phút/user</td>
+<td>&lt; 5 phút/user</td>
+</tr>
+<tr>
+<td><strong>API kiểm tra quyền</strong></td>
+<td>Mỗi hệ thống tự check</td>
+<td>Chuẩn hóa, gọi AuthCenter</td>
+</tr>
+</tbody>
+</table>
+<h2 id="52-so-sánh-luồng-quản-trị-quyền">5.2 So sánh luồng quản trị quyền </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  SO SÁNH LUỒNG QUẢN TRỊ QUYỀN CHO USER MỚI                                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  Hiện trạng:
+  ───────────
+  
+  Admin ──▶ Vào Admin SQLWF ──▶ Vào Admin VDSD ──▶ Nhờ Dev (VTM)
+            (tick permission)    (tạo policy)      (không có UI)
+            ⏱ 15 phút            ⏱ 20 phút         ⏱ Chờ 1-2 ngày
+  
+  ❌ Phải vào 2 hệ thống + nhờ Dev cho VTM
+  ❌ 2 giao diện khác nhau + 1 con không có UI
+  ❌ Tổng: 35+ phút + chờ Dev
+
+  ═══════════════════════════════════════════════════════════════════════════
+
+  Mong muốn:
+  ──────────
+  
+  LẦN ĐẦU: Tạo Profile (20-30 phút) ──▶ Dùng lại cho tất cả user cùng loại
+  
+  LẦN SAU: Admin ──▶ Vào AuthCenter ──▶ Chọn User ──▶ Gán Profile ──▶ XONG!
+                       (1 giao diện)       (tìm kiếm)   (click chọn)
+                                                         ⏱ &lt; 1 phút/user
+  
+  ✓ 1 giao diện duy nhất cho tất cả hệ thống
+  ✓ Profile tạo 1 lần, gán cho nhiều user
+  ✓ User tự động có quyền trên SQLWF, VDSD, VTM
+</code></pre><h2 id="53-so-sánh-công-việc-của-admin">5.3 So sánh công việc của Admin </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  SO SÁNH CÔNG VIỆC ADMIN KHI ONBOARDING USER MỚI                            │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  Hiện trạng:                                Mong muốn:
+  ───────────                                ──────────
+
+  ┌─────────────────────┐                    ┌─────────────────────┐
+  │ Bước 1: Vào SQLWF   │                    │ Bước 1: Vào         │
+  │ - Tạo user          │                    │ AuthCenter          │
+  │ - Tick 30+ menu     │                    │ - Tạo user          │
+  │ - Tick permissions  │                    │ - Chọn Profile      │
+  │                     │                    │   (VD: BDA Standard)│
+  │ ⏱ 15 phút          │                    │                      │
+  ├─────────────────────┤                    │ ⏱ 3 phút            │
+  │ Bước 2: Vào VDSD    │                    └─────────────────────┘
+  │ - Tạo user          │                              │
+  │ - Tạo/gán policy    │                              │
+  │                     │                              ▼
+  │ ⏱ 20 phút          │                     │       XONG!         │
+  ├─────────────────────┤                     │                     │
+  │ Bước 3: VTM         │                     │ User tự động có     │
+  │ - Nhờ Dev           │                     │   quyền trên:       │
+  │ - Chờ Dev vào DB    │                     │ ✓ SQLWF             │
+  │                     │                     │ ✓ VDSD              │
+  │ ⏱ 1-2 ngày         │                     │ ✓ VTM               │
+  └─────────────────────┘                     └─────────────────────┘
+           │
+           ▼
+  ┌─────────────────────────┐
+  │ TỔNG: 35 phút +         │
+  │ chờ Dev 1-2 ngày ❌    │
+  └─────────────────────────┘
+</code></pre><hr>
+<h1 id="6-luồng-nghiệp-vụ-chính">6. LUỒNG NGHIỆP VỤ CHÍNH </h1>
+<h2 id="61-luồng-đăng-nhập-và-kiểm-tra-quyền-mong-muốn">6.1 Luồng đăng nhập và kiểm tra quyền (Mong muốn) </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  LUỒNG ĐĂNG NHẬP VÀ KIỂM TRA QUYỀN (MONG MUỐN)                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  ┌────────┐                ┌─────────┐                ┌────────────┐
+  │  User  │                │   IdP   │                │ AuthCenter │
+  │        │                │(Keycloak)│               │            │
+  └───┬────┘                └────┬────┘                └─────┬──────┘
+      │                          │                           │
+      │  1. Truy cập SQLWF       │                           │
+      │ ────────────────────▶    │                           │
+      │                          │                           │
+      │  2. Chưa có token,       │                           │
+      │     redirect to IdP      │                           │
+      │ ◀────────────────────    │                           │
+      │                          │                           │
+      │  3. Nhập username/pwd    │                           │
+      │ ────────────────────▶    │                           │
+      │                          │                           │
+      │  4. Xác thực thành công  │                           │
+      │     Trả về JWT Token     │                           │
+      │ ◀────────────────────    │                           │
+      │                          │                           │
+      │  5. Truy cập SQLWF       │                           │
+      │     với Token            │                           │
+      │ ────────────────────▶    │                           │
+      │                          │                           │
+      │                          │  6. SQLWF gọi AuthCenter  │
+      │                          │     "User này có quyền    │
+      │                          │      table_create không?" │
+      │                          │ ────────────────────────▶ │
+      │                          │                           │
+      │                          │  7. AuthCenter kiểm tra:  │
+      │                          │     - Profile của user    │
+      │                          │     - Quyền trong Profile │
+      │                          │     - Quyền ngoại lệ      │
+      │                          │                           │
+      │                          │  8. Trả kết quả:          │
+      │                          │     "ALLOW" hoặc "DENY"   │
+      │                          │ ◀──────────────────────── │
+      │                          │                           │
+      │  9. Hiển thị màn hình    │                           │
+      │     (ẩn/hiện chức năng   │                           │
+      │      theo quyền)         │                           │
+      │ ◀────────────────────    │                           │
+      │                          │                           │
+</code></pre><h2 id="62-luồng-admin-cấu-hình-quyền">6.2 Luồng Admin cấu hình quyền </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  LUỒNG ADMIN CẤU HÌNH QUYỀN                                                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  BƯỚC 1: TẠO PROFILE
+  ────────────────────
+  
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  Admin vào AuthCenter → Menu "Quản lý Profile"                  │
+  │                                                                 │
+  │  ┌─────────────────────────────────────────────────────────┐    │
+  │  │  Form tạo Profile:                                       │   │
+  │  │                                                          │   │
+  │  │  Hệ thống: [SQLWF           ▼]                           │   │
+  │  │  Mã Profile: [BDA_STANDARD    ]                          │   │
+  │  │  Tên Profile: [BDA Standard    ]                         │   │
+  │  │  Mô tả: [Quyền chuẩn cho Business Data Analyst]          │   │
+  │  │                                                          │   │
+  │  │  Tab: [Quyền chức năng] [Quyền dữ liệu]                  │   │
+  │  │  ─────────────────────────────────────                   │   │
+  │  │  ☑ Quản lý bảng                                          │   │
+  │  │     ☑ Tạo bảng                                           │   │
+  │  │     ☑ Xem bảng                                           │   │
+  │  │     ☑ Sửa bảng                                           │   │
+  │  │     ☐ Xóa bảng                                           │   │
+  │  │  ☑ Quản lý SQL                                           │   │
+  │  │     ☑ Tạo truy vấn                                       │   │
+  │  │     ☑ Thực thi SQL                                       │   │
+  │  │                                                          │   │
+  │  │                              [Hủy] [Lưu Profile]         │   │
+  │  └─────────────────────────────────────────────────────────┘    │
+  └─────────────────────────────────────────────────────────────────┘
+
+
+  BƯỚC 2: GÁN PROFILE CHO USER
+  ────────────────────────────
+  
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  Admin vào "Quản lý User" → Chọn user → Tab "Profiles"          │
+  │                                                                 │
+  │  ┌─────────────────────────────────────────────────────────┐    │
+  │  │  User: Nguyễn Văn A                                      │   │
+  │  │  Đơn vị: TTPTDL                                          │   │
+  │  │                                                          │   │
+  │  │  Profiles đã gán:                                        │   │
+  │  │  ┌──────────────────────────────────────────────────┐    │   │
+  │  │  │ Hệ thống │ Profile        │ Hành động           │     │   │
+  │  │  ├──────────┼────────────────┼─────────────────────┤     │   │
+  │  │  │ SQLWF    │ BDA Standard   │ [Xóa]               │     │   │
+  │  │  │ VDSD     │ BI Viewer      │ [Xóa]               │     │   │
+  │  │  └──────────────────────────────────────────────────┘    │   │
+  │  │                                                          │   │
+  │  │  [+ Thêm Profile]                                        │   │
+  │  └─────────────────────────────────────────────────────────┘    │
+  └─────────────────────────────────────────────────────────────────┘
+</code></pre><h2 id="63-luồng-đồng-bộ-dữ-liệu-giữa-các-hệ-thống">6.3 Luồng đồng bộ dữ liệu giữa các hệ thống </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  LUỒNG ĐỒNG BỘ DỮ LIỆU                                                      │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  Các hệ thống con (SQLWF, VDSD, VTM) đẩy thông tin menu và permission
+  về AuthCenter để quản lý tập trung:
+
+  ┌─────────────────┐        ┌─────────────────┐        ┌─────────────────┐
+  │     SQLWF       │        │      VDSD       │        │      VTM        │
+  │                 │        │                 │        │                 │
+  │ Menu:           │        │ Menu:           │        │ Menu:           │
+  │ • Quản lý bảng  │        │ • Dashboard     │        │ • Báo cáo KPI   │
+  │ • Quản lý SQL   │        │ • Chỉ tiêu      │        │ • Báo cáo TC    │
+  │ • Quản lý Job   │        │ • Chart         │        │                 │
+  │                 │        │                 │        │                 │
+  │ Permissions:    │        │ Permissions:    │        │ Permissions:    │
+  │ • table_create  │        │ • view_dashboard│        │ • view_report   │
+  │ • table_edit    │        │ • edit_chart    │        │                 │
+  │ • sql_execute   │        │ • manage_kpi    │        │                 │
+  └────────┬────────┘        └────────┬────────┘        └────────┬────────┘
+           │                          │                          │
+           │    SYNC (API/Event)      │                          │
+           │                          │                          │
+           └──────────────────────────┼──────────────────────────┘
+                                      │
+                                      ▼
+                        ┌─────────────────────────────┐
+                        │        AUTHCENTER           │
+                        │                             │
+                        │  Tổng hợp tất cả:           │
+                        │  • Menu từ 3 hệ thống       │
+                        │  • Permissions từ 3 hệ thống│
+                        │  • Mapping với Profiles     │
+                        └─────────────────────────────┘
+
+  Lưu ý:
+  ─────
+  • Hệ thống con quản lý danh sách menu/permission của mình
+  • AuthCenter nhận thông tin qua API đồng bộ
+  • Admin chỉ cần cấu hình quyền tại AuthCenter
+  • Khi user truy cập, hệ thống con hỏi AuthCenter để kiểm tra quyền
+</code></pre><hr>
+<h1 id="7-lộ-trình-triển-khai">7. LỘ TRÌNH TRIỂN KHAI </h1>
+<h2 id="71-tổng-quan-các-giai-đoạn">7.1 Tổng quan các giai đoạn </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                         LỘ TRÌNH TRIỂN KHAI                                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+      Q1 2026             Q2 2026             Q3 2026             Q4 2026
+  ┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+  │  PHASE 1    │     │  PHASE 2    │     │  PHASE 3    │     │  PHASE 4    │
+  │  Nền tảng   │────▶│  Tích hợp   │────▶│  Chuyển đổi │────▶│  Tối ưu     │
+  └─────────────┘     └─────────────┘     └─────────────┘     └─────────────┘
+        │                   │                   │                   │
+        ▼                   ▼                   ▼                   ▼
+  ┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+  │ • Xây Core  │     │ • Kết nối   │     │ • Migrate   │     │ • Tăng tốc  │
+  │ • Database  │     │   SQLWF     │     │   data      │     │ • Analytics │
+  │ • Admin UI  │     │ • Kết nối   │     │ • Chạy      │     │ • Self-     │
+  │ • SSO setup │     │   VDSD/VTM  │     │   song song │     │   service   │
+  │             │     │ • Pilot 50  │     │ • Cutover   │     │             │
+  │             │     │   users     │     │   100%      │     │             │
+  └─────────────┘     └─────────────┘     └─────────────┘     └─────────────┘
+        │                   │                   │                   │
+        ▼                   ▼                   ▼                   ▼
+     Nội bộ           50 users thử       Toàn công ty         Ổn định
+     Dev/Test         nghiệm              sử dụng              hoàn toàn
+</code></pre><h2 id="72-chi-tiết-từng-giai-đoạn">7.2 Chi tiết từng giai đoạn </h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Thời gian</th>
+<th>Mục tiêu</th>
+<th>Deliverables</th>
+<th>Rủi ro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase 1: Nền tảng</strong></td>
+<td>Q1 2026 (8 tuần)</td>
+<td>Xây dựng hệ thống cốt lõi</td>
+<td>API, Database, Admin UI, SSO</td>
+<td>Trung bình</td>
+</tr>
+<tr>
+<td><strong>Phase 2: Tích hợp</strong></td>
+<td>Q2 2026 (12 tuần)</td>
+<td>Kết nối các hệ thống</td>
+<td>SDK cho SQLWF/VDSD/VTM, Pilot group</td>
+<td>Cao</td>
+</tr>
+<tr>
+<td><strong>Phase 3: Chuyển đổi</strong></td>
+<td>Q3 2026 (12 tuần)</td>
+<td>Migrate toàn bộ users</td>
+<td>Data migration, chạy song song, cutover</td>
+<td>Cao</td>
+</tr>
+<tr>
+<td><strong>Phase 4: Tối ưu</strong></td>
+<td>Q4 2026 (8 tuần)</td>
+<td>Hoàn thiện và tối ưu</td>
+<td>Performance, Analytics, Self-service</td>
+<td>Thấp</td>
+</tr>
+</tbody>
+</table>
+<h2 id="73-các-mốc-quan-trọng">7.3 Các mốc quan trọng </h2>
+<table>
+<thead>
+<tr>
+<th>Mốc</th>
+<th>Thời điểm</th>
+<th>Sự kiện</th>
+<th>Ảnh hưởng đến người dùng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td>Cuối Q1</td>
+<td>AuthCenter API sẵn sàng</td>
+<td>Chưa - chỉ dev sử dụng</td>
+</tr>
+<tr>
+<td>M2</td>
+<td>Giữa Q2</td>
+<td>Pilot group bắt đầu</td>
+<td>50 người dùng thử SSO</td>
+</tr>
+<tr>
+<td>M3</td>
+<td>Cuối Q2</td>
+<td>Go/No-Go decision</td>
+<td>Lãnh đạo quyết định tiếp tục/dừng</td>
+</tr>
+<tr>
+<td>M4</td>
+<td>Giữa Q3</td>
+<td>50% traffic chuyển sang</td>
+<td>Nửa công ty dùng hệ thống mới</td>
+</tr>
+<tr>
+<td>M5</td>
+<td>Cuối Q3</td>
+<td>100% cutover</td>
+<td>Toàn bộ công ty dùng AuthCenter</td>
+</tr>
+<tr>
+<td>M6</td>
+<td>Cuối Q4</td>
+<td>Hoàn thành tất cả tính năng</td>
+<td>Hệ thống ổn định hoàn toàn</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="8-lợi-ích-kỳ-vọng">8. LỢI ÍCH KỲ VỌNG </h1>
+<h2 id="81-lợi-ích-định-lượng">8.1 Lợi ích định lượng </h2>
+<table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th>Hiện trạng</th>
+<th>Mong muốn</th>
+<th>Cải thiện</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thời gian cấp quyền cho user mới</td>
+<td>35+ phút + chờ Dev 1-2 ngày</td>
+<td>&lt; 1 phút/user (sau khi có Profile)</td>
+<td><strong>Rút ngắn đáng kể</strong></td>
+</tr>
+<tr>
+<td>Tạo Profile mới (1 lần)</td>
+<td>Không có khái niệm này</td>
+<td>20-30 phút, dùng lại cho nhiều user</td>
+<td><strong>Hiệu quả cao</strong></td>
+</tr>
+<tr>
+<td>Số Admin UI cần quản lý</td>
+<td>3+ giao diện khác nhau</td>
+<td>1 giao diện duy nhất</td>
+<td><strong>-67%</strong></td>
+</tr>
+<tr>
+<td>Thời gian trả lời audit query</td>
+<td>2-3 giờ (tổng hợp thủ công)</td>
+<td>&lt; 1 phút (tra cứu)</td>
+<td><strong>-99%</strong></td>
+</tr>
+<tr>
+<td>Số điểm cần sửa khi thay đổi policy</td>
+<td>3+ nơi</td>
+<td>1 nơi</td>
+<td><strong>-67%</strong></td>
+</tr>
+<tr>
+<td>Số incident liên quan permission</td>
+<td>Baseline</td>
+<td>Giảm 80%</td>
+<td><strong>-80%</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="82-lợi-ích-định-tính">8.2 Lợi ích định tính </h2>
+<table>
+<thead>
+<tr>
+<th>Đối tượng</th>
+<th>Lợi ích</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Người dùng cuối</strong></td>
+<td>Quyền được cấp nhanh hơn, nhất quán giữa các hệ thống</td>
+</tr>
+<tr>
+<td><strong>Admin hệ thống</strong></td>
+<td>1 giao diện quản trị duy nhất, giảm 88% thời gian onboarding, dễ audit</td>
+</tr>
+<tr>
+<td><strong>Developer</strong></td>
+<td>API chuẩn hóa, SDK sẵn sàng, không cần tự build module phân quyền</td>
+</tr>
+<tr>
+<td><strong>Security Team</strong></td>
+<td>Audit log tập trung, dễ compliance, kiểm soát tốt hơn</td>
+</tr>
+<tr>
+<td><strong>Lãnh đạo</strong></td>
+<td>Giảm chi phí vận hành, tăng hiệu quả, giảm rủi ro</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="9-tài-liệu-liên-quan">9. TÀI LIỆU LIÊN QUAN </h1>
+<table>
+<thead>
+<tr>
+<th>STT</th>
+<th>Tên tài liệu</th>
+<th>Mô tả</th>
+<th>Đường dẫn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Phân tích hiện trạng chi tiết</td>
+<td>Phân tích hiện trạng từng hệ thống, database schema</td>
+<td><a href="CENTRALIZED_AUTH_AS_IS_ANALYSIS.md">CENTRALIZED_AUTH_AS_IS_ANALYSIS.md</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Đề xuất giải pháp chi tiết</td>
+<td>Kiến trúc mong muốn, API, luồng kỹ thuật</td>
+<td><a href="CENTRALIZED_AUTH_TO_BE_PROPOSAL.md">CENTRALIZED_AUTH_TO_BE_PROPOSAL.md</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Thiết kế CSDL AuthCenter</td>
+<td>Chi tiết các bảng, quan hệ, ví dụ dữ liệu</td>
+<td><a href="../T%C3%A0i%20li%E1%BB%87u%20CSDL/CSDL_AUTHCENTER.md">CSDL_AUTHCENTER.md</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>SRS Quản lý Profile</td>
+<td>Đặc tả chức năng quản lý Profile</td>
+<td><a href="SRS_AUTHCENTER_QUANLY_PROFILE_V2.md">SRS_AUTHCENTER_QUANLY_PROFILE_V2.md</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>SRS Quản lý Hệ thống</td>
+<td>Đặc tả chức năng quản lý Systems</td>
+<td><a href="SRS_AUTHCENTER_QUANLY_HETHONG_V2.md">SRS_AUTHCENTER_QUANLY_HETHONG_V2.md</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="phụ-lục-bảng-thuật-ngữ">PHỤ LỤC: BẢNG THUẬT NGỮ </h2>
+<table>
+<thead>
+<tr>
+<th>Thuật ngữ</th>
+<th>Giải thích</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ACL</strong> (Access Control List)</td>
+<td>Mô hình phân quyền cấp quyền trực tiếp cho từng user</td>
+</tr>
+<tr>
+<td><strong>RBAC</strong> (Role-Based Access Control)</td>
+<td>Mô hình phân quyền dựa trên vai trò (role)</td>
+</tr>
+<tr>
+<td><strong>ABAC</strong> (Attribute-Based Access Control)</td>
+<td>Mô hình phân quyền dựa trên thuộc tính (đơn vị, chức vụ...)</td>
+</tr>
+<tr>
+<td><strong>SSO</strong> (Single Sign-On)</td>
+<td>Đăng nhập 1 lần, truy cập được tất cả hệ thống</td>
+</tr>
+<tr>
+<td><strong>IdP</strong> (Identity Provider)</td>
+<td>Hệ thống xác thực danh tính (Keycloak, Auth0...)</td>
+</tr>
+<tr>
+<td><strong>Profile</strong></td>
+<td>Nhóm quyền được định nghĩa sẵn để gán cho nhiều user</td>
+</tr>
+<tr>
+<td><strong>Policy</strong></td>
+<td>Chính sách phân quyền, bao gồm điều kiện và hành động</td>
+</tr>
+<tr>
+<td><strong>Token</strong> (JWT)</td>
+<td>Mã xác thực điện tử chứa thông tin user, dùng để truy cập hệ thống</td>
+</tr>
+<tr>
+<td><strong>SDK</strong></td>
+<td>Bộ công cụ phát triển giúp tích hợp hệ thống với AuthCenter</td>
+</tr>
+<tr>
+<td><strong>Audit Log</strong></td>
+<td>Nhật ký ghi lại các hoạt động để kiểm toán</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<blockquote>
+<p><strong>Ghi chú</strong>: Tài liệu này là bản tổng quan dành cho lãnh đạo và quản lý. Các chi tiết kỹ thuật được trình bày trong các tài liệu liên quan.</p>
+</blockquote>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

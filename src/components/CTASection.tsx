@@ -1,11 +1,13 @@
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight, Sparkles, Package } from "lucide-react";
+import ProductsModal from "./ProductsModal";
 
 export default function CTASection() {
   const sectionRef = useRef(null);
   const thankRef = useRef<HTMLDivElement>(null);
   const [showThank, setShowThank] = useState(false);
+  const [showProducts, setShowProducts] = useState(false);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -92,23 +94,33 @@ export default function CTASection() {
           AI đồng hành cùng BA ở mọi giai đoạn.
         </p>
 
-        <a
-          href="https://youtu.be/x9xTHFL9aO8"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => {
-            if (!showThank) {
-              setShowThank(true);
-              setTimeout(() => {
-                thankRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-              }, 100);
-            }
-          }}
-          className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-brand-600 to-brand-500 text-white font-semibold text-sm hover:from-brand-500 hover:to-brand-400 transition-all duration-500 shadow-lg shadow-brand-500/20 hover:shadow-brand-500/30 hover:shadow-xl"
-        >
-          Xem Demo
-          <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </a>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://youtu.be/x9xTHFL9aO8"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              if (!showThank) {
+                setShowThank(true);
+                setTimeout(() => {
+                  thankRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+                }, 100);
+              }
+            }}
+            className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-brand-600 to-brand-500 text-white font-semibold text-sm hover:from-brand-500 hover:to-brand-400 transition-all duration-500 shadow-lg shadow-brand-500/20 hover:shadow-brand-500/30 hover:shadow-xl"
+          >
+            Xem Demo
+            <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+
+          <button
+            onClick={() => setShowProducts(true)}
+            className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-full border border-white/15 bg-white/[0.04] text-white font-semibold text-sm hover:bg-white/[0.08] hover:border-brand-500/40 transition-all duration-500 shadow-lg shadow-black/10 hover:shadow-brand-500/10 hover:shadow-xl"
+          >
+            Sản phẩm
+            <Package className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
+          </button>
+        </div>
       </motion.div>
 
       {/* Thank you — only appears after clicking Xem Demo */}
@@ -139,6 +151,7 @@ export default function CTASection() {
       >
         Ứng dụng AI trong công việc của BA — Team BA · 2025
       </motion.footer>
+      <ProductsModal open={showProducts} onClose={() => setShowProducts(false)} />
     </section>
   );
 }

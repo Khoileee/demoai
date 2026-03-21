@@ -1,0 +1,438 @@
+<!DOCTYPE html><html><head>
+      <title>MN_20260320_Chatbot_TrungTamHoTro</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script>
+    </head>
+    <body for="html-export">
+      <div class="crossnote markdown-preview  ">
+      <div>
+<h1 id="-meeting-notes--chatbot--trung-tâm-hỗ-trợ-app-viettel-bd">📋 MEETING NOTES — Chatbot &amp; Trung tâm Hỗ trợ App Viettel BD </h1>
+<h2 id="thông-tin-chung">Thông tin chung </h2>
+<table>
+<thead>
+<tr>
+<th>Mục</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ngày họp</strong></td>
+<td>20/03/2026</td>
+</tr>
+<tr>
+<td><strong>Timestamp</strong></td>
+<td>11:44 → ~14:30 (2 bản ghi: 11:44:11 &amp; 13:41:55)</td>
+</tr>
+<tr>
+<td><strong>Chủ đề</strong></td>
+<td>Đề xuất quy hoạch lại <strong>Trung tâm Hỗ trợ</strong> trên App Viettel BD &amp; phát triển tính năng khảo sát Chatbot</td>
+</tr>
+<tr>
+<td><strong>Mục đích</strong></td>
+<td>Review đề xuất CSKH về tái cấu trúc mục hỗ trợ trên app + thảo luận phát triển Pop-up/Inline survey cho chatbot</td>
+</tr>
+<tr>
+<td><strong>Người tham gia</strong></td>
+<td>Chị (CSKH - người trình bày), Anh Chiều (App team), Sơn (App team), Khôi (WebView/CMS), Tú (Backend/WebView)</td>
+</tr>
+<tr>
+<td><strong>Liên quan</strong></td>
+<td>Chị Nguyên, Thư (được nhắc đến nhưng không trực tiếp tham gia)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="1-meeting-summary">1. Meeting Summary </h2>
+<p>Cuộc họp tập trung vào <strong>2 nội dung chính</strong>:</p>
+<p><strong>Phần 1 — Quy hoạch lại Trung tâm Hỗ trợ trên App (Bản ghi 1):</strong><br>
+Phía CSKH đề xuất đổi tên mục "Hướng dẫn hỗ trợ" trên app thành <strong>"Trung tâm Hỗ trợ"</strong> với 5 đầu mục con: (1) Câu hỏi thường gặp (FAQ), (2) Danh mục chủ đề, (3) Lịch sử yêu cầu, (4) Cẩm nang sử dụng, (5) Kênh hỗ trợ. Các bên thảo luận kỹ về khả năng kỹ thuật, cách hiển thị UI trên app, phân công xử lý giữa App native và WebView. Mục tiêu go-live <strong>tháng 4/2026</strong>.</p>
+<p><strong>Phần 2 — Tính năng khảo sát chatbot (Bản ghi 2):</strong><br>
+Thảo luận cải tiến luồng khảo sát hài lòng sau phiên chat với chatbot, bao gồm hình thức <strong>Pop-up survey</strong> (tháng 4) và <strong>Inline survey</strong> (tháng 6). Đã chốt bỏ yêu cầu rút ngắn thời gian luồng khảo sát hiện tại để tập trung nguồn lực phát triển tính năng mới.</p>
+<hr>
+<h2 id="2-key-points">2. Key Points </h2>
+<h3 id="21-trung-tâm-hỗ-trợ--cấu-trúc-5-đầu-mục">2.1. Trung tâm Hỗ trợ — Cấu trúc 5 đầu mục </h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Đầu mục</th>
+<th>Mô tả</th>
+<th>Phía xử lý</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Câu hỏi thường gặp (FAQ)</strong></td>
+<td>Tận dụng ngân hàng 3.000+ FAQ đã xây cho chatbot. Hiển thị dạng danh sách text, có tìm kiếm. Chi tiết FAQ render bằng HTML qua WebView.</td>
+<td>App (danh sách) + WebView (chi tiết HTML)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Danh mục chủ đề</strong></td>
+<td>Đồng bộ từ kho tri thức CMS chatbot sang app. Hiển thị dạng icon + tên chủ đề, bấm vào xem chi tiết.</td>
+<td>App (thư mục) + WebView (API lấy dữ liệu)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Lịch sử yêu cầu</strong></td>
+<td>Người dùng tra cứu lịch sử phản ánh, xem trạng thái xử lý (mới/đang xử lý/hoàn thành). Có khảo sát hài lòng sau hoàn thành.</td>
+<td>App (giao diện) + CMS (API dữ liệu)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Cẩm nang sử dụng</strong></td>
+<td>Giữ nguyên phần video hướng dẫn hiện có trên app, chỉ di chuyển vị trí.</td>
+<td>App (di chuyển mục)</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Kênh hỗ trợ</strong> (cuối cùng)</td>
+<td>Chat trực tuyến (nhúng icon chatbot), Tổng đài (gọi trực tiếp), Gửi yêu cầu, Nhân viên hỗ trợ.</td>
+<td>App (tích hợp)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-quyết-định-về-uiux-hiển-thị">2.2. Quyết định về UI/UX hiển thị </h3>
+<ul>
+<li>App <strong>không thể</strong> hiển thị giao diện phức tạp (nhiều hình ảnh, icon màu mè) theo mockup ban đầu của CSKH</li>
+<li>Hiển thị theo <strong>cây thư mục dọc</strong> (không ngang), mỗi mục là 1 icon lớn đại diện</li>
+<li>Bấm vào từng mục mới xem chi tiết bên trong — không list ra ngoài hết</li>
+<li>Chi tiết FAQ: App gọi API lấy danh sách → WebView trả <strong>HTML</strong> cho chi tiết từng câu hỏi</li>
+<li>Tìm kiếm FAQ: WebView trả <strong>toàn bộ danh sách</strong> 1 lần → App tìm kiếm <strong>local</strong> (giảm phức tạp API)</li>
+<li><strong>Đổi thứ tự</strong>: Kênh hỗ trợ xuống cuối cùng, Cẩm nang sử dụng đẩy lên trước kênh hỗ trợ</li>
+</ul>
+<h3 id="23-câu-hỏi-thường-gặp-faq--chi-tiết-giải-pháp">2.3. Câu hỏi thường gặp (FAQ) — Chi tiết giải pháp </h3>
+<ul>
+<li>Data lấy từ CMS quản trị chatbot (ngân hàng FAQ 3.000+ câu)</li>
+<li>CMS cung cấp <strong>API danh sách</strong> (title + ID) → App hiển thị</li>
+<li><strong>Chi tiết câu hỏi</strong>: Trả về dạng <strong>HTML</strong> qua WebView — lý do: nội dung có thể chứa text định dạng (bold, italic, link video), app thuần text không xử lý được</li>
+<li>Tìm kiếm: App gọi API <strong>1 lần</strong> lấy full list → tìm kiếm local trên device</li>
+<li>Sau khi đọc FAQ xong, nếu vẫn chưa hài lòng → hiển thị nút liên hệ kênh hỗ trợ (chat/tổng đài)</li>
+<li><strong>Không</strong> nhúng nút tương tác phức tạp vào bên trong chi tiết FAQ (quá khó)</li>
+</ul>
+<h3 id="24-danh-mục-chủ-đề--chi-tiết-giải-pháp">2.4. Danh mục chủ đề — Chi tiết giải pháp </h3>
+<ul>
+<li>Đồng bộ từ kho tri thức CMS chatbot → hiển thị dạng icon + tên chủ đề trên app</li>
+<li>App tạo <strong>4-5 icon thư mục chính</strong> → bấm vào gọi WebView API lấy nội dung</li>
+<li>WebView cần thiết kế <strong>responsive cho mobile</strong> (hiện tại đang kéo ngang, xấu trên điện thoại)</li>
+<li>Phase 1 chấp nhận hiển thị như hiện trạng WebView, cải thiện UI sau</li>
+<li>Vấn đề: WebView hiển thị chỉ chiếm <strong>~1/3 màn hình điện thoại</strong>, kéo ngang → trải nghiệm kém</li>
+</ul>
+<h3 id="25-lịch-sử-yêu-cầu--chi-tiết-giải-pháp">2.5. Lịch sử yêu cầu — Chi tiết giải pháp </h3>
+<ul>
+<li>Gọi API từ CMS để lấy trạng thái yêu cầu đã gửi</li>
+<li>Các trường hiển thị: tên người dùng, nội dung phản ánh, nội dung xử lý, kết quả</li>
+<li>Giao diện có các <strong>tab trạng thái</strong>: Tất cả / Đang xử lý / Chờ xử lý / Đã hoàn thành</li>
+<li>Thanh tìm kiếm nhanh ở trên cùng</li>
+<li>Sau khi xử lý hoàn thành → hiển thị <strong>khảo sát hài lòng</strong> về kết quả xử lý</li>
+<li><strong>Bỏ qua</strong> tính năng "Gửi lại/Phản ánh lại" — quá phức tạp, tỷ lệ phản ánh lại rất thấp</li>
+<li>Khôi đã xây xong phần CMS xử lý yêu cầu → sẵn sàng khi App gọi API</li>
+</ul>
+<h3 id="26-kênh-hỗ-trợ">2.6. Kênh hỗ trợ </h3>
+<ul>
+<li><strong>Chat trực tuyến</strong>: Nhúng icon WebView chatbot vào app</li>
+<li><strong>Tổng đài</strong>: Bấm nút → gọi trực tiếp (thay vì chỉ hiển thị số điện thoại dạng text)</li>
+<li><strong>Gửi yêu cầu</strong>: Nhúng form gửi yêu cầu từ WebView chatbot</li>
+<li><strong>Nhân viên hỗ trợ</strong>: Link từ app hiện tại</li>
+</ul>
+<blockquote>
+<p>Phản hồi từ người dùng: Icon chatbot hiện tại hiển thị trên giao diện app bị phàn nàn — không rõ ràng, không tắt được, gây khó chịu. Cần cải thiện.</p>
+</blockquote>
+<h3 id="27-chatbot-survey--pop-up--inline">2.7. Chatbot Survey — Pop-up &amp; Inline </h3>
+<p><strong>Bối cảnh:</strong> Tỷ lệ tham gia khảo sát hiện tại rất thấp (4-5 phản hồi/tháng). Nguyên nhân: delay 3 phút mới hiển thị pop-up khảo sát.</p>
+<h4 id="pop-up-survey-phase-mới">Pop-up Survey (Phase mới) </h4>
+<ul>
+<li><strong>Trigger</strong>: Sau tin nhắn cuối cùng của bot + <strong>30 giây</strong> (thay vì 3 phút hiện tại)</li>
+<li>Cũng trigger khi phát hiện <strong>câu chào tạm biệt</strong> (như hiện tại)</li>
+<li>Giao diện: Giữ format hiện tại, sẽ review chi tiết dựa trên phiếu yêu cầu</li>
+<li>Thang đánh giá: Đồng ý / Bình thường / Không đồng ý (theo khung tập đoàn)</li>
+<li>Nút tắt: Có cho phép, nhưng <strong>không to quá</strong> (khuyến khích người dùng tham gia)</li>
+</ul>
+<h4 id="inline-survey">Inline Survey </h4>
+<ul>
+<li>Like/Dislike ở mỗi tin nhắn bot → giữ nguyên, không ảnh hưởng gì</li>
+<li>Inline survey mới (thang điểm) → phát triển sau, ảnh hưởng cả luồng lưu trữ + báo cáo</li>
+</ul>
+<h4 id="vấn-đề-bậttắt">Vấn đề bật/tắt </h4>
+<ul>
+<li>Pop-up và inline là <strong>2 luồng xử lý/lưu trữ hoàn toàn khác nhau</strong></li>
+<li><strong>Không thể bật/tắt linh hoạt</strong> giữa 2 hình thức</li>
+<li><strong>Không xây được</strong> luồng cấu hình kịch bản khảo sát tự động (từng bước, thay đổi thang điểm...) — quá phức tạp, tần suất thay đổi thấp</li>
+</ul>
+<h3 id="28-đánh-giá-chatbot-nội-bộ-cho-cskh">2.8. Đánh giá Chatbot (nội bộ cho CSKH) </h3>
+<ul>
+<li>Hiện tại: CSKH đánh giá thủ công — xuất Excel → review hội thoại → gửi mail cho Thư hàng ngày</li>
+<li>Mong muốn: Có <strong>công cụ trên CMS</strong> để đánh giá chất lượng hội thoại chatbot trực tiếp</li>
+<li>Thư có thể nhìn kết quả đánh giá trên CMS → nâng cao chất lượng chatbot</li>
+<li>Liên quan đến kế hoạch 1332</li>
+</ul>
+<h3 id="29-các-yêu-cầu-khác">2.9. Các yêu cầu khác </h3>
+<ul>
+<li><strong>Voice integration</strong> cho yêu cầu hỗ trợ: dự kiến tháng 6</li>
+<li><strong>Chức năng đánh giá chatbot</strong> trên CMS: hạn 14 (⚠️ NEED INFO - ngày cụ thể)</li>
+<li>WebView của chatbot cần cập nhật responsive cho mobile</li>
+</ul>
+<hr>
+<h2 id="3-decisions-các-quyết-định-đã-chốt">3. Decisions (Các quyết định đã chốt) </h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Quyết định</th>
+<th>Ghi chú</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Đổi tên "Hướng dẫn hỗ trợ" → <strong>"Trung tâm Hỗ trợ"</strong></td>
+<td>Bước 1 trên app</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Cấu trúc 5 đầu mục: FAQ, Danh mục chủ đề, Lịch sử yêu cầu, Cẩm nang sử dụng, Kênh hỗ trợ</td>
+<td>Kênh hỗ trợ xuống cuối cùng</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Hiển thị dạng <strong>thư mục dọc + icon lớn</strong>, không list chi tiết ra ngoài</td>
+<td>App chỉ hiển thị thư mục, bấm vào mới xem chi tiết</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Chi tiết FAQ render bằng <strong>HTML qua WebView</strong></td>
+<td>Dễ cập nhật, không phải release app mới</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tìm kiếm FAQ: WebView trả full list → App tìm kiếm <strong>local</strong></td>
+<td>Giảm phức tạp API</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Bỏ</strong> tính năng "Phản ánh lại" trong lịch sử yêu cầu</td>
+<td>Quá phức tạp, tỷ lệ phản ánh lại thấp</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Bỏ</strong> yêu cầu rút ngắn thời gian luồng khảo sát hiện tại</td>
+<td>Tập trung nguồn lực cho pop-up survey mới</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Pop-up survey: kích hoạt sau <strong>30 giây</strong> kể từ tin nhắn cuối của bot</td>
+<td>Thay vì 3 phút hiện tại</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Pop-up survey target: <strong>25/04/2026</strong></td>
+<td>Khôi xử lý</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Inline survey target: <strong>Tháng 6/2026</strong></td>
+<td>Ảnh hưởng luồng lưu trữ + báo cáo, cần làm sau</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Không xây</strong> hệ thống cấu hình luồng khảo sát</td>
+<td>Quá phức tạp, tần suất thay đổi thấp</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Không thể bật/tắt giữa pop-up và inline survey</td>
+<td>2 luồng lưu trữ dữ liệu khác nhau</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Khảo sát hài lòng kết quả xử lý: <strong>App lưu trước</strong>, CMS tích hợp sau</td>
+<td>Phần báo cáo CMS bổ sung sau</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Danh mục chủ đề: App tạo icon thư mục → gọi WebView API lấy nội dung</td>
+<td>Giữ nguyên kho tri thức CMS</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Phase 1 chấp nhận hiển thị WebView <strong>như hiện trạng</strong> (kéo ngang)</td>
+<td>Cải thiện responsive sau</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Phần quản trị cấu hình khảo sát: <strong>dev team giữ quyền</strong>, không bàn giao cho CSKH</td>
+<td>Khi cần sửa → yêu cầu dev team</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-action-items">4. Action Items </h2>
+<h3 id="phía-app-anh-chiều-sơn">Phía App (Anh Chiều, Sơn) </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Thiết kế giao diện Trung tâm Hỗ trợ (5 đầu mục dạng icon dọc) — <strong>Tháng 4</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Tạo thư mục FAQ + tích hợp API WebView (danh sách + tìm kiếm local) — <strong>Tháng 4</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Tạo thư mục Danh mục chủ đề + gọi API WebView lấy category + icon — <strong>Tháng 4</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Tạo thư mục Lịch sử yêu cầu + gọi API CMS lấy trạng thái (tab: mới/đang xử lý/hoàn thành) — <strong>Tháng 4</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Di chuyển mục Cẩm nang sử dụng (video) sang vị trí mới — <strong>Tháng 4</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Tích hợp Kênh hỗ trợ: chat (nhúng WebView), tổng đài (gọi trực tiếp), gửi yêu cầu — <strong>Tháng 4</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Xử lý hiển thị khảo sát hài lòng sau hoàn thành yêu cầu (lưu trên app trước) — <strong>Tháng 4</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Sắp xếp lịch và đưa <strong>kế hoạch phát triển</strong> cho CSKH</li>
+</ul>
+<h3 id="phía-webviewcms-khôi-tú">Phía WebView/CMS (Khôi, Tú) </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Cung cấp <strong>API danh sách FAQ</strong> (trả full list: title + ID → app tìm kiếm local) — <strong>Tháng 4</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Cung cấp <strong>API chi tiết FAQ</strong> dạng HTML cho WebView render — <strong>Tháng 4</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Cung cấp <strong>API danh mục chủ đề</strong> (category + icon/image) — <strong>Tháng 4</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> API lịch sử yêu cầu (trạng thái, trường thông tin) — <strong>Sẵn sàng</strong> (Khôi đã xây)</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Phát triển <strong>Pop-up survey</strong> mới (trigger 30s sau tin nhắn cuối bot + trigger câu tạm biệt) — <strong>25/04/2026</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Phát triển <strong>Inline survey</strong> — <strong>Tháng 6/2026</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Check và confirm khả năng <strong>cấu hình thời gian/tần suất</strong> hiển thị pop-up → <strong>Báo lại CSKH chiều 20/03</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Sửa phiếu yêu cầu pop-up survey theo nội dung đã thống nhất</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Nghiên cứu tính năng <strong>đánh giá chatbot</strong> trên CMS (thay thế Excel thủ công) — ⚠️ NEED INFO (deadline)</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Nghiên cứu tích hợp <strong>Voice</strong> cho yêu cầu hỗ trợ — <strong>Tháng 6 (theo KH 1332)</strong></li>
+</ul>
+<h3 id="phía-cskh-chị">Phía CSKH (Chị) </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Vẽ lại mockup theo đúng khả năng kỹ thuật đã thống nhất (thư mục dọc, icon lớn) → gửi lại App team</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Sửa phiếu yêu cầu: bỏ phần bật/tắt survey, bỏ cấu hình luồng khảo sát quản trị</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Chốt phương án pop-up survey với sếp → <strong>chốt trong ngày 20/03</strong> ✅ (đã chốt ngay trong họp)</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Tiếp tục phát triển ngân hàng FAQ trên CMS (đã có 3.000+)</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Chuẩn bị nội dung FAQ dạng HTML (câu hỏi + trả lời) để Khôi đẩy lên API</li>
+</ul>
+<hr>
+<h2 id="5-issues--risks">5. Issues / Risks </h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Vấn đề</th>
+<th>Mức độ</th>
+<th>Ghi chú</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>WebView hiển thị trên app chỉ chiếm <strong>~1/3 màn hình</strong>, kéo ngang xấu</td>
+<td>Medium</td>
+<td>Phase 1 chấp nhận hiện trạng, cải thiện sau</td>
+</tr>
+<tr>
+<td>2</td>
+<td>App team <strong>không có designer riêng</strong> cho mobile</td>
+<td>High</td>
+<td>Thiết kế UI bị giới hạn, chỉ làm dạng thư mục cơ bản</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Nguồn lực hạn chế</strong>: team nhỏ, không có outsource</td>
+<td>High</td>
+<td>Phải ưu tiên, bỏ bớt tính năng phức tạp</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Tỷ lệ tham gia khảo sát hiện tại <strong>rất thấp</strong> (4-5 responses/tháng)</td>
+<td>High</td>
+<td>Nguyên nhân: delay 3 phút, giảm xuống 30s sẽ cải thiện</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Khảo sát hài lòng xử lý yêu cầu: <strong>chưa có API</strong> truyền dữ liệu về CMS báo cáo</td>
+<td>Medium</td>
+<td>App lưu tạm, CMS tích hợp báo cáo sau</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Cấu hình kịch bản khảo sát phải <strong>sửa thủ công</strong> qua dev team</td>
+<td>Low</td>
+<td>Tần suất thay đổi thấp, chấp nhận được</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Tính năng đánh giá chatbot trên CMS <strong>chưa rõ timeline</strong></td>
+<td>Medium</td>
+<td>Hiện đang làm thủ công bằng Excel hàng ngày</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Icon chatbot trên app bị <strong>người dùng phàn nàn</strong> (không tắt được, không rõ ràng)</td>
+<td>Medium</td>
+<td>Cần cải thiện UX</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Danh mục chủ đề trên WebView <strong>chưa responsive mobile</strong></td>
+<td>Medium</td>
+<td>Phase 1 chấp nhận, thiết kế lại sau</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="6-to-do-list-tổng-hợp-theo-timeline">6. To-do List (Tổng hợp theo Timeline) </h2>
+<h3 id="tháng-32026-còn-10-ngày">Tháng 3/2026 (còn ~10 ngày) </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> CSKH: Chốt phương án pop-up survey với sếp ✅ (đã chốt trong họp)</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> CSKH: Vẽ lại mockup đúng kỹ thuật, sửa phiếu yêu cầu → gửi lại</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Khôi: Check và confirm khả năng cấu hình thời gian/tần suất pop-up → <strong>báo chiều 20/03</strong></li>
+</ul>
+<h3 id="tháng-42026">Tháng 4/2026 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>App</strong>: Xây dựng giao diện Trung tâm Hỗ trợ (5 đầu mục dạng icon dọc)</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>App</strong>: Tích hợp API từ WebView/CMS (FAQ danh sách, FAQ chi tiết HTML, danh mục chủ đề, lịch sử yêu cầu)</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>WebView (Khôi/Tú)</strong>: Cung cấp các API cho App</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>WebView (Khôi)</strong>: Phát triển Pop-up survey mới → <strong>target 25/04</strong></li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Go-live Trung tâm Hỗ trợ Phase 1</li>
+</ul>
+<h3 id="tháng-62026">Tháng 6/2026 </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> <strong>WebView (Khôi)</strong>: Phát triển Inline survey</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Voice integration cho yêu cầu hỗ trợ (theo KH 1332)</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Tích hợp dữ liệu khảo sát hài lòng về CMS cho báo cáo</li>
+</ul>
+<h3 id="chưa-xác-định-timeline">Chưa xác định timeline </h3>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Xây công cụ đánh giá chatbot trên CMS (thay Excel thủ công)</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Cải thiện hiển thị WebView trên app (responsive dọc thay ngang)</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Cải thiện UX icon chatbot trên giao diện app</li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>⚠️ Ghi chú cho Khôi:</strong></p>
+<ul>
+<li>Nhiều đầu việc liên quan trực tiếp: API FAQ, API danh mục chủ đề, pop-up survey (deadline 25/04)</li>
+<li>Phần lịch sử yêu cầu trên CMS <strong>đã xây xong</strong> → sẵn sàng khi App gọi API</li>
+<li>Cần confirm khả năng cấu hình thời gian/tần suất pop-up → <strong>báo lại CSKH chiều nay (20/03)</strong></li>
+<li>Pop-up survey cần theo <strong>phiếu yêu cầu</strong> của CSKH, review lại giao diện với chi tiết sửa đổi</li>
+</ul>
+</blockquote>
+</div>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
