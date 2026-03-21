@@ -34,28 +34,16 @@ const solutions = [
     after: "2-3 giờ",
   },
   {
-    problem: "Viết tài liệu lặp lại",
-    solution: "Agent đọc source code + requirement → sinh SRS, TKCT theo template",
+    problem: "Viết tài liệu & kịch bản test thủ công",
+    solution: "Agent đọc source code + requirement → sinh SRS, TKCT, KBNT theo template",
     tool: "Agent + Skills",
     toolIcon: Bot,
     toolColor: "from-emerald-500 to-teal-500",
     accentColor: "text-emerald-400",
     borderColor: "border-emerald-500/10",
     glowColor: "bg-emerald-500/8",
-    before: "1-2 ngày",
+    before: "2-3 ngày",
     after: "0.5-1 ngày",
-  },
-  {
-    problem: "Viết kịch bản test & HDSD thủ công",
-    solution: "Agent đọc requirement + UI spec → sinh kịch bản UAT tự động",
-    tool: "Agent + Skills",
-    toolIcon: Bot,
-    toolColor: "from-rose-500 to-pink-500",
-    accentColor: "text-rose-400",
-    borderColor: "border-rose-500/10",
-    glowColor: "bg-rose-500/8",
-    before: "4 giờ",
-    after: "1-2 giờ",
   },
   {
     problem: "Tra cứu thông tin chậm",
@@ -182,7 +170,7 @@ export default function SolutionSection() {
               initial="hidden"
               animate={gridInView ? "visible" : "hidden"}
               variants={cardVariants}
-              className={`group relative ${i === solutions.length - 1 && solutions.length % 2 !== 0 ? "md:col-span-2 md:max-w-[calc(50%-1rem)] md:mx-auto" : ""}`}
+              className="group relative"
             >
               <div className={`relative p-8 rounded-2xl border ${s.borderColor} bg-gray-950/80 hover:bg-gray-900/60 transition-all duration-500 h-full glass-depth`}>
                 {/* Glow */}

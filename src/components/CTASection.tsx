@@ -149,7 +149,7 @@ export default function CTASection() {
         style={{ opacity: contentOpacity }}
         className="mt-16 text-center text-gray-600 text-sm"
       >
-        Ứng dụng AI trong công việc của BA — Team BA · 2025
+        Ứng dụng AI trong công việc của BA — Team BA · 2026
       </motion.footer>
       <ProductsModal open={showProducts} onClose={() => setShowProducts(false)} />
     </section>
