@@ -8,7 +8,7 @@ const sections = [
   { id: "solution", label: "Giải pháp" },
   { id: "tools", label: "Công cụ" },
   { id: "orchestration", label: "Điều phối" },
-  { id: "insight", label: "Kết quả" },
+  { id: "insight", label: "Góc nhìn" },
   { id: "cta", label: "Trải nghiệm" },
 ];
 

@@ -1,15 +1,62 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { Brain, ShieldCheck, Rocket } from "lucide-react";
+
+const insights = [
+  {
+    icon: Brain,
+    title: "AI không thay thế BA",
+    description:
+      "AI là công cụ hỗ trợ — không thay thế con người. BA vẫn cần hiểu sâu nghiệp vụ, đặt đúng câu hỏi, và ra quyết định. AI chỉ giúp tăng tốc những công việc lặp lại.",
+    accentColor: "text-brand-400",
+    borderColor: "border-brand-500/10",
+    glowColor: "bg-brand-500/8",
+    iconBg: "from-brand-500/15 to-cyan-500/15",
+    iconBorder: "border-brand-500/10",
+  },
+  {
+    icon: ShieldCheck,
+    title: "An toàn dữ liệu",
+    description:
+      "3/4 công cụ chạy local hoặc self-hosted, không gửi dữ liệu ra ngoài. Mọi output đều qua bước human-in-the-loop — BA kiểm tra trước khi sử dụng chính thức.",
+    accentColor: "text-emerald-400",
+    borderColor: "border-emerald-500/10",
+    glowColor: "bg-emerald-500/8",
+    iconBg: "from-emerald-500/15 to-teal-500/15",
+    iconBorder: "border-emerald-500/10",
+  },
+  {
+    icon: Rocket,
+    title: "Nhân rộng được",
+    description:
+      "Template chuẩn hóa, chi phí vận hành ~$10-20/tháng, đào tạo 1-2 buổi là BA có thể sử dụng. Dễ dàng áp dụng cho các dự án và team khác.",
+    accentColor: "text-violet-400",
+    borderColor: "border-violet-500/10",
+    glowColor: "bg-violet-500/8",
+    iconBg: "from-violet-500/15 to-purple-500/15",
+    iconBorder: "border-violet-500/10",
+  },
+];
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.7, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
 
 export default function InsightSection() {
   const sectionRef = useRef(null);
+  const gridRef = useRef(null);
+  const gridInView = useInView(gridRef, { once: true, amount: 0.2 });
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
 
-  const textOpacity = useTransform(scrollYProgress, [0.15, 0.35, 0.7, 0.85], [0, 1, 1, 0]);
-  const textScale = useTransform(scrollYProgress, [0.15, 0.35], [0.92, 1]);
   const bgGlowOpacity = useTransform(scrollYProgress, [0.2, 0.4], [0, 1]);
 
   return (
@@ -79,35 +126,68 @@ export default function InsightSection() {
         <div className="absolute rounded-full bg-brand-400/25 animate-float-particle" style={{ left: '12%', top: '60%', width: 2, height: 2, animationDuration: '8.5s', animationDelay: '3s' }} />
       </div>
 
-      <motion.div
-        style={{ opacity: textOpacity, scale: textScale }}
-        className="relative max-w-4xl mx-auto text-center"
-      >
-        <blockquote className="text-3xl sm:text-4xl lg:text-[3.2rem] font-bold tracking-tight">
-          <span className="block leading-[1.4] mb-3">
-            <span className="text-white">AI giúp BA làm </span>
-            <span className="bg-gradient-to-r from-brand-400 to-cyan-400 bg-clip-text text-transparent">nhanh hơn</span>
-            <span className="text-white">, </span>
-            <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">chuẩn hơn</span>
-            <span className="text-white"> —</span>
-          </span>
-          <span className="block leading-[1.4]">
-            <span className="text-white">nhưng BA vẫn là người </span>
-            <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">quyết định nghiệp vụ</span>
-            <span className="text-white">.</span>
-          </span>
-        </blockquote>
+      <div className="relative max-w-6xl mx-auto">
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-16"
+        >
+          <p className="text-brand-400 text-sm font-medium tracking-[0.25em] uppercase mb-4">
+            Góc nhìn
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-[3.2rem] font-bold tracking-tight">
+            <span className="block leading-[1.4] mb-4">
+              <span className="text-white">AI giúp BA làm </span>
+              <span className="bg-gradient-to-r from-brand-400 to-cyan-400 bg-clip-text text-transparent">nhanh hơn</span>
+              <span className="text-white">, </span>
+              <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">chuẩn hơn</span>
+              <span className="text-white"> —</span>
+            </span>
+            <span className="block leading-[1.4]">
+              <span className="text-white">nhưng BA vẫn là người </span>
+              <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">quyết định nghiệp vụ</span>
+              <span className="text-white">.</span>
+            </span>
+          </h2>
+        </motion.div>
 
-        <p className="mt-10 text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
-          AI là công cụ hỗ trợ — không thay thế con người. BA vẫn cần hiểu sâu nghiệp vụ,
-          đặt đúng câu hỏi, và ra quyết định. AI chỉ giúp <span className="text-white/80">tăng tốc</span> những
-          công việc lặp lại để BA có thời gian tập trung vào giá trị thực sự.
-        </p>
+        {/* 3 insight cards */}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {insights.map((item, i) => (
+            <motion.div
+              key={item.title}
+              custom={i}
+              initial="hidden"
+              animate={gridInView ? "visible" : "hidden"}
+              variants={cardVariants}
+              className="group relative"
+            >
+              <div className={`relative p-8 rounded-2xl border ${item.borderColor} bg-gray-950/80 hover:bg-gray-900/60 transition-all duration-500 h-full glass-depth`}>
+                <div className={`absolute -inset-px rounded-2xl ${item.glowColor} opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10`} />
+
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.iconBg} flex items-center justify-center border ${item.iconBorder} mb-5`}>
+                  <item.icon className={`w-5 h-5 ${item.accentColor}`} />
+                </div>
+
+                <h3 className={`text-lg font-semibold mb-3 ${item.accentColor}`}>
+                  {item.title}
+                </h3>
+
+                <p className="text-gray-400/80 text-sm leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
         <div className="mt-14 flex justify-center">
           <div className="w-20 h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent" />
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

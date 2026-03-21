@@ -17,39 +17,44 @@ const problems = [
     title: "Ghi chép meeting thủ công",
     description:
       "BA phải vừa nghe, vừa ghi, vừa đặt câu hỏi trong cuộc họp. Thông tin dễ bị bỏ sót, ghi chép thiếu chính xác, mất thời gian tổng hợp lại sau mỗi buổi.",
-    metric: "~1-2 giờ / buổi họp",
+    metric: "~1-2h / buổi họp",
+    frequency: "3-5 buổi/tuần",
   },
   {
     icon: Clock,
     step: "Bước 1-2",
     title: "Tổng hợp & phân tích yêu cầu mất thời gian",
     description:
-      "Sau mỗi buổi họp, cần nhiều giờ để sàng lọc, phân loại, chuẩn hóa requirement. Phân tích luồng nghiệp vụ phức tạp dễ thiếu sót.",
-    metric: "~4-8 giờ tổng hợp",
+      "Sau mỗi buổi họp, cần thời gian để sàng lọc, phân loại, chuẩn hóa requirement. Phân tích luồng nghiệp vụ phức tạp dễ thiếu sót.",
+    metric: "~2-4h tổng hợp",
+    frequency: "Mỗi buổi họp",
   },
   {
     icon: LayoutTemplate,
     step: "Bước 2",
-    title: "Prototype thiếu trực quan",
+    title: "Prototype thiếu trực quan, nhiều vòng chỉnh sửa",
     description:
-      "Wireframe truyền thống khó thể hiện tương tác thực tế. Stakeholder khó hình dung, dẫn đến nhiều vòng chỉnh sửa trước khi chốt giải pháp.",
-    metric: "2-3 vòng review",
+      "Vẽ tay mockup tốn thời gian, khó thể hiện tương tác thực tế. Stakeholder khó hình dung, dẫn đến nhiều vòng chỉnh sửa trước khi chốt.",
+    metric: "~3-4h / tính năng CRUD",
+    frequency: "Mỗi sprint",
   },
   {
     icon: FileText,
     step: "Bước 3",
     title: "Viết tài liệu lặp lại, mất thời gian",
     description:
-      "SRS, BRD, TKCT, CSDL — các tài liệu có cấu trúc tương tự nhưng phải viết lại từ đầu mỗi lần. Rất dễ thiếu sót, không nhất quán.",
-    metric: "~1-2 ngày / tài liệu",
+      "SRS, TKCT, CSDL, diagram — các tài liệu có cấu trúc tương tự nhưng phải viết lại từ đầu mỗi chức năng. Rất dễ thiếu sót, không nhất quán.",
+    metric: "~5-6h / chức năng CRUD",
+    frequency: "Mỗi chức năng",
   },
   {
     icon: Repeat,
     step: "Bước 3-4",
-    title: "Tra cứu thông tin dự án chậm",
+    title: "Tra cứu thông tin dự án chậm, dữ liệu rải rác",
     description:
       "Tìm lại requirement cũ, business rule, API spec nằm rải rác trong nhiều file. Mất thời gian tìm kiếm thay vì phân tích.",
-    metric: "~30 phút / lần tra cứu",
+    metric: "~15-30p / lần tra cứu",
+    frequency: "Hàng ngày",
   },
   {
     icon: AlertTriangle,
@@ -57,7 +62,8 @@ const problems = [
     title: "Viết kịch bản test & HDSD thủ công",
     description:
       "Mỗi lần update requirement phải cập nhật lại kịch bản UAT và HDSD. Dễ bỏ sót, không đồng bộ với tài liệu đặc tả.",
-    metric: "~4 giờ / lần cập nhật",
+    metric: "~2-4h / lần cập nhật",
+    frequency: "Mỗi lần thay đổi req",
   },
 ];
 
@@ -93,11 +99,18 @@ function ProblemCard({
           <span className="text-xs font-medium text-red-400/70 bg-red-500/10 px-2.5 py-1 rounded-full">
             {problem.step}
           </span>
-          {problem.metric && (
-            <span className="text-xs font-mono text-orange-400/60">
-              {problem.metric}
-            </span>
-          )}
+          <div className="flex items-center gap-3">
+            {problem.frequency && (
+              <span className="text-[10px] font-medium text-orange-300/50 bg-orange-500/8 px-2 py-0.5 rounded-full">
+                {problem.frequency}
+              </span>
+            )}
+            {problem.metric && (
+              <span className="text-xs font-mono text-orange-400/60">
+                {problem.metric}
+              </span>
+            )}
+          </div>
         </div>
 
         <div className="flex items-start gap-5">
@@ -186,7 +199,7 @@ export default function ProblemSection() {
         <div className="absolute top-[35%] left-0 w-[200px] h-px bg-gradient-to-r from-transparent via-red-400/10 to-transparent animate-sweep-travel" />
       </div>
 
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Section header */}
         <motion.div
           ref={headerRef}
@@ -205,7 +218,7 @@ export default function ProblemSection() {
           </p>
         </motion.div>
 
-        {/* Problem cards — 3 columns for 6 cards */}
+        {/* Problem cards — 6 cards, 3x2 grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {problems.map((problem, i) => (
             <ProblemCard key={problem.title} problem={problem} index={i} />

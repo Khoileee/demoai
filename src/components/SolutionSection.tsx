@@ -6,56 +6,96 @@ import {
   LayoutDashboard,
   MessageCircle,
   ArrowRight,
+  UserCheck,
+  CheckCircle2,
+  AlertCircle,
 } from "lucide-react";
 
-const solutions = [
+type Benchmark = {
+  scope: string;
+  before: string;
+  after: string;
+};
+
+type Solution = {
+  problem: string;
+  solution: string;
+  tool: string;
+  toolIcon: React.ComponentType<{ className?: string }>;
+  toolColor: string;
+  accentColor: string;
+  borderColor: string;
+  glowColor: string;
+  benchmarks: Benchmark[];
+  accuracy: string;
+  note: string;
+};
+
+const solutions: Solution[] = [
   {
-    problem: "Ghi chép meeting thủ công",
-    solution: "Tự động chuyển giọng nói → meeting notes + action items",
-    tool: "Whisper",
+    problem: "Ghi chép meeting & tổng hợp yêu cầu thủ công",
+    solution: "Tự động chuyển giọng nói → meeting notes, action items, requirement list",
+    tool: "Whisper + AI Agent",
     toolIcon: Mic,
     toolColor: "from-cyan-500 to-blue-500",
     accentColor: "text-cyan-400",
     borderColor: "border-cyan-500/10",
     glowColor: "bg-cyan-500/8",
-    before: "1-2 giờ",
-    after: "30 phút",
+    benchmarks: [
+      { scope: "Họp ngắn (30p)", before: "~1h ghi + tổng hợp", after: "~15p review notes" },
+      { scope: "Workshop dài (2-3h)", before: "~3-4h tổng hợp", after: "~30p review + sửa" },
+    ],
+    accuracy: "Transcript chính xác ~90-95%, BA chỉ cần review lại nội dung",
+    note: "Tùy chất lượng audio và số người tham gia",
   },
   {
-    problem: "Prototype thiếu trực quan",
-    solution: "Mô tả nghiệp vụ bằng lời → sinh giao diện React hoàn chỉnh",
+    problem: "Prototype thiếu trực quan, nhiều vòng chỉnh sửa",
+    solution: "Mô tả nghiệp vụ → AI sinh giao diện React, BA review và chỉnh",
     tool: "Lovable + Agent",
     toolIcon: LayoutDashboard,
     toolColor: "from-violet-500 to-purple-500",
     accentColor: "text-violet-400",
     borderColor: "border-violet-500/10",
     glowColor: "bg-violet-500/8",
-    before: "2-3 vòng",
-    after: "2-3 giờ",
+    benchmarks: [
+      { scope: "Tính năng CRUD cơ bản", before: "~3-4h vẽ tay mockup", after: "~1-2h AI gen + review sửa" },
+      { scope: "Tính năng phức tạp", before: "~6-8h wireframe", after: "~3-4h gen + chỉnh interaction" },
+    ],
+    accuracy: "AI gen layout chính xác ~70-80%, BA cần chỉnh lại UX/interaction",
+    note: "Tùy số màn hình, độ phức tạp nghiệp vụ của dự án",
   },
   {
-    problem: "Viết tài liệu & kịch bản test thủ công",
-    solution: "Agent đọc source code + requirement → sinh SRS, TKCT, KBNT theo template",
+    problem: "Viết tài liệu & kịch bản test lặp lại, mất thời gian",
+    solution: "Agent đọc source code + requirement → sinh SRS, TKCT, KBNT, HDSD theo template",
     tool: "Agent + Skills",
     toolIcon: Bot,
     toolColor: "from-emerald-500 to-teal-500",
     accentColor: "text-emerald-400",
     borderColor: "border-emerald-500/10",
     glowColor: "bg-emerald-500/8",
-    before: "2-3 ngày",
-    after: "0.5-1 ngày",
+    benchmarks: [
+      { scope: "Chức năng CRUD (SRS + diagram)", before: "~5-6h viết tay", after: "~1h gen + ~2h review, sửa, lên Confluence" },
+      { scope: "Bộ tài liệu đầy đủ (SRS + TKCT + CSDL + test case)", before: "~2-3 ngày", after: "~1 ngày gen + review tổng" },
+      { scope: "Update tài liệu khi đổi req", before: "~2-4h cập nhật thủ công", after: "~30p AI detect thay đổi + BA review" },
+    ],
+    accuracy: "Template chuẩn → ít sai cấu trúc, BA tập trung review nội dung nghiệp vụ",
+    note: "Tùy số lượng use case và độ phức tạp dự án",
   },
   {
-    problem: "Tra cứu thông tin chậm",
-    solution: "Chat qua Telegram → tra cứu workspace, sửa code, commit",
+    problem: "Tra cứu thông tin dự án chậm, dữ liệu rải rác",
+    solution: "Chat qua Telegram → tra cứu workspace, tìm business rule, cross-check",
     tool: "OpenClaw + Telegram",
     toolIcon: MessageCircle,
     toolColor: "from-amber-500 to-orange-500",
     accentColor: "text-amber-400",
     borderColor: "border-amber-500/10",
     glowColor: "bg-amber-500/8",
-    before: "30 phút/lần",
-    after: "Tức thì",
+    benchmarks: [
+      { scope: "Tìm 1 business rule / API spec", before: "~15-30p lục file", after: "Tức thì — trả về file + dòng" },
+      { scope: "Cross-check req vs code", before: "~1h đối chiếu thủ công", after: "~5p AI so sánh tự động" },
+    ],
+    accuracy: "Chính xác với context trong workspace, BA cần verify với stakeholder",
+    note: "Hiệu quả phụ thuộc vào cách tổ chức workspace",
   },
 ];
 
@@ -69,12 +109,53 @@ const cardVariants = {
   }),
 };
 
+const flowSteps = [
+  {
+    step: "Vấn đề",
+    icon: AlertCircle,
+    items: ["Ghi chép thủ công", "Prototype nhiều vòng", "Viết tài liệu lặp", "Tra cứu chậm"],
+    color: "text-red-400",
+    borderColor: "border-red-500/20",
+    bgColor: "bg-red-500/5",
+    dotColor: "bg-red-400",
+  },
+  {
+    step: "AI hỗ trợ",
+    icon: Bot,
+    items: ["Whisper transcript", "Lovable gen UI", "Agent sinh tài liệu", "Chat tra cứu"],
+    color: "text-brand-400",
+    borderColor: "border-brand-500/20",
+    bgColor: "bg-brand-500/5",
+    dotColor: "bg-brand-400",
+  },
+  {
+    step: "BA review",
+    icon: UserCheck,
+    items: ["Kiểm tra nội dung", "Chỉnh sửa UX", "Review nghiệp vụ", "Verify kết quả"],
+    color: "text-amber-400",
+    borderColor: "border-amber-500/20",
+    bgColor: "bg-amber-500/5",
+    dotColor: "bg-amber-400",
+  },
+  {
+    step: "Kết quả",
+    icon: CheckCircle2,
+    items: ["Nhanh hơn 50-80%", "Chuẩn theo template", "Đồng bộ tài liệu", "Tập trung nghiệp vụ"],
+    color: "text-emerald-400",
+    borderColor: "border-emerald-500/20",
+    bgColor: "bg-emerald-500/5",
+    dotColor: "bg-emerald-400",
+  },
+];
+
 export default function SolutionSection() {
   const sectionRef = useRef(null);
   const gridRef = useRef(null);
   const gridInView = useInView(gridRef, { once: true, amount: 0.2 });
   const headerRef = useRef(null);
   const headerInView = useInView(headerRef, { once: true, amount: 0.6 });
+  const flowRef = useRef(null);
+  const flowInView = useInView(flowRef, { once: true, amount: 0.3 });
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -178,40 +259,123 @@ export default function SolutionSection() {
 
                 {/* Problem → Solution flow */}
                 <div className="mb-5">
-                  <p className="text-sm text-red-400/70 mb-1 line-through decoration-red-500/30">
+                  <p className="text-sm text-red-400/70 mb-1.5 line-through decoration-red-500/30">
                     {s.problem}
                   </p>
                   <div className="flex items-center gap-2 mt-2">
-                    <ArrowRight className="w-3.5 h-3.5 text-emerald-400/60 flex-shrink-0" />
-                    <p className={`text-sm font-medium ${s.accentColor}`}>
+                    <ArrowRight className="w-4 h-4 text-emerald-400/60 flex-shrink-0" />
+                    <p className={`text-[15px] font-medium leading-snug ${s.accentColor}`}>
                       {s.solution}
                     </p>
                   </div>
                 </div>
 
                 {/* Tool badge */}
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-5">
                   <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${s.toolColor} flex items-center justify-center shadow-lg shadow-black/20`}>
-                    <s.toolIcon className="w-4 h-4 text-white" />
+                    <s.toolIcon className="w-5 h-5 text-white" />
                   </div>
-                  <span className="text-white font-semibold text-sm">{s.tool}</span>
+                  <span className="text-white font-semibold">{s.tool}</span>
                 </div>
 
-                {/* Before → After metric */}
-                <div className="flex items-center gap-4 pt-4 border-t border-white/[0.06]">
-                  <div className="flex-1">
-                    <p className="text-[10px] uppercase tracking-wider text-gray-600 mb-1">Trước</p>
-                    <p className="text-sm font-mono text-red-400/70">{s.before}</p>
+                {/* Benchmark table */}
+                <div className="pt-4 border-t border-white/[0.06] space-y-3">
+                  {s.benchmarks.map((b, j) => (
+                    <div key={j} className="rounded-lg bg-white/[0.03] px-4 py-3">
+                      <p className="text-xs text-gray-400 font-medium mb-2">{b.scope}</p>
+                      <div className="flex items-center gap-2.5 text-[13px] font-mono">
+                        <span className="text-red-400/80">{b.before}</span>
+                        <ArrowRight className="w-3.5 h-3.5 text-gray-600 flex-shrink-0" />
+                        <span className="text-emerald-400 font-semibold">{b.after}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Accuracy */}
+                <div className="mt-4 px-1">
+                  <p className="text-xs text-gray-500 leading-relaxed">
+                    <span className="text-gray-300 font-medium">Chính xác:</span> {s.accuracy}
+                  </p>
+                </div>
+
+                {/* Note + Human review */}
+                <div className="mt-4 pt-3 border-t border-white/[0.04] space-y-2">
+                  <div className="flex items-start gap-2">
+                    <UserCheck className="w-4 h-4 text-brand-400/60 flex-shrink-0 mt-0.5" />
+                    <p className="text-xs text-gray-400 italic">BA review & chỉnh sửa trước khi sử dụng</p>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-gray-600" />
-                  <div className="flex-1">
-                    <p className="text-[10px] uppercase tracking-wider text-gray-600 mb-1">Sau</p>
-                    <p className="text-sm font-mono text-emerald-400">{s.after}</p>
-                  </div>
+                  <p className="text-[11px] text-gray-600 italic pl-6">* {s.note}</p>
                 </div>
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Animated flow diagram */}
+        <div ref={flowRef} className="mt-20">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={flowInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6 }}
+            className="text-center text-sm text-gray-500 font-medium tracking-[0.2em] uppercase mb-10"
+          >
+            Quy trình AI hỗ trợ BA
+          </motion.p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 relative">
+            {/* Connecting line — desktop only */}
+            <div className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px">
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={flowInView ? { scaleX: 1 } : {}}
+                transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="h-full bg-gradient-to-r from-red-500/30 via-brand-500/30 via-amber-500/30 to-emerald-500/30 origin-left"
+              />
+            </div>
+
+            {flowSteps.map((fs, i) => (
+              <motion.div
+                key={fs.step}
+                initial={{ opacity: 0, y: 30 }}
+                animate={flowInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.2 + i * 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="relative flex flex-col items-center text-center"
+              >
+                {/* Step icon */}
+                <div className={`w-24 h-24 rounded-2xl ${fs.bgColor} border ${fs.borderColor} flex items-center justify-center mb-4 relative z-10`}>
+                  <fs.icon className={`w-8 h-8 ${fs.color}`} />
+                </div>
+
+                {/* Arrow between steps — desktop */}
+                {i < flowSteps.length - 1 && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={flowInView ? { opacity: 1 } : {}}
+                    transition={{ delay: 0.5 + i * 0.25 }}
+                    className="hidden lg:block absolute top-10 -right-2 z-20"
+                  >
+                    <ArrowRight className="w-4 h-4 text-gray-600" />
+                  </motion.div>
+                )}
+
+                <p className={`text-sm font-semibold mb-3 ${fs.color}`}>{fs.step}</p>
+                <ul className="space-y-1.5">
+                  {fs.items.map((item, j) => (
+                    <motion.li
+                      key={j}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={flowInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ delay: 0.4 + i * 0.2 + j * 0.08 }}
+                      className="flex items-center gap-2 justify-center"
+                    >
+                      <span className={`w-1.5 h-1.5 rounded-full ${fs.dotColor} flex-shrink-0`} />
+                      <span className="text-xs text-gray-400">{item}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
