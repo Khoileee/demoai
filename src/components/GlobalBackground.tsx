@@ -19,7 +19,7 @@ export default function GlobalBackground() {
       <div className="hidden md:block absolute bottom-[-5%] right-[5%] w-[48vw] h-[45vh] rounded-full bg-emerald-600/[0.03] blur-[80px] animate-aurora-4" />
 
       {/* === NEURAL CONSTELLATION — static lines + CSS animated nodes === */}
-      <svg className="absolute inset-0 w-full h-full" style={{ willChange: "auto" }}>
+      <svg className="absolute inset-0 w-full h-full">
         {/* Static constellation edges — no animation, pure SVG */}
         <line x1="8%" y1="12%" x2="22%" y2="28%" stroke="rgba(96,165,250,0.04)" strokeWidth="0.5" />
         <line x1="22%" y1="28%" x2="48%" y2="35%" stroke="rgba(96,165,250,0.04)" strokeWidth="0.5" />

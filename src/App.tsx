@@ -18,13 +18,13 @@ export default function App() {
       <GlobalBackground />
       <main className="relative z-[1] noise-overlay">
         <div id="hero"><HeroSection /></div>
-        <div id="workflow"><WorkflowSection /></div>
-        <div id="problem"><ProblemSection /></div>
-        <div id="solution"><SolutionSection /></div>
-        <div id="tools"><ToolsSection /></div>
-        <div id="orchestration"><OrchestrationSection /></div>
-        <div id="insight"><InsightSection /></div>
-        <div id="cta"><CTASection /></div>
+        <div id="workflow" className="cv-auto"><WorkflowSection /></div>
+        <div id="problem" className="cv-auto"><ProblemSection /></div>
+        <div id="solution" className="cv-auto"><SolutionSection /></div>
+        <div id="tools" className="cv-auto"><ToolsSection /></div>
+        <div id="orchestration" className="cv-auto"><OrchestrationSection /></div>
+        <div id="insight" className="cv-auto"><InsightSection /></div>
+        <div id="cta" className="cv-auto"><CTASection /></div>
       </main>
     </>
   );

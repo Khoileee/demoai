@@ -27,29 +27,6 @@ body {
 }
 
 /* ========================================
-   3D EVE BOT — Three.js Canvas container
-   Force transparent background on ALL layers
-   R3F creates wrapper divs that can show black
-   ======================================== */
-
-.eve-container {
-  position: fixed;
-  top: 0;
-  left: -40px;
-  width: 420px;
-  height: 480px;
-  z-index: 50;
-  pointer-events: none;
-  background: transparent !important;
-}
-
-.eve-container > div,
-.eve-container > div > div,
-.eve-container canvas {
-  background: transparent !important;
-}
-
-/* ========================================
    3D TILT CARD — mouse-tracking perspective
    ======================================== */
 
@@ -120,21 +97,17 @@ body {
   border-radius: 9999px;
   filter: blur(80px);
   pointer-events: none;
-  will-change: transform;
 }
 
-/* --- Depth glow breathing (replaces Framer Motion scale+opacity) --- */
+/* --- Depth glow breathing --- */
 .animate-depth-glow-1 {
   animation: depthGlow1 12s ease-in-out infinite;
-  will-change: transform, opacity;
 }
 .animate-depth-glow-2 {
   animation: depthGlow2 10s ease-in-out infinite;
-  will-change: transform, opacity;
 }
 .animate-depth-glow-3 {
   animation: depthGlow3 14s ease-in-out infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes depthGlow1 {
@@ -150,10 +123,9 @@ body {
   50% { transform: scale(1.15); opacity: 0.5; }
 }
 
-/* --- Floating particle (replaces Framer Motion y+opacity) --- */
+/* --- Floating particle --- */
 .animate-float-particle {
   animation: floatParticle 8s ease-in-out infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes floatParticle {
@@ -161,14 +133,12 @@ body {
   50% { transform: translateY(10px); opacity: 0.4; }
 }
 
-/* --- Horizontal sweep travel (replaces Framer Motion x translate) --- */
+/* --- Horizontal sweep travel --- */
 .animate-sweep-travel {
   animation: sweepTravel 7s ease-in-out infinite;
-  will-change: transform;
 }
 .animate-sweep-travel-reverse {
   animation: sweepTravelReverse 9s ease-in-out infinite;
-  will-change: transform;
 }
 
 @keyframes sweepTravel {
@@ -348,7 +318,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: hero-3d-rock 8s ease-in-out infinite, hero-chrome-flow 4s ease-in-out infinite;
+  animation: hero-3d-rock 8s ease-in-out infinite, hero-chrome-flow 6s ease-in-out infinite;
 }
 
 /* Glow underneath text — pushed down, low opacity, won't blur the face */
@@ -409,27 +379,29 @@ body {
   50%      { background-position: 100% 50%; }
 }
 
+/* content-visibility: skip rendering off-screen sections */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 100vh;
+}
+
 /* ========================================
    GPU-ACCELERATED ANIMATIONS
    All use transform/opacity only for 60fps.
    ======================================== */
 
-/* --- Aurora blobs drift --- */
+/* --- Aurora blobs drift (will-change: auto — blur(80px) already creates a layer) --- */
 .animate-aurora-1 {
   animation: aurora1 35s ease-in-out infinite;
-  will-change: transform;
 }
 .animate-aurora-2 {
   animation: aurora2 40s ease-in-out infinite 5s;
-  will-change: transform;
 }
 .animate-aurora-3 {
   animation: aurora3 45s ease-in-out infinite 10s;
-  will-change: transform;
 }
 .animate-aurora-4 {
   animation: aurora4 38s ease-in-out infinite 15s;
-  will-change: transform;
 }
 
 @keyframes aurora1 {
@@ -460,11 +432,9 @@ body {
 /* --- Constellation node pulse --- */
 .animate-node-pulse {
   animation: nodePulse 4s ease-in-out infinite;
-  will-change: transform, opacity;
 }
 .animate-node-pulse-strong {
   animation: nodePulseStrong 2s ease-in-out infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes nodePulse {
@@ -479,7 +449,6 @@ body {
 /* --- Pulse ring (expanding circle) --- */
 .animate-pulse-ring {
   animation: pulseRing 3s ease-out infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes pulseRing {
@@ -490,7 +459,6 @@ body {
 /* --- Wave ring (center ripple) --- */
 .animate-wave-ring {
   animation: waveRing 5s ease-out infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes waveRing {
@@ -501,7 +469,6 @@ body {
 /* --- Morphing blob --- */
 .animate-morph-blob {
   animation: morphBlob 12s ease-in-out infinite;
-  will-change: border-radius, transform;
 }
 
 @keyframes morphBlob {
@@ -513,11 +480,9 @@ body {
 /* --- Core glow --- */
 .animate-core-glow {
   animation: coreGlow 3s ease-in-out infinite;
-  will-change: transform, opacity;
 }
 .animate-core-inner {
   animation: coreInner 2s ease-in-out infinite 0.5s;
-  will-change: transform;
 }
 
 @keyframes coreGlow {
@@ -532,7 +497,6 @@ body {
 /* --- Data rain (vertical fall using translateY) --- */
 .animate-data-rain {
   animation: dataRainFall 6s linear infinite;
-  will-change: transform;
   top: 0;
 }
 
@@ -544,7 +508,6 @@ body {
 /* --- Scanning beam H (top to bottom using translateY) --- */
 .animate-scan-h {
   animation: scanH 12s linear infinite;
-  will-change: transform;
   top: 0;
 }
 
@@ -557,19 +520,15 @@ body {
 /* --- Traveling orbs (using translate for GPU) --- */
 .animate-orb-1 {
   animation: orbPath1 20s linear infinite;
-  will-change: transform, opacity;
 }
 .animate-orb-2 {
   animation: orbPath2 25s linear infinite 4s;
-  will-change: transform, opacity;
 }
 .animate-orb-3 {
   animation: orbPath3 22s linear infinite 8s;
-  will-change: transform, opacity;
 }
 .animate-orb-4 {
   animation: orbPath4 28s linear infinite 2s;
-  will-change: transform, opacity;
 }
 
 @keyframes orbPath1 {
@@ -604,7 +563,6 @@ body {
 /* --- Horizontal sweep line --- */
 .animate-sweep-line {
   animation: sweepH 8s ease-in-out infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes sweepH {
@@ -617,7 +575,6 @@ body {
 /* --- Diagonal sweep --- */
 .animate-sweep-diag {
   animation: sweepDiag 12s linear infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes sweepDiag {
@@ -644,7 +601,6 @@ body {
 /* --- Floating ring pulse --- */
 .animate-ring-float {
   animation: ringFloat 6s ease-in-out infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes ringFloat {
@@ -655,7 +611,6 @@ body {
 /* --- Grid shimmer (subtle moving highlight over circuit dots) --- */
 .animate-grid-shimmer {
   animation: gridShimmer 10s ease-in-out infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes gridShimmer {
@@ -670,7 +625,6 @@ body {
 /* --- Pulsating radial beacon --- */
 .animate-beacon {
   animation: beacon 4s ease-in-out infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes beacon {
@@ -681,11 +635,9 @@ body {
 /* --- Orbiting dot (circular path) --- */
 .animate-orbit {
   animation: orbit 16s linear infinite;
-  will-change: transform;
 }
 .animate-orbit-reverse {
   animation: orbitReverse 20s linear infinite;
-  will-change: transform;
 }
 
 @keyframes orbit {
@@ -700,7 +652,6 @@ body {
 /* --- Vertical data stream (thicker, more visible) --- */
 .animate-data-stream {
   animation: dataStream 5s linear infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes dataStream {
@@ -713,7 +664,6 @@ body {
 /* --- Horizontal pulse wave (expanding) --- */
 .animate-pulse-h {
   animation: pulseH 6s ease-out infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes pulseH {
@@ -724,7 +674,6 @@ body {
 /* --- Breathing border (section frame) --- */
 .animate-breathe-border {
   animation: breatheBorder 5s ease-in-out infinite;
-  will-change: opacity;
 }
 
 @keyframes breatheBorder {
@@ -735,7 +684,6 @@ body {
 /* --- Floating hex (rotate + float) --- */
 .animate-hex-float {
   animation: hexFloat 8s ease-in-out infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes hexFloat {
@@ -746,7 +694,6 @@ body {
 /* --- Signal ripple --- */
 .animate-signal {
   animation: signalRipple 3s ease-out infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes signalRipple {
@@ -757,7 +704,6 @@ body {
 /* --- Plasma morph blob (section-level) --- */
 .animate-plasma {
   animation: plasmaMorph 15s ease-in-out infinite;
-  will-change: transform, border-radius;
 }
 
 @keyframes plasmaMorph {
@@ -789,20 +735,9 @@ body {
     radial-gradient(at 75% 65%, rgba(16, 185, 129, 0.02) 0%, transparent 50%);
 }
 
-/* === MOBILE: strip will-change to prevent compositor layer explosion === */
+/* === MOBILE: reduce animation complexity === */
 @media (max-width: 767px) {
-  .tilt-card,
-  .depth-glow,
-  .animate-float-particle,
-  .animate-sweep-travel,
-  .animate-aurora-1, .animate-aurora-2, .animate-aurora-3, .animate-aurora-4,
-  .animate-node-pulse, .animate-node-pulse-strong,
-  .animate-pulse-ring, .animate-wave-ring,
-  .animate-morph-blob, .animate-core-glow, .animate-core-inner,
-  .animate-data-rain, .animate-scan-h,
-  .animate-orb-1, .animate-orb-2, .animate-orb-3, .animate-orb-4,
-  .animate-breathe-border, .animate-hex-float,
-  .animate-signal, .animate-plasma {
-    will-change: auto !important;
+  .hero-3d-rock {
+    animation: hero-chrome-flow 6s ease-in-out infinite;
   }
 }
