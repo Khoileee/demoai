@@ -1,7 +1,5 @@
-import { useRef, lazy, Suspense, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-
-const EveBot3D = lazy(() => import("./EveBot3D"));
 
 function useIsMobile(breakpoint = 768) {
   const [mobile, setMobile] = useState(() =>
@@ -138,13 +136,6 @@ export default function HeroSection() {
       </motion.div>
       )}
 
-      {/* === 3D EVE BOT MASCOT — desktop only === */}
-      {!isMobile && (
-        <Suspense fallback={null}>
-          <EveBot3D />
-        </Suspense>
-      )}
-
       {/* === FOREGROUND: Text === */}
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center z-[2]">
         <motion.div
@@ -164,17 +155,14 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-[1.05] mb-8"
+            className="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight mb-8"
+            style={{ lineHeight: 1.3 }}
           >
-            <span className="text-white">Ứng dụng </span>
-            <span className="bg-gradient-to-r from-brand-400 via-cyan-400 to-brand-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-shimmer">
-              AI
-            </span>
+            <span className="hero-text-3d">Ứng dụng </span>
+            <span className="hero-3d-rock hero-grad-blue" data-text="AI">AI</span>
             <br />
-            <span className="text-white">trong công việc của </span>
-            <span className="bg-gradient-to-r from-brand-400 via-violet-400 to-brand-400 bg-clip-text text-transparent">
-              BA
-            </span>
+            <span className="hero-text-3d">trong công việc của </span>
+            <span className="hero-3d-rock hero-grad-violet" data-text="BA">BA</span>
           </motion.h1>
 
           <motion.p

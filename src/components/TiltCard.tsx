@@ -14,7 +14,7 @@ export default function TiltCard({
   className = "",
   style,
   tiltMax = 10,
-  glareOpacity = 0.15,
+  glareOpacity = 0.07,
   liftPx = 20,
 }: TiltCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -43,7 +43,7 @@ export default function TiltCard({
 
         if (glareRef.current) {
           glareRef.current.style.opacity = "1";
-          glareRef.current.style.background = `radial-gradient(ellipse at ${x * 100}% ${y * 100}%, rgba(255,255,255,${glareOpacity}) 0%, rgba(255,255,255,${glareOpacity * 0.3}) 40%, transparent 70%)`;
+          glareRef.current.style.background = `radial-gradient(ellipse at ${x * 100}% ${y * 100}%, rgba(255,255,255,${glareOpacity}) 0%, rgba(255,255,255,${glareOpacity * 0.2}) 30%, transparent 55%)`;
         }
       });
     },
@@ -83,7 +83,7 @@ export default function TiltCard({
       {/* Glare overlay — fades in/out */}
       <div
         ref={glareRef}
-        className="absolute inset-0 rounded-2xl pointer-events-none z-10 transition-opacity duration-300"
+        className="absolute inset-0 rounded-2xl pointer-events-none z-[1] transition-opacity duration-300"
         style={{ background: "transparent", opacity: 0 }}
       />
     </div>
