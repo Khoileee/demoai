@@ -1,4 +1,5 @@
 import GlobalBackground from "@/components/GlobalBackground";
+import CursorGlow from "@/components/CursorGlow";
 import HeroSection from "@/components/HeroSection";
 import ProblemSection from "@/components/ProblemSection";
 import SolutionSection from "@/components/SolutionSection";
@@ -15,6 +16,7 @@ export default function App() {
     <>
       <ScrollProgress />
       <DotNav />
+      <CursorGlow />
       <GlobalBackground />
       <main className="relative z-[1] noise-overlay">
         <div id="hero"><HeroSection /></div>
@@ -24,7 +26,7 @@ export default function App() {
         <div id="tools" className="cv-auto"><ToolsSection /></div>
         <div id="orchestration" className="cv-auto"><OrchestrationSection /></div>
         <div id="insight" className="cv-auto"><InsightSection /></div>
-        <div id="cta" className="cv-auto"><CTASection /></div>
+        <div id="cta"><CTASection /></div>
       </main>
     </>
   );
