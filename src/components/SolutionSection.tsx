@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import {
   Mic,
@@ -9,6 +9,11 @@ import {
   UserCheck,
   CheckCircle2,
   AlertCircle,
+  Shield,
+  DollarSign,
+  Cpu,
+  Zap,
+  RotateCcw,
 } from "lucide-react";
 
 type Benchmark = {
@@ -17,62 +22,100 @@ type Benchmark = {
   after: string;
 };
 
-type Solution = {
+type ToolFeature = {
+  icon: React.ComponentType<{ className?: string }>;
+  text: string;
+};
+
+type Badge = { label: string; color: string };
+
+type SolutionCard = {
   problem: string;
   solution: string;
-  tool: string;
+  benchmarks: Benchmark[];
+  accuracy: string;
+  note: string;
   toolIcon: React.ComponentType<{ className?: string }>;
   toolColor: string;
   accentColor: string;
   borderColor: string;
   glowColor: string;
-  benchmarks: Benchmark[];
-  accuracy: string;
-  note: string;
+  toolName: string;
+  toolTagline: string;
+  toolDescription: string;
+  toolFeatures: ToolFeature[];
+  toolLimits: string[];
+  toolBadges: Badge[];
 };
 
-const solutions: Solution[] = [
+const cards: SolutionCard[] = [
   {
     problem: "Ghi chép meeting & tổng hợp yêu cầu thủ công",
     solution: "Tự động chuyển giọng nói → meeting notes, action items, requirement list",
-    tool: "Whisper + AI Agent",
-    toolIcon: Mic,
-    toolColor: "from-cyan-500 to-blue-500",
-    accentColor: "text-cyan-400",
-    borderColor: "border-cyan-500/10",
-    glowColor: "bg-cyan-500/8",
     benchmarks: [
       { scope: "Họp ngắn (30p)", before: "~1h ghi + tổng hợp", after: "~15p review notes" },
       { scope: "Workshop dài (2-3h)", before: "~3-4h tổng hợp", after: "~30p review + sửa" },
     ],
     accuracy: "Transcript chính xác ~90-95%, BA chỉ cần review lại nội dung",
     note: "Tùy chất lượng audio và số người tham gia",
+    toolIcon: Mic,
+    toolColor: "from-cyan-500 to-blue-500",
+    accentColor: "text-cyan-400",
+    borderColor: "border-cyan-500/10",
+    glowColor: "bg-cyan-500/8",
+    toolName: "Whisper (OpenAI)",
+    toolTagline: "Speech-to-Text — Ghi âm cuộc họp tự động",
+    toolDescription: "Mô hình AI của OpenAI chuyên chuyển giọng nói thành văn bản. Chạy hoàn toàn trên máy local (self-host), không cần gửi dữ liệu ra ngoài.",
+    toolFeatures: [
+      { icon: Shield, text: "Chạy local, bảo mật tuyệt đối — dữ liệu không ra khỏi máy" },
+      { icon: Mic, text: "Hỗ trợ tiếng Việt, ghi âm realtime trong cuộc họp" },
+      { icon: Zap, text: "Tích hợp Agent phân tích transcript → meeting notes, action items" },
+    ],
+    toolLimits: [
+      "Phụ thuộc vào cấu hình GPU máy tính (RAM, VRAM)",
+      "Độ chính xác giảm với môi trường ồn hoặc nhiều giọng nói",
+      "Chạy trên máy cá nhân, không phải máy công ty",
+    ],
+    toolBadges: [
+      { label: "Miễn phí", color: "text-emerald-400 bg-emerald-500/10" },
+      { label: "Local", color: "text-cyan-400 bg-cyan-500/10" },
+    ],
   },
   {
     problem: "Prototype thiếu trực quan, nhiều vòng chỉnh sửa",
     solution: "Mô tả nghiệp vụ → AI sinh giao diện React, BA review và chỉnh",
-    tool: "Lovable + Agent",
-    toolIcon: LayoutDashboard,
-    toolColor: "from-violet-500 to-purple-500",
-    accentColor: "text-violet-400",
-    borderColor: "border-violet-500/10",
-    glowColor: "bg-violet-500/8",
     benchmarks: [
       { scope: "Tính năng CRUD cơ bản", before: "~3-4h vẽ tay mockup", after: "~1-2h AI gen + review sửa" },
       { scope: "Tính năng phức tạp", before: "~6-8h wireframe", after: "~3-4h gen + chỉnh interaction" },
     ],
     accuracy: "AI gen layout chính xác ~70-80%, BA cần chỉnh lại UX/interaction",
     note: "Tùy số màn hình, độ phức tạp nghiệp vụ của dự án",
+    toolIcon: LayoutDashboard,
+    toolColor: "from-violet-500 to-purple-500",
+    accentColor: "text-violet-400",
+    borderColor: "border-violet-500/10",
+    glowColor: "bg-violet-500/8",
+    toolName: "Lovable",
+    toolTagline: "Generate UI — Tạo prototype UI từ mô tả",
+    toolDescription: "Mô tả giao diện bằng lời → AI tự sinh code React hoàn chỉnh. Tự động deploy lên domain tạm để demo với stakeholder.",
+    toolFeatures: [
+      { icon: Zap, text: "Mô tả bằng tiếng Việt → sinh UI React ngay lập tức" },
+      { icon: LayoutDashboard, text: "Auto-deploy, sync GitHub — chỉnh sửa code trên VS Code" },
+      { icon: DollarSign, text: "Phù hợp cho BA tạo prototype nhanh, không cần Dev" },
+    ],
+    toolLimits: [
+      "Chi phí subscription (~$20/tháng)",
+      "Dữ liệu gửi lên cloud — cần cân nhắc bảo mật thông tin",
+      "UI phức tạp vẫn cần chỉnh sửa thủ công",
+    ],
+    toolBadges: [
+      { label: "Trả phí", color: "text-amber-400 bg-amber-500/10" },
+      { label: "Cloud", color: "text-blue-400 bg-blue-500/10" },
+    ],
   },
   {
     problem: "Viết tài liệu & kịch bản test lặp lại, mất thời gian",
     solution: "Agent đọc source code + requirement → sinh SRS, TKCT, KBNT, HDSD theo template",
-    tool: "Agent + Skills",
-    toolIcon: Bot,
-    toolColor: "from-emerald-500 to-teal-500",
-    accentColor: "text-emerald-400",
-    borderColor: "border-emerald-500/10",
-    glowColor: "bg-emerald-500/8",
     benchmarks: [
       { scope: "Chức năng CRUD (SRS + diagram)", before: "~5-6h viết tay", after: "~1h gen + ~2h review, sửa, lên Confluence" },
       { scope: "Bộ tài liệu đầy đủ (SRS + TKCT + CSDL + test case)", before: "~2-3 ngày", after: "~1 ngày gen + review tổng" },
@@ -80,22 +123,61 @@ const solutions: Solution[] = [
     ],
     accuracy: "Template chuẩn → ít sai cấu trúc, BA tập trung review nội dung nghiệp vụ",
     note: "Tùy số lượng use case và độ phức tạp dự án",
+    toolIcon: Bot,
+    toolColor: "from-emerald-500 to-teal-500",
+    accentColor: "text-emerald-400",
+    borderColor: "border-emerald-500/10",
+    glowColor: "bg-emerald-500/8",
+    toolName: "Agent + Skills (VS Code)",
+    toolTagline: "BA Assistant — Phân tích, sinh tài liệu trong VS Code",
+    toolDescription: "Agent được cấu hình sẵn với vai trò BA chuyên nghiệp trong GitHub Copilot. Có nhiều skill chuyên biệt: phân tích CRUD, sinh SRS, UI spec, data model.",
+    toolFeatures: [
+      { icon: Bot, text: "Đọc source code + tài liệu → tự sinh SRS, TKCT, CSDL theo template" },
+      { icon: Shield, text: "Chạy trong VS Code, bảo mật tốt — code không rời máy" },
+      { icon: Zap, text: "Nhiều skill: CRUD analysis, UI spec, diagram, doc-generator" },
+    ],
+    toolLimits: [
+      "Setup ban đầu phức tạp (cấu hình Agent, Skills, template)",
+      "Cần trả phí GitHub Copilot subscription (~$10-19/tháng)",
+      "Cần viết prompt tốt để có output chất lượng",
+    ],
+    toolBadges: [
+      { label: "Trả phí", color: "text-amber-400 bg-amber-500/10" },
+      { label: "Bảo mật", color: "text-emerald-400 bg-emerald-500/10" },
+    ],
   },
   {
     problem: "Tra cứu thông tin dự án chậm, dữ liệu rải rác",
     solution: "Chat qua Telegram → tra cứu workspace, tìm business rule, cross-check",
-    tool: "OpenClaw + Telegram",
-    toolIcon: MessageCircle,
-    toolColor: "from-amber-500 to-orange-500",
-    accentColor: "text-amber-400",
-    borderColor: "border-amber-500/10",
-    glowColor: "bg-amber-500/8",
     benchmarks: [
       { scope: "Tìm 1 business rule / API spec", before: "~15-30p lục file", after: "Tức thì — trả về file + dòng" },
       { scope: "Cross-check req vs code", before: "~1h đối chiếu thủ công", after: "~5p AI so sánh tự động" },
     ],
     accuracy: "Chính xác với context trong workspace, BA cần verify với stakeholder",
     note: "Hiệu quả phụ thuộc vào cách tổ chức workspace",
+    toolIcon: MessageCircle,
+    toolColor: "from-amber-500 to-orange-500",
+    accentColor: "text-amber-400",
+    borderColor: "border-amber-500/10",
+    glowColor: "bg-amber-500/8",
+    toolName: "OpenClaw + Telegram + 9Router",
+    toolTagline: "AI Agent qua Telegram — Trợ lý mọi lúc mọi nơi",
+    toolDescription: "Hệ thống AI agent mã nguồn mở, self-host trên máy cá nhân. Kết nối Telegram Bot để chat từ điện thoại — tra cứu workspace, sửa code, thậm chí commit.",
+    toolFeatures: [
+      { icon: MessageCircle, text: "Chat qua Telegram — tra cứu thông tin workspace nhanh chóng" },
+      { icon: Cpu, text: "Rất mạnh: tìm file, đọc code, sửa code, commit từ xa" },
+      { icon: DollarSign, text: "Chi phí thấp — chỉ trả API cost (~vài USD/tháng)" },
+    ],
+    toolLimits: [
+      "Setup rất phức tạp (OpenClaw + 9Router + Telegram Bot + MCP)",
+      "Cần kiến thức kỹ thuật để cài đặt và bảo trì",
+      "Phụ thuộc vào wifi và cấu hình máy (chạy local server)",
+    ],
+    toolBadges: [
+      { label: "Chi phí thấp", color: "text-emerald-400 bg-emerald-500/10" },
+      { label: "Self-host", color: "text-cyan-400 bg-cyan-500/10" },
+      { label: "Rất mạnh", color: "text-amber-400 bg-amber-500/10" },
+    ],
   },
 ];
 
@@ -156,6 +238,9 @@ export default function SolutionSection() {
   const headerInView = useInView(headerRef, { once: true, amount: 0.6 });
   const flowRef = useRef(null);
   const flowInView = useInView(flowRef, { once: true, amount: 0.3 });
+
+  const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
+  const toggleFlip = (i: number) => setFlippedCards(prev => ({ ...prev, [i]: !prev[i] }));
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -231,82 +316,144 @@ export default function SolutionSection() {
           className="text-center mb-20"
         >
           <p className="text-brand-400 text-sm font-medium tracking-[0.25em] uppercase mb-4">
-            Giải pháp
+            Giải pháp & Công cụ
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-[3.5rem] font-bold tracking-tight mb-6 leading-tight">
             AI giải quyết ở đâu?
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
             Mỗi điểm nghẽn trong quy trình đều có công cụ AI phù hợp —
-            giúp BA tập trung vào phân tích và quyết định nghiệp vụ.
+            ấn vào thẻ để xem chi tiết công cụ.
           </p>
         </motion.div>
 
-        {/* Solution mapping grid */}
+        {/* Solution + Tool flip cards */}
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {solutions.map((s, i) => (
+          {cards.map((card, i) => (
             <motion.div
-              key={s.problem}
+              key={card.toolName}
               custom={i}
               initial="hidden"
               animate={gridInView ? "visible" : "hidden"}
               variants={cardVariants}
               className="group relative"
             >
-              <div className={`relative p-8 rounded-2xl border ${s.borderColor} bg-gray-950/80 hover:bg-gray-900/60 transition-all duration-500 h-full glass-depth`}>
-                {/* Glow */}
-                <div className={`absolute -inset-px rounded-2xl ${s.glowColor} opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10`} />
+              <div
+                className="relative cursor-pointer h-[480px] sm:h-[500px]"
+                style={{ perspective: '1200px' }}
+                onClick={() => toggleFlip(i)}
+              >
+                <motion.div
+                  animate={{ rotateY: flippedCards[i] ? 180 : 0 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ transformStyle: 'preserve-3d' }}
+                  className="relative h-full"
+                >
+                  {/* === FRONT — Giải pháp === */}
+                  <div
+                    style={{ backfaceVisibility: 'hidden' }}
+                    className={`absolute inset-0 p-8 rounded-2xl border ${card.borderColor} bg-gray-950/80 transition-all duration-500 glass-depth overflow-y-auto scrollbar-thin`}
+                  >
+                    <div className={`absolute -inset-px rounded-2xl ${card.glowColor} opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10`} />
 
-                {/* Problem → Solution flow */}
-                <div className="mb-5">
-                  <p className="text-sm text-red-400/70 mb-1.5 line-through decoration-red-500/30">
-                    {s.problem}
-                  </p>
-                  <div className="flex items-center gap-2 mt-2">
-                    <ArrowRight className="w-4 h-4 text-emerald-400/60 flex-shrink-0" />
-                    <p className={`text-[15px] font-medium leading-snug ${s.accentColor}`}>
-                      {s.solution}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Tool badge */}
-                <div className="flex items-center gap-3 mb-5">
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${s.toolColor} flex items-center justify-center shadow-lg shadow-black/20`}>
-                    <s.toolIcon className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="text-white font-semibold">{s.tool}</span>
-                </div>
-
-                {/* Benchmark table */}
-                <div className="pt-4 border-t border-white/[0.06] space-y-3">
-                  {s.benchmarks.map((b, j) => (
-                    <div key={j} className="rounded-lg bg-white/[0.03] px-4 py-3">
-                      <p className="text-xs text-gray-400 font-medium mb-2">{b.scope}</p>
-                      <div className="flex items-center gap-2.5 text-[13px] font-mono">
-                        <span className="text-red-400/80">{b.before}</span>
-                        <ArrowRight className="w-3.5 h-3.5 text-gray-600 flex-shrink-0" />
-                        <span className="text-emerald-400 font-semibold">{b.after}</span>
+                    <div className="mb-5">
+                      <p className="text-sm text-red-400/70 mb-1.5 line-through decoration-red-500/30">{card.problem}</p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <ArrowRight className="w-4 h-4 text-emerald-400/60 flex-shrink-0" />
+                        <p className={`text-[15px] font-medium leading-snug ${card.accentColor}`}>{card.solution}</p>
                       </div>
                     </div>
-                  ))}
-                </div>
 
-                {/* Accuracy */}
-                <div className="mt-4 px-1">
-                  <p className="text-xs text-gray-500 leading-relaxed">
-                    <span className="text-gray-300 font-medium">Chính xác:</span> {s.accuracy}
-                  </p>
-                </div>
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${card.toolColor} flex items-center justify-center shadow-lg shadow-black/20`}>
+                        <card.toolIcon className="w-5 h-5 text-white" />
+                      </div>
+                      <span className="text-white font-semibold">{card.toolName}</span>
+                    </div>
 
-                {/* Note + Human review */}
-                <div className="mt-4 pt-3 border-t border-white/[0.04] space-y-2">
-                  <div className="flex items-start gap-2">
-                    <UserCheck className="w-4 h-4 text-brand-400/60 flex-shrink-0 mt-0.5" />
-                    <p className="text-xs text-gray-400 italic">BA review & chỉnh sửa trước khi sử dụng</p>
+                    <div className="pt-4 border-t border-white/[0.06] space-y-3">
+                      {card.benchmarks.map((b, j) => (
+                        <div key={j} className="rounded-lg bg-white/[0.03] px-4 py-3">
+                          <p className="text-xs text-gray-400 font-medium mb-2">{b.scope}</p>
+                          <div className="flex items-center gap-2.5 text-[13px] font-mono">
+                            <span className="text-red-400/80">{b.before}</span>
+                            <ArrowRight className="w-3.5 h-3.5 text-gray-600 flex-shrink-0" />
+                            <span className="text-emerald-400 font-semibold">{b.after}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-4 px-1">
+                      <p className="text-xs text-gray-500 leading-relaxed">
+                        <span className="text-gray-300 font-medium">Chính xác:</span> {card.accuracy}
+                      </p>
+                    </div>
+
+                    <div className="mt-4 pt-3 border-t border-white/[0.04] space-y-2">
+                      <div className="flex items-start gap-2">
+                        <UserCheck className="w-4 h-4 text-brand-400/60 flex-shrink-0 mt-0.5" />
+                        <p className="text-xs text-gray-400 italic">BA review & chỉnh sửa trước khi sử dụng</p>
+                      </div>
+                      <p className="text-[11px] text-gray-600 italic pl-6">* {card.note}</p>
+                    </div>
+
+                    <div className="mt-4 flex items-center justify-center gap-1.5 text-gray-500 text-xs">
+                      <RotateCcw className="w-3 h-3" />
+                      <span>Ấn để xem công cụ</span>
+                    </div>
                   </div>
-                  <p className="text-[11px] text-gray-600 italic pl-6">* {s.note}</p>
-                </div>
+
+                  {/* === BACK — Công cụ === */}
+                  <div
+                    style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+                    className={`absolute inset-0 p-8 rounded-2xl border ${card.borderColor} bg-gray-950/80 transition-all duration-500 glass-depth overflow-y-auto scrollbar-thin`}
+                  >
+                    <div className={`absolute -inset-px rounded-2xl ${card.glowColor} opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10`} />
+
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${card.toolColor} flex items-center justify-center shadow-lg shadow-black/20 flex-shrink-0`}>
+                        <card.toolIcon className="w-5 h-5 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-lg font-semibold text-white">{card.toolName}</h3>
+                        <p className="text-gray-500 text-sm">{card.toolTagline}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {card.toolBadges.map((b) => (
+                        <span key={b.label} className={`text-[10px] font-semibold px-2.5 py-1 rounded-full ${b.color}`}>{b.label}</span>
+                      ))}
+                    </div>
+
+                    <p className="text-gray-400 text-sm leading-relaxed mb-5">{card.toolDescription}</p>
+
+                    <div className="space-y-2.5 mb-4">
+                      {card.toolFeatures.map((f, fi) => (
+                        <div key={fi} className="flex items-start gap-2.5 text-sm text-gray-300">
+                          <f.icon className="w-3.5 h-3.5 mt-0.5 text-emerald-400/70 flex-shrink-0" />
+                          <span>{f.text}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="space-y-2 pt-4 border-t border-white/[0.06]">
+                      <p className="text-xs text-gray-500 font-medium mb-2">Hạn chế:</p>
+                      {card.toolLimits.map((l, li) => (
+                        <p key={li} className="text-sm text-gray-500 flex items-start gap-2.5">
+                          <span className="text-red-400/50 mt-0.5 flex-shrink-0 text-xs">⚠</span>
+                          {l}
+                        </p>
+                      ))}
+                    </div>
+
+                    <div className="mt-4 flex items-center justify-center gap-1.5 text-gray-500 text-xs">
+                      <RotateCcw className="w-3 h-3" />
+                      <span>Ấn để xem giải pháp</span>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}
@@ -377,6 +524,28 @@ export default function SolutionSection() {
             ))}
           </div>
         </div>
+
+        {/* General limitation banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={gridInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-12 p-6 rounded-xl border border-amber-500/10 bg-amber-500/[0.03] max-w-3xl mx-auto"
+        >
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-lg bg-amber-500/15 flex items-center justify-center flex-shrink-0">
+              <Cpu className="w-5 h-5 text-amber-400" />
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold text-amber-300 mb-1.5">Hạn chế chung</h4>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                Tất cả công cụ hiện đang được cài đặt trên <span className="text-amber-300/80">máy tính cá nhân</span>,
+                không phải máy tính công ty. Hiệu năng phụ thuộc vào cấu hình phần cứng (GPU, RAM)
+                và tốc độ mạng wifi. Đây là giai đoạn thử nghiệm — cần đánh giá thêm trước khi triển khai chính thức.
+              </p>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -81,6 +81,7 @@ export default function CTASection() {
         <div className="absolute top-[35%] left-0 w-[180px] h-px bg-gradient-to-r from-transparent via-brand-400/10 to-transparent animate-sweep-travel" />
       </div>
 
+      <div className="min-h-[70vh] flex items-center justify-center">
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
         className="max-w-3xl mx-auto text-center"
@@ -122,6 +123,7 @@ export default function CTASection() {
           </button>
         </div>
       </motion.div>
+      </div>
 
       {/* Thank you — only appears after clicking Xem Demo */}
       <AnimatePresence>
