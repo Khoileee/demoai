@@ -39,6 +39,32 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-950 via-gray-950 to-[#030712]" />
         <div className="absolute inset-0 hex-grid opacity-30" />
+
+        {/* Floating particles */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute rounded-full bg-brand-400/25 animate-float-particle" style={{ left: '8%', top: '15%', width: 2, height: 2, animationDuration: '8s' }} />
+          <div className="absolute rounded-full bg-cyan-400/20 animate-float-particle" style={{ left: '85%', top: '20%', width: 3, height: 3, animationDuration: '7s', animationDelay: '1s' }} />
+          <div className="absolute rounded-full bg-brand-400/20 animate-float-particle" style={{ left: '25%', top: '75%', width: 2, height: 2, animationDuration: '9s', animationDelay: '2.5s' }} />
+          <div className="absolute rounded-full bg-violet-400/20 animate-float-particle" style={{ left: '70%', top: '80%', width: 2, height: 2, animationDuration: '7.5s', animationDelay: '0.5s' }} />
+          <div className="absolute rounded-full bg-cyan-400/25 animate-float-particle" style={{ left: '50%', top: '10%', width: 2, height: 2, animationDuration: '8.5s', animationDelay: '3s' }} />
+          <div className="absolute rounded-full bg-brand-400/15 animate-float-particle" style={{ left: '92%', top: '55%', width: 3, height: 3, animationDuration: '6.5s', animationDelay: '1.8s' }} />
+          <div className="absolute rounded-full bg-violet-400/20 animate-float-particle" style={{ left: '15%', top: '45%', width: 2, height: 2, animationDuration: '10s', animationDelay: '4s' }} />
+          <div className="absolute rounded-full bg-cyan-400/15 animate-float-particle" style={{ left: '40%', top: '90%', width: 2, height: 2, animationDuration: '7s', animationDelay: '2s' }} />
+        </div>
+
+        {/* Data streams (falling light rays) */}
+        <div className="absolute w-[1px] h-20 animate-data-stream pointer-events-none" style={{ left: '12%', background: 'linear-gradient(180deg, transparent, rgba(96,165,250,0.25), transparent)', animationDelay: '0s', animationDuration: '5s' }} />
+        <div className="absolute w-[1px] h-24 animate-data-stream pointer-events-none" style={{ left: '88%', background: 'linear-gradient(180deg, transparent, rgba(139,92,246,0.2), transparent)', animationDelay: '2.5s', animationDuration: '6s' }} />
+        <div className="absolute w-[1px] h-16 animate-data-stream pointer-events-none" style={{ left: '35%', background: 'linear-gradient(180deg, transparent, rgba(34,211,238,0.18), transparent)', animationDelay: '4s', animationDuration: '7s' }} />
+        <div className="absolute w-[1px] h-20 animate-data-stream pointer-events-none" style={{ left: '65%', background: 'linear-gradient(180deg, transparent, rgba(96,165,250,0.2), transparent)', animationDelay: '1.5s', animationDuration: '5.5s' }} />
+
+        {/* Sweep lines */}
+        <div className="absolute top-[30%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-400/6 to-transparent animate-sweep-line pointer-events-none" style={{ animationDuration: '12s' }} />
+        <div className="absolute top-[70%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/5 to-transparent animate-sweep-line pointer-events-none" style={{ animationDuration: '14s', animationDelay: '5s' }} />
+
+        {/* Signal beacons */}
+        <div className="absolute left-[20%] top-[25%] w-1.5 h-1.5 rounded-full border border-brand-400/30 animate-signal pointer-events-none" style={{ animationDelay: '1s' }} />
+        <div className="absolute left-[80%] top-[70%] w-1.5 h-1.5 rounded-full border border-cyan-400/25 animate-signal pointer-events-none" style={{ animationDelay: '3.5s' }} />
       </div>
 
       {/* === MID LAYER: Hero focal point — desktop only === */}
