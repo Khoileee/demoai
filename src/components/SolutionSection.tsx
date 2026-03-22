@@ -97,14 +97,14 @@ const cards: SolutionCard[] = [
     glowColor: "bg-violet-500/8",
     toolName: "Lovable",
     toolTagline: "Generate UI — Tạo prototype UI từ mô tả",
-    toolDescription: "Mô tả giao diện bằng lời → AI tự sinh code React hoàn chỉnh. Tự động deploy lên domain tạm để demo với stakeholder.",
+    toolDescription: "Mô tả giao diện bằng ngôn ngữ tự nhiên → AI tự sinh code hoàn chỉnh. Tự động deploy lên domain tạm để demo với stakeholder.",
     toolFeatures: [
       { icon: Zap, text: "Mô tả bằng tiếng Việt → sinh UI React ngay lập tức" },
       { icon: LayoutDashboard, text: "Auto-deploy, sync GitHub — chỉnh sửa code trên VS Code" },
       { icon: DollarSign, text: "Phù hợp cho BA tạo prototype nhanh, không cần Dev" },
     ],
     toolLimits: [
-      "Chi phí subscription (~$20/tháng)",
+      "Chi phí subscription (~$25/tháng)",
       "Dữ liệu gửi lên cloud — cần cân nhắc bảo mật thông tin",
       "UI phức tạp vẫn cần chỉnh sửa thủ công",
     ],
@@ -117,9 +117,9 @@ const cards: SolutionCard[] = [
     problem: "Viết tài liệu & kịch bản test lặp lại, mất thời gian",
     solution: "Agent đọc source code + requirement → sinh SRS, TKCT, KBNT, HDSD theo template",
     benchmarks: [
-      { scope: "Chức năng CRUD (SRS + diagram)", before: "~5-6h viết tay", after: "~1h gen + ~2h review, sửa, lên Confluence" },
+      { scope: "Chức năng CRUD (SRS + diagram)", before: "~5-6h", after: "~1h gen + ~2h review, sửa, lên Confluence" },
       { scope: "Bộ tài liệu đầy đủ (SRS + TKCT + CSDL + test case)", before: "~2-3 ngày", after: "~1 ngày gen + review tổng" },
-      { scope: "Update tài liệu khi đổi req", before: "~2-4h cập nhật thủ công", after: "~30p AI detect thay đổi + BA review" },
+      { scope: "Update tài liệu khi đổi req", before: "~2-4h", after: "~30p AI detect thay đổi + BA review" },
     ],
     accuracy: "Template chuẩn → ít sai cấu trúc, BA tập trung review nội dung nghiệp vụ",
     note: "Tùy số lượng use case và độ phức tạp dự án",
@@ -138,8 +138,8 @@ const cards: SolutionCard[] = [
     ],
     toolLimits: [
       "Setup ban đầu phức tạp (cấu hình Agent, Skills, template)",
-      "Cần trả phí GitHub Copilot subscription (~$10-19/tháng)",
-      "Cần viết prompt tốt để có output chất lượng",
+      "Cần trả phí GitHub Copilot subscription (~$10-20/tháng)",
+      "Cần có kỹ năng viết prompt tốt để có output chất lượng",
     ],
     toolBadges: [
       { label: "Trả phí", color: "text-amber-400 bg-amber-500/10" },
@@ -151,7 +151,7 @@ const cards: SolutionCard[] = [
     solution: "Chat qua Telegram → tra cứu workspace, tìm business rule, cross-check",
     benchmarks: [
       { scope: "Tìm 1 business rule / API spec", before: "~15-30p lục file", after: "Tức thì — trả về file + dòng" },
-      { scope: "Cross-check req vs code", before: "~1h đối chiếu thủ công", after: "~5p AI so sánh tự động" },
+      { scope: "Cross-check req vs code", before: "~2-3h đối chiếu", after: "~1h AI so sánh tự động + cập nhật" },
     ],
     accuracy: "Chính xác với context trong workspace, BA cần verify với stakeholder",
     note: "Hiệu quả phụ thuộc vào cách tổ chức workspace",

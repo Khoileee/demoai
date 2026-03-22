@@ -18,7 +18,7 @@ const problems = [
     description:
       "BA phải vừa nghe, vừa ghi, vừa đặt câu hỏi trong cuộc họp. Thông tin dễ bị bỏ sót, ghi chép thiếu chính xác, mất thời gian tổng hợp lại sau mỗi buổi.",
     metric: "~1-2h / buổi họp",
-    frequency: "3-5 buổi/tuần",
+    frequency: "2-4 buổi/tuần",
   },
   {
     icon: Clock,
@@ -26,7 +26,7 @@ const problems = [
     title: "Tổng hợp & phân tích yêu cầu mất thời gian",
     description:
       "Sau mỗi buổi họp, cần thời gian để sàng lọc, phân loại, chuẩn hóa requirement. Phân tích luồng nghiệp vụ phức tạp dễ thiếu sót.",
-    metric: "~2-4h tổng hợp",
+    metric: "~1h tổng hợp",
     frequency: "Mỗi buổi họp",
   },
   {
@@ -35,7 +35,7 @@ const problems = [
     title: "Prototype thiếu trực quan, nhiều vòng chỉnh sửa",
     description:
       "Vẽ tay mockup tốn thời gian, khó thể hiện tương tác thực tế. Stakeholder khó hình dung, dẫn đến nhiều vòng chỉnh sửa trước khi chốt.",
-    metric: "~3-4h / tính năng CRUD",
+    metric: "~3-4h / chức năng CRUD",
     frequency: "Mỗi sprint",
   },
   {
@@ -44,7 +44,7 @@ const problems = [
     title: "Viết tài liệu lặp lại, mất thời gian",
     description:
       "SRS, TKCT, CSDL, diagram — các tài liệu có cấu trúc tương tự nhưng phải viết lại từ đầu mỗi chức năng. Rất dễ thiếu sót, không nhất quán.",
-    metric: "~5-6h / chức năng CRUD",
+    metric: "~3-4h / 4 chức năng CRUD",
     frequency: "Mỗi chức năng",
   },
   {
@@ -52,7 +52,7 @@ const problems = [
     step: "Bước 3-4",
     title: "Tra cứu thông tin dự án chậm, dữ liệu rải rác",
     description:
-      "Tìm lại requirement cũ, business rule, API spec nằm rải rác trong nhiều file. Mất thời gian tìm kiếm thay vì phân tích.",
+      "Tìm lại requirement cũ, business rule, API spec nằm rải rác trong nhiều file. Mất thời gian tìm kiếm.",
     metric: "~15-30p / lần tra cứu",
     frequency: "Hàng ngày",
   },
@@ -62,7 +62,7 @@ const problems = [
     title: "Viết kịch bản test & HDSD thủ công",
     description:
       "Mỗi lần update requirement phải cập nhật lại kịch bản UAT và HDSD. Dễ bỏ sót, không đồng bộ với tài liệu đặc tả.",
-    metric: "~2-4h / lần cập nhật",
+    metric: "~1-2h / lần cập nhật",
     frequency: "Mỗi lần thay đổi req",
   },
 ];
