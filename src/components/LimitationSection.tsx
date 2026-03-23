@@ -28,13 +28,13 @@ export default function LimitationSection() {
   const inView = useInView(ref, { once: true, amount: 0.5 });
 
   return (
-    <section className="relative h-screen px-6 overflow-hidden flex flex-col justify-center">
+    <section className="relative h-screen px-4 sm:px-6 overflow-hidden flex flex-col justify-center">
       {/* Background effects */}
       <div className="absolute inset-0 circuit-dots opacity-25 pointer-events-none" />
       <div className="absolute inset-6 rounded-3xl border border-amber-400/[0.08] animate-breathe-border pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-28 pointer-events-none" style={{ background: 'linear-gradient(180deg, rgba(245,158,11,0.04) 0%, transparent 100%)' }} />
 
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="absolute w-[400px] h-[300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-500/[0.04] blur-[60px] animate-plasma" />
       </div>
 
@@ -43,7 +43,7 @@ export default function LimitationSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-10"
+          className="text-center mb-6 sm:mb-10"
         >
           <div className="inline-flex items-center gap-2.5 mb-4">
             <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/15 flex items-center justify-center">
@@ -53,7 +53,7 @@ export default function LimitationSection() {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3 leading-tight">
             Hạn chế chung
           </h2>
-          <p className="text-gray-400 text-base max-w-3xl mx-auto leading-relaxed whitespace-nowrap">
+          <p className="text-gray-400 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed">
             Đây là giai đoạn thử nghiệm — cần đánh giá thêm trước khi triển khai chính thức.
           </p>
         </motion.div>
@@ -65,12 +65,12 @@ export default function LimitationSection() {
               initial={{ opacity: 0, x: -30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="flex items-center gap-4 p-5 rounded-xl border border-amber-500/10 bg-gray-950/60"
+              className="flex items-center gap-3 sm:gap-4 p-4 sm:p-5 rounded-xl border border-amber-500/10 bg-gray-950/60"
             >
               <div className={`w-11 h-11 rounded-lg ${item.bg} flex items-center justify-center flex-shrink-0`}>
                 <item.icon className={`w-5 h-5 ${item.color}`} />
               </div>
-              <p className="text-gray-300 text-base leading-relaxed">{item.text}</p>
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">{item.text}</p>
             </motion.div>
           ))}
         </div>

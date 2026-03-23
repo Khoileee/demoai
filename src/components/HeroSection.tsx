@@ -108,7 +108,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight mb-8"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight mb-8"
             style={{ lineHeight: 1.3 }}
           >
             <span className="hero-text-3d">Ứng dụng </span>

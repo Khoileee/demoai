@@ -89,8 +89,8 @@ export default function WorkflowSection() {
   const headerInView = useInView(headerRef, { once: true, amount: 0.6 });
 
   return (
-    <section className="relative h-screen px-6 overflow-hidden flex flex-col justify-center">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent" />
+    <section className="relative h-screen px-4 sm:px-6 overflow-y-auto overflow-x-hidden flex flex-col justify-start py-6 sm:justify-center sm:py-0">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent" />
 
       {/* Circuit dot grid */}
       <div className="absolute inset-0 circuit-dots opacity-40 pointer-events-none" />
@@ -102,8 +102,8 @@ export default function WorkflowSection() {
       <div className="absolute top-0 left-0 right-0 h-28 edge-glow-top opacity-60 pointer-events-none" />
       <div className="absolute bottom-0 left-0 right-0 h-20 edge-glow-bottom opacity-40 pointer-events-none" />
 
-      {/* Animated background depth — CSS only */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Animated background depth — CSS only, desktop */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="depth-glow animate-depth-glow-1 w-[700px] h-[500px] top-[15%] left-1/2 -translate-x-1/2 bg-brand-600/4" />
         <div className="depth-glow animate-depth-glow-2 w-[400px] h-[350px] top-[45%] right-[5%] bg-violet-600/3" style={{ animationDelay: '4s' }} />
         {/* Plasma morph blob */}
@@ -112,8 +112,8 @@ export default function WorkflowSection() {
         <div className="absolute w-[300px] h-[300px] rounded-full bg-brand-500/[0.025] blur-[60px] animate-grid-shimmer" style={{ top: '20%', left: '30%' }} />
       </div>
 
-      {/* Floating rings + orbiting dots */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Floating rings + orbiting dots — desktop only */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="absolute top-[25%] left-[12%] w-20 h-20 rounded-full border border-brand-500/[0.15] animate-ring-float" />
         <div className="absolute top-[60%] right-[8%] w-14 h-14 rounded-full border border-violet-500/[0.12] animate-ring-float" style={{ animationDelay: '3s' }} />
         <div className="absolute top-[40%] left-[50%] w-24 h-24 rounded-full border border-cyan-500/[0.10] animate-ring-float" style={{ animationDelay: '1.5s' }} />
@@ -139,7 +139,7 @@ export default function WorkflowSection() {
       <div className="absolute bottom-[20%] left-[8%] w-8 h-8 border border-violet-500/[0.12] rotate-12 animate-hex-float pointer-events-none" style={{ animationDelay: '4s' }} />
 
       {/* Floating particles — CSS only */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="absolute rounded-full bg-violet-400/25 animate-float-particle" style={{ left: '8%', top: '18%', width: 2, height: 2, animationDuration: '7.5s' }} />
         <div className="absolute rounded-full bg-violet-400/25 animate-float-particle" style={{ left: '85%', top: '22%', width: 3, height: 3, animationDuration: '8s', animationDelay: '1s' }} />
         <div className="absolute rounded-full bg-violet-400/25 animate-float-particle" style={{ left: '20%', top: '68%', width: 2, height: 2, animationDuration: '9s', animationDelay: '2s' }} />
@@ -154,18 +154,18 @@ export default function WorkflowSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-6"
+          className="text-center mb-4 sm:mb-6"
         >
           <p className="text-brand-400 text-sm font-medium tracking-[0.25em] uppercase mb-2">
             Quy trình làm việc
           </p>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight leading-tight">
             BA đang làm gì mỗi ngày?
           </h2>
         </motion.div>
 
         {/* 2x2 step grid */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6 relative">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5 lg:gap-6 relative">
           {/* Connecting arrows between cards — desktop only */}
           <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
             <ArrowRight className="w-5 h-5 text-gray-600/50" />
@@ -181,12 +181,12 @@ export default function WorkflowSection() {
               style={{ transformPerspective: 800 }}
               className="group relative"
             >
-              <div className={`relative p-6 rounded-2xl border ${step.borderColor} bg-gray-950/80 hover:bg-gray-900/60 transition-all duration-500 h-full glass-depth`}>
+              <div className={`relative p-4 sm:p-6 rounded-2xl border ${step.borderColor} bg-gray-950/80 hover:bg-gray-900/60 transition-all duration-500 h-full glass-depth`}>
                 <div className={`absolute -inset-px rounded-2xl ${step.glowColor} opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10`} />
 
                 <div className="flex items-center gap-3 mb-3">
-                  <div className={`w-11 h-11 rounded-lg bg-gradient-to-br ${step.gradient} flex items-center justify-center shadow-lg shadow-black/20 flex-shrink-0`}>
-                    <step.icon className="w-5 h-5 text-white" />
+                  <div className={`w-9 sm:w-11 h-9 sm:h-11 rounded-lg bg-gradient-to-br ${step.gradient} flex items-center justify-center shadow-lg shadow-black/20 flex-shrink-0`}>
+                    <step.icon className="w-4 sm:w-5 h-4 sm:h-5 text-white" />
                   </div>
                   <div>
                     <span className={`text-[10px] font-bold tracking-[0.2em] uppercase bg-gradient-to-r ${step.gradient} bg-clip-text text-transparent`}>
@@ -196,9 +196,9 @@ export default function WorkflowSection() {
                   </div>
                 </div>
 
-                <ul className="space-y-1.5 pl-1">
+                <ul className="space-y-1 sm:space-y-1.5 pl-1">
                   {step.tasks.map((task, j) => (
-                    <li key={j} className="flex items-start gap-2.5 text-sm text-gray-400 leading-relaxed">
+                    <li key={j} className="flex items-start gap-2 sm:gap-2.5 text-xs sm:text-sm text-gray-400 leading-relaxed">
                       <span className={`mt-[7px] flex-shrink-0 w-1.5 h-1.5 rounded-full ${step.dotColor}/50`} />
                       {task}
                     </li>

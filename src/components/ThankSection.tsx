@@ -3,12 +3,12 @@ import { Sparkles } from "lucide-react";
 
 export default function ThankSection() {
   return (
-    <section className="relative h-screen px-6 overflow-hidden flex flex-col items-center justify-center">
+    <section className="relative h-screen px-4 sm:px-6 overflow-hidden flex flex-col items-center justify-center">
       {/* Background effects */}
       <div className="absolute inset-0 circuit-dots opacity-20 pointer-events-none" />
       <div className="absolute inset-6 rounded-3xl border border-brand-400/[0.08] animate-breathe-border pointer-events-none" />
 
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="absolute w-[500px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-500/[0.05] blur-[70px] animate-plasma" />
         <div className="absolute w-[300px] h-[300px] top-[30%] right-[15%] bg-violet-500/[0.03] blur-[50px] animate-depth-glow-2" style={{ animationDelay: '3s' }} />
       </div>
@@ -29,7 +29,7 @@ export default function ThankSection() {
       >
         <Sparkles className="w-10 h-10 text-brand-400/60 mx-auto mb-8" />
         <p
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-brand-400 via-cyan-300 to-violet-400 bg-clip-text text-transparent pb-2"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-brand-400 via-cyan-300 to-violet-400 bg-clip-text text-transparent pb-2"
           style={{ lineHeight: '1.4' }}
         >
           Chân thành cảm ơn quý vị<br />đã chú ý lắng nghe!

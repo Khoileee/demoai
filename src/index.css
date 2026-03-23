@@ -742,9 +742,46 @@ body {
     radial-gradient(at 75% 65%, rgba(16, 185, 129, 0.02) 0%, transparent 50%);
 }
 
-/* === MOBILE: reduce animation complexity === */
+/* === MOBILE: reduce animation complexity & fix layout === */
 @media (max-width: 767px) {
+  html {
+    scroll-snap-type: y proximity;
+    cursor: auto;
+  }
+
   .hero-3d-rock {
     animation: hero-chrome-flow 6s ease-in-out infinite;
+  }
+
+  /* Kill expensive GPU effects on mobile */
+  .depth-glow,
+  .animate-ring-float,
+  .animate-hex-float,
+  .animate-orbit,
+  .animate-orbit-reverse,
+  .animate-plasma,
+  .animate-grid-shimmer,
+  .animate-data-stream,
+  .animate-signal,
+  .animate-sweep-line,
+  .animate-sweep-travel,
+  .animate-sweep-travel-reverse,
+  .animate-breathe-border {
+    display: none !important;
+  }
+
+  /* Reduce floating particle count (hide odd children) */
+  .animate-float-particle:nth-child(2n) {
+    display: none !important;
+  }
+
+  /* Reduce blur on background blobs */
+  .noise-overlay::after {
+    display: none;
+  }
+
+  /* Tighter section padding on mobile */
+  .glass-depth:hover {
+    transform: none;
   }
 }

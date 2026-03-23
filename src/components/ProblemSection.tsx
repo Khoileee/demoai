@@ -108,7 +108,7 @@ function ProblemCard({
       className="group relative"
     >
       <TiltCard className="h-full">
-      <div className="relative p-6 rounded-2xl border border-white/[0.06] bg-gray-950/80 hover:border-red-500/20 hover:bg-gray-900/60 transition-all duration-500 h-full">
+      <div className="relative p-4 sm:p-6 rounded-2xl border border-white/[0.06] bg-gray-950/80 hover:border-red-500/20 hover:bg-gray-900/60 transition-all duration-500 h-full">
         <div className="absolute -inset-px rounded-2xl bg-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10" />
 
         {/* Step badge + metrics */}
@@ -164,7 +164,7 @@ export default function ProblemSection() {
   const headerOpacity = useTransform(headerProgress, [0, 0.5], [0, 1]);
 
   return (
-    <section id="problem" className="relative h-screen px-6 overflow-hidden flex flex-col justify-center">
+    <section id="problem" className="relative h-screen px-4 sm:px-6 overflow-y-auto overflow-x-hidden flex flex-col justify-start py-8 sm:justify-center sm:py-0">
       {/* Circuit dot grid */}
       <div className="absolute inset-0 circuit-dots opacity-35 pointer-events-none" />
 
@@ -175,8 +175,8 @@ export default function ProblemSection() {
       <div className="absolute top-0 left-0 right-0 h-32 edge-glow-top opacity-60 pointer-events-none" style={{ background: 'linear-gradient(180deg, rgba(239,68,68,0.07) 0%, transparent 100%)' }} />
       <div className="absolute bottom-0 left-0 right-0 h-20 edge-glow-bottom opacity-45 pointer-events-none" style={{ background: 'linear-gradient(0deg, rgba(249,115,22,0.05) 0%, transparent 100%)' }} />
 
-      {/* Animated background depth */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Animated background depth — desktop only */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="depth-glow w-[600px] h-[400px] top-[20%] right-[5%] bg-red-600/4 animate-depth-glow-1" />
         <div className="depth-glow w-[400px] h-[300px] top-[50%] left-[8%] bg-orange-600/3 animate-depth-glow-2" style={{ animationDelay: '3s' }} />
         {/* Plasma morph blob */}
@@ -185,8 +185,8 @@ export default function ProblemSection() {
         <div className="absolute w-[250px] h-[250px] rounded-full bg-red-500/[0.02] blur-[50px] animate-grid-shimmer" style={{ top: '35%', right: '20%' }} />
       </div>
 
-      {/* Floating rings + orbit */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Floating rings + orbit — desktop only */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="absolute top-[18%] right-[15%] w-16 h-16 rounded-full border border-red-500/[0.14] animate-ring-float" />
         <div className="absolute bottom-[20%] left-[10%] w-12 h-12 rounded-full border border-orange-500/[0.12] animate-ring-float" style={{ animationDelay: '2s' }} />
         <div className="absolute top-[50%] left-[45%] w-20 h-20 rounded-full border border-red-400/[0.10] animate-ring-float" style={{ animationDelay: '4s' }} />
@@ -211,8 +211,8 @@ export default function ProblemSection() {
       <div className="absolute top-[12%] left-[5%] w-10 h-10 border border-red-500/[0.14] rotate-45 animate-hex-float pointer-events-none" />
       <div className="absolute bottom-[15%] right-[6%] w-8 h-8 border border-orange-500/[0.12] rotate-12 animate-hex-float pointer-events-none" style={{ animationDelay: '3s' }} />
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Floating particles — desktop only */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="absolute rounded-full bg-red-400/20 animate-float-particle" style={{ left: '10%', top: '15%', width: 2, height: 2, animationDuration: '7s' }} />
         <div className="absolute rounded-full bg-red-400/20 animate-float-particle" style={{ left: '82%', top: '25%', width: 3, height: 3, animationDuration: '8s', animationDelay: '1.5s' }} />
         <div className="absolute rounded-full bg-red-400/20 animate-float-particle" style={{ left: '30%', top: '75%', width: 2, height: 2, animationDuration: '9s', animationDelay: '0.5s' }} />
@@ -226,18 +226,18 @@ export default function ProblemSection() {
         <motion.div
           ref={headerRef}
           style={{ y: headerY, opacity: headerOpacity }}
-          className="text-center mb-8"
+          className="text-center mb-4 sm:mb-8"
         >
           <p className="text-red-400/80 text-sm font-medium tracking-[0.25em] uppercase mb-3">
             Vấn đề
           </p>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight leading-tight">
             Đâu là điểm nghẽn trong quy trình?
           </h2>
         </motion.div>
 
         {/* Problem cards — 6 cards, 3x2 grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
           {problems.map((problem, i) => (
             <ProblemCard key={problem.title} problem={problem} index={i} />
           ))}

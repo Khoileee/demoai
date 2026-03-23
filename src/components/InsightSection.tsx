@@ -60,8 +60,8 @@ export default function InsightSection() {
   const bgGlowOpacity = useTransform(scrollYProgress, [0.2, 0.4], [0, 1]);
 
   return (
-    <section ref={sectionRef} className="relative h-screen px-6 overflow-hidden flex flex-col justify-center">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent" />
+    <section ref={sectionRef} className="relative h-screen px-4 sm:px-6 overflow-hidden flex flex-col justify-center">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent" />
 
       {/* Circuit dot grid */}
       <div className="absolute inset-0 circuit-dots opacity-30 pointer-events-none" />
@@ -73,10 +73,10 @@ export default function InsightSection() {
       <div className="absolute top-0 left-0 right-0 h-24 edge-glow-top opacity-50 pointer-events-none" />
       <div className="absolute bottom-0 left-0 right-0 h-20 edge-glow-bottom opacity-40 pointer-events-none" />
 
-      {/* Background effects */}
+      {/* Background effects — desktop only */}
       <motion.div
         style={{ opacity: bgGlowOpacity }}
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none hidden md:block"
       >
         <div className="depth-glow w-[700px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-600/5 animate-depth-glow-1" />
         <div className="depth-glow w-[400px] h-[300px] top-[30%] right-[5%] bg-violet-600/3 animate-depth-glow-2" style={{ animationDelay: '3s' }} />
@@ -86,8 +86,8 @@ export default function InsightSection() {
         <div className="absolute w-[300px] h-[300px] rounded-full bg-brand-500/[0.02] blur-[60px] animate-grid-shimmer" style={{ top: '40%', left: '35%' }} />
       </motion.div>
 
-      {/* Floating rings + orbit */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Floating rings + orbit — desktop only */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="absolute top-[30%] right-[12%] w-20 h-20 rounded-full border border-brand-500/[0.14] animate-ring-float" />
         <div className="absolute bottom-[25%] left-[15%] w-14 h-14 rounded-full border border-violet-500/[0.12] animate-ring-float" style={{ animationDelay: '2.5s' }} />
         <div className="absolute top-[50%] left-[50%] w-24 h-24 rounded-full border border-cyan-500/[0.10] animate-ring-float" style={{ animationDelay: '1s' }} />
@@ -116,8 +116,8 @@ export default function InsightSection() {
       <div className="absolute top-[18%] left-[8%] w-10 h-10 border border-brand-500/[0.14] rotate-45 animate-hex-float pointer-events-none" />
       <div className="absolute bottom-[15%] right-[10%] w-8 h-8 border border-violet-500/[0.12] rotate-12 animate-hex-float pointer-events-none" style={{ animationDelay: '4s' }} />
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {/* Floating particles — desktop only */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
         <div className="absolute rounded-full bg-brand-400/25 animate-float-particle" style={{ left: '20%', top: '25%', width: 2, height: 2, animationDuration: '8s' }} />
         <div className="absolute rounded-full bg-brand-400/25 animate-float-particle" style={{ left: '75%', top: '35%', width: 3, height: 3, animationDuration: '7s', animationDelay: '1.2s' }} />
         <div className="absolute rounded-full bg-brand-400/25 animate-float-particle" style={{ left: '40%', top: '70%', width: 2, height: 2, animationDuration: '9s', animationDelay: '2.5s' }} />
@@ -133,12 +133,12 @@ export default function InsightSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-8"
+          className="text-center mb-5 sm:mb-8"
         >
           <p className="text-brand-400 text-sm font-medium tracking-[0.25em] uppercase mb-3">
             Góc nhìn
           </p>
-          <h2 className="text-2xl sm:text-3xl lg:text-[2.8rem] font-bold tracking-tight">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[2.8rem] font-bold tracking-tight">
             <span className="block leading-[1.4] mb-2">
               <span className="text-white">AI giúp BA làm </span>
               <span className="bg-gradient-to-r from-brand-400 to-cyan-400 bg-clip-text text-transparent">nhanh hơn</span>
@@ -155,7 +155,7 @@ export default function InsightSection() {
         </motion.div>
 
         {/* 3 insight cards */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
           {insights.map((item, i) => (
             <motion.div
               key={item.title}
@@ -165,7 +165,7 @@ export default function InsightSection() {
               variants={cardVariants}
               className="group relative"
             >
-              <div className={`relative p-6 rounded-2xl border ${item.borderColor} bg-gray-950/80 hover:bg-gray-900/60 transition-all duration-500 h-full glass-depth`}>
+              <div className={`relative p-4 sm:p-6 rounded-2xl border ${item.borderColor} bg-gray-950/80 hover:bg-gray-900/60 transition-all duration-500 h-full glass-depth`}>
                 <div className={`absolute -inset-px rounded-2xl ${item.glowColor} opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10`} />
 
                 <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${item.iconBg} flex items-center justify-center border ${item.iconBorder} mb-4`}>

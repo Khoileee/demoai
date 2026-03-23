@@ -204,8 +204,8 @@ export default function SolutionSection() {
   const bgGlow = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
 
   return (
-    <section ref={sectionRef} className="relative h-screen px-6 overflow-hidden flex flex-col justify-center">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent" />
+    <section ref={sectionRef} className="relative h-screen px-4 sm:px-6 overflow-y-auto overflow-x-hidden flex flex-col justify-start py-8 sm:justify-center sm:py-0">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent" />
 
       {/* Circuit dot grid */}
       <div className="absolute inset-0 circuit-dots opacity-35 pointer-events-none" />
@@ -217,8 +217,8 @@ export default function SolutionSection() {
       <div className="absolute top-0 left-0 right-0 h-28 edge-glow-top opacity-60 pointer-events-none" />
       <div className="absolute bottom-0 left-0 right-0 h-24 edge-glow-bottom opacity-45 pointer-events-none" />
 
-      {/* Animated background depth */}
-      <motion.div style={{ opacity: bgGlow }} className="absolute inset-0 pointer-events-none">
+      {/* Animated background depth — desktop only */}
+      <motion.div style={{ opacity: bgGlow }} className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="depth-glow w-[500px] h-[400px] top-[30%] left-[10%] bg-brand-600/4 animate-depth-glow-1" />
         <div className="depth-glow w-[400px] h-[300px] top-[40%] right-[15%] bg-cyan-600/3 animate-depth-glow-2" style={{ animationDelay: '2s' }} />
         {/* Plasma blob */}
@@ -227,8 +227,8 @@ export default function SolutionSection() {
         <div className="absolute w-[280px] h-[280px] rounded-full bg-cyan-500/[0.02] blur-[50px] animate-grid-shimmer" style={{ top: '25%', left: '40%' }} />
       </motion.div>
 
-      {/* Floating rings + orbit */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Floating rings + orbit — desktop only */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="absolute top-[20%] left-[8%] w-16 h-16 rounded-full border border-cyan-500/[0.15] animate-ring-float" />
         <div className="absolute bottom-[25%] right-[12%] w-20 h-20 rounded-full border border-brand-500/[0.12] animate-ring-float" style={{ animationDelay: '2.5s' }} />
         <div className="absolute top-[50%] left-[55%] w-14 h-14 rounded-full border border-emerald-500/[0.10] animate-ring-float" style={{ animationDelay: '4s' }} />
@@ -253,8 +253,8 @@ export default function SolutionSection() {
       <div className="absolute top-[10%] right-[5%] w-10 h-10 border border-cyan-500/[0.14] rotate-45 animate-hex-float pointer-events-none" />
       <div className="absolute bottom-[12%] left-[12%] w-8 h-8 border border-emerald-500/[0.12] rotate-12 animate-hex-float pointer-events-none" style={{ animationDelay: '3s' }} />
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Floating particles — desktop only */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="absolute rounded-full bg-brand-400/20 animate-float-particle" style={{ left: '12%', top: '20%', width: 2, height: 2, animationDuration: '8s' }} />
         <div className="absolute rounded-full bg-brand-400/20 animate-float-particle" style={{ left: '78%', top: '30%', width: 3, height: 3, animationDuration: '7s', animationDelay: '1.2s' }} />
         <div className="absolute rounded-full bg-brand-400/20 animate-float-particle" style={{ left: '45%', top: '75%', width: 2, height: 2, animationDuration: '9s', animationDelay: '2.5s' }} />
@@ -273,7 +273,7 @@ export default function SolutionSection() {
           <p className="text-brand-400 text-sm font-medium tracking-[0.25em] uppercase mb-3">
             Giải pháp & Công cụ
           </p>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight leading-tight">
             AI giải quyết ở đâu?
           </h2>
         </motion.div>
@@ -290,7 +290,7 @@ export default function SolutionSection() {
               className="group relative"
             >
               <div
-                className="relative cursor-pointer h-[280px] sm:h-[300px]"
+                className="relative cursor-pointer h-[260px] sm:h-[300px]"
                 style={{ perspective: '1200px' }}
                 onClick={() => toggleFlip(i)}
               >

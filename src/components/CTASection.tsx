@@ -15,8 +15,8 @@ export default function CTASection() {
   const contentY = useTransform(scrollYProgress, [0.1, 0.35], [60, 0]);
 
   return (
-    <section ref={sectionRef} className="relative h-screen px-6 overflow-hidden flex flex-col justify-center">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent" />
+    <section ref={sectionRef} className="relative h-screen px-4 sm:px-6 overflow-hidden flex flex-col justify-center">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent" />
 
       {/* Circuit dot grid */}
       <div className="absolute inset-0 circuit-dots opacity-30 pointer-events-none" />
@@ -28,8 +28,8 @@ export default function CTASection() {
       <div className="absolute top-0 left-0 right-0 h-24 edge-glow-top opacity-55 pointer-events-none" />
       <div className="absolute bottom-0 left-0 right-0 h-28 edge-glow-bottom opacity-50 pointer-events-none" />
 
-      {/* Animated background depth */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Animated background depth — desktop only */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="depth-glow w-[600px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-600/5 animate-depth-glow-1" />
         <div className="depth-glow w-[350px] h-[250px] top-[35%] left-[15%] bg-violet-600/3 animate-depth-glow-2" style={{ animationDelay: '4s' }} />
         {/* Plasma blob */}
@@ -38,8 +38,8 @@ export default function CTASection() {
         <div className="absolute w-[280px] h-[280px] rounded-full bg-brand-500/[0.02] blur-[60px] animate-grid-shimmer" style={{ top: '40%', left: '40%' }} />
       </div>
 
-      {/* Floating rings + orbit */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Floating rings + orbit — desktop only */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="absolute top-[20%] left-[20%] w-16 h-16 rounded-full border border-brand-500/[0.14] animate-ring-float" />
         <div className="absolute bottom-[30%] right-[15%] w-12 h-12 rounded-full border border-cyan-500/[0.12] animate-ring-float" style={{ animationDelay: '3s' }} />
         <div className="absolute top-[45%] left-[60%] w-20 h-20 rounded-full border border-violet-500/[0.10] animate-ring-float" style={{ animationDelay: '1.5s' }} />
@@ -68,8 +68,8 @@ export default function CTASection() {
       <div className="absolute top-[15%] right-[8%] w-10 h-10 border border-brand-500/[0.14] rotate-45 animate-hex-float pointer-events-none" />
       <div className="absolute bottom-[20%] left-[6%] w-8 h-8 border border-violet-500/[0.12] rotate-12 animate-hex-float pointer-events-none" style={{ animationDelay: '4s' }} />
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Floating particles — desktop only */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="absolute rounded-full bg-brand-400/20 animate-float-particle" style={{ left: '18%', top: '25%', width: 2, height: 2, animationDuration: '8s' }} />
         <div className="absolute rounded-full bg-brand-400/20 animate-float-particle" style={{ left: '82%', top: '30%', width: 3, height: 3, animationDuration: '7s', animationDelay: '1.5s' }} />
         <div className="absolute rounded-full bg-brand-400/20 animate-float-particle" style={{ left: '40%', top: '75%', width: 2, height: 2, animationDuration: '9s', animationDelay: '2s' }} />
@@ -84,11 +84,11 @@ export default function CTASection() {
         style={{ opacity: contentOpacity, y: contentY }}
         className="max-w-3xl mx-auto text-center"
       >
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6">
           Sẵn sàng trải nghiệm?
         </h2>
 
-        <p className="text-gray-400 text-lg mb-12 max-w-xl mx-auto leading-relaxed">
+        <p className="text-gray-400 text-base sm:text-lg mb-8 sm:mb-12 max-w-xl mx-auto leading-relaxed">
           Từ meeting đầu tiên đến tài liệu bàn giao —
           AI đồng hành cùng BA ở mọi giai đoạn.
         </p>

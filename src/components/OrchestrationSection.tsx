@@ -119,8 +119,8 @@ export default function OrchestrationSection() {
   };
 
   return (
-    <section ref={sectionRef} className="relative h-screen px-6 overflow-hidden flex flex-col justify-center">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
+    <section ref={sectionRef} className="relative h-screen px-4 sm:px-6 overflow-hidden flex flex-col justify-center">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
 
       {/* Circuit dot grid */}
       <div className="absolute inset-0 circuit-dots opacity-35 pointer-events-none" />
@@ -132,10 +132,10 @@ export default function OrchestrationSection() {
       <div className="absolute top-0 left-0 right-0 h-28 edge-glow-top opacity-55 pointer-events-none" style={{ background: 'linear-gradient(180deg, rgba(245,158,11,0.07) 0%, transparent 100%)' }} />
       <div className="absolute bottom-0 left-0 right-0 h-20 edge-glow-bottom opacity-40 pointer-events-none" style={{ background: 'linear-gradient(0deg, rgba(249,115,22,0.05) 0%, transparent 100%)' }} />
 
-      {/* Animated background glow — amber/orange theme */}
+      {/* Animated background glow — amber/orange theme, desktop only */}
       <motion.div
         style={{ opacity: bgGlowOpacity }}
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none hidden md:block"
       >
         <div className="depth-glow w-[600px] h-[400px] top-[20%] left-1/2 -translate-x-1/2 bg-amber-600/5 animate-depth-glow-1" />
         <div className="depth-glow w-[400px] h-[300px] top-[40%] right-[10%] bg-orange-600/4 animate-depth-glow-2" style={{ animationDelay: '3s' }} />
@@ -145,8 +145,8 @@ export default function OrchestrationSection() {
         <div className="absolute w-[250px] h-[250px] rounded-full bg-amber-500/[0.025] blur-[50px] animate-grid-shimmer" style={{ top: '30%', left: '45%' }} />
       </motion.div>
 
-      {/* Floating rings + orbit */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Floating rings + orbit — desktop only */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="absolute top-[22%] left-[15%] w-16 h-16 rounded-full border border-amber-500/[0.14] animate-ring-float" />
         <div className="absolute bottom-[18%] right-[10%] w-12 h-12 rounded-full border border-orange-500/[0.12] animate-ring-float" style={{ animationDelay: '2s' }} />
         <div className="absolute top-[55%] left-[50%] w-20 h-20 rounded-full border border-amber-400/[0.10] animate-ring-float" style={{ animationDelay: '3.5s' }} />
@@ -171,8 +171,8 @@ export default function OrchestrationSection() {
       <div className="absolute top-[12%] right-[6%] w-10 h-10 border border-amber-500/[0.14] rotate-45 animate-hex-float pointer-events-none" />
       <div className="absolute bottom-[15%] left-[8%] w-8 h-8 border border-orange-500/[0.12] rotate-12 animate-hex-float pointer-events-none" style={{ animationDelay: '3s' }} />
 
-      {/* Floating particles — amber theme */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Floating particles — amber theme, desktop only */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         <div className="absolute rounded-full bg-amber-400/20 animate-float-particle" style={{ left: '15%', top: '20%', width: 2, height: 2, animationDuration: '8s' }} />
         <div className="absolute rounded-full bg-amber-400/20 animate-float-particle" style={{ left: '80%', top: '15%', width: 3, height: 3, animationDuration: '7s', animationDelay: '1.5s' }} />
         <div className="absolute rounded-full bg-amber-400/20 animate-float-particle" style={{ left: '35%', top: '80%', width: 2, height: 2, animationDuration: '9s', animationDelay: '0.8s' }} />
@@ -190,15 +190,15 @@ export default function OrchestrationSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={headerVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-8"
+          className="text-center mb-4 sm:mb-8"
         >
           <p className="text-amber-400 text-sm font-medium tracking-[0.25em] uppercase mb-3">
             Demo thực tế
           </p>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3 leading-tight">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-2 sm:mb-3 leading-tight">
             Agent đang làm việc thật
           </h2>
-          <p className="text-gray-400 text-base max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
             Agent đọc source code, phân tích nghiệp vụ, và sinh tài liệu SRS hoàn chỉnh
             — chỉ với một câu lệnh trong VS Code.
           </p>
@@ -209,7 +209,7 @@ export default function OrchestrationSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={headerVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="flex items-center justify-center gap-3 sm:gap-6 mb-10"
+          className="flex items-center justify-center gap-3 sm:gap-6 mb-6 sm:mb-10"
         >
           {flowSteps.map((step, i) => (
             <div key={step.label} className="flex items-center gap-3 sm:gap-6">

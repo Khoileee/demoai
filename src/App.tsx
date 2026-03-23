@@ -12,7 +12,6 @@ import ThankSection from "@/components/ThankSection";
 import LimitationSection from "@/components/LimitationSection";
 import ScrollProgress from "@/components/ScrollProgress";
 import DotNav from "@/components/DotNav";
-import KeyboardHint from "@/components/KeyboardHint";
 
 const sectionIds = ["hero", "workflow", "problem", "solution", "limitation", "orchestration", "cta", "insight", "thank"];
 
@@ -64,7 +63,6 @@ export default function App() {
       <DotNav />
       <CursorGlow />
       <GlobalBackground />
-      <KeyboardHint />
       <main className="relative z-[1] noise-overlay">
         <div id="hero" className="h-screen snap-start overflow-hidden"><HeroSection /></div>
         <div id="workflow" className="h-screen snap-start overflow-hidden cv-auto"><WorkflowSection /></div>
