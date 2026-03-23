@@ -14,7 +14,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import DotNav from "@/components/DotNav";
 import KeyboardHint from "@/components/KeyboardHint";
 
-const sectionIds = ["hero", "workflow", "problem", "solution", "limitation", "orchestration", "insight", "cta", "thank"];
+const sectionIds = ["hero", "workflow", "problem", "solution", "limitation", "orchestration", "cta", "insight", "thank"];
 
 export default function App() {
   const navigateSlide = useCallback((direction: 1 | -1) => {
@@ -72,8 +72,8 @@ export default function App() {
         <div id="solution" className="h-screen snap-start overflow-hidden cv-auto"><SolutionSection /></div>
         <div id="limitation" className="h-screen snap-start overflow-hidden cv-auto"><LimitationSection /></div>
         <div id="orchestration" className="h-screen snap-start overflow-hidden cv-auto"><OrchestrationSection /></div>
-        <div id="insight" className="h-screen snap-start overflow-hidden cv-auto"><InsightSection /></div>
         <div id="cta" className="h-screen snap-start overflow-hidden"><CTASection /></div>
+        <div id="insight" className="h-screen snap-start overflow-hidden cv-auto"><InsightSection /></div>
         <div id="thank" className="h-screen snap-start overflow-hidden"><ThankSection /></div>
       </main>
     </>

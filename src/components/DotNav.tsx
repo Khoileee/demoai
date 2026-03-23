@@ -8,8 +8,8 @@ const sections = [
   { id: "solution", label: "Giải pháp & Công cụ" },
   { id: "limitation", label: "Hạn chế" },
   { id: "orchestration", label: "Điều phối" },
-  { id: "insight", label: "Góc nhìn" },
   { id: "cta", label: "Trải nghiệm" },
+  { id: "insight", label: "Góc nhìn" },
   { id: "thank", label: "Cảm ơn" },
 ];
 

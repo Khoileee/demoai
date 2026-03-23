@@ -98,11 +98,6 @@ export default function CTASection() {
             href="https://youtu.be/x9xTHFL9aO8"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => {
-              setTimeout(() => {
-                document.getElementById("thank")?.scrollIntoView({ behavior: "smooth" });
-              }, 300);
-            }}
             className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-brand-600 to-brand-500 text-white font-semibold text-sm hover:from-brand-500 hover:to-brand-400 transition-all duration-500 shadow-lg shadow-brand-500/20 hover:shadow-brand-500/30 hover:shadow-xl"
           >
             Xem Demo

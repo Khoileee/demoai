@@ -11,7 +11,7 @@ const limitations = [
   },
   {
     icon: Wifi,
-    text: "Hiệu năng phụ thuộc cấu hình phần cứng (RAM, CPU, GPU...) & wifi",
+    text: "Hiệu năng phụ thuộc cấu hình phần cứng (RAM, CPU, GPU...) & WiFi",
     color: "text-orange-400",
     bg: "bg-orange-500/10",
   },

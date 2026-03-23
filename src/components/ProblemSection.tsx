@@ -44,7 +44,7 @@ const problems = [
       "Stakeholder khó hình dung tương tác",
       "Nhiều vòng chỉnh sửa trước khi chốt",
     ],
-    metric: "~3-4h / chức năng",
+    metric: "~3-4h / 4 chức năng CRUD",
     frequency: "Mỗi sprint",
   },
   {
@@ -56,7 +56,7 @@ const problems = [
       "Viết lại từ đầu mỗi chức năng",
       "Dễ thiếu sót, không nhất quán",
     ],
-    metric: "~3-4h / 4 CRUD",
+    metric: "~3-4h / 4 chức năng CRUD",
     frequency: "Mỗi chức năng",
   },
   {
@@ -69,7 +69,7 @@ const problems = [
       "Mất thời gian tìm và xác minh",
     ],
     metric: "~15-30p / lần",
-    frequency: "Hàng ngày",
+    frequency: "2-3 lần/ tuần",
   },
   {
     icon: AlertTriangle,
@@ -232,7 +232,7 @@ export default function ProblemSection() {
             Vấn đề
           </p>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight">
-            Đâu là điểm nghẽ trong quy trình?
+            Đâu là điểm nghẽn trong quy trình?
           </h2>
         </motion.div>
 
