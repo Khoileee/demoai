@@ -60,7 +60,7 @@ export default function InsightSection() {
   const bgGlowOpacity = useTransform(scrollYProgress, [0.2, 0.4], [0, 1]);
 
   return (
-    <section ref={sectionRef} className="relative py-20 sm:py-28 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative h-screen px-6 overflow-hidden flex flex-col justify-center">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent" />
 
       {/* Circuit dot grid */}
@@ -133,13 +133,13 @@ export default function InsightSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
-          <p className="text-brand-400 text-sm font-medium tracking-[0.25em] uppercase mb-4">
+          <p className="text-brand-400 text-sm font-medium tracking-[0.25em] uppercase mb-3">
             Góc nhìn
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-[3.2rem] font-bold tracking-tight">
-            <span className="block leading-[1.4] mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-[2.8rem] font-bold tracking-tight">
+            <span className="block leading-[1.4] mb-2">
               <span className="text-white">AI giúp BA làm </span>
               <span className="bg-gradient-to-r from-brand-400 to-cyan-400 bg-clip-text text-transparent">nhanh hơn</span>
               <span className="text-white">, </span>
@@ -155,7 +155,7 @@ export default function InsightSection() {
         </motion.div>
 
         {/* 3 insight cards */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
           {insights.map((item, i) => (
             <motion.div
               key={item.title}
@@ -165,14 +165,14 @@ export default function InsightSection() {
               variants={cardVariants}
               className="group relative"
             >
-              <div className={`relative p-8 rounded-2xl border ${item.borderColor} bg-gray-950/80 hover:bg-gray-900/60 transition-all duration-500 h-full glass-depth`}>
+              <div className={`relative p-6 rounded-2xl border ${item.borderColor} bg-gray-950/80 hover:bg-gray-900/60 transition-all duration-500 h-full glass-depth`}>
                 <div className={`absolute -inset-px rounded-2xl ${item.glowColor} opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10`} />
 
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.iconBg} flex items-center justify-center border ${item.iconBorder} mb-5`}>
-                  <item.icon className={`w-5 h-5 ${item.accentColor}`} />
+                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${item.iconBg} flex items-center justify-center border ${item.iconBorder} mb-4`}>
+                  <item.icon className={`w-4 h-4 ${item.accentColor}`} />
                 </div>
 
-                <h3 className={`text-lg font-semibold mb-3 ${item.accentColor}`}>
+                <h3 className={`text-base font-semibold mb-2 ${item.accentColor}`}>
                   {item.title}
                 </h3>
 

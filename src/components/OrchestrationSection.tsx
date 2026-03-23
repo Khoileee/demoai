@@ -119,7 +119,7 @@ export default function OrchestrationSection() {
   };
 
   return (
-    <section ref={sectionRef} className="relative py-20 sm:py-28 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative h-screen px-6 overflow-hidden flex flex-col justify-center">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
 
       {/* Circuit dot grid */}
@@ -190,15 +190,15 @@ export default function OrchestrationSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={headerVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
-          <p className="text-amber-400 text-sm font-medium tracking-[0.25em] uppercase mb-4">
+          <p className="text-amber-400 text-sm font-medium tracking-[0.25em] uppercase mb-3">
             Demo thực tế
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-[3.5rem] font-bold tracking-tight mb-6 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3 leading-tight">
             Agent đang làm việc thật
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-400 text-base max-w-2xl mx-auto leading-relaxed">
             Agent đọc source code, phân tích nghiệp vụ, và sinh tài liệu SRS hoàn chỉnh
             — chỉ với một câu lệnh trong VS Code.
           </p>

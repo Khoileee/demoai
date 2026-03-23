@@ -7,8 +7,6 @@ import {
   MessageCircle,
   ArrowRight,
   UserCheck,
-  CheckCircle2,
-  AlertCircle,
   Shield,
   DollarSign,
   Cpu,
@@ -53,8 +51,7 @@ const cards: SolutionCard[] = [
     problem: "Ghi chép meeting & tổng hợp yêu cầu thủ công",
     solution: "Tự động chuyển giọng nói → meeting notes, action items, requirement list",
     benchmarks: [
-      { scope: "Họp ngắn (30p)", before: "~1h ghi + tổng hợp", after: "~15p review notes" },
-      { scope: "Workshop dài (2-3h)", before: "~3-4h tổng hợp", after: "~30p review + sửa" },
+      { scope: "Họp ngắn (30-45p)", before: "~1h ghi + tổng hợp", after: "~15p review notes" },
     ],
     accuracy: "Transcript chính xác ~90-95%, BA chỉ cần review lại nội dung",
     note: "Tùy chất lượng audio và số người tham gia",
@@ -117,9 +114,8 @@ const cards: SolutionCard[] = [
     problem: "Viết tài liệu & kịch bản test lặp lại, mất thời gian",
     solution: "Agent đọc source code + requirement → sinh SRS, TKCT, KBNT, HDSD theo template",
     benchmarks: [
-      { scope: "Chức năng CRUD (SRS + diagram)", before: "~5-6h", after: "~1h gen + ~2h review, sửa, lên Confluence" },
-      { scope: "Bộ tài liệu đầy đủ (SRS + TKCT + CSDL + test case)", before: "~2-3 ngày", after: "~1 ngày gen + review tổng" },
-      { scope: "Update tài liệu khi đổi req", before: "~2-4h", after: "~30p AI detect thay đổi + BA review" },
+      { scope: "Chức năng CRUD (SRS + diagram)", before: "~5-6h", after: "~1h gen + ~2h review sửa" },
+      { scope: "Bộ tài liệu đầy đủ", before: "2-3 ngày", after: "~1.5 ngày gen + review tổng" },
     ],
     accuracy: "Template chuẩn → ít sai cấu trúc, BA tập trung review nội dung nghiệp vụ",
     note: "Tùy số lượng use case và độ phức tạp dự án",
@@ -191,53 +187,12 @@ const cardVariants = {
   }),
 };
 
-const flowSteps = [
-  {
-    step: "Vấn đề",
-    icon: AlertCircle,
-    items: ["Ghi chép thủ công", "Prototype nhiều vòng", "Viết tài liệu lặp", "Tra cứu chậm"],
-    color: "text-red-400",
-    borderColor: "border-red-500/20",
-    bgColor: "bg-red-500/5",
-    dotColor: "bg-red-400",
-  },
-  {
-    step: "AI hỗ trợ",
-    icon: Bot,
-    items: ["Whisper transcript", "Lovable gen UI", "Agent sinh tài liệu", "Chat tra cứu"],
-    color: "text-brand-400",
-    borderColor: "border-brand-500/20",
-    bgColor: "bg-brand-500/5",
-    dotColor: "bg-brand-400",
-  },
-  {
-    step: "BA review",
-    icon: UserCheck,
-    items: ["Kiểm tra nội dung", "Chỉnh sửa UX", "Review nghiệp vụ", "Verify kết quả"],
-    color: "text-amber-400",
-    borderColor: "border-amber-500/20",
-    bgColor: "bg-amber-500/5",
-    dotColor: "bg-amber-400",
-  },
-  {
-    step: "Kết quả",
-    icon: CheckCircle2,
-    items: ["Nhanh hơn 50-80%", "Chuẩn theo template", "Đồng bộ tài liệu", "Tập trung nghiệp vụ"],
-    color: "text-emerald-400",
-    borderColor: "border-emerald-500/20",
-    bgColor: "bg-emerald-500/5",
-    dotColor: "bg-emerald-400",
-  },
-];
-
 export default function SolutionSection() {
   const sectionRef = useRef(null);
   const gridRef = useRef(null);
   const gridInView = useInView(gridRef, { once: true, amount: 0.2 });
   const headerRef = useRef(null);
   const headerInView = useInView(headerRef, { once: true, amount: 0.6 });
-  const flowRef = useRef(null);
-  const flowInView = useInView(flowRef, { once: true, amount: 0.3 });
 
   const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
   const toggleFlip = (i: number) => setFlippedCards(prev => ({ ...prev, [i]: !prev[i] }));
@@ -249,7 +204,7 @@ export default function SolutionSection() {
   const bgGlow = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
 
   return (
-    <section ref={sectionRef} className="relative py-20 sm:py-28 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative h-screen px-6 overflow-hidden flex flex-col justify-center">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent" />
 
       {/* Circuit dot grid */}
@@ -306,29 +261,25 @@ export default function SolutionSection() {
         <div className="absolute rounded-full bg-brand-400/20 animate-float-particle" style={{ left: '90%', top: '55%', width: 2, height: 2, animationDuration: '6.5s', animationDelay: '0.8s' }} />
       </div>
 
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto w-full">
         {/* Header */}
         <motion.div
           ref={headerRef}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-20"
+          className="text-center mb-6"
         >
-          <p className="text-brand-400 text-sm font-medium tracking-[0.25em] uppercase mb-4">
+          <p className="text-brand-400 text-sm font-medium tracking-[0.25em] uppercase mb-3">
             Giải pháp & Công cụ
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-[3.5rem] font-bold tracking-tight mb-6 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight">
             AI giải quyết ở đâu?
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            Mỗi điểm nghẽn trong quy trình đều có công cụ AI phù hợp —
-            ấn vào thẻ để xem chi tiết công cụ.
-          </p>
         </motion.div>
 
         {/* Solution + Tool flip cards */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
           {cards.map((card, i) => (
             <motion.div
               key={card.toolName}
@@ -339,7 +290,7 @@ export default function SolutionSection() {
               className="group relative"
             >
               <div
-                className="relative cursor-pointer h-[480px] sm:h-[500px]"
+                className="relative cursor-pointer h-[280px] sm:h-[300px]"
                 style={{ perspective: '1200px' }}
                 onClick={() => toggleFlip(i)}
               >
@@ -352,53 +303,44 @@ export default function SolutionSection() {
                   {/* === FRONT — Giải pháp === */}
                   <div
                     style={{ backfaceVisibility: 'hidden' }}
-                    className={`absolute inset-0 p-8 rounded-2xl border ${card.borderColor} bg-gray-950/80 transition-all duration-500 glass-depth overflow-y-auto scrollbar-thin`}
+                    className={`absolute inset-0 p-5 rounded-2xl border ${card.borderColor} bg-gray-950/80 transition-all duration-500 glass-depth overflow-y-auto scrollbar-thin`}
                   >
                     <div className={`absolute -inset-px rounded-2xl ${card.glowColor} opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10`} />
 
-                    <div className="mb-5">
-                      <p className="text-sm text-red-400/70 mb-1.5 line-through decoration-red-500/30">{card.problem}</p>
-                      <div className="flex items-center gap-2 mt-2">
-                        <ArrowRight className="w-4 h-4 text-emerald-400/60 flex-shrink-0" />
-                        <p className={`text-[15px] font-medium leading-snug ${card.accentColor}`}>{card.solution}</p>
+                    <div className="mb-3">
+                      <p className="text-xs text-red-400/70 mb-1 line-through decoration-red-500/30">{card.problem}</p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <ArrowRight className="w-3.5 h-3.5 text-emerald-400/60 flex-shrink-0" />
+                        <p className={`text-[13px] font-medium leading-snug ${card.accentColor}`}>{card.solution}</p>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${card.toolColor} flex items-center justify-center shadow-lg shadow-black/20`}>
-                        <card.toolIcon className="w-5 h-5 text-white" />
+                    <div className="flex items-center gap-2.5 mb-3">
+                      <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${card.toolColor} flex items-center justify-center shadow-lg shadow-black/20`}>
+                        <card.toolIcon className="w-4 h-4 text-white" />
                       </div>
-                      <span className="text-white font-semibold">{card.toolName}</span>
+                      <span className="text-white text-sm font-semibold">{card.toolName}</span>
                     </div>
 
-                    <div className="pt-4 border-t border-white/[0.06] space-y-3">
+                    <div className="pt-3 border-t border-white/[0.06] space-y-2">
                       {card.benchmarks.map((b, j) => (
-                        <div key={j} className="rounded-lg bg-white/[0.03] px-4 py-3">
-                          <p className="text-xs text-gray-400 font-medium mb-2">{b.scope}</p>
-                          <div className="flex items-center gap-2.5 text-[13px] font-mono">
+                        <div key={j} className="rounded-lg bg-white/[0.03] px-3 py-2">
+                          <p className="text-[11px] text-gray-400 font-medium mb-1">{b.scope}</p>
+                          <div className="flex items-center gap-2 text-[12px] font-mono">
                             <span className="text-red-400/80">{b.before}</span>
-                            <ArrowRight className="w-3.5 h-3.5 text-gray-600 flex-shrink-0" />
+                            <ArrowRight className="w-3 h-3 text-gray-600 flex-shrink-0" />
                             <span className="text-emerald-400 font-semibold">{b.after}</span>
                           </div>
                         </div>
                       ))}
                     </div>
 
-                    <div className="mt-4 px-1">
-                      <p className="text-xs text-gray-500 leading-relaxed">
-                        <span className="text-gray-300 font-medium">Chính xác:</span> {card.accuracy}
-                      </p>
+                    <div className="mt-2 flex items-start gap-2">
+                      <UserCheck className="w-3.5 h-3.5 text-brand-400/60 flex-shrink-0 mt-0.5" />
+                      <p className="text-[11px] text-gray-400 italic">BA review trước khi sử dụng</p>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-white/[0.04] space-y-2">
-                      <div className="flex items-start gap-2">
-                        <UserCheck className="w-4 h-4 text-brand-400/60 flex-shrink-0 mt-0.5" />
-                        <p className="text-xs text-gray-400 italic">BA review & chỉnh sửa trước khi sử dụng</p>
-                      </div>
-                      <p className="text-[11px] text-gray-600 italic pl-6">* {card.note}</p>
-                    </div>
-
-                    <div className="mt-4 flex items-center justify-center gap-1.5 text-gray-500 text-xs">
+                    <div className="mt-2 flex items-center justify-center gap-1.5 text-gray-500 text-[11px]">
                       <RotateCcw className="w-3 h-3" />
                       <span>Ấn để xem công cụ</span>
                     </div>
@@ -407,48 +349,48 @@ export default function SolutionSection() {
                   {/* === BACK — Công cụ === */}
                   <div
                     style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
-                    className={`absolute inset-0 p-8 rounded-2xl border ${card.borderColor} bg-gray-950/80 transition-all duration-500 glass-depth overflow-y-auto scrollbar-thin`}
+                    className={`absolute inset-0 p-5 rounded-2xl border ${card.borderColor} bg-gray-950/80 transition-all duration-500 glass-depth overflow-y-auto scrollbar-thin`}
                   >
                     <div className={`absolute -inset-px rounded-2xl ${card.glowColor} opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10`} />
 
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${card.toolColor} flex items-center justify-center shadow-lg shadow-black/20 flex-shrink-0`}>
-                        <card.toolIcon className="w-5 h-5 text-white" />
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${card.toolColor} flex items-center justify-center shadow-lg shadow-black/20 flex-shrink-0`}>
+                        <card.toolIcon className="w-4 h-4 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-lg font-semibold text-white">{card.toolName}</h3>
-                        <p className="text-gray-500 text-sm">{card.toolTagline}</p>
+                        <h3 className="text-base font-semibold text-white">{card.toolName}</h3>
+                        <p className="text-gray-500 text-xs">{card.toolTagline}</p>
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-1.5 mb-3">
                       {card.toolBadges.map((b) => (
-                        <span key={b.label} className={`text-[10px] font-semibold px-2.5 py-1 rounded-full ${b.color}`}>{b.label}</span>
+                        <span key={b.label} className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${b.color}`}>{b.label}</span>
                       ))}
                     </div>
 
-                    <p className="text-gray-400 text-sm leading-relaxed mb-5">{card.toolDescription}</p>
+                    <p className="text-gray-400 text-xs leading-relaxed mb-3">{card.toolDescription}</p>
 
-                    <div className="space-y-2.5 mb-4">
+                    <div className="space-y-1.5 mb-3">
                       {card.toolFeatures.map((f, fi) => (
-                        <div key={fi} className="flex items-start gap-2.5 text-sm text-gray-300">
-                          <f.icon className="w-3.5 h-3.5 mt-0.5 text-emerald-400/70 flex-shrink-0" />
+                        <div key={fi} className="flex items-start gap-2 text-xs text-gray-300">
+                          <f.icon className="w-3 h-3 mt-0.5 text-emerald-400/70 flex-shrink-0" />
                           <span>{f.text}</span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="space-y-2 pt-4 border-t border-white/[0.06]">
-                      <p className="text-xs text-gray-500 font-medium mb-2">Hạn chế:</p>
+                    <div className="space-y-1.5 pt-3 border-t border-white/[0.06]">
+                      <p className="text-[11px] text-gray-500 font-medium mb-1">Hạn chế:</p>
                       {card.toolLimits.map((l, li) => (
-                        <p key={li} className="text-sm text-gray-500 flex items-start gap-2.5">
-                          <span className="text-red-400/50 mt-0.5 flex-shrink-0 text-xs">⚠</span>
+                        <p key={li} className="text-xs text-gray-500 flex items-start gap-2">
+                          <span className="text-red-400/50 mt-0.5 flex-shrink-0 text-[10px]">⚠</span>
                           {l}
                         </p>
                       ))}
                     </div>
 
-                    <div className="mt-4 flex items-center justify-center gap-1.5 text-gray-500 text-xs">
+                    <div className="mt-2 flex items-center justify-center gap-1.5 text-gray-500 text-[11px]">
                       <RotateCcw className="w-3 h-3" />
                       <span>Ấn để xem giải pháp</span>
                     </div>
@@ -458,94 +400,6 @@ export default function SolutionSection() {
             </motion.div>
           ))}
         </div>
-
-        {/* Animated flow diagram */}
-        <div ref={flowRef} className="mt-20">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={flowInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-center text-sm text-gray-500 font-medium tracking-[0.2em] uppercase mb-10"
-          >
-            Quy trình AI hỗ trợ BA
-          </motion.p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 relative">
-            {/* Connecting line — desktop only */}
-            <div className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px">
-              <motion.div
-                initial={{ scaleX: 0 }}
-                animate={flowInView ? { scaleX: 1 } : {}}
-                transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="h-full bg-gradient-to-r from-red-500/30 via-brand-500/30 via-amber-500/30 to-emerald-500/30 origin-left"
-              />
-            </div>
-
-            {flowSteps.map((fs, i) => (
-              <motion.div
-                key={fs.step}
-                initial={{ opacity: 0, y: 30 }}
-                animate={flowInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 + i * 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="relative flex flex-col items-center text-center"
-              >
-                {/* Step icon */}
-                <div className={`w-24 h-24 rounded-2xl ${fs.bgColor} border ${fs.borderColor} flex items-center justify-center mb-4 relative z-10`}>
-                  <fs.icon className={`w-8 h-8 ${fs.color}`} />
-                </div>
-
-                {/* Arrow between steps — desktop */}
-                {i < flowSteps.length - 1 && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={flowInView ? { opacity: 1 } : {}}
-                    transition={{ delay: 0.5 + i * 0.25 }}
-                    className="hidden lg:block absolute top-10 -right-2 z-20"
-                  >
-                    <ArrowRight className="w-4 h-4 text-gray-600" />
-                  </motion.div>
-                )}
-
-                <p className={`text-sm font-semibold mb-3 ${fs.color}`}>{fs.step}</p>
-                <ul className="space-y-1.5">
-                  {fs.items.map((item, j) => (
-                    <motion.li
-                      key={j}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={flowInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ delay: 0.4 + i * 0.2 + j * 0.08 }}
-                      className="flex items-center gap-2 justify-center"
-                    >
-                      <span className={`w-1.5 h-1.5 rounded-full ${fs.dotColor} flex-shrink-0`} />
-                      <span className="text-xs text-gray-400">{item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* General limitation banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={gridInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-12 p-6 rounded-xl border border-amber-500/10 bg-amber-500/[0.03] max-w-3xl mx-auto"
-        >
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-lg bg-amber-500/15 flex items-center justify-center flex-shrink-0">
-              <Cpu className="w-5 h-5 text-amber-400" />
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold text-amber-300 mb-1.5">Hạn chế chung</h4>
-              <p className="text-sm text-gray-400 leading-relaxed">
-                Tất cả công cụ hiện đang được cài đặt trên <span className="text-amber-300/80">máy tính cá nhân</span>,
-                không phải máy tính công ty. Hiệu năng phụ thuộc vào cấu hình phần cứng (GPU, RAM)
-                và tốc độ mạng wifi. Đây là giai đoạn thử nghiệm — cần đánh giá thêm trước khi triển khai chính thức.
-              </p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

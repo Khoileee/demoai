@@ -1,12 +1,10 @@
 import { useRef, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Sparkles, Package } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight, Package } from "lucide-react";
 import ProductsModal from "./ProductsModal";
 
 export default function CTASection() {
   const sectionRef = useRef(null);
-  const thankRef = useRef<HTMLDivElement>(null);
-  const [showThank, setShowThank] = useState(false);
   const [showProducts, setShowProducts] = useState(false);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -17,7 +15,7 @@ export default function CTASection() {
   const contentY = useTransform(scrollYProgress, [0.1, 0.35], [60, 0]);
 
   return (
-    <section ref={sectionRef} className="relative py-20 sm:py-28 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative h-screen px-6 overflow-hidden flex flex-col justify-center">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent" />
 
       {/* Circuit dot grid */}
@@ -81,7 +79,7 @@ export default function CTASection() {
         <div className="absolute top-[35%] left-0 w-[180px] h-px bg-gradient-to-r from-transparent via-brand-400/10 to-transparent animate-sweep-travel" />
       </div>
 
-      <div className="min-h-[70vh] flex items-center justify-center">
+      <div className="flex items-center justify-center flex-1">
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
         className="max-w-3xl mx-auto text-center"
@@ -101,12 +99,9 @@ export default function CTASection() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => {
-              if (!showThank) {
-                setShowThank(true);
-                setTimeout(() => {
-                  thankRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-                }, 100);
-              }
+              setTimeout(() => {
+                document.getElementById("thank")?.scrollIntoView({ behavior: "smooth" });
+              }, 300);
             }}
             className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-brand-600 to-brand-500 text-white font-semibold text-sm hover:from-brand-500 hover:to-brand-400 transition-all duration-500 shadow-lg shadow-brand-500/20 hover:shadow-brand-500/30 hover:shadow-xl"
           >
@@ -124,35 +119,6 @@ export default function CTASection() {
         </div>
       </motion.div>
       </div>
-
-      {/* Thank you — only appears after clicking Xem Demo */}
-      <AnimatePresence>
-        {showThank && (
-          <motion.div
-            ref={thankRef}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-40 sm:mt-52 pt-10 text-center min-h-[60vh] flex flex-col items-center justify-center"
-          >
-            <Sparkles className="w-8 h-8 text-brand-400/60 mx-auto mb-6" />
-            <p className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-brand-400 via-cyan-300 to-violet-400 bg-clip-text text-transparent pb-2" style={{ lineHeight: '1.4' }}>
-              Chân thành cảm ơn quý vị<br />đã chú ý lắng nghe!
-            </p>
-            <p className="text-gray-500 text-base mt-8">
-              Mọi ý kiến đóng góp xin gửi về Team BA
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Footer */}
-      <motion.footer
-        style={{ opacity: contentOpacity }}
-        className="mt-16 text-center text-gray-600 text-sm"
-      >
-        Ứng dụng AI trong công việc của BA — Team BA · 2026
-      </motion.footer>
       <ProductsModal open={showProducts} onClose={() => setShowProducts(false)} />
     </section>
   );
