@@ -745,8 +745,23 @@ body {
 /* === MOBILE: reduce animation complexity & fix layout === */
 @media (max-width: 767px) {
   html {
-    scroll-snap-type: y proximity;
+    scroll-snap-type: none;
     cursor: auto;
+  }
+
+  /* Remove snap/clip constraints — let page scroll naturally */
+  main > [id] {
+    height: auto !important;
+    min-height: 100vh;
+    scroll-snap-align: none !important;
+    overflow: visible !important;
+  }
+
+  /* Sections grow with content — no nested scroll context */
+  main > [id] > section {
+    height: auto !important;
+    min-height: 100vh;
+    overflow-y: visible !important;
   }
 
   .hero-3d-rock {
